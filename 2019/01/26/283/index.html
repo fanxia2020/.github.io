@@ -5,8 +5,10 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="【图解数据结构】 一组动画演示冒泡排序, 五分钟学算法">
-    <meta name="description" content="【图解数据结构】 一组动画演示冒泡排序冒泡排序（Bubble Sort）也是一种简单直观的排序算法。它重复地走访过要排序的数列，一次比较两个元素，如果他们的顺序错误就把他们交换过来。走访数列的工作是重复地进行直到没有再需要交换，也就是说该数">
+    <meta name="keywords" content="Leetcode上第 283 号问题： Move Zeros, 五分钟学算法">
+    <meta name="description" content="leetcode上第283号问题：Move Zeros
+
+给定一个数组nums，写一个函数，将数组中所有的0挪到数组的末尾，⽽维持其他所有非0元素的相对位置。举例: nums = [0, 1, 0, 3, 12]，函数运⾏后结果为[1, 3">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -14,7 +16,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>【图解数据结构】 一组动画演示冒泡排序 | 五分钟学算法</title>
+    <title>Leetcode上第 283 号问题： Move Zeros | 五分钟学算法</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -256,13 +258,13 @@
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('https://ws3.sinaimg.cn/large/006tNc79gy1fzjrinuy2xj30zk0npwhb.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        【图解数据结构】 一组动画演示冒泡排序
+                        Leetcode上第 283 号问题： Move Zeros
                     </div>
                 </div>
             </div>
@@ -375,12 +377,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/排序/" target="_blank">
-                                <span class="chip bg-color">排序</span>
-                            </a>
-                        
-                            <a href="/tags/冒泡排序/" target="_blank">
-                                <span class="chip bg-color">冒泡排序</span>
+                            <a href="/tags/数组/" target="_blank">
+                                <span class="chip bg-color">数组</span>
                             </a>
                         
                     </div>
@@ -391,8 +389,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/十大经典排序/" class="post-category" target="_blank">
-                                十大经典排序
+                            <a href="/categories/LeetCode/" class="post-category" target="_blank">
+                                LeetCode
                             </a>
                         
                     </div>
@@ -410,14 +408,14 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        485
+                        569
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        1 分
+                        2 分
                     </div>
                     
                 
@@ -433,56 +431,87 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="【图解数据结构】-一组动画演示冒泡排序"><a href="#【图解数据结构】-一组动画演示冒泡排序" class="headerlink" title="【图解数据结构】 一组动画演示冒泡排序"></a>【图解数据结构】 一组动画演示冒泡排序</h1><p>冒泡排序（Bubble Sort）也是一种简单直观的排序算法。它重复地走访过要排序的数列，一次比较两个元素，如果他们的顺序错误就把他们交换过来。走访数列的工作是重复地进行直到没有再需要交换，也就是说该数列已经排序完成。这个算法的名字由来是因为越小的元素会经由交换慢慢“浮”到数列的顶端。</p>
-<h2 id="算法步骤"><a href="#算法步骤" class="headerlink" title="算法步骤"></a>算法步骤</h2><ol>
-<li><p>比较相邻的元素。如果第一个比第二个大，就交换他们两个。</p>
-</li>
-<li><p>对每一对相邻元素作同样的工作，从开始第一对到结尾的最后一对。这步做完后，最后的元素会是最大的数。</p>
-</li>
-<li><p>针对所有的元素重复以上的步骤，除了最后一个。</p>
-</li>
-<li><p>持续每次对越来越少的元素重复上面的步骤，直到没有任何一对数字需要比较。</p>
-</li>
-</ol>
-<h2 id="算法演示"><a href="#算法演示" class="headerlink" title="算法演示"></a>算法演示</h2><p><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181119200024.gif" alt="五分钟学算法之冒泡排序"></p>
-<h2 id="排序动画过程解释"><a href="#排序动画过程解释" class="headerlink" title="排序动画过程解释"></a>排序动画过程解释</h2><ol>
-<li><p>将天平放在序列的右端，并比较天平左右的数字</p>
-</li>
-<li><p>在这种情况下我们比较 3 和 8 </p>
-</li>
-<li><p>比较后如果右边的数字较小，则被交换</p>
-</li>
-<li><p>因为 8 大于 3 ，所以数字不用交换</p>
-</li>
-<li><p>比较完成后，将天平向左移动一个位置，比较数字</p>
-</li>
-<li><p>因为 3 大于 2 ，所以数字不用交换</p>
-</li>
-<li><p>比较完成后，逐一移动天平，比较数字</p>
-</li>
-<li><p>此时 2 小于 4 ，所以左右的数字互相交换</p>
-</li>
-<li><p>重复同样的操作，直到天平移动到左端</p>
-</li>
-<li><p>。。。。。。</p>
-</li>
-<li><p>天平到达左端</p>
-</li>
-<li><p>经过上述的操作，数列中最小的数字已经移动到左端</p>
-</li>
-<li><p>将天平返回右端</p>
-</li>
-<li><p>重复相同的操作，直到所有数字都被排序</p>
-</li>
-<li><p>。。。。。。</p>
-</li>
-<li><p>吐完泡泡了</p>
-</li>
-</ol>
-<h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><h4 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h4><p><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181119201851.png" alt=""></p>
-<h4 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h4><p><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181119201910.png" alt=""></p>
-<h4 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h4><p><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181119201417.png" alt=""></p>
+                <p><img src="https://user-gold-cdn.xitu.io/2018/10/23/1669facb3a2bb86e?w=1240&amp;h=574&amp;f=png&amp;s=228428" alt="Move Zeros"><br>leetcode上第283号问题：<a href="https://leetcode-cn.com/problems/move-zeroes/" target="_blank" rel="noopener">Move Zeros</a></p>
+<blockquote>
+<p>给定一个数组nums，写一个函数，将数组中所有的0挪到数组的末尾，⽽维持其他所有非0元素的相对位置。<br>举例: nums = [0, 1, 0, 3, 12]，函数运⾏后结果为[1, 3, 12, 0, 0]</p>
+</blockquote>
+<h3 id="解法一"><a href="#解法一" class="headerlink" title="解法一"></a>解法一</h3><p>思路：创建一个临时数组nonZeroElements，遍历nums，将nums中非0元素赋值到nonZeroElements中，而后按顺序将nonZeroElements赋值到nums上，未遍历的元素置0；</p>
+<p>动画如下：</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/10/23/1669facb3a048c12?w=420&amp;h=203&amp;f=gif&amp;s=60758" alt="image"></p>
+<p>代码如下：</p>
+<pre><code>// 时间复杂度: O(n)
+// 空间复杂度: O(n)
+class Solution {
+public:
+    void moveZeroes(vector&lt;int&gt;&amp; nums) {
 
+        vector&lt;int&gt; nonZeroElements;
+
+        // 将vec中所有非0元素放入nonZeroElements中
+        for(int i = 0 ; i &lt; nums.size() ; i ++)
+            if(nums[i])
+                nonZeroElements.push_back(nums[i]);
+
+        // 将nonZeroElements中的所有元素依次放入到nums开始的位置
+        for(int i = 0 ; i &lt; nonZeroElements.size() ; i ++)
+            nums[i] = nonZeroElements[i];
+
+        // 将nums剩余的位置放置为0
+        for(int i = nonZeroElements.size() ; i &lt; nums.size() ; i ++)
+            nums[i] = 0;
+    }
+};
+
+</code></pre><h3 id="解法二"><a href="#解法二" class="headerlink" title="解法二"></a>解法二</h3><p>思路：设定一个临时变量k=0，遍历数组nums，将非零元素移动到nums[k]位置，同时k++，而后将【k,….nums.size()】中的元素置零。</p>
+<p>动画如下：</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/10/23/1669facb3a3f2742?w=744&amp;h=418&amp;f=gif&amp;s=104124" alt="image"></p>
+<p>代码如下：</p>
+<pre><code>// 原地(in place)解决该问题
+// 时间复杂度: O(n)
+// 空间复杂度: O(1)
+class Solution {
+public:
+    void moveZeroes(vector&lt;int&gt;&amp; nums) {
+
+        int k = 0; // nums中, [0...k)的元素均为非0元素
+
+        // 遍历到第i个元素后,保证[0...i]中所有非0元素
+        // 都按照顺序排列在[0...k)中
+        for(int i = 0 ; i &lt; nums.size() ; i ++)
+            if(nums[i])
+                nums[k++] = nums[i];
+
+        // 将nums剩余的位置放置为0
+        for(int i = k ; i &lt; nums.size() ; i ++)
+            nums[i] = 0;
+    }
+};
+</code></pre><h3 id="解法三"><a href="#解法三" class="headerlink" title="解法三"></a>解法三</h3><p>思路：设定一个临时变量k=0，遍历数组nums，将非零元素与之前的零元素进行交换，维护变量k的值。</p>
+<p>动画如下：</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/10/23/1669facb3a1f570c?w=744&amp;h=418&amp;f=gif&amp;s=92514" alt="image"></p>
+<p>代码如下：</p>
+<pre><code>// 原地(in place)解决该问题
+// 时间复杂度: O(n)
+// 空间复杂度: O(1)
+class Solution {
+public:
+    void moveZeroes(vector&lt;int&gt;&amp; nums) {
+
+        int k = 0; // nums中, [0...k)的元素均为非0元素
+
+        // 遍历到第i个元素后,保证[0...i]中所有非0元素
+        // 都按照顺序排列在[0...k)中
+        // 同时, [k...i] 为 0
+        for(int i = 0 ; i &lt; nums.size() ; i ++)
+            if(nums[i])
+                if(k != i)
+                    swap(nums[k++] , nums[i]);
+                else
+                    k ++;
+    }
+};
+
+</code></pre>
             </div>
             <hr>
 
@@ -505,7 +534,7 @@
                     </span>
                     <a href="https://github.com/MisterBooo/misterbooo.github.io" class="b-link-green">五分钟学算法</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2019/01/26/tu-jie-shu-ju-jie-gou-dong-hua-yan-shi-mou-pao-pai-xu/" class="b-link-green">【图解数据结构】 一组动画演示冒泡排序</a>
+                    <a href="/2019/01/26/283/" class="b-link-green">Leetcode上第 283 号问题： Move Zeros</a>
                 </p>
             </div>
         </div>
@@ -530,17 +559,23 @@
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/01/26/tu-jie-shu-ju-jie-gou-wu-fen-zhong-xue-suan-fa-zhi-yi-zu-dong-hua-yan-shi-gui-bing-pai-xu/">
+                <a href="/2019/01/26/75/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="一组动画演示归并排序">
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="Leetcode上第 75 号问题： Two Sum II">
                         
-                        <span class="card-title">一组动画演示归并排序</span>
+                        <span class="card-title">Leetcode上第 75 号问题： Two Sum II</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">【图解数据结构】 一组动画演示归并排序前言由于LeetCode上的算法题很多涉及到一些基础的数据结构，为了更好的理解后续更新的一些复杂题目的动画，推出一个新系列 —–《图解数据结构》，主要使用动画来描述常见的数据结构和算法。本系列包括十大排</div>
+                    <div class="summary">leetcode上第75号问题：Two Sum II
+
+给定一个已按照升序排列 的有序数组，找到两个数使得它们相加之和等于目标数。
+
+
+函数应该返回这两个下标值 index1 和 index2，其中 index1 必须小于 index2。
+</div>
                     <div class="publish-info">
                         <span class="publish-date">
                             <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-26
@@ -549,8 +584,8 @@
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/十大经典排序/" class="post-category" target="_blank">
-                                    十大经典排序
+                            <a href="/categories/LeetCode/" class="post-category" target="_blank">
+                                    LeetCode
                                 </a>
                             
                             
@@ -560,12 +595,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/排序/" target="_blank">
-                        <span class="chip bg-color">排序</span>
+                    <a href="/tags/数组/" target="_blank">
+                        <span class="chip bg-color">数组</span>
                     </a>
                     
-                    <a href="/tags/归并排序/" target="_blank">
-                        <span class="chip bg-color">归并排序</span>
+                    <a href="/tags/指针/" target="_blank">
+                        <span class="chip bg-color">指针</span>
                     </a>
                     
                 </div>
@@ -579,22 +614,19 @@
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2018/11/29/tu-jie-shu-ju-jie-gou-yi-zu-dong-hua-che-di-li-jie-xi-er-pai-xu/">
+                <a href="/2019/01/26/tu-jie-shu-ju-jie-gou-yi-zu-dong-hua-che-di-li-jie-tong-pai-xu/">
                     <div class="card-image">
                         
-                        <img src="https://ws2.sinaimg.cn/large/006tNc79gy1fzjs44d3ngj30zk0jzq5b.jpg" class="responsive-img" alt="【图解数据结构】 一组动画演示希尔排序">
+                        <img src="https://ws1.sinaimg.cn/large/006tNc79gy1fzjs2h9t7dj30zk0nlwis.jpg" class="responsive-img" alt="【图解数据结构】 一组动画演示桶排序">
                         
-                        <span class="card-title">【图解数据结构】 一组动画演示希尔排序</span>
+                        <span class="card-title">【图解数据结构】 一组动画演示桶排序</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">【图解数据结构】 一组动画彻底理解希尔排序希尔排序希尔排序，也称递减增量排序算法，是插入排序的一种更高效的改进版本。但希尔排序是非稳定排序算法。
-希尔排序是基于插入排序的以下两点性质而提出改进方法的：
-
-插入排序在对几乎已经排好序的数据操作</div>
+                    <div class="summary">【图解数据结构】 一组动画彻底理解桶排序由于LeetCode上的算法题很多涉及到一些基础的数据结构，为了更好的理解后续更新的一些复杂题目的动画，推出一个新系列 —–《图解数据结构》，主要使用动画来描述常见的数据结构和算法。本系列包括十大排序</div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-11-29
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-26
                             </span>
                         <span class="publish-author">
                             
@@ -615,8 +647,8 @@
                         <span class="chip bg-color">排序</span>
                     </a>
                     
-                    <a href="/tags/希尔排序/" target="_blank">
-                        <span class="chip bg-color">希尔排序</span>
+                    <a href="/tags/桶排序/" target="_blank">
+                        <span class="chip bg-color">桶排序</span>
                     </a>
                     
                 </div>

@@ -4,6 +4,58 @@
   
     
     <entry>
+      <title>Leetcode上第 75 号问题： Two Sum II</title>
+      <link href="/2019/01/26/75/"/>
+      <url>/2019/01/26/75/</url>
+      
+        <content type="html"><![CDATA[<p><img src="https://user-gold-cdn.xitu.io/2018/10/29/166bdc86b1885e65?w=2294&amp;h=1412&amp;f=png&amp;s=261824" alt=""><br>leetcode上第75号问题：<a href="https://leetcode-cn.com/problems/two-sum-ii-input-array-is-sorted/" target="_blank" rel="noopener">Two Sum II</a></p><blockquote><p>给定一个已按照升序排列 的有序数组，找到两个数使得它们相加之和等于目标数。</p></blockquote><blockquote><p>函数应该返回这两个下标值 index1 和 index2，其中 index1 必须小于 index2。</p></blockquote><blockquote><p>说明:</p></blockquote><blockquote><ul><li>返回的下标值（index1 和 index2）不是从零开始的。</li><li>你可以假设每个输入只对应唯一的答案，而且你不可以重复使用相同的元素。</li></ul></blockquote><blockquote><p>示例:</p></blockquote><blockquote><p>输入: numbers = [2, 7, 11, 15], target = 9<br>输出: [1,2]<br>解释: 2 与 7 之和等于目标数 9 。因此 index1 = 1, index2 = 2 。</p></blockquote><h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>初始化左指针left指向数组起始，初始化右指针right指向数组结尾。</p><p>根据<strong>已排序</strong>这个特性，</p><ul><li><p>（1）如果numbers[left]与numbers[right]的和tmp小于target，说明应该增加tmp,因此left右移指向一个较大的值。</p></li><li><p>（2）如果tmp大于target，说明应该减小tmp,因此right左移指向一个较小的值。</p></li><li><p>（3）tmp等于target，则找到，返回left+1和right+1。（注意以1为起始下标）</p></li></ul><h4 id="动画演示"><a href="#动画演示" class="headerlink" title="动画演示"></a>动画演示</h4><p><img src="https://user-gold-cdn.xitu.io/2018/10/29/166bdc5dfb63ea8d?w=853&amp;h=457&amp;f=gif&amp;s=69203" alt=""></p><h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><pre><code>// 对撞指针// 时间复杂度: O(n)// 空间复杂度: O(1)class Solution {public:    vector&lt;int&gt; twoSum(vector&lt;int&gt;&amp; numbers, int target) {        int l = 0, r = numbers.size() - 1;        while(l &lt; r){            if(numbers[l] + numbers[r] == target){                int res[2] = {l+1, r+1};                return vector&lt;int&gt;(res, res+2);            }            else if(numbers[l] + numbers[r] &lt; target)                l ++;            else // numbers[l] + numbers[r] &gt; target                r --;        }    }</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> LeetCode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 数组 </tag>
+            
+            <tag> 指针 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Leetcode上第 283 号问题： Move Zeros</title>
+      <link href="/2019/01/26/283/"/>
+      <url>/2019/01/26/283/</url>
+      
+        <content type="html"><![CDATA[<p><img src="https://user-gold-cdn.xitu.io/2018/10/23/1669facb3a2bb86e?w=1240&amp;h=574&amp;f=png&amp;s=228428" alt="Move Zeros"><br>leetcode上第283号问题：<a href="https://leetcode-cn.com/problems/move-zeroes/" target="_blank" rel="noopener">Move Zeros</a></p><blockquote><p>给定一个数组nums，写一个函数，将数组中所有的0挪到数组的末尾，⽽维持其他所有非0元素的相对位置。<br>举例: nums = [0, 1, 0, 3, 12]，函数运⾏后结果为[1, 3, 12, 0, 0]</p></blockquote><h3 id="解法一"><a href="#解法一" class="headerlink" title="解法一"></a>解法一</h3><p>思路：创建一个临时数组nonZeroElements，遍历nums，将nums中非0元素赋值到nonZeroElements中，而后按顺序将nonZeroElements赋值到nums上，未遍历的元素置0；</p><p>动画如下：</p><p><img src="https://user-gold-cdn.xitu.io/2018/10/23/1669facb3a048c12?w=420&amp;h=203&amp;f=gif&amp;s=60758" alt="image"></p><p>代码如下：</p><pre><code>// 时间复杂度: O(n)// 空间复杂度: O(n)class Solution {public:    void moveZeroes(vector&lt;int&gt;&amp; nums) {        vector&lt;int&gt; nonZeroElements;        // 将vec中所有非0元素放入nonZeroElements中        for(int i = 0 ; i &lt; nums.size() ; i ++)            if(nums[i])                nonZeroElements.push_back(nums[i]);        // 将nonZeroElements中的所有元素依次放入到nums开始的位置        for(int i = 0 ; i &lt; nonZeroElements.size() ; i ++)            nums[i] = nonZeroElements[i];        // 将nums剩余的位置放置为0        for(int i = nonZeroElements.size() ; i &lt; nums.size() ; i ++)            nums[i] = 0;    }};</code></pre><h3 id="解法二"><a href="#解法二" class="headerlink" title="解法二"></a>解法二</h3><p>思路：设定一个临时变量k=0，遍历数组nums，将非零元素移动到nums[k]位置，同时k++，而后将【k,….nums.size()】中的元素置零。</p><p>动画如下：</p><p><img src="https://user-gold-cdn.xitu.io/2018/10/23/1669facb3a3f2742?w=744&amp;h=418&amp;f=gif&amp;s=104124" alt="image"></p><p>代码如下：</p><pre><code>// 原地(in place)解决该问题// 时间复杂度: O(n)// 空间复杂度: O(1)class Solution {public:    void moveZeroes(vector&lt;int&gt;&amp; nums) {        int k = 0; // nums中, [0...k)的元素均为非0元素        // 遍历到第i个元素后,保证[0...i]中所有非0元素        // 都按照顺序排列在[0...k)中        for(int i = 0 ; i &lt; nums.size() ; i ++)            if(nums[i])                nums[k++] = nums[i];        // 将nums剩余的位置放置为0        for(int i = k ; i &lt; nums.size() ; i ++)            nums[i] = 0;    }};</code></pre><h3 id="解法三"><a href="#解法三" class="headerlink" title="解法三"></a>解法三</h3><p>思路：设定一个临时变量k=0，遍历数组nums，将非零元素与之前的零元素进行交换，维护变量k的值。</p><p>动画如下：</p><p><img src="https://user-gold-cdn.xitu.io/2018/10/23/1669facb3a1f570c?w=744&amp;h=418&amp;f=gif&amp;s=92514" alt="image"></p><p>代码如下：</p><pre><code>// 原地(in place)解决该问题// 时间复杂度: O(n)// 空间复杂度: O(1)class Solution {public:    void moveZeroes(vector&lt;int&gt;&amp; nums) {        int k = 0; // nums中, [0...k)的元素均为非0元素        // 遍历到第i个元素后,保证[0...i]中所有非0元素        // 都按照顺序排列在[0...k)中        // 同时, [k...i] 为 0        for(int i = 0 ; i &lt; nums.size() ; i ++)            if(nums[i])                if(k != i)                    swap(nums[k++] , nums[i]);                else                    k ++;    }};</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> LeetCode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 数组 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>【图解数据结构】 一组动画演示桶排序</title>
       <link href="/2019/01/26/tu-jie-shu-ju-jie-gou-yi-zu-dong-hua-che-di-li-jie-tong-pai-xu/"/>
       <url>/2019/01/26/tu-jie-shu-ju-jie-gou-yi-zu-dong-hua-che-di-li-jie-tong-pai-xu/</url>
@@ -220,33 +272,6 @@
     
     
     <entry>
-      <title>【图解数据结构】 一组动画演示计数排序</title>
-      <link href="/2018/11/24/tu-jie-shu-ju-jie-gou-yi-zu-dong-hua-che-di-li-jie-ji-shu-pai-xu/"/>
-      <url>/2018/11/24/tu-jie-shu-ju-jie-gou-yi-zu-dong-hua-che-di-li-jie-ji-shu-pai-xu/</url>
-      
-        <content type="html"><![CDATA[<h1 id="【图解数据结构】-一组动画彻底理解计数排序"><a href="#【图解数据结构】-一组动画彻底理解计数排序" class="headerlink" title="【图解数据结构】 一组动画彻底理解计数排序"></a>【图解数据结构】 一组动画彻底理解计数排序</h1><h2 id="计数排序"><a href="#计数排序" class="headerlink" title="计数排序"></a>计数排序</h2><p>计数排序是一种非基于比较的排序算法，其空间复杂度和时间复杂度均为O(n+k)，其中k是整数的范围。基于比较的排序算法时间复杂度最小是O(nlogn)的。该算法于1954年由 Harold H. Seward 提出。</p><p>计数排序的核心在于将输入的数据值转化为键存储在额外开辟的数组空间中。作为一种线性时间复杂度的排序，计数排序要求输入的数据必须是有<strong>确定范围的整数</strong>。</p><h2 id="算法步骤"><a href="#算法步骤" class="headerlink" title="算法步骤"></a>算法步骤</h2><ol><li><p>花O(n)的时间扫描一下整个序列 A，获取最小值 min 和最大值 max</p></li><li><p>开辟一块新的空间创建新的数组 B，长度为 ( max - min + 1)</p></li><li><p>数组 B 中 index 的元素记录的值是 A 中某元素出现的次数</p></li><li><p>最后输出目标整数序列，具体的逻辑是遍历数组 B，输出相应元素以及对应的个数</p></li></ol><h2 id="算法演示"><a href="#算法演示" class="headerlink" title="算法演示"></a>算法演示</h2><p><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181126190814.gif" alt=""></p><h2 id="排序动画过程解释"><a href="#排序动画过程解释" class="headerlink" title="排序动画过程解释"></a>排序动画过程解释</h2><ol><li><p>首先，扫描一下整个序列</p></li><li><p>获得最小值为 2 ，最大值为 7</p></li><li><p>新建数组包含 2~7 的元素</p></li><li><p>再次扫描序列，将序列的值放置在新建数组中</p></li><li><p>扫描数字 5，数组中 index 为 3 的值为 5，次数为 1</p></li><li><p>扫描数字 3，数组中 index 为 1 的值为 3，次数为 1</p></li><li><p>扫描数字 4，数组中 index 为 2 的值为 4，次数为 1</p></li><li><p>扫描数字 7，数组中 index 为 5 的值为 7，次数为 1</p></li><li><p>扫描数字 2，数组中 index 为 0 的值为 2，次数为 1</p></li><li><p>扫描数字 4，数组中 index 为 2 的值为 4，次数为 2</p></li><li><p>扫描数字 3，数组中 index 为 1 的值为 3，次数为 2</p></li><li><p>按照这种节奏，扫描结束后，新建数组中存放了整个序列以及每个数字出现的次数</p></li><li><p>最后输出目标整数序列</p></li><li><p>输出数字 2，同时数组中 index 为 0 的值为 2 的元素次数变为 0</p></li><li><p>输出数字 3，同时数组中 index 为 1 的值为 3 的元素次数变为 1</p></li><li><p>同样的操作，整个序列就完全输出了</p></li></ol><h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><p>为了更好的让读者用自己熟悉的编程语言来理解动画，笔者将贴出多种编程语言的参考代码，代码全部来源于网上。</p><h4 id="Go代码实现"><a href="#Go代码实现" class="headerlink" title="Go代码实现"></a>Go代码实现</h4><p><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181126191921.png" alt=""></p><h4 id="Java代码实现"><a href="#Java代码实现" class="headerlink" title="Java代码实现"></a>Java代码实现</h4><p><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181126191936.png" alt=""></p><h4 id="Python代码实现"><a href="#Python代码实现" class="headerlink" title="Python代码实现"></a>Python代码实现</h4><p><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181126191943.png" alt=""></p><h4 id="JavaScript代码实现"><a href="#JavaScript代码实现" class="headerlink" title="JavaScript代码实现"></a>JavaScript代码实现</h4><p><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181126191949.png" alt=""></p><p>如果你是iOS开发者，可以在GitHub上 <a href="https://github.com/MisterBooo/Play-With-Sort-OC">https://github.com/MisterBooo/Play-With-Sort-OC</a> 获取更直观可调试运行的源码。</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 十大经典排序 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 排序 </tag>
-            
-            <tag> 计数排序 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>【图解数据结构】 一组动画演示插入排序</title>
       <link href="/2018/11/24/tu-jie-shu-ju-jie-gou-yi-zu-dong-hua-yan-shi-cha-ru-pai-xu/"/>
       <url>/2018/11/24/tu-jie-shu-ju-jie-gou-yi-zu-dong-hua-yan-shi-cha-ru-pai-xu/</url>
@@ -266,6 +291,33 @@
             <tag> 排序 </tag>
             
             <tag> 插入排序 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>【图解数据结构】 一组动画演示计数排序</title>
+      <link href="/2018/11/24/tu-jie-shu-ju-jie-gou-yi-zu-dong-hua-che-di-li-jie-ji-shu-pai-xu/"/>
+      <url>/2018/11/24/tu-jie-shu-ju-jie-gou-yi-zu-dong-hua-che-di-li-jie-ji-shu-pai-xu/</url>
+      
+        <content type="html"><![CDATA[<h1 id="【图解数据结构】-一组动画彻底理解计数排序"><a href="#【图解数据结构】-一组动画彻底理解计数排序" class="headerlink" title="【图解数据结构】 一组动画彻底理解计数排序"></a>【图解数据结构】 一组动画彻底理解计数排序</h1><h2 id="计数排序"><a href="#计数排序" class="headerlink" title="计数排序"></a>计数排序</h2><p>计数排序是一种非基于比较的排序算法，其空间复杂度和时间复杂度均为O(n+k)，其中k是整数的范围。基于比较的排序算法时间复杂度最小是O(nlogn)的。该算法于1954年由 Harold H. Seward 提出。</p><p>计数排序的核心在于将输入的数据值转化为键存储在额外开辟的数组空间中。作为一种线性时间复杂度的排序，计数排序要求输入的数据必须是有<strong>确定范围的整数</strong>。</p><h2 id="算法步骤"><a href="#算法步骤" class="headerlink" title="算法步骤"></a>算法步骤</h2><ol><li><p>花O(n)的时间扫描一下整个序列 A，获取最小值 min 和最大值 max</p></li><li><p>开辟一块新的空间创建新的数组 B，长度为 ( max - min + 1)</p></li><li><p>数组 B 中 index 的元素记录的值是 A 中某元素出现的次数</p></li><li><p>最后输出目标整数序列，具体的逻辑是遍历数组 B，输出相应元素以及对应的个数</p></li></ol><h2 id="算法演示"><a href="#算法演示" class="headerlink" title="算法演示"></a>算法演示</h2><p><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181126190814.gif" alt=""></p><h2 id="排序动画过程解释"><a href="#排序动画过程解释" class="headerlink" title="排序动画过程解释"></a>排序动画过程解释</h2><ol><li><p>首先，扫描一下整个序列</p></li><li><p>获得最小值为 2 ，最大值为 7</p></li><li><p>新建数组包含 2~7 的元素</p></li><li><p>再次扫描序列，将序列的值放置在新建数组中</p></li><li><p>扫描数字 5，数组中 index 为 3 的值为 5，次数为 1</p></li><li><p>扫描数字 3，数组中 index 为 1 的值为 3，次数为 1</p></li><li><p>扫描数字 4，数组中 index 为 2 的值为 4，次数为 1</p></li><li><p>扫描数字 7，数组中 index 为 5 的值为 7，次数为 1</p></li><li><p>扫描数字 2，数组中 index 为 0 的值为 2，次数为 1</p></li><li><p>扫描数字 4，数组中 index 为 2 的值为 4，次数为 2</p></li><li><p>扫描数字 3，数组中 index 为 1 的值为 3，次数为 2</p></li><li><p>按照这种节奏，扫描结束后，新建数组中存放了整个序列以及每个数字出现的次数</p></li><li><p>最后输出目标整数序列</p></li><li><p>输出数字 2，同时数组中 index 为 0 的值为 2 的元素次数变为 0</p></li><li><p>输出数字 3，同时数组中 index 为 1 的值为 3 的元素次数变为 1</p></li><li><p>同样的操作，整个序列就完全输出了</p></li></ol><h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><p>为了更好的让读者用自己熟悉的编程语言来理解动画，笔者将贴出多种编程语言的参考代码，代码全部来源于网上。</p><h4 id="Go代码实现"><a href="#Go代码实现" class="headerlink" title="Go代码实现"></a>Go代码实现</h4><p><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181126191921.png" alt=""></p><h4 id="Java代码实现"><a href="#Java代码实现" class="headerlink" title="Java代码实现"></a>Java代码实现</h4><p><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181126191936.png" alt=""></p><h4 id="Python代码实现"><a href="#Python代码实现" class="headerlink" title="Python代码实现"></a>Python代码实现</h4><p><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181126191943.png" alt=""></p><h4 id="JavaScript代码实现"><a href="#JavaScript代码实现" class="headerlink" title="JavaScript代码实现"></a>JavaScript代码实现</h4><p><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181126191949.png" alt=""></p><p>如果你是iOS开发者，可以在GitHub上 <a href="https://github.com/MisterBooo/Play-With-Sort-OC">https://github.com/MisterBooo/Play-With-Sort-OC</a> 获取更直观可调试运行的源码。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 十大经典排序 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 排序 </tag>
+            
+            <tag> 计数排序 </tag>
             
         </tags>
       
