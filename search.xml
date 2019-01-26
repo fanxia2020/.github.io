@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>【图解数据结构】 一组动画演示冒泡排序</title>
+      <link href="/2019/01/26/tu-jie-shu-ju-jie-gou-dong-hua-yan-shi-mou-pao-pai-xu/"/>
+      <url>/2019/01/26/tu-jie-shu-ju-jie-gou-dong-hua-yan-shi-mou-pao-pai-xu/</url>
+      
+        <content type="html"><![CDATA[<h1 id="【图解数据结构】-一组动画演示冒泡排序"><a href="#【图解数据结构】-一组动画演示冒泡排序" class="headerlink" title="【图解数据结构】 一组动画演示冒泡排序"></a>【图解数据结构】 一组动画演示冒泡排序</h1><p>冒泡排序（Bubble Sort）也是一种简单直观的排序算法。它重复地走访过要排序的数列，一次比较两个元素，如果他们的顺序错误就把他们交换过来。走访数列的工作是重复地进行直到没有再需要交换，也就是说该数列已经排序完成。这个算法的名字由来是因为越小的元素会经由交换慢慢“浮”到数列的顶端。</p><h2 id="算法步骤"><a href="#算法步骤" class="headerlink" title="算法步骤"></a>算法步骤</h2><ol><li><p>比较相邻的元素。如果第一个比第二个大，就交换他们两个。</p></li><li><p>对每一对相邻元素作同样的工作，从开始第一对到结尾的最后一对。这步做完后，最后的元素会是最大的数。</p></li><li><p>针对所有的元素重复以上的步骤，除了最后一个。</p></li><li><p>持续每次对越来越少的元素重复上面的步骤，直到没有任何一对数字需要比较。</p></li></ol><h2 id="算法演示"><a href="#算法演示" class="headerlink" title="算法演示"></a>算法演示</h2><p><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181119200024.gif" alt="五分钟学算法之冒泡排序"></p><h2 id="排序动画过程解释"><a href="#排序动画过程解释" class="headerlink" title="排序动画过程解释"></a>排序动画过程解释</h2><ol><li><p>将天平放在序列的右端，并比较天平左右的数字</p></li><li><p>在这种情况下我们比较 3 和 8 </p></li><li><p>比较后如果右边的数字较小，则被交换</p></li><li><p>因为 8 大于 3 ，所以数字不用交换</p></li><li><p>比较完成后，将天平向左移动一个位置，比较数字</p></li><li><p>因为 3 大于 2 ，所以数字不用交换</p></li><li><p>比较完成后，逐一移动天平，比较数字</p></li><li><p>此时 2 小于 4 ，所以左右的数字互相交换</p></li><li><p>重复同样的操作，直到天平移动到左端</p></li><li><p>。。。。。。</p></li><li><p>天平到达左端</p></li><li><p>经过上述的操作，数列中最小的数字已经移动到左端</p></li><li><p>将天平返回右端</p></li><li><p>重复相同的操作，直到所有数字都被排序</p></li><li><p>。。。。。。</p></li><li><p>吐完泡泡了</p></li></ol><h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><h4 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h4><p><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181119201851.png" alt=""></p><h4 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h4><p><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181119201910.png" alt=""></p><h4 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h4><p><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181119201417.png" alt=""></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 十大经典排序 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 排序 </tag>
+            
+            <tag> 冒泡排序 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>【图解数据结构】 一组动画演示希尔排序</title>
       <link href="/2018/11/29/tu-jie-shu-ju-jie-gou-yi-zu-dong-hua-che-di-li-jie-xi-er-pai-xu/"/>
       <url>/2018/11/29/tu-jie-shu-ju-jie-gou-yi-zu-dong-hua-che-di-li-jie-xi-er-pai-xu/</url>
@@ -47,9 +74,9 @@
       
         <tags>
             
-            <tag> 排序 </tag>
-            
             <tag> 基数排序 </tag>
+            
+            <tag> 排序 </tag>
             
         </tags>
       
@@ -74,9 +101,9 @@
       
         <tags>
             
-            <tag> 堆排序 </tag>
-            
             <tag> 排序 </tag>
+            
+            <tag> 堆排序 </tag>
             
         </tags>
       
@@ -89,7 +116,7 @@
       <link href="/2018/11/25/tu-jie-shu-ju-jie-gou-wu-fen-zhong-xue-suan-fa-zhi-yi-zu-dong-hua-yan-shi-gui-bing-pai-xu/"/>
       <url>/2018/11/25/tu-jie-shu-ju-jie-gou-wu-fen-zhong-xue-suan-fa-zhi-yi-zu-dong-hua-yan-shi-gui-bing-pai-xu/</url>
       
-        <content type="html"><![CDATA[<h1 id="【图解数据结构】-一组动画演示归并排序"><a href="#【图解数据结构】-一组动画演示归并排序" class="headerlink" title="【图解数据结构】 一组动画演示归并排序"></a>【图解数据结构】 一组动画演示归并排序</h1><p>归并排序（Merge sort）是建立在归并操作上的一种有效的排序算法。该算法是采用分治法（Divide and Conquer）的一个非常典型的应用。</p><p>作为一种典型的分而治之思想的算法应用，归并排序的实现由两种方法：</p><ul><li>自上而下的递归（所有递归的方法都可以用迭代重写，所以就有了第 2 种方法）；</li><li>自下而上的迭代；</li></ul><p>和选择排序一样，归并排序的性能不受输入数据的影响，但表现比选择排序好的多，因为始终都是 O(nlogn) 的时间复杂度。代价是需要额外的内存空间。</p><h2 id="算法步骤"><a href="#算法步骤" class="headerlink" title="算法步骤"></a>算法步骤</h2><ol><li><p>申请空间，使其大小为两个已经排序序列之和，该空间用来存放合并后的序列；</p></li><li><p>设定两个指针，最初位置分别为两个已经排序序列的起始位置；</p></li><li><p>比较两个指针所指向的元素，选择相对小的元素放入到合并空间，并移动指针到下一位置；</p></li><li><p>重复步骤 3 直到某一指针达到序列尾；</p></li><li><p>将另一序列剩下的所有元素直接复制到合并序列尾。</p></li></ol><p>来源：<a href="https://github.com/hustcc/JS-Sorting-Algorithm">https://github.com/hustcc/JS-Sorting-Algorithm</a></p><h2 id="算法演示"><a href="#算法演示" class="headerlink" title="算法演示"></a>算法演示</h2><p><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181120110141.gif" alt=""></p><h2 id="排序动画过程解释"><a href="#排序动画过程解释" class="headerlink" title="排序动画过程解释"></a>排序动画过程解释</h2><ol><li><p>首先，将数字分割成两片区域</p></li><li><p>将数字分割成两片区域</p></li><li><p>。。。。。。</p></li><li><p>直到每片区域只有一个元素</p></li><li><p>分割完成</p></li><li><p>接下来，将分割的每片区域进行合并组合</p></li><li><p>合并时，按照数字的升序移动，使得合并后的数字在组内按升序排列</p></li><li><p>当合并包含多个数字的组时，比较开头的数字，移动其中较小的数字</p></li><li><p>比如在动画中，比较开头的 4 和 3 </p></li><li><p>其中 4 大于 3， 因此移动 3</p></li><li><p>按照同样的逻辑去比较该列剩余的头数</p></li><li><p>4 小于 7 ，所以移动 4</p></li><li><p>。。。。。。</p></li><li><p>递归的重复组的合并操作，直到所有数字都在一个组中。</p></li><li><p>完成 归并排序 啦~</p></li></ol><h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><h4 id="Python-代码实现"><a href="#Python-代码实现" class="headerlink" title="Python 代码实现"></a>Python 代码实现</h4><pre><code>def mergeSort(arr):    import math    if(len(arr)&lt;2):        return arr    middle = math.floor(len(arr)/2)    left, right = arr[0:middle], arr[middle:]    return merge(mergeSort(left), mergeSort(right))def merge(left,right):    result = []    while left and right:        if left[0] &lt;= right[0]:            result.append(left.pop(0));        else:            result.append(right.pop(0));    while left:        result.append(left.pop(0));    while right:        result.append(right.pop(0));    return result</code></pre><h4 id="Java实现代码"><a href="#Java实现代码" class="headerlink" title="Java实现代码"></a>Java实现代码</h4><pre><code>public class MergeSort implements IArraySort {    @Override    public int[] sort(int[] sourceArray) throws Exception {        // 对 arr 进行拷贝，不改变参数内容        int[] arr = Arrays.copyOf(sourceArray, sourceArray.length);        if (arr.length &lt; 2) {            return arr;        }        int middle = (int) Math.floor(arr.length / 2);        int[] left = Arrays.copyOfRange(arr, 0, middle);        int[] right = Arrays.copyOfRange(arr, middle, arr.length);        return merge(sort(left), sort(right));    }    protected int[] merge(int[] left, int[] right) {        int[] result = new int[left.length + right.length];        int i = 0;        while (left.length &gt; 0 &amp;&amp; right.length &gt; 0) {            if (left[0] &lt;= right[0]) {                result[i++] = left[0];                left = Arrays.copyOfRange(left, 1, left.length);            } else {                result[i++] = right[0];                right = Arrays.copyOfRange(right, 1, right.length);            }        }        while (left.length &gt; 0) {            result[i++] = left[0];            left = Arrays.copyOfRange(left, 1, left.length);        }        while (right.length &gt; 0) {            result[i++] = right[0];            right = Arrays.copyOfRange(right, 1, right.length);        }        return result;    }}</code></pre><h4 id="Go-代码实现"><a href="#Go-代码实现" class="headerlink" title="Go 代码实现"></a>Go 代码实现</h4><pre><code>func mergeSort(arr []int) []int {    length := len(arr)    if length &lt; 2 {        return arr    }    middle := length / 2    left := arr[0:middle]    right := arr[middle:]    return merge(mergeSort(left), mergeSort(right))}func merge(left []int, right []int) []int {    var result []int    for len(left) != 0 &amp;&amp; len(right) != 0 {        if left[0] &lt;= right[0] {            result = append(result, left[0])            left = left[1:]        } else {            result = append(result, right[0])            right = right[1:]        }    }    for len(left) != 0 {        result = append(result, left[0])        left = left[1:]    }    for len(right) != 0 {        result = append(result, right[0])        right = right[1:]    }    return result}</code></pre><h4 id="JavaScript-代码实现"><a href="#JavaScript-代码实现" class="headerlink" title="JavaScript 代码实现"></a>JavaScript 代码实现</h4><pre><code>function mergeSort(arr) {  // 采用自上而下的递归方法    var len = arr.length;    if(len &lt; 2) {        return arr;    }    var middle = Math.floor(len / 2),        left = arr.slice(0, middle),        right = arr.slice(middle);    return merge(mergeSort(left), mergeSort(right));}function merge(left, right){    var result = [];    while (left.length &amp;&amp; right.length) {        if (left[0] &lt;= right[0]) {            result.push(left.shift());        } else {            result.push(right.shift());        }    }    while (left.length)        result.push(left.shift());    while (right.length)        result.push(right.shift());    return result;}</code></pre><p>如果你是iOS开发者，可以在GitHub上 <a href="https://github.com/MisterBooo/Play-With-Sort-OC">https://github.com/MisterBooo/Play-With-Sort-OC</a> 获取更直观可调试运行的源码。</p>]]></content>
+        <content type="html"><![CDATA[<h1 id="【图解数据结构】-一组动画演示归并排序"><a href="#【图解数据结构】-一组动画演示归并排序" class="headerlink" title="【图解数据结构】 一组动画演示归并排序"></a>【图解数据结构】 一组动画演示归并排序</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>由于LeetCode上的算法题很多涉及到一些基础的数据结构，为了更好的理解后续更新的一些复杂题目的动画，推出一个新系列 —–《图解数据结构》，主要使用动画来描述常见的数据结构和算法。本系列包括十大排序、堆、队列、树、并查集、图等等大概几十篇。</p><h2 id="归并排序（Merge-sort"><a href="#归并排序（Merge-sort" class="headerlink" title="归并排序（Merge sort"></a>归并排序（Merge sort</h2><p>归并排序（Merge sort）是建立在归并操作上的一种有效的排序算法。该算法是采用分治法（Divide and Conquer）的一个非常典型的应用。</p><p>作为一种典型的分而治之思想的算法应用，归并排序的实现由两种方法：</p><ul><li>自上而下的递归（所有递归的方法都可以用迭代重写，所以就有了第 2 种方法）；</li><li>自下而上的迭代；</li></ul><p>和选择排序一样，归并排序的性能不受输入数据的影响，但表现比选择排序好的多，因为始终都是 O(nlogn) 的时间复杂度。代价是需要额外的内存空间。</p><h2 id="算法步骤"><a href="#算法步骤" class="headerlink" title="算法步骤"></a>算法步骤</h2><ol><li><p>申请空间，使其大小为两个已经排序序列之和，该空间用来存放合并后的序列；</p></li><li><p>设定两个指针，最初位置分别为两个已经排序序列的起始位置；</p></li><li><p>比较两个指针所指向的元素，选择相对小的元素放入到合并空间，并移动指针到下一位置；</p></li><li><p>重复步骤 3 直到某一指针达到序列尾；</p></li><li><p>将另一序列剩下的所有元素直接复制到合并序列尾。</p></li></ol><p>来源：<a href="https://github.com/hustcc/JS-Sorting-Algorithm">https://github.com/hustcc/JS-Sorting-Algorithm</a></p><h2 id="算法演示"><a href="#算法演示" class="headerlink" title="算法演示"></a>算法演示</h2><p><img src="https://user-gold-cdn.xitu.io/2018/11/21/16733b1a9c74ce50?w=955&amp;h=538&amp;f=gif&amp;s=586156" alt=""></p><h2 id="排序动画过程解释"><a href="#排序动画过程解释" class="headerlink" title="排序动画过程解释"></a>排序动画过程解释</h2><ol><li><p>首先，将数字分割成两片区域</p></li><li><p>将数字分割成两片区域</p></li><li><p>。。。。。。</p></li><li><p>直到每片区域只有一个元素</p></li><li><p>分割完成</p></li><li><p>接下来，将分割的每片区域进行合并组合</p></li><li><p>合并时，按照数字的升序移动，使得合并后的数字在组内按升序排列</p></li><li><p>当合并包含多个数字的组时，比较开头的数字，移动其中较小的数字</p></li><li><p>比如在动画中，比较开头的 4 和 3 </p></li><li><p>其中 4 大于 3， 因此移动 3</p></li><li><p>按照同样的逻辑去比较该列剩余的头数</p></li><li><p>4 小于 7 ，所以移动 4</p></li><li><p>。。。。。。</p></li><li><p>递归的重复组的合并操作，直到所有数字都在一个组中。</p></li><li><p>完成 归并排序 啦~</p></li></ol><h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><p>为了更好的让读者用自己熟悉的编程语言来理解动画，笔者将贴出多种编程语言的参考代码，代码全部来源于网上。</p><h4 id="C-代码实现"><a href="#C-代码实现" class="headerlink" title="C++代码实现"></a>C++代码实现</h4><p><img src="https://user-gold-cdn.xitu.io/2018/11/21/16733b1a9c8f7fff?w=1832&amp;h=1708&amp;f=png&amp;s=85502" alt="C++代码实现"></p><h4 id="Java代码实现"><a href="#Java代码实现" class="headerlink" title="Java代码实现"></a>Java代码实现</h4><p><img src="https://user-gold-cdn.xitu.io/2018/11/21/16733b1a9db220c7?w=1668&amp;h=2444&amp;f=png&amp;s=128379" alt="Java代码实现"></p><h4 id="Python代码实现"><a href="#Python代码实现" class="headerlink" title="Python代码实现"></a>Python代码实现</h4><p><img src="https://user-gold-cdn.xitu.io/2018/11/21/16733b1a9dd4b5f7?w=1322&amp;h=1294&amp;f=png&amp;s=64894" alt="Python代码实现"></p><h4 id="JavaScript代码实现"><a href="#JavaScript代码实现" class="headerlink" title="JavaScript代码实现"></a>JavaScript代码实现</h4><p><img src="https://user-gold-cdn.xitu.io/2018/11/21/16733b1a9dcea382?w=1344&amp;h=1800&amp;f=png&amp;s=76855" alt="JavaScript代码实现"></p>]]></content>
       
       
       <categories>
@@ -104,33 +131,6 @@
             <tag> 排序 </tag>
             
             <tag> 归并排序 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>【图解数据结构】 一组动画演示快速排序</title>
-      <link href="/2018/11/24/tu-jie-shu-ju-jie-gou-yi-zu-dong-hua-che-di-li-jie-kuai-su-pai-xu/"/>
-      <url>/2018/11/24/tu-jie-shu-ju-jie-gou-yi-zu-dong-hua-che-di-li-jie-kuai-su-pai-xu/</url>
-      
-        <content type="html"><![CDATA[<h1 id="【图解数据结构】-一组动画彻底理解快速排序"><a href="#【图解数据结构】-一组动画彻底理解快速排序" class="headerlink" title="【图解数据结构】 一组动画彻底理解快速排序"></a>【图解数据结构】 一组动画彻底理解快速排序</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><h2 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h2><p>快速排序是由东尼·霍尔所发展的一种排序算法。在平均状况下，排序 n 个项目要 Ο(nlogn) 次比较。在最坏状况下则需要 Ο(n2) 次比较，但这种状况并不常见。事实上，快速排序通常明显比其他 Ο(nlogn) 算法更快，因为它的内部循环（inner loop）可以在大部分的架构上很有效率地被实现出来。</p><p>快速排序使用分治法（Divide and conquer）策略来把一个串行（list）分为两个子串行（sub-lists）。</p><p>快速排序又是一种分而治之思想在排序算法上的典型应用。本质上来看，快速排序应该算是在冒泡排序基础上的递归分治法。</p><h2 id="算法步骤"><a href="#算法步骤" class="headerlink" title="算法步骤"></a>算法步骤</h2><ol><li><p>从数列中挑出一个元素，称为 “基准”（pivot）;</p></li><li><p>重新排序数列，所有元素比基准值小的摆放在基准前面，所有元素比基准值大的摆在基准的后面（相同的数可以到任一边）。在这个分区退出之后，该基准就处于数列的中间位置。这个称为分区（partition）操作；</p></li><li><p>递归地（recursive）把小于基准值元素的子数列和大于基准值元素的子数列排序；</p></li></ol><p>递归的最底部情形，是数列的大小是零或一，也就是永远都已经被排序好了。虽然一直递归下去，但是这个算法总会退出，因为在每次的迭代（iteration）中，它至少会把一个元素摆到它最后的位置去。</p><p>来源：<a href="https://github.com/hustcc/JS-Sorting-Algorithm">https://github.com/hustcc/JS-Sorting-Algorithm</a></p><h2 id="算法演示"><a href="#算法演示" class="headerlink" title="算法演示"></a>算法演示</h2><p><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181121154332.gif" alt=""></p><h2 id="排序动画过程解释"><a href="#排序动画过程解释" class="headerlink" title="排序动画过程解释"></a>排序动画过程解释</h2><ol><li><p>首先，操作数列中的所有数字</p></li><li><p>在所有数字中选择一个数字作为排序的基准（pivot）, pivot 通常是随机选择的，在这里为了演示方便，我们选择最右边的数字作为 pivot</p></li><li><p>选取好 pivot 后，在操作数列中选择最左边的数字标记为 左标记 ，最右边的数字标记为 右标记</p></li><li><p>将左边的标记向右移动</p></li><li><p>当 左标记 达到超过 pivot 的数字时，停止移动</p></li><li><p>在这里，8 &gt; 6 ,所以停止移动</p></li><li><p>然后将右边的标记向左移动</p></li><li><p>当 右标记 达到小于 pivot 的数字时，停止移动</p></li><li><p>在这里，4 &gt; 6 ,所以停止移动</p></li><li><p>当左右标记停止时，更改标记的数字</p></li><li><p>因此，左标记 的作用是找到一个大于 pivot 的数字，右标记 的作用是找到一个小于 pivot 的数字</p></li><li><p>通过交换数字，可以在数列的左边收集小于 pivot 的数字集合，右边收集大于 pivot 的数字集合</p></li><li><p>交换之后，继续移动 左标记</p></li><li><p>在这里，9 &gt; 6 ,所以停止移动</p></li><li><p>然后将右边的标记向左移动</p></li><li><p>当 右标记 碰撞到 左标记 时也停止移动</p></li><li><p>如果左右侧的标记停止时，并且都在同一个位置，将这个数字和 pivot 的数字交换</p></li><li><p>这就完成了第一次操作</p></li><li><p>小于 6 的都在 6 的左侧，大于 6 的都在 6 的右侧</p></li><li><p>然后递归对这分成的两部分都执行同样的操作</p></li><li><p>完成 快速排序</p></li></ol><h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><p>为了更好的让读者用自己熟悉的编程语言来理解动画，笔者将贴出多种编程语言的参考代码，代码全部来源于网上。</p><h4 id="C-代码实现"><a href="#C-代码实现" class="headerlink" title="C++代码实现"></a>C++代码实现</h4><p><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181121154352.png" alt="C++代码实现"></p><h4 id="Java代码实现"><a href="#Java代码实现" class="headerlink" title="Java代码实现"></a>Java代码实现</h4><p><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181121154358.png" alt="Java代码实现"></p><h4 id="Python代码实现"><a href="#Python代码实现" class="headerlink" title="Python代码实现"></a>Python代码实现</h4><p><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181121154408.png" alt="Python代码实现"></p><h4 id="JavaScript代码实现"><a href="#JavaScript代码实现" class="headerlink" title="JavaScript代码实现"></a>JavaScript代码实现</h4><p><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181121154414.png" alt="JavaScript代码实现"><br>如果你是iOS开发者，可以在GitHub上 <a href="https://github.com/MisterBooo/Play-With-Sort-OC">https://github.com/MisterBooo/Play-With-Sort-OC</a> 获取更直观可调试运行的源码。</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 十大经典排序 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 排序 </tag>
-            
-            <tag> 快速排序 </tag>
             
         </tags>
       
@@ -166,6 +166,33 @@
     
     
     <entry>
+      <title>【图解数据结构】 一组动画演示快速排序</title>
+      <link href="/2018/11/24/tu-jie-shu-ju-jie-gou-yi-zu-dong-hua-che-di-li-jie-kuai-su-pai-xu/"/>
+      <url>/2018/11/24/tu-jie-shu-ju-jie-gou-yi-zu-dong-hua-che-di-li-jie-kuai-su-pai-xu/</url>
+      
+        <content type="html"><![CDATA[<h1 id="【图解数据结构】-一组动画彻底理解快速排序"><a href="#【图解数据结构】-一组动画彻底理解快速排序" class="headerlink" title="【图解数据结构】 一组动画彻底理解快速排序"></a>【图解数据结构】 一组动画彻底理解快速排序</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><h2 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h2><p>快速排序是由东尼·霍尔所发展的一种排序算法。在平均状况下，排序 n 个项目要 Ο(nlogn) 次比较。在最坏状况下则需要 Ο(n2) 次比较，但这种状况并不常见。事实上，快速排序通常明显比其他 Ο(nlogn) 算法更快，因为它的内部循环（inner loop）可以在大部分的架构上很有效率地被实现出来。</p><p>快速排序使用分治法（Divide and conquer）策略来把一个串行（list）分为两个子串行（sub-lists）。</p><p>快速排序又是一种分而治之思想在排序算法上的典型应用。本质上来看，快速排序应该算是在冒泡排序基础上的递归分治法。</p><h2 id="算法步骤"><a href="#算法步骤" class="headerlink" title="算法步骤"></a>算法步骤</h2><ol><li><p>从数列中挑出一个元素，称为 “基准”（pivot）;</p></li><li><p>重新排序数列，所有元素比基准值小的摆放在基准前面，所有元素比基准值大的摆在基准的后面（相同的数可以到任一边）。在这个分区退出之后，该基准就处于数列的中间位置。这个称为分区（partition）操作；</p></li><li><p>递归地（recursive）把小于基准值元素的子数列和大于基准值元素的子数列排序；</p></li></ol><p>递归的最底部情形，是数列的大小是零或一，也就是永远都已经被排序好了。虽然一直递归下去，但是这个算法总会退出，因为在每次的迭代（iteration）中，它至少会把一个元素摆到它最后的位置去。</p><p>来源：<a href="https://github.com/hustcc/JS-Sorting-Algorithm">https://github.com/hustcc/JS-Sorting-Algorithm</a></p><h2 id="算法演示"><a href="#算法演示" class="headerlink" title="算法演示"></a>算法演示</h2><p><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181121154332.gif" alt=""></p><h2 id="排序动画过程解释"><a href="#排序动画过程解释" class="headerlink" title="排序动画过程解释"></a>排序动画过程解释</h2><ol><li><p>首先，操作数列中的所有数字</p></li><li><p>在所有数字中选择一个数字作为排序的基准（pivot）, pivot 通常是随机选择的，在这里为了演示方便，我们选择最右边的数字作为 pivot</p></li><li><p>选取好 pivot 后，在操作数列中选择最左边的数字标记为 左标记 ，最右边的数字标记为 右标记</p></li><li><p>将左边的标记向右移动</p></li><li><p>当 左标记 达到超过 pivot 的数字时，停止移动</p></li><li><p>在这里，8 &gt; 6 ,所以停止移动</p></li><li><p>然后将右边的标记向左移动</p></li><li><p>当 右标记 达到小于 pivot 的数字时，停止移动</p></li><li><p>在这里，4 &gt; 6 ,所以停止移动</p></li><li><p>当左右标记停止时，更改标记的数字</p></li><li><p>因此，左标记 的作用是找到一个大于 pivot 的数字，右标记 的作用是找到一个小于 pivot 的数字</p></li><li><p>通过交换数字，可以在数列的左边收集小于 pivot 的数字集合，右边收集大于 pivot 的数字集合</p></li><li><p>交换之后，继续移动 左标记</p></li><li><p>在这里，9 &gt; 6 ,所以停止移动</p></li><li><p>然后将右边的标记向左移动</p></li><li><p>当 右标记 碰撞到 左标记 时也停止移动</p></li><li><p>如果左右侧的标记停止时，并且都在同一个位置，将这个数字和 pivot 的数字交换</p></li><li><p>这就完成了第一次操作</p></li><li><p>小于 6 的都在 6 的左侧，大于 6 的都在 6 的右侧</p></li><li><p>然后递归对这分成的两部分都执行同样的操作</p></li><li><p>完成 快速排序</p></li></ol><h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><p>为了更好的让读者用自己熟悉的编程语言来理解动画，笔者将贴出多种编程语言的参考代码，代码全部来源于网上。</p><h4 id="C-代码实现"><a href="#C-代码实现" class="headerlink" title="C++代码实现"></a>C++代码实现</h4><p><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181121154352.png" alt="C++代码实现"></p><h4 id="Java代码实现"><a href="#Java代码实现" class="headerlink" title="Java代码实现"></a>Java代码实现</h4><p><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181121154358.png" alt="Java代码实现"></p><h4 id="Python代码实现"><a href="#Python代码实现" class="headerlink" title="Python代码实现"></a>Python代码实现</h4><p><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181121154408.png" alt="Python代码实现"></p><h4 id="JavaScript代码实现"><a href="#JavaScript代码实现" class="headerlink" title="JavaScript代码实现"></a>JavaScript代码实现</h4><p><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181121154414.png" alt="JavaScript代码实现"><br>如果你是iOS开发者，可以在GitHub上 <a href="https://github.com/MisterBooo/Play-With-Sort-OC">https://github.com/MisterBooo/Play-With-Sort-OC</a> 获取更直观可调试运行的源码。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 十大经典排序 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 排序 </tag>
+            
+            <tag> 快速排序 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>【图解数据结构】 一组动画演示计数排序</title>
       <link href="/2018/11/24/tu-jie-shu-ju-jie-gou-yi-zu-dong-hua-che-di-li-jie-ji-shu-pai-xu/"/>
       <url>/2018/11/24/tu-jie-shu-ju-jie-gou-yi-zu-dong-hua-che-di-li-jie-ji-shu-pai-xu/</url>
@@ -185,33 +212,6 @@
             <tag> 排序 </tag>
             
             <tag> 计数排序 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>【图解数据结构】 一组动画演示冒泡排序</title>
-      <link href="/2018/11/24/tu-jie-shu-ju-jie-gou-dong-hua-yan-shi-mou-pao-pai-xu/"/>
-      <url>/2018/11/24/tu-jie-shu-ju-jie-gou-dong-hua-yan-shi-mou-pao-pai-xu/</url>
-      
-        <content type="html"><![CDATA[<h1 id="【图解数据结构】-一组动画演示冒泡排序"><a href="#【图解数据结构】-一组动画演示冒泡排序" class="headerlink" title="【图解数据结构】 一组动画演示冒泡排序"></a>【图解数据结构】 一组动画演示冒泡排序</h1><p>冒泡排序（Bubble Sort）也是一种简单直观的排序算法。它重复地走访过要排序的数列，一次比较两个元素，如果他们的顺序错误就把他们交换过来。走访数列的工作是重复地进行直到没有再需要交换，也就是说该数列已经排序完成。这个算法的名字由来是因为越小的元素会经由交换慢慢“浮”到数列的顶端。</p><h2 id="算法步骤"><a href="#算法步骤" class="headerlink" title="算法步骤"></a>算法步骤</h2><ol><li><p>比较相邻的元素。如果第一个比第二个大，就交换他们两个。</p></li><li><p>对每一对相邻元素作同样的工作，从开始第一对到结尾的最后一对。这步做完后，最后的元素会是最大的数。</p></li><li><p>针对所有的元素重复以上的步骤，除了最后一个。</p></li><li><p>持续每次对越来越少的元素重复上面的步骤，直到没有任何一对数字需要比较。</p></li></ol><h2 id="算法演示"><a href="#算法演示" class="headerlink" title="算法演示"></a>算法演示</h2><p><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181119200024.gif" alt="五分钟学算法之冒泡排序"></p><h2 id="排序动画过程解释"><a href="#排序动画过程解释" class="headerlink" title="排序动画过程解释"></a>排序动画过程解释</h2><ol><li><p>将天平放在序列的右端，并比较天平左右的数字</p></li><li><p>在这种情况下我们比较 3 和 8 </p></li><li><p>比较后如果右边的数字较小，则被交换</p></li><li><p>因为 8 大于 3 ，所以数字不用交换</p></li><li><p>比较完成后，将天平向左移动一个位置，比较数字</p></li><li><p>因为 3 大于 2 ，所以数字不用交换</p></li><li><p>比较完成后，逐一移动天平，比较数字</p></li><li><p>此时 2 小于 4 ，所以左右的数字互相交换</p></li><li><p>重复同样的操作，直到天平移动到左端</p></li><li><p>。。。。。。</p></li><li><p>天平到达左端</p></li><li><p>经过上述的操作，数列中最小的数字已经移动到左端</p></li><li><p>将天平返回右端</p></li><li><p>重复相同的操作，直到所有数字都被排序</p></li><li><p>。。。。。。</p></li><li><p>吐完泡泡了</p></li></ol><h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><h4 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h4><p><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181119201851.png" alt=""></p><h4 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h4><p><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181119201910.png" alt=""></p><h4 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h4><p><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181119201417.png" alt=""></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 十大经典排序 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 排序 </tag>
-            
-            <tag> 冒泡排序 </tag>
             
         </tags>
       

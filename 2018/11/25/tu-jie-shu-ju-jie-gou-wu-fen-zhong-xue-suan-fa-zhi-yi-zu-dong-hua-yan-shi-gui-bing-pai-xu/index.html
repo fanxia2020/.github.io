@@ -6,8 +6,7 @@
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
     <meta name="keywords" content="一组动画演示归并排序, 五分钟学算法">
-    <meta name="description" content="【图解数据结构】 一组动画演示归并排序归并排序（Merge sort）是建立在归并操作上的一种有效的排序算法。该算法是采用分治法（Divide and Conquer）的一个非常典型的应用。
-作为一种典型的分而治之思想的算法应用，归并排序的">
+    <meta name="description" content="【图解数据结构】 一组动画演示归并排序前言由于LeetCode上的算法题很多涉及到一些基础的数据结构，为了更好的理解后续更新的一些复杂题目的动画，推出一个新系列 —–《图解数据结构》，主要使用动画来描述常见的数据结构和算法。本系列包括十大排">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -411,14 +410,14 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        1k
+                        721
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        4 分
+                        2 分
                     </div>
                     
                 
@@ -434,7 +433,8 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="【图解数据结构】-一组动画演示归并排序"><a href="#【图解数据结构】-一组动画演示归并排序" class="headerlink" title="【图解数据结构】 一组动画演示归并排序"></a>【图解数据结构】 一组动画演示归并排序</h1><p>归并排序（Merge sort）是建立在归并操作上的一种有效的排序算法。该算法是采用分治法（Divide and Conquer）的一个非常典型的应用。</p>
+                <h1 id="【图解数据结构】-一组动画演示归并排序"><a href="#【图解数据结构】-一组动画演示归并排序" class="headerlink" title="【图解数据结构】 一组动画演示归并排序"></a>【图解数据结构】 一组动画演示归并排序</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>由于LeetCode上的算法题很多涉及到一些基础的数据结构，为了更好的理解后续更新的一些复杂题目的动画，推出一个新系列 —–《图解数据结构》，主要使用动画来描述常见的数据结构和算法。本系列包括十大排序、堆、队列、树、并查集、图等等大概几十篇。</p>
+<h2 id="归并排序（Merge-sort"><a href="#归并排序（Merge-sort" class="headerlink" title="归并排序（Merge sort"></a>归并排序（Merge sort</h2><p>归并排序（Merge sort）是建立在归并操作上的一种有效的排序算法。该算法是采用分治法（Divide and Conquer）的一个非常典型的应用。</p>
 <p>作为一种典型的分而治之思想的算法应用，归并排序的实现由两种方法：</p>
 <ul>
 <li>自上而下的递归（所有递归的方法都可以用迭代重写，所以就有了第 2 种方法）；</li>
@@ -454,7 +454,7 @@
 </li>
 </ol>
 <p>来源：<a href="https://github.com/hustcc/JS-Sorting-Algorithm">https://github.com/hustcc/JS-Sorting-Algorithm</a></p>
-<h2 id="算法演示"><a href="#算法演示" class="headerlink" title="算法演示"></a>算法演示</h2><p><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181120110141.gif" alt=""></p>
+<h2 id="算法演示"><a href="#算法演示" class="headerlink" title="算法演示"></a>算法演示</h2><p><img src="https://user-gold-cdn.xitu.io/2018/11/21/16733b1a9c74ce50?w=955&amp;h=538&amp;f=gif&amp;s=586156" alt=""></p>
 <h2 id="排序动画过程解释"><a href="#排序动画过程解释" class="headerlink" title="排序动画过程解释"></a>排序动画过程解释</h2><ol>
 <li><p>首先，将数字分割成两片区域</p>
 </li>
@@ -487,140 +487,11 @@
 <li><p>完成 归并排序 啦~</p>
 </li>
 </ol>
-<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><h4 id="Python-代码实现"><a href="#Python-代码实现" class="headerlink" title="Python 代码实现"></a>Python 代码实现</h4><pre><code>
-def mergeSort(arr):
-    import math
-    if(len(arr)&lt;2):
-        return arr
-    middle = math.floor(len(arr)/2)
-    left, right = arr[0:middle], arr[middle:]
-    return merge(mergeSort(left), mergeSort(right))
-
-def merge(left,right):
-    result = []
-    while left and right:
-        if left[0] &lt;= right[0]:
-            result.append(left.pop(0));
-        else:
-            result.append(right.pop(0));
-    while left:
-        result.append(left.pop(0));
-    while right:
-        result.append(right.pop(0));
-    return result
-</code></pre><h4 id="Java实现代码"><a href="#Java实现代码" class="headerlink" title="Java实现代码"></a>Java实现代码</h4><pre><code>public class MergeSort implements IArraySort {
-
-    @Override
-    public int[] sort(int[] sourceArray) throws Exception {
-        // 对 arr 进行拷贝，不改变参数内容
-        int[] arr = Arrays.copyOf(sourceArray, sourceArray.length);
-
-        if (arr.length &lt; 2) {
-            return arr;
-        }
-        int middle = (int) Math.floor(arr.length / 2);
-
-        int[] left = Arrays.copyOfRange(arr, 0, middle);
-        int[] right = Arrays.copyOfRange(arr, middle, arr.length);
-
-        return merge(sort(left), sort(right));
-    }
-
-    protected int[] merge(int[] left, int[] right) {
-        int[] result = new int[left.length + right.length];
-        int i = 0;
-        while (left.length &gt; 0 &amp;&amp; right.length &gt; 0) {
-            if (left[0] &lt;= right[0]) {
-                result[i++] = left[0];
-                left = Arrays.copyOfRange(left, 1, left.length);
-            } else {
-                result[i++] = right[0];
-                right = Arrays.copyOfRange(right, 1, right.length);
-            }
-        }
-
-        while (left.length &gt; 0) {
-            result[i++] = left[0];
-            left = Arrays.copyOfRange(left, 1, left.length);
-        }
-
-        while (right.length &gt; 0) {
-            result[i++] = right[0];
-            right = Arrays.copyOfRange(right, 1, right.length);
-        }
-
-        return result;
-    }
-
-}
-
-</code></pre><h4 id="Go-代码实现"><a href="#Go-代码实现" class="headerlink" title="Go 代码实现"></a>Go 代码实现</h4><pre><code>func mergeSort(arr []int) []int {
-    length := len(arr)
-    if length &lt; 2 {
-        return arr
-    }
-    middle := length / 2
-    left := arr[0:middle]
-    right := arr[middle:]
-    return merge(mergeSort(left), mergeSort(right))
-}
-
-func merge(left []int, right []int) []int {
-    var result []int
-    for len(left) != 0 &amp;&amp; len(right) != 0 {
-        if left[0] &lt;= right[0] {
-            result = append(result, left[0])
-            left = left[1:]
-        } else {
-            result = append(result, right[0])
-            right = right[1:]
-        }
-    }
-
-    for len(left) != 0 {
-        result = append(result, left[0])
-        left = left[1:]
-    }
-
-    for len(right) != 0 {
-        result = append(result, right[0])
-        right = right[1:]
-    }
-
-    return result
-}
-</code></pre><h4 id="JavaScript-代码实现"><a href="#JavaScript-代码实现" class="headerlink" title="JavaScript 代码实现"></a>JavaScript 代码实现</h4><pre><code>function mergeSort(arr) {  // 采用自上而下的递归方法
-    var len = arr.length;
-    if(len &lt; 2) {
-        return arr;
-    }
-    var middle = Math.floor(len / 2),
-        left = arr.slice(0, middle),
-        right = arr.slice(middle);
-    return merge(mergeSort(left), mergeSort(right));
-}
-
-function merge(left, right)
-{
-    var result = [];
-
-    while (left.length &amp;&amp; right.length) {
-        if (left[0] &lt;= right[0]) {
-            result.push(left.shift());
-        } else {
-            result.push(right.shift());
-        }
-    }
-
-    while (left.length)
-        result.push(left.shift());
-
-    while (right.length)
-        result.push(right.shift());
-
-    return result;
-}
-</code></pre><p>如果你是iOS开发者，可以在GitHub上 <a href="https://github.com/MisterBooo/Play-With-Sort-OC">https://github.com/MisterBooo/Play-With-Sort-OC</a> 获取更直观可调试运行的源码。</p>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><p>为了更好的让读者用自己熟悉的编程语言来理解动画，笔者将贴出多种编程语言的参考代码，代码全部来源于网上。</p>
+<h4 id="C-代码实现"><a href="#C-代码实现" class="headerlink" title="C++代码实现"></a>C++代码实现</h4><p><img src="https://user-gold-cdn.xitu.io/2018/11/21/16733b1a9c8f7fff?w=1832&amp;h=1708&amp;f=png&amp;s=85502" alt="C++代码实现"></p>
+<h4 id="Java代码实现"><a href="#Java代码实现" class="headerlink" title="Java代码实现"></a>Java代码实现</h4><p><img src="https://user-gold-cdn.xitu.io/2018/11/21/16733b1a9db220c7?w=1668&amp;h=2444&amp;f=png&amp;s=128379" alt="Java代码实现"></p>
+<h4 id="Python代码实现"><a href="#Python代码实现" class="headerlink" title="Python代码实现"></a>Python代码实现</h4><p><img src="https://user-gold-cdn.xitu.io/2018/11/21/16733b1a9dd4b5f7?w=1322&amp;h=1294&amp;f=png&amp;s=64894" alt="Python代码实现"></p>
+<h4 id="JavaScript代码实现"><a href="#JavaScript代码实现" class="headerlink" title="JavaScript代码实现"></a>JavaScript代码实现</h4><p><img src="https://user-gold-cdn.xitu.io/2018/11/21/16733b1a9dcea382?w=1344&amp;h=1800&amp;f=png&amp;s=76855" alt="JavaScript代码实现"></p>
 
             </div>
             <hr>
@@ -701,12 +572,12 @@ function merge(left, right)
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/堆排序/" target="_blank">
-                        <span class="chip bg-color">堆排序</span>
-                    </a>
-                    
                     <a href="/tags/排序/" target="_blank">
                         <span class="chip bg-color">排序</span>
+                    </a>
+                    
+                    <a href="/tags/堆排序/" target="_blank">
+                        <span class="chip bg-color">堆排序</span>
                     </a>
                     
                 </div>
@@ -720,16 +591,16 @@ function merge(left, right)
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2018/11/24/tu-jie-shu-ju-jie-gou-yi-zu-dong-hua-che-di-li-jie-kuai-su-pai-xu/">
+                <a href="/2018/11/24/tu-jie-shu-ju-jie-gou-yi-zu-dong-hua-che-di-li-jie-tong-pai-xu/">
                     <div class="card-image">
                         
-                        <img src="https://ws3.sinaimg.cn/large/006tNc79gy1fzjs144w1qj30zk0nptck.jpg" class="responsive-img" alt="【图解数据结构】 一组动画演示快速排序">
+                        <img src="https://ws1.sinaimg.cn/large/006tNc79gy1fzjs2h9t7dj30zk0nlwis.jpg" class="responsive-img" alt="【图解数据结构】 一组动画演示桶排序">
                         
-                        <span class="card-title">【图解数据结构】 一组动画演示快速排序</span>
+                        <span class="card-title">【图解数据结构】 一组动画演示桶排序</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">【图解数据结构】 一组动画彻底理解快速排序前言快速排序快速排序是由东尼·霍尔所发展的一种排序算法。在平均状况下，排序 n 个项目要 Ο(nlogn) 次比较。在最坏状况下则需要 Ο(n2) 次比较，但这种状况并不常见。事实上，快速排序通常明</div>
+                    <div class="summary">【图解数据结构】 一组动画彻底理解桶排序桶排序桶排序(Bucket sort)是一种基于计数的排序算法（计数排序可参考上节的内容），工作的原理是将数据分到有限数量的桶子里，然后每个桶再分别排序（有可能再使用别的排序算法或是以递回方式继续使用</div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2018-11-24
@@ -753,8 +624,8 @@ function merge(left, right)
                         <span class="chip bg-color">排序</span>
                     </a>
                     
-                    <a href="/tags/快速排序/" target="_blank">
-                        <span class="chip bg-color">快速排序</span>
+                    <a href="/tags/桶排序/" target="_blank">
+                        <span class="chip bg-color">桶排序</span>
                     </a>
                     
                 </div>
@@ -864,7 +735,7 @@ function merge(left, right)
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">6.8k</span>
+                <span class="white-color">6.5k</span>
             
     
             
