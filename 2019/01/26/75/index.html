@@ -416,7 +416,7 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        357
+                        353
                     </div>
                     
 
@@ -472,26 +472,27 @@
 </li>
 </ul>
 <h4 id="动画演示"><a href="#动画演示" class="headerlink" title="动画演示"></a>动画演示</h4><p><img src="https://user-gold-cdn.xitu.io/2018/10/29/166bdc5dfb63ea8d?w=853&amp;h=457&amp;f=gif&amp;s=69203" alt=""></p>
-<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><pre><code>// 对撞指针
-// 时间复杂度: O(n)
-// 空间复杂度: O(1)
-class Solution {
-public:
-    vector&lt;int&gt; twoSum(vector&lt;int&gt;&amp; numbers, int target) {
-        int l = 0, r = numbers.size() - 1;
-        while(l &lt; r){
-            if(numbers[l] + numbers[r] == target){
-                int res[2] = {l+1, r+1};
-                return vector&lt;int&gt;(res, res+2);
-            }
-            else if(numbers[l] + numbers[r] &lt; target)
-                l ++;
-            else // numbers[l] + numbers[r] &gt; target
-                r --;
-        }
-    }
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">// 对撞指针</span>
+<span class="token comment" spellcheck="true">// 时间复杂度: O(n)</span>
+<span class="token comment" spellcheck="true">// 空间复杂度: O(1)</span>
+<span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> <span class="token function">twoSum</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">&amp;</span> numbers<span class="token punctuation">,</span> <span class="token keyword">int</span> target<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> l <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> r <span class="token operator">=</span> numbers<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
+        <span class="token keyword">while</span><span class="token punctuation">(</span>l <span class="token operator">&lt;</span> r<span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>numbers<span class="token punctuation">[</span>l<span class="token punctuation">]</span> <span class="token operator">+</span> numbers<span class="token punctuation">[</span>r<span class="token punctuation">]</span> <span class="token operator">==</span> target<span class="token punctuation">)</span><span class="token punctuation">{</span>
+                <span class="token keyword">int</span> res<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span>l<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span> r<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+                <span class="token keyword">return</span> vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token punctuation">(</span>res<span class="token punctuation">,</span> res<span class="token operator">+</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>numbers<span class="token punctuation">[</span>l<span class="token punctuation">]</span> <span class="token operator">+</span> numbers<span class="token punctuation">[</span>r<span class="token punctuation">]</span> <span class="token operator">&lt;</span> target<span class="token punctuation">)</span>
+                l <span class="token operator">++</span><span class="token punctuation">;</span>
+            <span class="token keyword">else</span> <span class="token comment" spellcheck="true">// numbers[l] + numbers[r] > target</span>
+                r <span class="token operator">--</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
 
 </code></pre>
+
             </div>
             <hr>
 
@@ -537,52 +538,45 @@ public:
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
-            </div>
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/01/26/75/">
+                <a href="/2019/01/26/xin-shou-xiang-cong-ling-kai-shi-da-jian-yi-ge-ku-xuan-mian-fei-de-ge-ren-bo-ke/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="Leetcode上第 75 号问题： Two Sum II">
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="从零开始搭建一个酷炫免费的个人博客">
                         
-                        <span class="card-title">Leetcode上第 75 号问题： Two Sum II</span>
+                        <span class="card-title">从零开始搭建一个酷炫免费的个人博客</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">leetcode上第75号问题：Two Sum II
-
-给定一个已按照升序排列 的有序数组，找到两个数使得它们相加之和等于目标数。
-
-
-函数应该返回这两个下标值 index1 和 index2，其中 index1 必须小于 index2。
+                    <div class="summary">【新手向】从零开始搭建一个酷炫免费的个人博客由于公众号的文章不易后续整理阅读，于是小吴昨天上午花了半个小时使用 GitHub + Hexo 搭建了一下个人博客，打算将公众号的文章搬过去，支持关键字搜索、分类标签功能。效果是下面这样子的👇
 </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-26
-                            </span>
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-26
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/LeetCode/" class="post-category" target="_blank">
-                                    LeetCode
+                            <a href="/categories/分享/" class="post-category" target="_blank">
+                                    分享
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/数组/" target="_blank">
-                        <span class="chip bg-color">数组</span>
+                    <a href="/tags/新手/" target="_blank">
+                        <span class="chip bg-color">新手</span>
                     </a>
                     
-                    <a href="/tags/指针/" target="_blank">
-                        <span class="chip bg-color">指针</span>
+                    <a href="/tags/分享/" target="_blank">
+                        <span class="chip bg-color">分享</span>
                     </a>
                     
                 </div>
@@ -739,7 +733,7 @@ public:
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">7.7k</span>
+                <span class="white-color">9.7k</span>
             
     
             
