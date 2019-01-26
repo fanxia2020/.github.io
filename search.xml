@@ -166,11 +166,11 @@
     
     
     <entry>
-      <title>【图解数据结构】 一组动画演示选择排序</title>
-      <link href="/2018/11/24/tu-jie-shu-ju-jie-gou-yi-zu-dong-hua-yan-shi-xuan-ze-pai-xu/"/>
-      <url>/2018/11/24/tu-jie-shu-ju-jie-gou-yi-zu-dong-hua-yan-shi-xuan-ze-pai-xu/</url>
+      <title>【图解数据结构】 一组动画演示计数排序</title>
+      <link href="/2018/11/24/tu-jie-shu-ju-jie-gou-yi-zu-dong-hua-che-di-li-jie-ji-shu-pai-xu/"/>
+      <url>/2018/11/24/tu-jie-shu-ju-jie-gou-yi-zu-dong-hua-che-di-li-jie-ji-shu-pai-xu/</url>
       
-        <content type="html"><![CDATA[<p># </p><h1 id="【图解数据结构】-一组动画演示选择排序"><a href="#【图解数据结构】-一组动画演示选择排序" class="headerlink" title="【图解数据结构】 一组动画演示选择排序"></a>【图解数据结构】 一组动画演示选择排序</h1><p>选择排序是一种简单直观的排序算法，无论什么数据进去都是 O(n²) 的时间复杂度。所以用到它的时候，数据规模越小越好。唯一的好处可能就是不占用额外的内存空间了吧。</p><h2 id="算法步骤"><a href="#算法步骤" class="headerlink" title="算法步骤"></a>算法步骤</h2><ol><li><p>首先在未排序序列中找到最小（大）元素，存放到排序序列的起始位置</p></li><li><p>再从剩余未排序元素中继续寻找最小（大）元素，然后放到已排序序列的末尾。</p></li><li><p>重复第二步，直到所有元素均排序完毕。</p></li></ol><p>来源：<a href="https://github.com/hustcc/JS-Sorting-Algorithm">https://github.com/hustcc/JS-Sorting-Algorithm</a></p><h2 id="算法演示"><a href="#算法演示" class="headerlink" title="算法演示"></a>算法演示</h2><p><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181120151222.gif" alt=""></p><h2 id="排序动画过程解释"><a href="#排序动画过程解释" class="headerlink" title="排序动画过程解释"></a>排序动画过程解释</h2><ol><li><p>线性搜索数列并找到最小值，此时找到了为 2</p></li><li><p>将最小值替换为数列中左端的数字，即将 2 与 4 进行交换</p></li><li><p>此时 2 已经排序好</p></li><li><p>继续线性搜索剩余数列找到最小值，此时找到了 3</p></li><li><p>将最小值替换为数列中左端的数字，即将 3 与 4 进行交换</p></li><li><p>此时 2 与 3 已经排序好</p></li><li><p>继续线性搜索剩余数列找到最小值，此时找到了 4</p></li><li><p>如果最小值已经在左端，那么不执行任何操作，所以此时不做任何处理</p></li><li><p>此时 2 、 3  、 4 已经排序好</p></li><li><p>重复相同操作，直到所有数字都被排序</p></li></ol><h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><p>为了更好的让读者用自己熟悉的编程语言来理解动画，笔者将贴出多种编程语言的参考代码，代码全部来源于网上。</p><h4 id="C-代码实现"><a href="#C-代码实现" class="headerlink" title="C++代码实现"></a>C++代码实现</h4><h4 id="Java代码实现"><a href="#Java代码实现" class="headerlink" title="Java代码实现"></a>Java代码实现</h4><h4 id="Python代码实现"><a href="#Python代码实现" class="headerlink" title="Python代码实现"></a>Python代码实现</h4><h4 id="JavaScript代码实现"><a href="#JavaScript代码实现" class="headerlink" title="JavaScript代码实现"></a>JavaScript代码实现</h4>]]></content>
+        <content type="html"><![CDATA[<h1 id="【图解数据结构】-一组动画彻底理解计数排序"><a href="#【图解数据结构】-一组动画彻底理解计数排序" class="headerlink" title="【图解数据结构】 一组动画彻底理解计数排序"></a>【图解数据结构】 一组动画彻底理解计数排序</h1><h2 id="计数排序"><a href="#计数排序" class="headerlink" title="计数排序"></a>计数排序</h2><p>计数排序是一种非基于比较的排序算法，其空间复杂度和时间复杂度均为O(n+k)，其中k是整数的范围。基于比较的排序算法时间复杂度最小是O(nlogn)的。该算法于1954年由 Harold H. Seward 提出。</p><p>计数排序的核心在于将输入的数据值转化为键存储在额外开辟的数组空间中。作为一种线性时间复杂度的排序，计数排序要求输入的数据必须是有<strong>确定范围的整数</strong>。</p><h2 id="算法步骤"><a href="#算法步骤" class="headerlink" title="算法步骤"></a>算法步骤</h2><ol><li><p>花O(n)的时间扫描一下整个序列 A，获取最小值 min 和最大值 max</p></li><li><p>开辟一块新的空间创建新的数组 B，长度为 ( max - min + 1)</p></li><li><p>数组 B 中 index 的元素记录的值是 A 中某元素出现的次数</p></li><li><p>最后输出目标整数序列，具体的逻辑是遍历数组 B，输出相应元素以及对应的个数</p></li></ol><h2 id="算法演示"><a href="#算法演示" class="headerlink" title="算法演示"></a>算法演示</h2><p><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181126190814.gif" alt=""></p><h2 id="排序动画过程解释"><a href="#排序动画过程解释" class="headerlink" title="排序动画过程解释"></a>排序动画过程解释</h2><ol><li><p>首先，扫描一下整个序列</p></li><li><p>获得最小值为 2 ，最大值为 7</p></li><li><p>新建数组包含 2~7 的元素</p></li><li><p>再次扫描序列，将序列的值放置在新建数组中</p></li><li><p>扫描数字 5，数组中 index 为 3 的值为 5，次数为 1</p></li><li><p>扫描数字 3，数组中 index 为 1 的值为 3，次数为 1</p></li><li><p>扫描数字 4，数组中 index 为 2 的值为 4，次数为 1</p></li><li><p>扫描数字 7，数组中 index 为 5 的值为 7，次数为 1</p></li><li><p>扫描数字 2，数组中 index 为 0 的值为 2，次数为 1</p></li><li><p>扫描数字 4，数组中 index 为 2 的值为 4，次数为 2</p></li><li><p>扫描数字 3，数组中 index 为 1 的值为 3，次数为 2</p></li><li><p>按照这种节奏，扫描结束后，新建数组中存放了整个序列以及每个数字出现的次数</p></li><li><p>最后输出目标整数序列</p></li><li><p>输出数字 2，同时数组中 index 为 0 的值为 2 的元素次数变为 0</p></li><li><p>输出数字 3，同时数组中 index 为 1 的值为 3 的元素次数变为 1</p></li><li><p>同样的操作，整个序列就完全输出了</p></li></ol><h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><p>为了更好的让读者用自己熟悉的编程语言来理解动画，笔者将贴出多种编程语言的参考代码，代码全部来源于网上。</p><h4 id="Go代码实现"><a href="#Go代码实现" class="headerlink" title="Go代码实现"></a>Go代码实现</h4><p><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181126191921.png" alt=""></p><h4 id="Java代码实现"><a href="#Java代码实现" class="headerlink" title="Java代码实现"></a>Java代码实现</h4><p><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181126191936.png" alt=""></p><h4 id="Python代码实现"><a href="#Python代码实现" class="headerlink" title="Python代码实现"></a>Python代码实现</h4><p><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181126191943.png" alt=""></p><h4 id="JavaScript代码实现"><a href="#JavaScript代码实现" class="headerlink" title="JavaScript代码实现"></a>JavaScript代码实现</h4><p><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181126191949.png" alt=""></p><p>如果你是iOS开发者，可以在GitHub上 <a href="https://github.com/MisterBooo/Play-With-Sort-OC">https://github.com/MisterBooo/Play-With-Sort-OC</a> 获取更直观可调试运行的源码。</p>]]></content>
       
       
       <categories>
@@ -184,7 +184,7 @@
             
             <tag> 排序 </tag>
             
-            <tag> 选择排序 </tag>
+            <tag> 计数排序 </tag>
             
         </tags>
       
@@ -220,6 +220,33 @@
     
     
     <entry>
+      <title>【图解数据结构】 一组动画演示选择排序</title>
+      <link href="/2018/11/24/tu-jie-shu-ju-jie-gou-yi-zu-dong-hua-yan-shi-xuan-ze-pai-xu/"/>
+      <url>/2018/11/24/tu-jie-shu-ju-jie-gou-yi-zu-dong-hua-yan-shi-xuan-ze-pai-xu/</url>
+      
+        <content type="html"><![CDATA[<p># </p><h1 id="【图解数据结构】-一组动画演示选择排序"><a href="#【图解数据结构】-一组动画演示选择排序" class="headerlink" title="【图解数据结构】 一组动画演示选择排序"></a>【图解数据结构】 一组动画演示选择排序</h1><p>选择排序是一种简单直观的排序算法，无论什么数据进去都是 O(n²) 的时间复杂度。所以用到它的时候，数据规模越小越好。唯一的好处可能就是不占用额外的内存空间了吧。</p><h2 id="算法步骤"><a href="#算法步骤" class="headerlink" title="算法步骤"></a>算法步骤</h2><ol><li><p>首先在未排序序列中找到最小（大）元素，存放到排序序列的起始位置</p></li><li><p>再从剩余未排序元素中继续寻找最小（大）元素，然后放到已排序序列的末尾。</p></li><li><p>重复第二步，直到所有元素均排序完毕。</p></li></ol><p>来源：<a href="https://github.com/hustcc/JS-Sorting-Algorithm">https://github.com/hustcc/JS-Sorting-Algorithm</a></p><h2 id="算法演示"><a href="#算法演示" class="headerlink" title="算法演示"></a>算法演示</h2><p><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181120151222.gif" alt=""></p><h2 id="排序动画过程解释"><a href="#排序动画过程解释" class="headerlink" title="排序动画过程解释"></a>排序动画过程解释</h2><ol><li><p>线性搜索数列并找到最小值，此时找到了为 2</p></li><li><p>将最小值替换为数列中左端的数字，即将 2 与 4 进行交换</p></li><li><p>此时 2 已经排序好</p></li><li><p>继续线性搜索剩余数列找到最小值，此时找到了 3</p></li><li><p>将最小值替换为数列中左端的数字，即将 3 与 4 进行交换</p></li><li><p>此时 2 与 3 已经排序好</p></li><li><p>继续线性搜索剩余数列找到最小值，此时找到了 4</p></li><li><p>如果最小值已经在左端，那么不执行任何操作，所以此时不做任何处理</p></li><li><p>此时 2 、 3  、 4 已经排序好</p></li><li><p>重复相同操作，直到所有数字都被排序</p></li></ol><h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><p>为了更好的让读者用自己熟悉的编程语言来理解动画，笔者将贴出多种编程语言的参考代码，代码全部来源于网上。</p><h4 id="C-代码实现"><a href="#C-代码实现" class="headerlink" title="C++代码实现"></a>C++代码实现</h4><h4 id="Java代码实现"><a href="#Java代码实现" class="headerlink" title="Java代码实现"></a>Java代码实现</h4><h4 id="Python代码实现"><a href="#Python代码实现" class="headerlink" title="Python代码实现"></a>Python代码实现</h4><h4 id="JavaScript代码实现"><a href="#JavaScript代码实现" class="headerlink" title="JavaScript代码实现"></a>JavaScript代码实现</h4>]]></content>
+      
+      
+      <categories>
+          
+          <category> 十大经典排序 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 排序 </tag>
+            
+            <tag> 选择排序 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>【图解数据结构】 一组动画演示插入排序</title>
       <link href="/2018/11/24/tu-jie-shu-ju-jie-gou-yi-zu-dong-hua-yan-shi-cha-ru-pai-xu/"/>
       <url>/2018/11/24/tu-jie-shu-ju-jie-gou-yi-zu-dong-hua-yan-shi-cha-ru-pai-xu/</url>
@@ -239,33 +266,6 @@
             <tag> 排序 </tag>
             
             <tag> 插入排序 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>【图解数据结构】 一组动画演示计数排序</title>
-      <link href="/2018/11/24/tu-jie-shu-ju-jie-gou-yi-zu-dong-hua-che-di-li-jie-ji-shu-pai-xu/"/>
-      <url>/2018/11/24/tu-jie-shu-ju-jie-gou-yi-zu-dong-hua-che-di-li-jie-ji-shu-pai-xu/</url>
-      
-        <content type="html"><![CDATA[<h1 id="【图解数据结构】-一组动画彻底理解计数排序"><a href="#【图解数据结构】-一组动画彻底理解计数排序" class="headerlink" title="【图解数据结构】 一组动画彻底理解计数排序"></a>【图解数据结构】 一组动画彻底理解计数排序</h1><h2 id="计数排序"><a href="#计数排序" class="headerlink" title="计数排序"></a>计数排序</h2><p>计数排序是一种非基于比较的排序算法，其空间复杂度和时间复杂度均为O(n+k)，其中k是整数的范围。基于比较的排序算法时间复杂度最小是O(nlogn)的。该算法于1954年由 Harold H. Seward 提出。</p><p>计数排序的核心在于将输入的数据值转化为键存储在额外开辟的数组空间中。作为一种线性时间复杂度的排序，计数排序要求输入的数据必须是有<strong>确定范围的整数</strong>。</p><h2 id="算法步骤"><a href="#算法步骤" class="headerlink" title="算法步骤"></a>算法步骤</h2><ol><li><p>花O(n)的时间扫描一下整个序列 A，获取最小值 min 和最大值 max</p></li><li><p>开辟一块新的空间创建新的数组 B，长度为 ( max - min + 1)</p></li><li><p>数组 B 中 index 的元素记录的值是 A 中某元素出现的次数</p></li><li><p>最后输出目标整数序列，具体的逻辑是遍历数组 B，输出相应元素以及对应的个数</p></li></ol><h2 id="算法演示"><a href="#算法演示" class="headerlink" title="算法演示"></a>算法演示</h2><p><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181126190814.gif" alt=""></p><h2 id="排序动画过程解释"><a href="#排序动画过程解释" class="headerlink" title="排序动画过程解释"></a>排序动画过程解释</h2><ol><li><p>首先，扫描一下整个序列</p></li><li><p>获得最小值为 2 ，最大值为 7</p></li><li><p>新建数组包含 2~7 的元素</p></li><li><p>再次扫描序列，将序列的值放置在新建数组中</p></li><li><p>扫描数字 5，数组中 index 为 3 的值为 5，次数为 1</p></li><li><p>扫描数字 3，数组中 index 为 1 的值为 3，次数为 1</p></li><li><p>扫描数字 4，数组中 index 为 2 的值为 4，次数为 1</p></li><li><p>扫描数字 7，数组中 index 为 5 的值为 7，次数为 1</p></li><li><p>扫描数字 2，数组中 index 为 0 的值为 2，次数为 1</p></li><li><p>扫描数字 4，数组中 index 为 2 的值为 4，次数为 2</p></li><li><p>扫描数字 3，数组中 index 为 1 的值为 3，次数为 2</p></li><li><p>按照这种节奏，扫描结束后，新建数组中存放了整个序列以及每个数字出现的次数</p></li><li><p>最后输出目标整数序列</p></li><li><p>输出数字 2，同时数组中 index 为 0 的值为 2 的元素次数变为 0</p></li><li><p>输出数字 3，同时数组中 index 为 1 的值为 3 的元素次数变为 1</p></li><li><p>同样的操作，整个序列就完全输出了</p></li></ol><h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><p>为了更好的让读者用自己熟悉的编程语言来理解动画，笔者将贴出多种编程语言的参考代码，代码全部来源于网上。</p><h4 id="Go代码实现"><a href="#Go代码实现" class="headerlink" title="Go代码实现"></a>Go代码实现</h4><p><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181126191921.png" alt=""></p><h4 id="Java代码实现"><a href="#Java代码实现" class="headerlink" title="Java代码实现"></a>Java代码实现</h4><p><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181126191936.png" alt=""></p><h4 id="Python代码实现"><a href="#Python代码实现" class="headerlink" title="Python代码实现"></a>Python代码实现</h4><p><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181126191943.png" alt=""></p><h4 id="JavaScript代码实现"><a href="#JavaScript代码实现" class="headerlink" title="JavaScript代码实现"></a>JavaScript代码实现</h4><p><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181126191949.png" alt=""></p><p>如果你是iOS开发者，可以在GitHub上 <a href="https://github.com/MisterBooo/Play-With-Sort-OC">https://github.com/MisterBooo/Play-With-Sort-OC</a> 获取更直观可调试运行的源码。</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 十大经典排序 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 排序 </tag>
-            
-            <tag> 计数排序 </tag>
             
         </tags>
       
