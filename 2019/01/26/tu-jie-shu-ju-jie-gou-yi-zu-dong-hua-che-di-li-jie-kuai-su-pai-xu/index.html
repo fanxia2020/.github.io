@@ -5,8 +5,8 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="【图解数据结构】 一组动画演示基数排序, 五分钟学算法">
-    <meta name="description" content="【图解数据结构】 一组动画彻底理解基数排序基数排序基数排序 (Radix Sort) 是一种非比较型整数排序算法，其原理是将整数按位数切割成不同的数字，然后按每个位数分别比较。基数排序的发明可以追溯到 1887 年赫尔曼·何乐礼在打孔卡片制">
+    <meta name="keywords" content="【图解数据结构】 一组动画演示快速排序, 五分钟学算法">
+    <meta name="description" content="【图解数据结构】 一组动画彻底理解快速排序前言由于LeetCode上的算法题很多涉及到一些基础的数据结构，为了更好的理解后续更新的一些复杂题目的动画，推出一个新系列 —–《图解数据结构》，主要使用动画来描述常见的数据结构和算法。本系列包括十">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -14,7 +14,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>【图解数据结构】 一组动画演示基数排序 | 五分钟学算法</title>
+    <title>【图解数据结构】 一组动画演示快速排序 | 五分钟学算法</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -256,13 +256,13 @@
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('https://ws4.sinaimg.cn/large/006tNc79gy1fzjrzxgsrvj30zk0o40v7.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('https://ws3.sinaimg.cn/large/006tNc79gy1fzjs144w1qj30zk0nptck.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        【图解数据结构】 一组动画演示基数排序
+                        【图解数据结构】 一组动画演示快速排序
                     </div>
                 </div>
             </div>
@@ -375,12 +375,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/基数排序/" target="_blank">
-                                <span class="chip bg-color">基数排序</span>
-                            </a>
-                        
                             <a href="/tags/排序/" target="_blank">
                                 <span class="chip bg-color">排序</span>
+                            </a>
+                        
+                            <a href="/tags/快速排序/" target="_blank">
+                                <span class="chip bg-color">快速排序</span>
                             </a>
                         
                     </div>
@@ -403,21 +403,21 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2018-11-28
+                    2019-01-26
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        573
+                        1k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        2 分
+                        3 分
                     </div>
                     
                 
@@ -433,42 +433,70 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="【图解数据结构】-一组动画彻底理解基数排序"><a href="#【图解数据结构】-一组动画彻底理解基数排序" class="headerlink" title="【图解数据结构】 一组动画彻底理解基数排序"></a>【图解数据结构】 一组动画彻底理解基数排序</h1><h2 id="基数排序"><a href="#基数排序" class="headerlink" title="基数排序"></a>基数排序</h2><p>基数排序 (Radix Sort) 是一种非比较型整数排序算法，其原理是将整数按位数切割成不同的数字，然后按每个位数分别比较。基数排序的发明可以追溯到 1887 年赫尔曼·何乐礼在打孔卡片制表机 (Tabulation Machine)上的贡献。</p>
-<p>基数排序法会使用到桶 (Bucket)，顾名思义，通过将要比较的位（个位、十位、百位…），将要排序的元素分配至 0~9 个桶中，借以达到排序的作用，在某些时候，基数排序法的效率高于其它的比较性排序法。</p>
+                <h1 id="【图解数据结构】-一组动画彻底理解快速排序"><a href="#【图解数据结构】-一组动画彻底理解快速排序" class="headerlink" title="【图解数据结构】 一组动画彻底理解快速排序"></a>【图解数据结构】 一组动画彻底理解快速排序</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>由于LeetCode上的算法题很多涉及到一些基础的数据结构，为了更好的理解后续更新的一些复杂题目的动画，推出一个新系列 —–《图解数据结构》，主要使用动画来描述常见的数据结构和算法。本系列包括十大排序、堆、队列、树、并查集、图等等大概几十篇。</p>
+<h2 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h2><p>快速排序是由东尼·霍尔所发展的一种排序算法。在平均状况下，排序 n 个项目要 Ο(nlogn) 次比较。在最坏状况下则需要 Ο(n2) 次比较，但这种状况并不常见。事实上，快速排序通常明显比其他 Ο(nlogn) 算法更快，因为它的内部循环（inner loop）可以在大部分的架构上很有效率地被实现出来。</p>
+<p>快速排序使用分治法（Divide and conquer）策略来把一个串行（list）分为两个子串行（sub-lists）。</p>
+<p>快速排序又是一种分而治之思想在排序算法上的典型应用。本质上来看，快速排序应该算是在冒泡排序基础上的递归分治法。</p>
 <h2 id="算法步骤"><a href="#算法步骤" class="headerlink" title="算法步骤"></a>算法步骤</h2><ol>
-<li><p>将所有待比较数值（正整数）统一为同样的数位长度，数位较短的数前面补零</p>
+<li><p>从数列中挑出一个元素，称为 “基准”（pivot）;</p>
 </li>
-<li><p>从最低位开始，依次进行一次排序</p>
+<li><p>重新排序数列，所有元素比基准值小的摆放在基准前面，所有元素比基准值大的摆在基准的后面（相同的数可以到任一边）。在这个分区退出之后，该基准就处于数列的中间位置。这个称为分区（partition）操作；</p>
 </li>
-<li><p>从最低位排序一直到最高位排序完成以后, 数列就变成一个有序序列</p>
+<li><p>递归地（recursive）把小于基准值元素的子数列和大于基准值元素的子数列排序；</p>
 </li>
 </ol>
-<h2 id="算法演示"><a href="#算法演示" class="headerlink" title="算法演示"></a>算法演示</h2><p>动画演示GIF加载有点慢，请稍等片刻^_^<br><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181128114235.gif" alt=""></p>
+<p>递归的最底部情形，是数列的大小是零或一，也就是永远都已经被排序好了。虽然一直递归下去，但是这个算法总会退出，因为在每次的迭代（iteration）中，它至少会把一个元素摆到它最后的位置去。</p>
+<p>来源：<a href="https://github.com/hustcc/JS-Sorting-Algorithm">https://github.com/hustcc/JS-Sorting-Algorithm</a></p>
+<h2 id="算法演示"><a href="#算法演示" class="headerlink" title="算法演示"></a>算法演示</h2><p><img src="https://user-gold-cdn.xitu.io/2018/11/23/1673e00a0d10d84d?w=950&amp;h=534&amp;f=gif&amp;s=492246" alt=""></p>
 <h2 id="排序动画过程解释"><a href="#排序动画过程解释" class="headerlink" title="排序动画过程解释"></a>排序动画过程解释</h2><ol>
-<li><p>基数排序的方式可以采用 LSD (Least sgnificant digital) 或 MSD (Most sgnificant digital)</p>
+<li><p>首先，操作数列中的所有数字</p>
 </li>
-<li><p>在本例中使用的是 <strong>LSD</strong></p>
+<li><p>在所有数字中选择一个数字作为排序的基准（pivot）, pivot 通常是随机选择的，在这里为了演示方便，我们选择最右边的数字作为 pivot</p>
 </li>
-<li><p>首先创建编号 0 ， 1 ，2 ，3 ，4 ，5 ， 6 ，7 ，8 ，9 这 10 个桶 </p>
+<li><p>选取好 pivot 后，在操作数列中选择最左边的数字标记为 左标记 ，最右边的数字标记为 右标记</p>
 </li>
-<li><p>遍历整个数列，查看数字的个位数，按照先后顺序存放在对应编号的桶中</p>
+<li><p>将左边的标记向右移动</p>
 </li>
-<li><p>比如 321 个位数 为 1 ，存放在编号 1 桶中</p>
+<li><p>当 左标记 达到超过 pivot 的数字时，停止移动</p>
 </li>
-<li><p>数字 1 个位数 为 1 ，存放在编号 1 桶中，同时存放在 321 上面 </p>
+<li><p>在这里，8 &gt; 6 ,所以停止移动</p>
 </li>
-<li><p>遍历完整个数列的个位数，将数字存放在桶中后，按照编号顺序取出数字，先放入桶中的数字先取出</p>
+<li><p>然后将右边的标记向左移动</p>
 </li>
-<li><p>然后依次遍历整个数列的十位数，按照上述个位数的操作整理数列</p>
+<li><p>当 右标记 达到小于 pivot 的数字时，停止移动</p>
 </li>
-<li><p>依次遍历整个数列的百位数，按照上述个位数的操作整理数列</p>
+<li><p>在这里，4 &gt; 6 ,所以停止移动</p>
 </li>
-<li><p>这样就完成了 <strong>基数排序</strong></p>
+<li><p>当左右标记停止时，更改标记的数字</p>
+</li>
+<li><p>因此，左标记 的作用是找到一个大于 pivot 的数字，右标记 的作用是找到一个小于 pivot 的数字</p>
+</li>
+<li><p>通过交换数字，可以在数列的左边收集小于 pivot 的数字集合，右边收集大于 pivot 的数字集合</p>
+</li>
+<li><p>交换之后，继续移动 左标记</p>
+</li>
+<li><p>在这里，9 &gt; 6 ,所以停止移动</p>
+</li>
+<li><p>然后将右边的标记向左移动</p>
+</li>
+<li><p>当 右标记 碰撞到 左标记 时也停止移动</p>
+</li>
+<li><p>如果左右侧的标记停止时，并且都在同一个位置，将这个数字和 pivot 的数字交换</p>
+</li>
+<li><p>这就完成了第一次操作</p>
+</li>
+<li><p>小于 6 的都在 6 的左侧，大于 6 的都在 6 的右侧</p>
+</li>
+<li><p>然后递归对这分成的两部分都执行同样的操作</p>
+</li>
+<li><p>完成 快速排序</p>
 </li>
 </ol>
 <h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><p>为了更好的让读者用自己熟悉的编程语言来理解动画，笔者将贴出多种编程语言的参考代码，代码全部来源于网上。</p>
-<h4 id="Java代码实现"><a href="#Java代码实现" class="headerlink" title="Java代码实现"></a>Java代码实现</h4><p><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181128123735.png" alt=""></p>
-<h4 id="JavaScript代码实现"><a href="#JavaScript代码实现" class="headerlink" title="JavaScript代码实现"></a>JavaScript代码实现</h4><p><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181128123743.png" alt=""></p>
+<h4 id="C-代码实现"><a href="#C-代码实现" class="headerlink" title="C++代码实现"></a>C++代码实现</h4><p><img src="https://user-gold-cdn.xitu.io/2018/11/23/1673e00a0dc023d8?w=1392&amp;h=1524&amp;f=png&amp;s=68959" alt="C++代码实现"></p>
+<h4 id="Java代码实现"><a href="#Java代码实现" class="headerlink" title="Java代码实现"></a>Java代码实现</h4><p><img src="https://user-gold-cdn.xitu.io/2018/11/23/1673e00a0cb5d352?w=1668&amp;h=2214&amp;f=png&amp;s=109067" alt="Java代码实现"></p>
+<h4 id="Python代码实现"><a href="#Python代码实现" class="headerlink" title="Python代码实现"></a>Python代码实现</h4><p><img src="https://user-gold-cdn.xitu.io/2018/11/23/1673e00a0c058ac5?w=1756&amp;h=1432&amp;f=png&amp;s=74882" alt="Python代码实现"></p>
+<h4 id="JavaScript代码实现"><a href="#JavaScript代码实现" class="headerlink" title="JavaScript代码实现"></a>JavaScript代码实现</h4><p><img src="https://user-gold-cdn.xitu.io/2018/11/23/1673e00a0e6e21b7?w=1572&amp;h=2950&amp;f=png&amp;s=139434" alt="JavaScript代码实现"></p>
 
             </div>
             <hr>
@@ -492,7 +520,7 @@
                     </span>
                     <a href="https://github.com/MisterBooo/misterbooo.github.io" class="b-link-green">五分钟学算法</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2018/11/28/tu-jie-shu-ju-jie-gou-yi-zu-dong-hua-che-di-li-jie-ji-shu-pai-xu/" class="b-link-green">【图解数据结构】 一组动画演示基数排序</a>
+                    <a href="/2019/01/26/tu-jie-shu-ju-jie-gou-yi-zu-dong-hua-che-di-li-jie-kuai-su-pai-xu/" class="b-link-green">【图解数据结构】 一组动画演示快速排序</a>
                 </p>
             </div>
         </div>
@@ -517,22 +545,19 @@
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2018/11/29/tu-jie-shu-ju-jie-gou-yi-zu-dong-hua-che-di-li-jie-xi-er-pai-xu/">
+                <a href="/2019/01/26/tu-jie-shu-ju-jie-gou-yi-zu-dong-hua-che-di-li-jie-tong-pai-xu/">
                     <div class="card-image">
                         
-                        <img src="https://ws2.sinaimg.cn/large/006tNc79gy1fzjs44d3ngj30zk0jzq5b.jpg" class="responsive-img" alt="【图解数据结构】 一组动画演示希尔排序">
+                        <img src="https://ws1.sinaimg.cn/large/006tNc79gy1fzjs2h9t7dj30zk0nlwis.jpg" class="responsive-img" alt="【图解数据结构】 一组动画演示桶排序">
                         
-                        <span class="card-title">【图解数据结构】 一组动画演示希尔排序</span>
+                        <span class="card-title">【图解数据结构】 一组动画演示桶排序</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">【图解数据结构】 一组动画彻底理解希尔排序希尔排序希尔排序，也称递减增量排序算法，是插入排序的一种更高效的改进版本。但希尔排序是非稳定排序算法。
-希尔排序是基于插入排序的以下两点性质而提出改进方法的：
-
-插入排序在对几乎已经排好序的数据操作</div>
+                    <div class="summary">【图解数据结构】 一组动画彻底理解桶排序由于LeetCode上的算法题很多涉及到一些基础的数据结构，为了更好的理解后续更新的一些复杂题目的动画，推出一个新系列 —–《图解数据结构》，主要使用动画来描述常见的数据结构和算法。本系列包括十大排序</div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-11-29
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-26
                         </span>
                         <span class="publish-author">
                             
@@ -553,8 +578,8 @@
                         <span class="chip bg-color">排序</span>
                     </a>
                     
-                    <a href="/tags/希尔排序/" target="_blank">
-                        <span class="chip bg-color">希尔排序</span>
+                    <a href="/tags/桶排序/" target="_blank">
+                        <span class="chip bg-color">桶排序</span>
                     </a>
                     
                 </div>
@@ -568,22 +593,19 @@
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2018/11/26/tu-jie-shu-ju-jie-gou-yi-zu-dong-hua-che-di-li-jie-dui-pai-xu/">
+                <a href="/2019/01/26/tu-jie-shu-ju-jie-gou-yi-zu-dong-hua-che-di-li-jie-ji-shu-pai-xu/">
                     <div class="card-image">
                         
-                        <img src="https://ws3.sinaimg.cn/large/006tNc79gy1fzjrxd7p4lj30zk0nu411.jpg" class="responsive-img" alt="【图解数据结构】 一组动画演示堆排序">
+                        <img src="https://ws4.sinaimg.cn/large/006tNc79gy1fzjrzxgsrvj30zk0o40v7.jpg" class="responsive-img" alt="【图解数据结构】 一组动画演示基数排序">
                         
-                        <span class="card-title">【图解数据结构】 一组动画演示堆排序</span>
+                        <span class="card-title">【图解数据结构】 一组动画演示基数排序</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">【图解数据结构】 一组动画彻底理解堆排序预备知识：堆结构堆是具有以下性质的完全二叉树：每个结点的值都大于或等于其左右孩子结点的值，称为大顶堆；或者每个结点的值都小于或等于其左右孩子结点的值，称为小顶堆。
-大顶堆
-小顶堆
-堆排序堆排序（Hea</div>
+                    <div class="summary">【图解数据结构】 一组动画彻底理解基数排序基数排序基数排序 (Radix Sort) 是一种非比较型整数排序算法，其原理是将整数按位数切割成不同的数字，然后按每个位数分别比较。基数排序的发明可以追溯到 1887 年赫尔曼·何乐礼在打孔卡片制</div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-11-26
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-26
                             </span>
                         <span class="publish-author">
                             
@@ -600,12 +622,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/排序/" target="_blank">
-                        <span class="chip bg-color">排序</span>
+                    <a href="/tags/基数排序/" target="_blank">
+                        <span class="chip bg-color">基数排序</span>
                     </a>
                     
-                    <a href="/tags/堆排序/" target="_blank">
-                        <span class="chip bg-color">堆排序</span>
+                    <a href="/tags/排序/" target="_blank">
+                        <span class="chip bg-color">排序</span>
                     </a>
                     
                 </div>
@@ -715,7 +737,7 @@
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">6.5k</span>
+                <span class="white-color">6.8k</span>
             
     
             

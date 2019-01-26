@@ -5,8 +5,9 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="【图解数据结构】 一组动画演示桶排序, 五分钟学算法">
-    <meta name="description" content="【图解数据结构】 一组动画彻底理解桶排序桶排序桶排序(Bucket sort)是一种基于计数的排序算法（计数排序可参考上节的内容），工作的原理是将数据分到有限数量的桶子里，然后每个桶再分别排序（有可能再使用别的排序算法或是以递回方式继续使用">
+    <meta name="keywords" content="【图解数据结构】 一组动画演示选择排序, 五分钟学算法">
+    <meta name="description" content="# 
+【图解数据结构】 一组动画演示选择排序前言由于LeetCode上的算法题很多涉及到一些基础的数据结构，为了更好的理解后续更新的一些复杂题目的动画，推出一个新系列 —–《图解数据结构》，主要使用动画来描述常见的数据结构和算法。本系列包括">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -14,7 +15,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>【图解数据结构】 一组动画演示桶排序 | 五分钟学算法</title>
+    <title>【图解数据结构】 一组动画演示选择排序 | 五分钟学算法</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -256,13 +257,13 @@
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('https://ws1.sinaimg.cn/large/006tNc79gy1fzjs2h9t7dj30zk0nlwis.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('https://ws2.sinaimg.cn/large/006tNc79gy1fzjs6bkflmj30zk0iygmu.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        【图解数据结构】 一组动画演示桶排序
+                        【图解数据结构】 一组动画演示选择排序
                     </div>
                 </div>
             </div>
@@ -379,8 +380,8 @@
                                 <span class="chip bg-color">排序</span>
                             </a>
                         
-                            <a href="/tags/桶排序/" target="_blank">
-                                <span class="chip bg-color">桶排序</span>
+                            <a href="/tags/选择排序/" target="_blank">
+                                <span class="chip bg-color">选择排序</span>
                             </a>
                         
                     </div>
@@ -403,14 +404,14 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2018-11-24
+                    2019-01-26
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        536
+                        546
                     </div>
                     
 
@@ -433,45 +434,46 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="【图解数据结构】-一组动画彻底理解桶排序"><a href="#【图解数据结构】-一组动画彻底理解桶排序" class="headerlink" title="【图解数据结构】 一组动画彻底理解桶排序"></a>【图解数据结构】 一组动画彻底理解桶排序</h1><h2 id="桶排序"><a href="#桶排序" class="headerlink" title="桶排序"></a>桶排序</h2><p>桶排序(Bucket sort)是一种基于计数的排序算法（<strong>计数排序</strong>可参考上节的内容），工作的原理是将数据分到有限数量的桶子里，然后每个桶再分别排序（有可能再使用别的排序算法或是以递回方式继续使用桶排序进行排序）</p>
+                <p># </p>
+<h1 id="【图解数据结构】-一组动画演示选择排序"><a href="#【图解数据结构】-一组动画演示选择排序" class="headerlink" title="【图解数据结构】 一组动画演示选择排序"></a>【图解数据结构】 一组动画演示选择排序</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>由于LeetCode上的算法题很多涉及到一些基础的数据结构，为了更好的理解后续更新的一些复杂题目的动画，推出一个新系列 —–《图解数据结构》，主要使用动画来描述常见的数据结构和算法。本系列包括十大排序、堆、队列、树、并查集、图等等大概几十篇。</p>
+<h2 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h2><p>选择排序是一种简单直观的排序算法，无论什么数据进去都是 O(n²) 的时间复杂度。所以用到它的时候，数据规模越小越好。唯一的好处可能就是不占用额外的内存空间了吧。</p>
 <h2 id="算法步骤"><a href="#算法步骤" class="headerlink" title="算法步骤"></a>算法步骤</h2><ol>
-<li><p>设置固定数量的空桶。</p>
+<li><p>首先在未排序序列中找到最小（大）元素，存放到排序序列的起始位置</p>
 </li>
-<li><p>把数据放到对应的桶中。</p>
+<li><p>再从剩余未排序元素中继续寻找最小（大）元素，然后放到已排序序列的末尾。</p>
 </li>
-<li><p>对每个不为空的桶中数据进行排序。</p>
-</li>
-<li><p>拼接不为空的桶中数据，得到结果。</p>
+<li><p>重复第二步，直到所有元素均排序完毕。</p>
 </li>
 </ol>
-<h2 id="算法演示"><a href="#算法演示" class="headerlink" title="算法演示"></a>算法演示</h2><p>动画演示GIF加载有点慢，请稍等片刻^_^</p>
-<p><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181128090740.gif" alt=""></p>
+<p>来源：<a href="https://github.com/hustcc/JS-Sorting-Algorithm">https://github.com/hustcc/JS-Sorting-Algorithm</a></p>
+<h2 id="算法演示"><a href="#算法演示" class="headerlink" title="算法演示"></a>算法演示</h2><p><img src="https://user-gold-cdn.xitu.io/2018/11/22/16738f0f5824e2d8?w=955&amp;h=538&amp;f=gif&amp;s=346690" alt=""></p>
 <h2 id="排序动画过程解释"><a href="#排序动画过程解释" class="headerlink" title="排序动画过程解释"></a>排序动画过程解释</h2><ol>
-<li><p>首先，设置固定数量的空桶，在这里为了方便演示，设置桶的数量为 5 个空桶</p>
+<li><p>线性搜索数列并找到最小值，此时找到了为 2</p>
 </li>
-<li><p>遍历整个数列，找到最大值为 56 ，最小值为 2 ，每个桶的范围为 （ 56 - 2 + 1 ）/ 5 = 11</p>
+<li><p>将最小值替换为数列中左端的数字，即将 2 与 4 进行交换</p>
 </li>
-<li><p>再次遍历整个数列，按照公式 floor((数字 – 最小值) / 11) 将数字放到对应的桶中</p>
+<li><p>此时 2 已经排序好</p>
 </li>
-<li><p>比如，数字 7 代入公式 floor((7 – 2) / 11) = 0 放入 0 号桶</p>
+<li><p>继续线性搜索剩余数列找到最小值，此时找到了 3</p>
 </li>
-<li><p>数字 12 代入公式 floor((12 – 2) / 11) = 0 放入 0 号桶</p>
+<li><p>将最小值替换为数列中左端的数字，即将 3 与 4 进行交换</p>
 </li>
-<li><p>数字 56 代入公式 floor((56 – 2) / 11) = 4 放入 4 号桶</p>
+<li><p>此时 2 与 3 已经排序好</p>
 </li>
-<li><p>当向同一个索引的桶，第二次插入数据时，判断桶中已存在的数字与新插入数字的大小，按照左到右，从小到大的顺序插入（可以使用前面讲解的<strong>插入排序</strong>）实现</p>
+<li><p>继续线性搜索剩余数列找到最小值，此时找到了 4</p>
 </li>
-<li><p>比如，插入数字 19 时， 1 号桶中已经有数字 23 ，在这里使用插入排序，让 19 排在 23 前面</p>
+<li><p>如果最小值已经在左端，那么不执行任何操作，所以此时不做任何处理</p>
 </li>
-<li><p>遍历完整个数列后，合并非空的桶，按从左到右的顺序合并0，1，2，3，4桶。</p>
+<li><p>此时 2 、 3  、 4 已经排序好</p>
 </li>
-<li><p>这样就完成了 <strong>桶排序</strong></p>
+<li><p>重复相同操作，直到所有数字都被排序</p>
 </li>
 </ol>
 <h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><p>为了更好的让读者用自己熟悉的编程语言来理解动画，笔者将贴出多种编程语言的参考代码，代码全部来源于网上。</p>
-<h4 id="C-代码实现"><a href="#C-代码实现" class="headerlink" title="C++代码实现"></a>C++代码实现</h4><p><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181128092935.png" alt=""></p>
-<h4 id="Java代码实现"><a href="#Java代码实现" class="headerlink" title="Java代码实现"></a>Java代码实现</h4><p><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181128092942.png" alt=""></p>
-<h4 id="JavaScript代码实现"><a href="#JavaScript代码实现" class="headerlink" title="JavaScript代码实现"></a>JavaScript代码实现</h4><p><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181128092947.png" alt=""></p>
+<h4 id="C-代码实现"><a href="#C-代码实现" class="headerlink" title="C++代码实现"></a>C++代码实现</h4><p><img src="https://user-gold-cdn.xitu.io/2018/11/22/16738f0eff237d54?w=1148&amp;h=972&amp;f=png&amp;s=36827" alt=""></p>
+<h4 id="Java代码实现"><a href="#Java代码实现" class="headerlink" title="Java代码实现"></a>Java代码实现</h4><p><img src="https://user-gold-cdn.xitu.io/2018/11/22/16738f0f0a65d4cf?w=1668&amp;h=1708&amp;f=png&amp;s=75701" alt=""></p>
+<h4 id="JavaScript代码实现"><a href="#JavaScript代码实现" class="headerlink" title="JavaScript代码实现"></a>JavaScript代码实现</h4><p><img src="https://user-gold-cdn.xitu.io/2018/11/22/16738f0ef955a299?w=1604&amp;h=1110&amp;f=png&amp;s=51471" alt=""></p>
+<h4 id="Python代码实现"><a href="#Python代码实现" class="headerlink" title="Python代码实现"></a>Python代码实现</h4><p><img src="https://user-gold-cdn.xitu.io/2018/11/22/16738f0f0156b4cc?w=1452&amp;h=880&amp;f=png&amp;s=44413" alt=""></p>
 
             </div>
             <hr>
@@ -495,7 +497,7 @@
                     </span>
                     <a href="https://github.com/MisterBooo/misterbooo.github.io" class="b-link-green">五分钟学算法</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2018/11/24/tu-jie-shu-ju-jie-gou-yi-zu-dong-hua-che-di-li-jie-tong-pai-xu/" class="b-link-green">【图解数据结构】 一组动画演示桶排序</a>
+                    <a href="/2019/01/26/tu-jie-shu-ju-jie-gou-yi-zu-dong-hua-yan-shi-xuan-ze-pai-xu/" class="b-link-green">【图解数据结构】 一组动画演示选择排序</a>
                 </p>
             </div>
         </div>
@@ -520,10 +522,58 @@
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2018/11/25/tu-jie-shu-ju-jie-gou-wu-fen-zhong-xue-suan-fa-zhi-yi-zu-dong-hua-yan-shi-gui-bing-pai-xu/">
+                <a href="/2019/01/26/tu-jie-shu-ju-jie-gou-yi-zu-dong-hua-che-di-li-jie-ji-shu-pai-xu/">
                     <div class="card-image">
                         
-                        <img src="https://ws4.sinaimg.cn/large/006tNc79gy1fzjrue3n2ej30zk0qognl.jpg" class="responsive-img" alt="一组动画演示归并排序">
+                        <img src="https://ws4.sinaimg.cn/large/006tNc79gy1fzjrzxgsrvj30zk0o40v7.jpg" class="responsive-img" alt="【图解数据结构】 一组动画演示基数排序">
+                        
+                        <span class="card-title">【图解数据结构】 一组动画演示基数排序</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">【图解数据结构】 一组动画彻底理解基数排序基数排序基数排序 (Radix Sort) 是一种非比较型整数排序算法，其原理是将整数按位数切割成不同的数字，然后按每个位数分别比较。基数排序的发明可以追溯到 1887 年赫尔曼·何乐礼在打孔卡片制</div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-26
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/十大经典排序/" class="post-category" target="_blank">
+                                    十大经典排序
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/基数排序/" target="_blank">
+                        <span class="chip bg-color">基数排序</span>
+                    </a>
+                    
+                    <a href="/tags/排序/" target="_blank">
+                        <span class="chip bg-color">排序</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2019/01/26/tu-jie-shu-ju-jie-gou-wu-fen-zhong-xue-suan-fa-zhi-yi-zu-dong-hua-yan-shi-gui-bing-pai-xu/">
+                    <div class="card-image">
+                        
+                        <img src="https://ws4.sinaimg.cn/large/006tNc79gy1fzjzzlcdbij30zk0jz3z5.jpg" class="responsive-img" alt="一组动画演示归并排序">
                         
                         <span class="card-title">一组动画演示归并排序</span>
                     </div>
@@ -531,9 +581,9 @@
                 <div class="card-content article-content">
                     <div class="summary">【图解数据结构】 一组动画演示归并排序前言由于LeetCode上的算法题很多涉及到一些基础的数据结构，为了更好的理解后续更新的一些复杂题目的动画，推出一个新系列 —–《图解数据结构》，主要使用动画来描述常见的数据结构和算法。本系列包括十大排</div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-11-25
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-26
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -555,54 +605,6 @@
                     
                     <a href="/tags/归并排序/" target="_blank">
                         <span class="chip bg-color">归并排序</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2018/11/24/tu-jie-shu-ju-jie-gou-yi-zu-dong-hua-che-di-li-jie-kuai-su-pai-xu/">
-                    <div class="card-image">
-                        
-                        <img src="https://ws3.sinaimg.cn/large/006tNc79gy1fzjs144w1qj30zk0nptck.jpg" class="responsive-img" alt="【图解数据结构】 一组动画演示快速排序">
-                        
-                        <span class="card-title">【图解数据结构】 一组动画演示快速排序</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary">【图解数据结构】 一组动画彻底理解快速排序前言快速排序快速排序是由东尼·霍尔所发展的一种排序算法。在平均状况下，排序 n 个项目要 Ο(nlogn) 次比较。在最坏状况下则需要 Ο(n2) 次比较，但这种状况并不常见。事实上，快速排序通常明</div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-11-24
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fa fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/十大经典排序/" class="post-category" target="_blank">
-                                    十大经典排序
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/排序/" target="_blank">
-                        <span class="chip bg-color">排序</span>
-                    </a>
-                    
-                    <a href="/tags/快速排序/" target="_blank">
-                        <span class="chip bg-color">快速排序</span>
                     </a>
                     
                 </div>
@@ -712,7 +714,7 @@
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">6.5k</span>
+                <span class="white-color">6.8k</span>
             
     
             

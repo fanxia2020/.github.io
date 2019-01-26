@@ -5,8 +5,8 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="【图解数据结构】 一组动画演示快速排序, 五分钟学算法">
-    <meta name="description" content="【图解数据结构】 一组动画彻底理解快速排序前言快速排序快速排序是由东尼·霍尔所发展的一种排序算法。在平均状况下，排序 n 个项目要 Ο(nlogn) 次比较。在最坏状况下则需要 Ο(n2) 次比较，但这种状况并不常见。事实上，快速排序通常明">
+    <meta name="keywords" content="一组动画演示归并排序, 五分钟学算法">
+    <meta name="description" content="【图解数据结构】 一组动画演示归并排序前言由于LeetCode上的算法题很多涉及到一些基础的数据结构，为了更好的理解后续更新的一些复杂题目的动画，推出一个新系列 —–《图解数据结构》，主要使用动画来描述常见的数据结构和算法。本系列包括十大排">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -14,7 +14,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>【图解数据结构】 一组动画演示快速排序 | 五分钟学算法</title>
+    <title>一组动画演示归并排序 | 五分钟学算法</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -256,13 +256,13 @@
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('https://ws3.sinaimg.cn/large/006tNc79gy1fzjs144w1qj30zk0nptck.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('https://ws4.sinaimg.cn/large/006tNc79gy1fzjzzlcdbij30zk0jz3z5.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        【图解数据结构】 一组动画演示快速排序
+                        一组动画演示归并排序
                     </div>
                 </div>
             </div>
@@ -379,8 +379,8 @@
                                 <span class="chip bg-color">排序</span>
                             </a>
                         
-                            <a href="/tags/快速排序/" target="_blank">
-                                <span class="chip bg-color">快速排序</span>
+                            <a href="/tags/归并排序/" target="_blank">
+                                <span class="chip bg-color">归并排序</span>
                             </a>
                         
                     </div>
@@ -403,21 +403,21 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2018-11-24
+                    2019-01-26
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        956
+                        721
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        3 分
+                        2 分
                     </div>
                     
                 
@@ -433,69 +433,65 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="【图解数据结构】-一组动画彻底理解快速排序"><a href="#【图解数据结构】-一组动画彻底理解快速排序" class="headerlink" title="【图解数据结构】 一组动画彻底理解快速排序"></a>【图解数据结构】 一组动画彻底理解快速排序</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><h2 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h2><p>快速排序是由东尼·霍尔所发展的一种排序算法。在平均状况下，排序 n 个项目要 Ο(nlogn) 次比较。在最坏状况下则需要 Ο(n2) 次比较，但这种状况并不常见。事实上，快速排序通常明显比其他 Ο(nlogn) 算法更快，因为它的内部循环（inner loop）可以在大部分的架构上很有效率地被实现出来。</p>
-<p>快速排序使用分治法（Divide and conquer）策略来把一个串行（list）分为两个子串行（sub-lists）。</p>
-<p>快速排序又是一种分而治之思想在排序算法上的典型应用。本质上来看，快速排序应该算是在冒泡排序基础上的递归分治法。</p>
+                <h1 id="【图解数据结构】-一组动画演示归并排序"><a href="#【图解数据结构】-一组动画演示归并排序" class="headerlink" title="【图解数据结构】 一组动画演示归并排序"></a>【图解数据结构】 一组动画演示归并排序</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>由于LeetCode上的算法题很多涉及到一些基础的数据结构，为了更好的理解后续更新的一些复杂题目的动画，推出一个新系列 —–《图解数据结构》，主要使用动画来描述常见的数据结构和算法。本系列包括十大排序、堆、队列、树、并查集、图等等大概几十篇。</p>
+<h2 id="归并排序（Merge-sort"><a href="#归并排序（Merge-sort" class="headerlink" title="归并排序（Merge sort"></a>归并排序（Merge sort</h2><p>归并排序（Merge sort）是建立在归并操作上的一种有效的排序算法。该算法是采用分治法（Divide and Conquer）的一个非常典型的应用。</p>
+<p>作为一种典型的分而治之思想的算法应用，归并排序的实现由两种方法：</p>
+<ul>
+<li>自上而下的递归（所有递归的方法都可以用迭代重写，所以就有了第 2 种方法）；</li>
+<li>自下而上的迭代；</li>
+</ul>
+<p>和选择排序一样，归并排序的性能不受输入数据的影响，但表现比选择排序好的多，因为始终都是 O(nlogn) 的时间复杂度。代价是需要额外的内存空间。</p>
 <h2 id="算法步骤"><a href="#算法步骤" class="headerlink" title="算法步骤"></a>算法步骤</h2><ol>
-<li><p>从数列中挑出一个元素，称为 “基准”（pivot）;</p>
+<li><p>申请空间，使其大小为两个已经排序序列之和，该空间用来存放合并后的序列；</p>
 </li>
-<li><p>重新排序数列，所有元素比基准值小的摆放在基准前面，所有元素比基准值大的摆在基准的后面（相同的数可以到任一边）。在这个分区退出之后，该基准就处于数列的中间位置。这个称为分区（partition）操作；</p>
+<li><p>设定两个指针，最初位置分别为两个已经排序序列的起始位置；</p>
 </li>
-<li><p>递归地（recursive）把小于基准值元素的子数列和大于基准值元素的子数列排序；</p>
+<li><p>比较两个指针所指向的元素，选择相对小的元素放入到合并空间，并移动指针到下一位置；</p>
+</li>
+<li><p>重复步骤 3 直到某一指针达到序列尾；</p>
+</li>
+<li><p>将另一序列剩下的所有元素直接复制到合并序列尾。</p>
 </li>
 </ol>
-<p>递归的最底部情形，是数列的大小是零或一，也就是永远都已经被排序好了。虽然一直递归下去，但是这个算法总会退出，因为在每次的迭代（iteration）中，它至少会把一个元素摆到它最后的位置去。</p>
 <p>来源：<a href="https://github.com/hustcc/JS-Sorting-Algorithm">https://github.com/hustcc/JS-Sorting-Algorithm</a></p>
-<h2 id="算法演示"><a href="#算法演示" class="headerlink" title="算法演示"></a>算法演示</h2><p><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181121154332.gif" alt=""></p>
+<h2 id="算法演示"><a href="#算法演示" class="headerlink" title="算法演示"></a>算法演示</h2><p><img src="https://user-gold-cdn.xitu.io/2018/11/21/16733b1a9c74ce50?w=955&amp;h=538&amp;f=gif&amp;s=586156" alt=""></p>
 <h2 id="排序动画过程解释"><a href="#排序动画过程解释" class="headerlink" title="排序动画过程解释"></a>排序动画过程解释</h2><ol>
-<li><p>首先，操作数列中的所有数字</p>
+<li><p>首先，将数字分割成两片区域</p>
 </li>
-<li><p>在所有数字中选择一个数字作为排序的基准（pivot）, pivot 通常是随机选择的，在这里为了演示方便，我们选择最右边的数字作为 pivot</p>
+<li><p>将数字分割成两片区域</p>
 </li>
-<li><p>选取好 pivot 后，在操作数列中选择最左边的数字标记为 左标记 ，最右边的数字标记为 右标记</p>
+<li><p>。。。。。。</p>
 </li>
-<li><p>将左边的标记向右移动</p>
+<li><p>直到每片区域只有一个元素</p>
 </li>
-<li><p>当 左标记 达到超过 pivot 的数字时，停止移动</p>
+<li><p>分割完成</p>
 </li>
-<li><p>在这里，8 &gt; 6 ,所以停止移动</p>
+<li><p>接下来，将分割的每片区域进行合并组合</p>
 </li>
-<li><p>然后将右边的标记向左移动</p>
+<li><p>合并时，按照数字的升序移动，使得合并后的数字在组内按升序排列</p>
 </li>
-<li><p>当 右标记 达到小于 pivot 的数字时，停止移动</p>
+<li><p>当合并包含多个数字的组时，比较开头的数字，移动其中较小的数字</p>
 </li>
-<li><p>在这里，4 &gt; 6 ,所以停止移动</p>
+<li><p>比如在动画中，比较开头的 4 和 3 </p>
 </li>
-<li><p>当左右标记停止时，更改标记的数字</p>
+<li><p>其中 4 大于 3， 因此移动 3</p>
 </li>
-<li><p>因此，左标记 的作用是找到一个大于 pivot 的数字，右标记 的作用是找到一个小于 pivot 的数字</p>
+<li><p>按照同样的逻辑去比较该列剩余的头数</p>
 </li>
-<li><p>通过交换数字，可以在数列的左边收集小于 pivot 的数字集合，右边收集大于 pivot 的数字集合</p>
+<li><p>4 小于 7 ，所以移动 4</p>
 </li>
-<li><p>交换之后，继续移动 左标记</p>
+<li><p>。。。。。。</p>
 </li>
-<li><p>在这里，9 &gt; 6 ,所以停止移动</p>
+<li><p>递归的重复组的合并操作，直到所有数字都在一个组中。</p>
 </li>
-<li><p>然后将右边的标记向左移动</p>
-</li>
-<li><p>当 右标记 碰撞到 左标记 时也停止移动</p>
-</li>
-<li><p>如果左右侧的标记停止时，并且都在同一个位置，将这个数字和 pivot 的数字交换</p>
-</li>
-<li><p>这就完成了第一次操作</p>
-</li>
-<li><p>小于 6 的都在 6 的左侧，大于 6 的都在 6 的右侧</p>
-</li>
-<li><p>然后递归对这分成的两部分都执行同样的操作</p>
-</li>
-<li><p>完成 快速排序</p>
+<li><p>完成 归并排序 啦~</p>
 </li>
 </ol>
 <h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><p>为了更好的让读者用自己熟悉的编程语言来理解动画，笔者将贴出多种编程语言的参考代码，代码全部来源于网上。</p>
-<h4 id="C-代码实现"><a href="#C-代码实现" class="headerlink" title="C++代码实现"></a>C++代码实现</h4><p><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181121154352.png" alt="C++代码实现"></p>
-<h4 id="Java代码实现"><a href="#Java代码实现" class="headerlink" title="Java代码实现"></a>Java代码实现</h4><p><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181121154358.png" alt="Java代码实现"></p>
-<h4 id="Python代码实现"><a href="#Python代码实现" class="headerlink" title="Python代码实现"></a>Python代码实现</h4><p><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181121154408.png" alt="Python代码实现"></p>
-<h4 id="JavaScript代码实现"><a href="#JavaScript代码实现" class="headerlink" title="JavaScript代码实现"></a>JavaScript代码实现</h4><p><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181121154414.png" alt="JavaScript代码实现"><br>如果你是iOS开发者，可以在GitHub上 <a href="https://github.com/MisterBooo/Play-With-Sort-OC">https://github.com/MisterBooo/Play-With-Sort-OC</a> 获取更直观可调试运行的源码。</p>
+<h4 id="C-代码实现"><a href="#C-代码实现" class="headerlink" title="C++代码实现"></a>C++代码实现</h4><p><img src="https://user-gold-cdn.xitu.io/2018/11/21/16733b1a9c8f7fff?w=1832&amp;h=1708&amp;f=png&amp;s=85502" alt="C++代码实现"></p>
+<h4 id="Java代码实现"><a href="#Java代码实现" class="headerlink" title="Java代码实现"></a>Java代码实现</h4><p><img src="https://user-gold-cdn.xitu.io/2018/11/21/16733b1a9db220c7?w=1668&amp;h=2444&amp;f=png&amp;s=128379" alt="Java代码实现"></p>
+<h4 id="Python代码实现"><a href="#Python代码实现" class="headerlink" title="Python代码实现"></a>Python代码实现</h4><p><img src="https://user-gold-cdn.xitu.io/2018/11/21/16733b1a9dd4b5f7?w=1322&amp;h=1294&amp;f=png&amp;s=64894" alt="Python代码实现"></p>
+<h4 id="JavaScript代码实现"><a href="#JavaScript代码实现" class="headerlink" title="JavaScript代码实现"></a>JavaScript代码实现</h4><p><img src="https://user-gold-cdn.xitu.io/2018/11/21/16733b1a9dcea382?w=1344&amp;h=1800&amp;f=png&amp;s=76855" alt="JavaScript代码实现"></p>
 
             </div>
             <hr>
@@ -519,7 +515,7 @@
                     </span>
                     <a href="https://github.com/MisterBooo/misterbooo.github.io" class="b-link-green">五分钟学算法</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2018/11/24/tu-jie-shu-ju-jie-gou-yi-zu-dong-hua-che-di-li-jie-kuai-su-pai-xu/" class="b-link-green">【图解数据结构】 一组动画演示快速排序</a>
+                    <a href="/2019/01/26/tu-jie-shu-ju-jie-gou-wu-fen-zhong-xue-suan-fa-zhi-yi-zu-dong-hua-yan-shi-gui-bing-pai-xu/" class="b-link-green">一组动画演示归并排序</a>
                 </p>
             </div>
         </div>
@@ -544,19 +540,20 @@
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2018/11/24/tu-jie-shu-ju-jie-gou-yi-zu-dong-hua-che-di-li-jie-tong-pai-xu/">
+                <a href="/2019/01/26/tu-jie-shu-ju-jie-gou-yi-zu-dong-hua-yan-shi-xuan-ze-pai-xu/">
                     <div class="card-image">
                         
-                        <img src="https://ws1.sinaimg.cn/large/006tNc79gy1fzjs2h9t7dj30zk0nlwis.jpg" class="responsive-img" alt="【图解数据结构】 一组动画演示桶排序">
+                        <img src="https://ws2.sinaimg.cn/large/006tNc79gy1fzjs6bkflmj30zk0iygmu.jpg" class="responsive-img" alt="【图解数据结构】 一组动画演示选择排序">
                         
-                        <span class="card-title">【图解数据结构】 一组动画演示桶排序</span>
+                        <span class="card-title">【图解数据结构】 一组动画演示选择排序</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">【图解数据结构】 一组动画彻底理解桶排序桶排序桶排序(Bucket sort)是一种基于计数的排序算法（计数排序可参考上节的内容），工作的原理是将数据分到有限数量的桶子里，然后每个桶再分别排序（有可能再使用别的排序算法或是以递回方式继续使用</div>
+                    <div class="summary"># 
+【图解数据结构】 一组动画演示选择排序前言由于LeetCode上的算法题很多涉及到一些基础的数据结构，为了更好的理解后续更新的一些复杂题目的动画，推出一个新系列 —–《图解数据结构》，主要使用动画来描述常见的数据结构和算法。本系列包括</div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-11-24
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-26
                         </span>
                         <span class="publish-author">
                             
@@ -577,8 +574,8 @@
                         <span class="chip bg-color">排序</span>
                     </a>
                     
-                    <a href="/tags/桶排序/" target="_blank">
-                        <span class="chip bg-color">桶排序</span>
+                    <a href="/tags/选择排序/" target="_blank">
+                        <span class="chip bg-color">选择排序</span>
                     </a>
                     
                 </div>
@@ -592,19 +589,19 @@
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2018/11/24/tu-jie-shu-ju-jie-gou-yi-zu-dong-hua-che-di-li-jie-ji-shu-pai-xu/">
+                <a href="/2019/01/26/tu-jie-shu-ju-jie-gou-dong-hua-yan-shi-mou-pao-pai-xu/">
                     <div class="card-image">
                         
-                        <img src="https://ws3.sinaimg.cn/large/006tNc79gy1fzjrymlc8uj30zk0ob0ug.jpg" class="responsive-img" alt="【图解数据结构】 一组动画演示计数排序">
+                        <img src="https://ws3.sinaimg.cn/large/006tNc79gy1fzjrinuy2xj30zk0npwhb.jpg" class="responsive-img" alt="【图解数据结构】 一组动画演示冒泡排序">
                         
-                        <span class="card-title">【图解数据结构】 一组动画演示计数排序</span>
+                        <span class="card-title">【图解数据结构】 一组动画演示冒泡排序</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">【图解数据结构】 一组动画彻底理解计数排序计数排序计数排序是一种非基于比较的排序算法，其空间复杂度和时间复杂度均为O(n+k)，其中k是整数的范围。基于比较的排序算法时间复杂度最小是O(nlogn)的。该算法于1954年由 Harold H</div>
+                    <div class="summary">【图解数据结构】 一组动画演示冒泡排序冒泡排序（Bubble Sort）也是一种简单直观的排序算法。它重复地走访过要排序的数列，一次比较两个元素，如果他们的顺序错误就把他们交换过来。走访数列的工作是重复地进行直到没有再需要交换，也就是说该数</div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-11-24
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-26
                             </span>
                         <span class="publish-author">
                             
@@ -625,8 +622,8 @@
                         <span class="chip bg-color">排序</span>
                     </a>
                     
-                    <a href="/tags/计数排序/" target="_blank">
-                        <span class="chip bg-color">计数排序</span>
+                    <a href="/tags/冒泡排序/" target="_blank">
+                        <span class="chip bg-color">冒泡排序</span>
                     </a>
                     
                 </div>
@@ -736,7 +733,7 @@
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">6.5k</span>
+                <span class="white-color">6.8k</span>
             
     
             

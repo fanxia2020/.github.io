@@ -5,8 +5,8 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="一组动画演示归并排序, 五分钟学算法">
-    <meta name="description" content="【图解数据结构】 一组动画演示归并排序前言由于LeetCode上的算法题很多涉及到一些基础的数据结构，为了更好的理解后续更新的一些复杂题目的动画，推出一个新系列 —–《图解数据结构》，主要使用动画来描述常见的数据结构和算法。本系列包括十大排">
+    <meta name="keywords" content="【图解数据结构】 一组动画演示桶排序, 五分钟学算法">
+    <meta name="description" content="【图解数据结构】 一组动画彻底理解桶排序由于LeetCode上的算法题很多涉及到一些基础的数据结构，为了更好的理解后续更新的一些复杂题目的动画，推出一个新系列 —–《图解数据结构》，主要使用动画来描述常见的数据结构和算法。本系列包括十大排序">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -14,7 +14,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>一组动画演示归并排序 | 五分钟学算法</title>
+    <title>【图解数据结构】 一组动画演示桶排序 | 五分钟学算法</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -256,13 +256,13 @@
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('https://ws4.sinaimg.cn/large/006tNc79gy1fzjrue3n2ej30zk0qognl.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('https://ws1.sinaimg.cn/large/006tNc79gy1fzjs2h9t7dj30zk0nlwis.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        一组动画演示归并排序
+                        【图解数据结构】 一组动画演示桶排序
                     </div>
                 </div>
             </div>
@@ -379,8 +379,8 @@
                                 <span class="chip bg-color">排序</span>
                             </a>
                         
-                            <a href="/tags/归并排序/" target="_blank">
-                                <span class="chip bg-color">归并排序</span>
+                            <a href="/tags/桶排序/" target="_blank">
+                                <span class="chip bg-color">桶排序</span>
                             </a>
                         
                     </div>
@@ -403,14 +403,14 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2018-11-25
+                    2019-01-26
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        721
+                        635
                     </div>
                     
 
@@ -433,65 +433,46 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="【图解数据结构】-一组动画演示归并排序"><a href="#【图解数据结构】-一组动画演示归并排序" class="headerlink" title="【图解数据结构】 一组动画演示归并排序"></a>【图解数据结构】 一组动画演示归并排序</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>由于LeetCode上的算法题很多涉及到一些基础的数据结构，为了更好的理解后续更新的一些复杂题目的动画，推出一个新系列 —–《图解数据结构》，主要使用动画来描述常见的数据结构和算法。本系列包括十大排序、堆、队列、树、并查集、图等等大概几十篇。</p>
-<h2 id="归并排序（Merge-sort"><a href="#归并排序（Merge-sort" class="headerlink" title="归并排序（Merge sort"></a>归并排序（Merge sort</h2><p>归并排序（Merge sort）是建立在归并操作上的一种有效的排序算法。该算法是采用分治法（Divide and Conquer）的一个非常典型的应用。</p>
-<p>作为一种典型的分而治之思想的算法应用，归并排序的实现由两种方法：</p>
-<ul>
-<li>自上而下的递归（所有递归的方法都可以用迭代重写，所以就有了第 2 种方法）；</li>
-<li>自下而上的迭代；</li>
-</ul>
-<p>和选择排序一样，归并排序的性能不受输入数据的影响，但表现比选择排序好的多，因为始终都是 O(nlogn) 的时间复杂度。代价是需要额外的内存空间。</p>
+                <h1 id="【图解数据结构】-一组动画彻底理解桶排序"><a href="#【图解数据结构】-一组动画彻底理解桶排序" class="headerlink" title="【图解数据结构】 一组动画彻底理解桶排序"></a>【图解数据结构】 一组动画彻底理解桶排序</h1><p>由于LeetCode上的算法题很多涉及到一些基础的数据结构，为了更好的理解后续更新的一些复杂题目的动画，推出一个新系列 —–《图解数据结构》，主要使用动画来描述常见的数据结构和算法。本系列包括十大排序、堆、队列、树、并查集、图等等大概几十篇。</p>
+<h2 id="桶排序"><a href="#桶排序" class="headerlink" title="桶排序"></a>桶排序</h2><p>桶排序(Bucket sort)是一种基于计数的排序算法（<strong>计数排序</strong>可参考上节的内容），工作的原理是将数据分到有限数量的桶子里，然后每个桶再分别排序（有可能再使用别的排序算法或是以递回方式继续使用桶排序进行排序）</p>
 <h2 id="算法步骤"><a href="#算法步骤" class="headerlink" title="算法步骤"></a>算法步骤</h2><ol>
-<li><p>申请空间，使其大小为两个已经排序序列之和，该空间用来存放合并后的序列；</p>
+<li><p>设置固定数量的空桶。</p>
 </li>
-<li><p>设定两个指针，最初位置分别为两个已经排序序列的起始位置；</p>
+<li><p>把数据放到对应的桶中。</p>
 </li>
-<li><p>比较两个指针所指向的元素，选择相对小的元素放入到合并空间，并移动指针到下一位置；</p>
+<li><p>对每个不为空的桶中数据进行排序。</p>
 </li>
-<li><p>重复步骤 3 直到某一指针达到序列尾；</p>
-</li>
-<li><p>将另一序列剩下的所有元素直接复制到合并序列尾。</p>
+<li><p>拼接不为空的桶中数据，得到结果。</p>
 </li>
 </ol>
-<p>来源：<a href="https://github.com/hustcc/JS-Sorting-Algorithm">https://github.com/hustcc/JS-Sorting-Algorithm</a></p>
-<h2 id="算法演示"><a href="#算法演示" class="headerlink" title="算法演示"></a>算法演示</h2><p><img src="https://user-gold-cdn.xitu.io/2018/11/21/16733b1a9c74ce50?w=955&amp;h=538&amp;f=gif&amp;s=586156" alt=""></p>
+<h2 id="算法演示"><a href="#算法演示" class="headerlink" title="算法演示"></a>算法演示</h2><p>动画演示GIF加载有点慢，请稍等片刻^_^</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/11/29/1675ceff66c00fe7?w=955&amp;h=539&amp;f=gif&amp;s=1026397" alt=""></p>
 <h2 id="排序动画过程解释"><a href="#排序动画过程解释" class="headerlink" title="排序动画过程解释"></a>排序动画过程解释</h2><ol>
-<li><p>首先，将数字分割成两片区域</p>
+<li><p>首先，设置固定数量的空桶，在这里为了方便演示，设置桶的数量为 5 个空桶</p>
 </li>
-<li><p>将数字分割成两片区域</p>
+<li><p>遍历整个数列，找到最大值为 56 ，最小值为 2 ，每个桶的范围为 （ 56 - 2 + 1 ）/ 5 = 11</p>
 </li>
-<li><p>。。。。。。</p>
+<li><p>再次遍历整个数列，按照公式 floor((数字 – 最小值) / 11) 将数字放到对应的桶中</p>
 </li>
-<li><p>直到每片区域只有一个元素</p>
+<li><p>比如，数字 7 代入公式 floor((7 – 2) / 11) = 0 放入 0 号桶</p>
 </li>
-<li><p>分割完成</p>
+<li><p>数字 12 代入公式 floor((12 – 2) / 11) = 0 放入 0 号桶</p>
 </li>
-<li><p>接下来，将分割的每片区域进行合并组合</p>
+<li><p>数字 56 代入公式 floor((56 – 2) / 11) = 4 放入 4 号桶</p>
 </li>
-<li><p>合并时，按照数字的升序移动，使得合并后的数字在组内按升序排列</p>
+<li><p>当向同一个索引的桶，第二次插入数据时，判断桶中已存在的数字与新插入数字的大小，按照左到右，从小到大的顺序插入（可以使用前面讲解的<strong>插入排序</strong>）实现</p>
 </li>
-<li><p>当合并包含多个数字的组时，比较开头的数字，移动其中较小的数字</p>
+<li><p>比如，插入数字 19 时， 1 号桶中已经有数字 23 ，在这里使用插入排序，让 19 排在 23 前面</p>
 </li>
-<li><p>比如在动画中，比较开头的 4 和 3 </p>
+<li><p>遍历完整个数列后，合并非空的桶，按从左到右的顺序合并0，1，2，3，4桶。</p>
 </li>
-<li><p>其中 4 大于 3， 因此移动 3</p>
-</li>
-<li><p>按照同样的逻辑去比较该列剩余的头数</p>
-</li>
-<li><p>4 小于 7 ，所以移动 4</p>
-</li>
-<li><p>。。。。。。</p>
-</li>
-<li><p>递归的重复组的合并操作，直到所有数字都在一个组中。</p>
-</li>
-<li><p>完成 归并排序 啦~</p>
+<li><p>这样就完成了 <strong>桶排序</strong></p>
 </li>
 </ol>
 <h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><p>为了更好的让读者用自己熟悉的编程语言来理解动画，笔者将贴出多种编程语言的参考代码，代码全部来源于网上。</p>
-<h4 id="C-代码实现"><a href="#C-代码实现" class="headerlink" title="C++代码实现"></a>C++代码实现</h4><p><img src="https://user-gold-cdn.xitu.io/2018/11/21/16733b1a9c8f7fff?w=1832&amp;h=1708&amp;f=png&amp;s=85502" alt="C++代码实现"></p>
-<h4 id="Java代码实现"><a href="#Java代码实现" class="headerlink" title="Java代码实现"></a>Java代码实现</h4><p><img src="https://user-gold-cdn.xitu.io/2018/11/21/16733b1a9db220c7?w=1668&amp;h=2444&amp;f=png&amp;s=128379" alt="Java代码实现"></p>
-<h4 id="Python代码实现"><a href="#Python代码实现" class="headerlink" title="Python代码实现"></a>Python代码实现</h4><p><img src="https://user-gold-cdn.xitu.io/2018/11/21/16733b1a9dd4b5f7?w=1322&amp;h=1294&amp;f=png&amp;s=64894" alt="Python代码实现"></p>
-<h4 id="JavaScript代码实现"><a href="#JavaScript代码实现" class="headerlink" title="JavaScript代码实现"></a>JavaScript代码实现</h4><p><img src="https://user-gold-cdn.xitu.io/2018/11/21/16733b1a9dcea382?w=1344&amp;h=1800&amp;f=png&amp;s=76855" alt="JavaScript代码实现"></p>
+<h4 id="C-代码实现"><a href="#C-代码实现" class="headerlink" title="C++代码实现"></a>C++代码实现</h4><p><img src="https://user-gold-cdn.xitu.io/2018/11/29/1675ceff669fd15d?w=1864&amp;h=2122&amp;f=png&amp;s=80844" alt=""></p>
+<h4 id="Java代码实现"><a href="#Java代码实现" class="headerlink" title="Java代码实现"></a>Java代码实现</h4><p><img src="https://user-gold-cdn.xitu.io/2018/11/29/1675ceff66c62d33?w=2016&amp;h=3272&amp;f=png&amp;s=170854" alt=""></p>
+<h4 id="JavaScript代码实现"><a href="#JavaScript代码实现" class="headerlink" title="JavaScript代码实现"></a>JavaScript代码实现</h4><p><img src="https://user-gold-cdn.xitu.io/2018/11/29/1675ceff66b31247?w=2048&amp;h=2260&amp;f=png&amp;s=131496" alt=""></p>
 
             </div>
             <hr>
@@ -515,7 +496,7 @@
                     </span>
                     <a href="https://github.com/MisterBooo/misterbooo.github.io" class="b-link-green">五分钟学算法</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2018/11/25/tu-jie-shu-ju-jie-gou-wu-fen-zhong-xue-suan-fa-zhi-yi-zu-dong-hua-yan-shi-gui-bing-pai-xu/" class="b-link-green">一组动画演示归并排序</a>
+                    <a href="/2019/01/26/tu-jie-shu-ju-jie-gou-yi-zu-dong-hua-che-di-li-jie-tong-pai-xu/" class="b-link-green">【图解数据结构】 一组动画演示桶排序</a>
                 </p>
             </div>
         </div>
@@ -538,25 +519,23 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2018/11/26/tu-jie-shu-ju-jie-gou-yi-zu-dong-hua-che-di-li-jie-dui-pai-xu/">
+                <a href="/2019/01/26/tu-jie-shu-ju-jie-gou-yi-zu-dong-hua-che-di-li-jie-tong-pai-xu/">
                     <div class="card-image">
                         
-                        <img src="https://ws3.sinaimg.cn/large/006tNc79gy1fzjrxd7p4lj30zk0nu411.jpg" class="responsive-img" alt="【图解数据结构】 一组动画演示堆排序">
+                        <img src="https://ws1.sinaimg.cn/large/006tNc79gy1fzjs2h9t7dj30zk0nlwis.jpg" class="responsive-img" alt="【图解数据结构】 一组动画演示桶排序">
                         
-                        <span class="card-title">【图解数据结构】 一组动画演示堆排序</span>
+                        <span class="card-title">【图解数据结构】 一组动画演示桶排序</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">【图解数据结构】 一组动画彻底理解堆排序预备知识：堆结构堆是具有以下性质的完全二叉树：每个结点的值都大于或等于其左右孩子结点的值，称为大顶堆；或者每个结点的值都小于或等于其左右孩子结点的值，称为小顶堆。
-大顶堆
-小顶堆
-堆排序堆排序（Hea</div>
+                    <div class="summary">【图解数据结构】 一组动画彻底理解桶排序由于LeetCode上的算法题很多涉及到一些基础的数据结构，为了更好的理解后续更新的一些复杂题目的动画，推出一个新系列 —–《图解数据结构》，主要使用动画来描述常见的数据结构和算法。本系列包括十大排序</div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-11-26
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-26
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -569,6 +548,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -576,8 +556,8 @@
                         <span class="chip bg-color">排序</span>
                     </a>
                     
-                    <a href="/tags/堆排序/" target="_blank">
-                        <span class="chip bg-color">堆排序</span>
+                    <a href="/tags/桶排序/" target="_blank">
+                        <span class="chip bg-color">桶排序</span>
                     </a>
                     
                 </div>
@@ -591,19 +571,19 @@
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2018/11/24/tu-jie-shu-ju-jie-gou-yi-zu-dong-hua-che-di-li-jie-tong-pai-xu/">
+                <a href="/2019/01/26/tu-jie-shu-ju-jie-gou-yi-zu-dong-hua-che-di-li-jie-kuai-su-pai-xu/">
                     <div class="card-image">
                         
-                        <img src="https://ws1.sinaimg.cn/large/006tNc79gy1fzjs2h9t7dj30zk0nlwis.jpg" class="responsive-img" alt="【图解数据结构】 一组动画演示桶排序">
+                        <img src="https://ws3.sinaimg.cn/large/006tNc79gy1fzjs144w1qj30zk0nptck.jpg" class="responsive-img" alt="【图解数据结构】 一组动画演示快速排序">
                         
-                        <span class="card-title">【图解数据结构】 一组动画演示桶排序</span>
+                        <span class="card-title">【图解数据结构】 一组动画演示快速排序</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">【图解数据结构】 一组动画彻底理解桶排序桶排序桶排序(Bucket sort)是一种基于计数的排序算法（计数排序可参考上节的内容），工作的原理是将数据分到有限数量的桶子里，然后每个桶再分别排序（有可能再使用别的排序算法或是以递回方式继续使用</div>
+                    <div class="summary">【图解数据结构】 一组动画彻底理解快速排序前言由于LeetCode上的算法题很多涉及到一些基础的数据结构，为了更好的理解后续更新的一些复杂题目的动画，推出一个新系列 —–《图解数据结构》，主要使用动画来描述常见的数据结构和算法。本系列包括十</div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-11-24
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-26
                             </span>
                         <span class="publish-author">
                             
@@ -624,8 +604,8 @@
                         <span class="chip bg-color">排序</span>
                     </a>
                     
-                    <a href="/tags/桶排序/" target="_blank">
-                        <span class="chip bg-color">桶排序</span>
+                    <a href="/tags/快速排序/" target="_blank">
+                        <span class="chip bg-color">快速排序</span>
                     </a>
                     
                 </div>
@@ -735,7 +715,7 @@
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">6.5k</span>
+                <span class="white-color">6.8k</span>
             
     
             
