@@ -4,6 +4,222 @@
   
     
     <entry>
+      <title>LeetCode上第24号问题：Swap Nodes in Pairs</title>
+      <link href="/2019/01/27/mei-tian-yi-suan-swap-nodes-in-pairs-15/"/>
+      <url>/2019/01/27/mei-tian-yi-suan-swap-nodes-in-pairs-15/</url>
+      
+        <content type="html"><![CDATA[<p>LeetCode上第24号问题：<strong><a href="https://leetcode-cn.com/problems/swap-nodes-in-pairs/" target="_blank" rel="noopener">Swap Nodes in Pairs</a></strong></p><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><blockquote><p>给定一个链表，两两交换其中相邻的节点，并返回交换后的链表。</p></blockquote><blockquote><h4 id="示例"><a href="#示例" class="headerlink" title="示例:"></a>示例:</h4></blockquote><blockquote><p>给定 1-&gt;2-&gt;3-&gt;4, 你应该返回 2-&gt;1-&gt;4-&gt;3. </p><h4 id="说明"><a href="#说明" class="headerlink" title="说明:"></a>说明:</h4></blockquote><blockquote><ul><li>你的算法只能使用常数的额外空间。    </li><li>你<strong>不能只是单纯的改变节点内部的值</strong>，而是需要实际的进行节点交换。</li></ul></blockquote><h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>该题属于基本的链表操作题。</p><ul><li>设置一个虚拟头结点<code>dummyHead</code></li><li>设置需要交换的两个节点分别为<code>node1</code>、<code>node2</code>，同时设置<code>node2</code>的下一个节点<code>next</code></li></ul><h5 id="在这一轮操作中"><a href="#在这一轮操作中" class="headerlink" title="在这一轮操作中"></a>在这一轮操作中</h5><ul><li>将<code>node2</code>节点的next设置为<code>node1</code>节点</li><li>将<code>node1</code>节点的next设置为<code>next</code>节点</li><li>将<code>dummyHead</code>节点的next设置为<code>node2</code></li><li>结束本轮操作</li></ul><p>接下来的每轮操作都按照上述进行。</p><h2 id="动画演示"><a href="#动画演示" class="headerlink" title="动画演示"></a>动画演示</h2><p><strong>动画演示GIF有点大，请稍微等待一下加载显示^_^</strong></p><p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fzkzyet4u8g30qk0evqbw.gif" alt=""></p><h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><pre><code>// 24. Swap Nodes in Pairs// https://leetcode.com/problems/swap-nodes-in-pairs/description/// 时间复杂度: O(n)// 空间复杂度: O(1)class Solution {public:    ListNode* swapPairs(ListNode* head) {        ListNode* dummyHead = new ListNode(0);        dummyHead-&gt;next = head;        ListNode* p = dummyHead;        while(p-&gt;next &amp;&amp; p-&gt;next-&gt;next){            ListNode* node1 = p-&gt;next;            ListNode* node2 = node1-&gt;next;            ListNode* next = node2-&gt;next;            node2-&gt;next = node1;            node1-&gt;next = next;            p-&gt;next = node2;            p = node1;        }        ListNode* retHead = dummyHead-&gt;next;        delete dummyHead;        return retHead;    }};</code></pre><h2 id="执行结果"><a href="#执行结果" class="headerlink" title="执行结果"></a>执行结果</h2><p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fzkzyg6vkrj31ss0u0die.jpg" alt=""></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> LeetCode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 链表 </tag>
+            
+            <tag> 节点 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>LeetCode上第 3 号问题：Longest Substring Without Repeating Characters</title>
+      <link href="/2019/01/27/mei-tian-yi-suan-longest-substring-without-repeating-characters/"/>
+      <url>/2019/01/27/mei-tian-yi-suan-longest-substring-without-repeating-characters/</url>
+      
+        <content type="html"><![CDATA[<p>leetcode上第3号问题：<a href="https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/" target="_blank" rel="noopener">Longest Substring Without Repeating Characters</a></p><blockquote><p>给定一个字符串，找出不含有重复字符的最长子串的长度。</p></blockquote><blockquote><p>示例 1:<br>输入: “abcabcbb”<br>输出: 3<br>解释: 无重复字符的最长子串是 “abc”，其长度为 3。</p></blockquote><blockquote><p>示例 2:<br>输入: “bbbbb”<br>输出: 1.<br>解释: 无重复字符的最长子串是 “b”，其长度为 1。   </p></blockquote><blockquote><p>示例 3:<br>输入: “pwwkew”<br>输出: 3<br>解释: 无重复字符的最长子串是 “wke”，其长度为 3。<br>请注意，答案必须是一个子串，”pwke” 是一个子序列 而不是子串。</p></blockquote><h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>建立一个256位大小的整型数组freg，用来建立字符和其出现位置之间的映射。</p><p>维护一个滑动窗口，窗口内的都是没有重复的字符，去尽可能的扩大窗口的大小，窗口不停的向右滑动。</p><ul><li>（1）如果当前遍历到的字符从未出现过，那么直接扩大右边界；</li><li>（2）如果当前遍历到的字符出现过，则缩小窗口（左边索引向右移动），然后继续观察当前遍历到的字符；</li><li>（3）重复（1）（2），直到左边索引无法再移动；</li><li>（4）维护一个结果res，每次用出现过的窗口大小来更新结果res，最后返回res获取结果。</li></ul><h4 id="动画演示"><a href="#动画演示" class="headerlink" title="动画演示"></a>动画演示</h4><p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fzkzpqfp11g30no0dbjvw.gif" alt="Longest"></p><h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><pre><code>// 3. Longest Substring Without Repeating Characters// https://leetcode.com/problems/longest-substring-without-repeating-characters/description///// 滑动窗口// 时间复杂度: O(len(s))// 空间复杂度: O(len(charset))class Solution {public:    int lengthOfLongestSubstring(string s) {        int freq[256] = {0};        int l = 0, r = -1; //滑动窗口为s[l...r]        int res = 0;        // 整个循环从 l == 0; r == -1 这个空窗口开始        // 到l == s.size(); r == s.size()-1 这个空窗口截止        // 在每次循环里逐渐改变窗口, 维护freq, 并记录当前窗口中是否找到了一个新的最优值        while(l &lt; s.size()){            if(r + 1 &lt; s.size() &amp;&amp; freq[s[r+1]] == 0){                r++;                freq[s[r]]++;            }else {   //r已经到头 || freq[s[r+1]] == 1                freq[s[l]]--;                l++;            }            res = max(res, r-l+1);        }        return res;    }};</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> LeetCode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 滑动窗口 </tag>
+            
+            <tag> 字符串 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>LeetCode上第 350 号问题：Intersection of Two Arrays II</title>
+      <link href="/2019/01/27/mei-tian-yi-suan-intersection-of-two-arrays-ii/"/>
+      <url>/2019/01/27/mei-tian-yi-suan-intersection-of-two-arrays-ii/</url>
+      
+        <content type="html"><![CDATA[<p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fzkzmzoiovj31nk0lq76o.jpg" alt=""></p><p>leetcode上第350号问题：<a href="https://leetcode-cn.com/problems/intersection-of-two-arrays-ii/" target="_blank" rel="noopener">Intersection of Two Arrays II</a></p><blockquote><p>给定两个数组，编写一个函数来计算它们的交集。</p></blockquote><blockquote><p>示例 1:<br>输入: nums1 = [1,2,2,1], nums2 = [2,2]<br>输出: [2,2]</p><p>示例 2:<br>输入: nums1 = [4,9,5], nums2 = [9,4,9,8,4]<br>输出: [4,9]</p></blockquote><blockquote><p>说明：</p></blockquote><blockquote><ul><li>输出结果中每个元素出现的次数，应与元素在两个数组中出现的次数一致。</li><li>我们可以不考虑输出结果的顺序。</li></ul></blockquote><h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>容器类<a href="https://zh.cppreference.com/w/cpp/container/map" target="_blank" rel="noopener">map</a>的使用。</p><ul><li>遍历num1，通过map容器record存储num1的元素与频率</li><li>遍历num2，在record中查找是否有相同的元素（该元素的存储频率大于0），如果有，用map容器resultVector进行存储，同时该元素的频率减一</li></ul><h4 id="动画演示"><a href="#动画演示" class="headerlink" title="动画演示"></a>动画演示</h4><p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fzkzmwhgg2g30mi0cqac4.gif" alt=""></p><h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><pre><code>// 350. Intersection of Two Arrays II// https://leetcode.com/problems/intersection-of-two-arrays-ii/description/// 时间复杂度: O(nlogn)// 空间复杂度: O(n)class Solution {public:    vector&lt;int&gt; intersect(vector&lt;int&gt;&amp; nums1, vector&lt;int&gt;&amp; nums2) {        map&lt;int, int&gt; record;        for(int i = 0 ; i &lt; nums1.size() ; i ++){             record[nums1[i]] += 1;        }        vector&lt;int&gt; resultVector;        for(int i = 0 ; i &lt; nums2.size() ; i ++){            if(record[nums2[i]] &gt; 0){                resultVector.push_back(nums2[i]);                record[nums2[i]] --;            }        }        return resultVector;    }};</code></pre><h4 id="执行结果"><a href="#执行结果" class="headerlink" title="执行结果"></a>执行结果</h4><p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fzkzmwek5eg30mi0cqac4.gif" alt=""></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> LeetCode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> map </tag>
+            
+            <tag> 查找 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>LeetCode上第 219号问题：Contains Duplicate II</title>
+      <link href="/2019/01/27/mei-tian-yi-suan-contains-duplicate-ii/"/>
+      <url>/2019/01/27/mei-tian-yi-suan-contains-duplicate-ii/</url>
+      
+        <content type="html"><![CDATA[<p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fzkzkn0d3cj316e0jywgm.jpg" alt="Contains Duplicate II"></p><p>leetcode上第219号问题：<a href="https://leetcode.com/problems/contains-duplicate-ii/" target="_blank" rel="noopener">Contains Duplicate II</a></p><blockquote><p>给出⼀个整形数组nums和⼀个整数k，是否存在索引i和j，使得nums[i] == nums[j] 且i和j之间的差不超过k</p><p>Example 1:<br>Input: nums = [1,2,3,1], k = 3<br>Output: true. </p><p>Example 2:<br>Input: nums = [1,0,1,1], k = 1<br>Output: true  </p><p>Example 3:<br>Input: nums = [1,2,3,1,2,3], k = 2<br>Output: false</p></blockquote><h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>考虑用滑动窗口与查找表来解决。</p><ul><li>设置查找表<code>record</code>，用来保存每次遍历时插入的元素，<code>record</code>的最大长度为<code>k</code></li><li>遍历数组<code>nums</code>，每次遍历的时候在<code>record</code>查找是否存在相同的元素，如果存在则返回<code>true</code>，遍历结束</li><li>如果此次遍历在<code>record</code>未查找到，则将该元素插入到<code>record</code>中，而后查看<code>record</code>的长度是否为<code>k + 1</code></li><li>如果此时<code>record</code>的长度是否为<code>k + 1</code>，则删减<code>record</code>的元素，该元素的值为<code>nums[i - k]</code></li><li>如果遍历完整个数组<code>nums</code>未查找到则返回<code>false</code></li></ul><h4 id="动画演示"><a href="#动画演示" class="headerlink" title="动画演示"></a>动画演示</h4><p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fzkzkiqibwg30qn0er46k.gif" alt="动画演示"></p><h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><pre><code>// 219. Contains Duplicate II// https://leetcode.com/problems/contains-duplicate-ii/description/// 时间复杂度: O(n)// 空间复杂度: O(k)class Solution {public:    bool containsNearbyDuplicate(vector&lt;int&gt;&amp; nums, int k) {        if(nums.size() &lt;= 1)  return false;        if(k &lt;= 0)  return false;        unordered_set&lt;int&gt; record;        for(int i = 0 ; i &lt; nums.size() ; i ++){            if(record.find(nums[i]) != record.end()){                return true;            }            record.insert(nums[i]);            // 保持record中最多有k个元素            // 因为在下一次循环中会添加一个新元素,使得总共考虑k+1个元素            if(record.size() == k + 1){                record.erase(nums[i - k]);            }        }        return false;    }};</code></pre><h4 id="执行结果"><a href="#执行结果" class="headerlink" title="执行结果"></a>执行结果</h4><p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fzkzkgtfhdj31sa0u0acp.jpg" alt="执行结果"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> LeetCode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 滑动窗口 </tag>
+            
+            <tag> 查找表 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>LeetCode上第 199 号问题：二叉树的右视图</title>
+      <link href="/2019/01/27/mei-tian-yi-suan-binary-tree-right-side-view-29/"/>
+      <url>/2019/01/27/mei-tian-yi-suan-binary-tree-right-side-view-29/</url>
+      
+        <content type="html"><![CDATA[<p>LeetCode上第 199 号问题：<strong><a href="https://leetcode-cn.com/problems/binary-tree-right-side-view/" target="_blank" rel="noopener">二叉树的右视图</a></strong></p><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><blockquote><p>给定一棵二叉树，想象自己站在它的右侧，按照从顶部到底部的顺序，返回从右侧所能看到的节点值。</p></blockquote><blockquote><p>示例:</p></blockquote><blockquote><p>输入: [1,2,3,null,5,null,4]<br>输出: [1, 3, 4]<br>解释:</p></blockquote><p><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181115113435.png" alt=""></p><h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>与之前<a href="https://xiaozhuanlan.com/topic/8579460312" target="_blank" rel="noopener">二叉树的层次遍历</a>类似的，该问题需要用到<strong>队列</strong>,</p><ul><li>建立一个queue</li><li>遍历每层的节点时，把下一层的节点都存入到queue中</li><li>每当开始新一层节点的遍历之前，先把新一层最后一个节点值存到结果中</li></ul><h2 id="动画演示"><a href="#动画演示" class="headerlink" title="动画演示"></a>动画演示</h2><p>动画演示GIF加载有点慢，请稍等片刻^_^</p><p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fzkzk3w6l8g30qg0esn4u.gif" alt=""></p><h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fzkzk592lzj30y20u0dh3.jpg" alt=""></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> LeetCode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 二叉树 </tag>
+            
+            <tag> 队列 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>LeetCode上第 144 号问题：二叉树的前序遍历</title>
+      <link href="/2019/01/27/mei-tian-yi-suan-binary-tree-preorder-traversal-23/"/>
+      <url>/2019/01/27/mei-tian-yi-suan-binary-tree-preorder-traversal-23/</url>
+      
+        <content type="html"><![CDATA[<p>LeetCode上第 144 号问题：<strong><a href="https://leetcode-cn.com/problems/binary-tree-preorder-traversal/" target="_blank" rel="noopener">二叉树的前序遍历</a></strong></p><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><blockquote><p>给定一个二叉树，返回它的 前序 遍历。</p></blockquote><blockquote><h4 id="示例"><a href="#示例" class="headerlink" title="示例:"></a>示例:</h4></blockquote><blockquote><p><strong>输入:</strong> [1,null,2,3]  </p></blockquote><p> <img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181109101353.png" alt="">   </p><blockquote><p><strong>输出:</strong> [1,2,3]<br><strong>进阶:</strong> 递归算法很简单，你可以通过迭代算法完成吗？</p></blockquote><h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>用<strong>栈(Stack)</strong>的思路来处理问题。</p><p>前序遍历的顺序为<strong>根-左-右</strong>，具体算法为：</p><ul><li>把根节点push到栈中</li><li>循环检测栈是否为空，若不空，则取出栈顶元素，保存其值</li><li>看其右子节点是否存在，若存在则push到栈中</li><li>看其左子节点，若存在，则push到栈中。</li></ul><h2 id="动画演示"><a href="#动画演示" class="headerlink" title="动画演示"></a>动画演示</h2><p><strong>动画演示GIF有点大，请稍微等待一下加载显示^_^</strong></p><p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fzkzj5lp54g30qp0ey48h.gif" alt="动画演示"></p><h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fzkzj84jmxj30y20u0qc5.jpg" alt="参考代码"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> LeetCode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 二叉树 </tag>
+            
+            <tag> 遍历 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>LeetCode上第 102 号问题：二叉树的层次遍历</title>
+      <link href="/2019/01/27/mei-tian-yi-suan-binary-tree-level-order-traversal-26/"/>
+      <url>/2019/01/27/mei-tian-yi-suan-binary-tree-level-order-traversal-26/</url>
+      
+        <content type="html"><![CDATA[<p>LeetCode上第102 号问题：<strong><a href="https://leetcode-cn.com/problems/binary-tree-level-order-traversal/" target="_blank" rel="noopener">二叉树的层次遍历</a></strong></p><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><blockquote><p>给定一个二叉树，返回其按层次遍历的节点值。 （即逐层地，从左到右访问所有节点）。</p></blockquote><blockquote><p>例如:<br>给定二叉树: [3,9,20,null,null,15,7],</p></blockquote><blockquote><p> <img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181112084143.png" alt=""></p><p>返回其层次遍历结果：</p></blockquote><blockquote><p>[<br>   [3],<br>   [9,20],<br>   [15,7]<br>]</p></blockquote><h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>该问题需要用到<strong>队列</strong></p><ul><li>建立一个queue</li><li>先把根节点放进去，这时候找根节点的左右两个子节点</li><li>去掉根节点，此时queue里的元素就是下一层的所有节点</li><li>用for循环遍历，将结果存到一个一维向量里</li><li>遍历完之后再把这个一维向量存到二维向量里</li><li>以此类推，可以完成层序遍历</li></ul><h2 id="动画演示"><a href="#动画演示" class="headerlink" title="动画演示"></a>动画演示</h2><p>动画演示GIF加载有点慢，请稍等片刻^_^</p><p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fzkzexxrigg30qp0ey12m.gif" alt=""></p><h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fzkzgwok70j30u0107whf.jpg" alt=""></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> LeetCode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 二叉树 </tag>
+            
+            <tag> 遍历 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>LeetCode上第 145 号问题：二叉树的后序遍历</title>
+      <link href="/2019/01/27/mei-tian-yi-suan-binary-tree-postorder-traversal-25/"/>
+      <url>/2019/01/27/mei-tian-yi-suan-binary-tree-postorder-traversal-25/</url>
+      
+        <content type="html"><![CDATA[<p>LeetCode上第145 号问题：<strong><a href="https://leetcode-cn.com/problems/binary-tree-postorder-traversal/description/" target="_blank" rel="noopener">二叉树的后序遍历</a></strong></p><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><blockquote><p>给定一个二叉树，返回它的 后序 遍历。</p></blockquote><blockquote><h4 id="示例"><a href="#示例" class="headerlink" title="示例:"></a>示例:</h4></blockquote><blockquote><p><strong>输入:</strong> [1,null,2,3]  </p></blockquote><p> <img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181109101353.png" alt="">   </p><blockquote><p><strong>输出:</strong> [3,2,1]<br><strong>进阶:</strong> 递归算法很简单，你可以通过迭代算法完成吗？</p></blockquote><h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>用<strong>栈(Stack)</strong>的思路来处理问题。</p><p>后序遍历的顺序为<strong>左-右-根</strong>，具体算法为：</p><ul><li>先将根结点压入栈，然后定义一个辅助结点head</li><li>while循环的条件是栈不为空</li><li>在循环中，首先将栈顶结点t取出来</li><li>如果栈顶结点没有左右子结点，或者其左子结点是head，或者其右子结点是head的情况下。我们将栈顶结点值加入结果res中，并将栈顶元素移出栈，然后将head指向栈顶元素</li><li>否则的话就看如果右子结点不为空，将其加入栈</li><li>再看左子结点不为空的话，就加入栈</li></ul><h2 id="动画演示"><a href="#动画演示" class="headerlink" title="动画演示"></a>动画演示</h2><p><strong>动画演示GIF有点大，请稍微等待一下加载显示^_^</strong><br><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fzkzifir92g30qp0ey49p.gif" alt="后序遍历"></p><h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fzkzigsvjaj31bf0u00yz.jpg" alt=""></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> LeetCode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 二叉树 </tag>
+            
+            <tag> 遍历 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>LeetCode上第 94 号问题：二叉树的中序遍历</title>
       <link href="/2019/01/27/mei-tian-yi-suan-binary-tree-inorder-traversal-24/"/>
       <url>/2019/01/27/mei-tian-yi-suan-binary-tree-inorder-traversal-24/</url>
@@ -499,6 +715,188 @@
             <tag> 计数排序 </tag>
             
         </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title></title>
+      <link href="/2018/11/08/mei-tian-yi-suan-evaluate-reverse-polish-notation-22/"/>
+      <url>/2018/11/08/mei-tian-yi-suan-evaluate-reverse-polish-notation-22/</url>
+      
+        <content type="html"><![CDATA[<hr><p>title: LeetCode上第 150 号问题：逆波兰表达式求值<br>date: 2019-01-27 11:36:01<br>author: 程序员小吴师兄<br>top: false<br>summary:<br>categories: LeetCode<br>tags:</p><ul><li>栈</li><li>数据结构</li></ul><hr><p>LeetCode上第150号问题：<strong><a href="https://leetcode-cn.com/problems/evaluate-reverse-polish-notation/" target="_blank" rel="noopener">逆波兰表达式求值</a></strong></p><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><blockquote><p>根据逆波兰表示法，求表达式的值。</p></blockquote><blockquote><p>有效的运算符包括 +, -, *, / 。每个运算对象可以是整数，也可以是另一个逆波兰表达式。</p></blockquote><blockquote><h5 id="说明："><a href="#说明：" class="headerlink" title="说明："></a>说明：</h5></blockquote><blockquote><p>整数除法只保留整数部分。<br>给定逆波兰表达式总是有效的。换句话说，表达式总会得出有效数值且不存在除数为 0 的情况。   </p><h5 id="示例-1："><a href="#示例-1：" class="headerlink" title="示例 1："></a>示例 1：</h5></blockquote><blockquote><p>输入: [“2”, “1”, “+”, “3”, “<em>“]<br>输出: 9<br>解释: ((2 + 1) </em> 3) = 9   </p><h5 id="示例-2："><a href="#示例-2：" class="headerlink" title="示例 2："></a>示例 2：</h5></blockquote><blockquote><p>输入: [“4”, “13”, “5”, “/“, “+”]<br>输出: 6<br>解释: (4 + (13 / 5)) = 6   </p><h5 id="示例-3："><a href="#示例-3：" class="headerlink" title="示例 3："></a>示例 3：</h5></blockquote><blockquote><p>输入: [“10”, “6”, “9”, “3”, “+”, “-11”, “<em>“, “/“, “</em>“, “17”, “+”, “5”, “+”]<br>输出: 22<br>解释:<br>  ((10 <em> (6 / ((9 + 3) </em> -11))) + 17) + 5<br>= ((10 <em> (6 / (12 </em> -11))) + 17) + 5<br>= ((10 <em> (6 / -132)) + 17) + 5<br>= ((10 </em> 0) + 17) + 5<br>= (0 + 17) + 5<br>= 17 + 5<br>= 22   </p></blockquote><h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>用数据结构<code>栈</code>来解决这个问题。</p><ul><li>从前往后遍历数组</li><li>遇到数字则压入栈中</li><li>遇到符号，则把栈顶的两个数字拿出来运算，把结果再压入栈中</li><li>遍历完整个数组，栈顶数字即为最终答案</li></ul><h2 id="动画演示"><a href="#动画演示" class="headerlink" title="动画演示"></a>动画演示</h2><p><strong>动画演示GIF有点大，请稍微等待一下加载显示^_^</strong><br><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fzkzntpqf2g30qx0f4485.gif" alt=""></p><h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fzkznqdhk8j30u00wedha.jpg" alt=""></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title></title>
+      <link href="/2018/11/08/mei-tian-yi-suan-valid-parentheses-21/"/>
+      <url>/2018/11/08/mei-tian-yi-suan-valid-parentheses-21/</url>
+      
+        <content type="html"><![CDATA[<hr><p>title: LeetCode上第20 号问题：有效的括号<br>date: 2019-01-27 11:48:28<br>author: 程序员小吴师兄<br>top: false<br>summary:<br>categories: LeetCode<br>tags:</p><ul><li>栈</li><li>数据结构</li></ul><hr><p>LeetCode上第20 号问题：<strong><a href="https://leetcode-cn.com/problems/valid-parentheses/" target="_blank" rel="noopener">有效的括号</a></strong></p><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><blockquote><p>给定一个只包括 ‘(‘，’)’，’{‘，’}’，’[‘，’]’ 的字符串，判断字符串是否有效。</p></blockquote><blockquote><p>有效字符串需满足：</p></blockquote><blockquote><p>左括号必须用相同类型的右括号闭合。<br>左括号必须以正确的顺序闭合。<br>注意空字符串可被认为是有效字符串。    </p></blockquote><blockquote><h4 id="示例-1"><a href="#示例-1" class="headerlink" title="示例 1:"></a>示例 1:</h4></blockquote><blockquote><p>输入: “()”<br>输出: true</p></blockquote><blockquote><h4 id="示例-2"><a href="#示例-2" class="headerlink" title="示例 2:"></a>示例 2:</h4></blockquote><blockquote><p>输入: “()[]{}”<br>输出: true</p></blockquote><blockquote><h4 id="示例-3"><a href="#示例-3" class="headerlink" title="示例 3:"></a>示例 3:</h4></blockquote><blockquote><p>输入: “(]”<br>输出: false</p></blockquote><blockquote><h4 id="示例-4"><a href="#示例-4" class="headerlink" title="示例 4:"></a>示例 4:</h4></blockquote><blockquote><p>输入: “([)]”<br>输出: false   </p></blockquote><blockquote><h4 id="示例-5"><a href="#示例-5" class="headerlink" title="示例 5:"></a>示例 5:</h4></blockquote><blockquote><p>输入: “{[]}”<br>输出: true   </p></blockquote><h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>这道题让我们验证输入的字符串是否为括号字符串，包括大括号，中括号和小括号。</p><p>这里我们使用<strong>栈</strong>。</p><ul><li>遍历输入字符串</li><li>如果当前字符为左半边括号时，则将其压入栈中</li><li>如果遇到右半边括号时，<strong>分类讨论：</strong></li><li>1）如栈不为空且为对应的左半边括号，则取出栈顶元素，继续循环  </li><li>2）若此时栈为空，则直接返回false</li><li>3）若不为对应的左半边括号，反之返回false</li></ul><h2 id="动画演示"><a href="#动画演示" class="headerlink" title="动画演示"></a>动画演示</h2><p><strong>动画演示GIF有点大，请稍微等待一下加载显示^_^</strong></p><p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fzkzzpkrjng30qo0f0n2n.gif" alt=""></p><h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fzkzzqlgmij30u014awmf.jpg" alt=""></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title></title>
+      <link href="/2018/11/06/mei-tian-yi-suan-remove-nth-node-from-end-of-list-20/"/>
+      <url>/2018/11/06/mei-tian-yi-suan-remove-nth-node-from-end-of-list-20/</url>
+      
+        <content type="html"><![CDATA[<hr><p>title: LeetCode上第19号问题：Remove Nth Node From End of List<br>date: 2019-01-27 11:43:55<br>author: 程序员小吴师兄<br>top: false<br>summary:<br>categories: LeetCode<br>tags:</p><ul><li>链表</li><li>指针</li></ul><hr><p>LeetCode上第19号问题：<strong><a href="https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/" target="_blank" rel="noopener">Remove Nth Node From End of List</a></strong></p><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><blockquote><p>给定一个链表，删除链表的倒数第 n 个节点，并且返回链表的头结点。</p></blockquote><blockquote><h4 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h4></blockquote><blockquote><p>给定一个链表: 1-&gt;2-&gt;3-&gt;4-&gt;5, 和 n = 2.</p></blockquote><blockquote><p>当删除了倒数第二个节点后，链表变为 1-&gt;2-&gt;3-&gt;5</p><h4 id="说明："><a href="#说明：" class="headerlink" title="说明："></a>说明：</h4></blockquote><blockquote><p>给定的 n 保证是有效的。</p></blockquote><blockquote><h4 id="进阶："><a href="#进阶：" class="headerlink" title="进阶："></a>进阶：</h4></blockquote><blockquote><p>你能尝试使用一趟扫描实现吗？</p></blockquote><h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>采取双重遍历肯定是可以解决问题的，但题目要求我们一次遍历解决问题，那我们的思路得发散一下。</p><p>我们可以设想假设设定了双指针<code>p</code>和<code>q</code>的话，当<code>q</code>指向末尾的<code>NULL</code>，<code>p</code>与<code>q</code>之间相隔的元素个数为<code>n</code>时，那么删除掉<code>p</code>的下一个指针就完成了要求。</p><ul><li>设置虚拟节点<code>dummyHead</code>指向<code>head</code></li><li>设定双指针<code>p</code>和<code>q</code>，初始都指向虚拟节点<code>dummyHead</code></li><li>移动<code>q</code>，直到<code>p</code>与<code>q</code>之间相隔的元素个数为<code>n</code></li><li>同时移动<code>p</code>与<code>q</code>，直到<code>q</code>指向的为<code>NULL</code></li><li>将<code>p</code>的下一个节点指向下下个节点</li></ul><h2 id="动画演示"><a href="#动画演示" class="headerlink" title="动画演示"></a>动画演示</h2><p><strong>动画演示GIF有点大，请稍微等待一下加载显示^_^</strong></p><p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fzkzv25jlbg30qn0ezajr.gif" alt=""></p><h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fzkzv3cllbj30u012d760.jpg" alt=""></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title></title>
+      <link href="/2018/11/05/mei-tian-yi-suan-delete-node-in-a-linked-list-18/"/>
+      <url>/2018/11/05/mei-tian-yi-suan-delete-node-in-a-linked-list-18/</url>
+      
+        <content type="html"><![CDATA[<hr><p>title: LeetCode上第 237 号问题：Delete Node in a Linked List<br>date: 2019-01-27 11:35:29<br>author: 程序员小吴师兄<br>top: false<br>summary:<br>categories: LeetCode<br>tags:</p><ul><li>链表</li></ul><hr><p>LeetCode上第237号问题：<strong><a href="https://leetcode-cn.com/problems/delete-node-in-a-linked-list/" target="_blank" rel="noopener">Delete Node in a Linked List</a></strong></p><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><blockquote><p>请编写一个函数，使其可以删除某个链表中给定的（非末尾）节点，你将只被给定要求被删除的节点。</p></blockquote><blockquote><p>现有一个链表 – head = [4,5,1,9]，它可以表示为:</p></blockquote><blockquote><pre><code>4 -&gt; 5 -&gt; 1 -&gt; 9##### 示例 1:</code></pre></blockquote><blockquote><p><strong>输入:</strong> head = [4,5,1,9], node = 5<br><strong>输出:</strong> [4,1,9]<br><strong>解释:</strong> 给定你链表中值为 5 的第二个节点，那么在调用了你的函数之后，该链表应变为 4 -&gt; 1 -&gt;  9.</p><h5 id="示例-2"><a href="#示例-2" class="headerlink" title="示例 2:"></a>示例 2:</h5></blockquote><blockquote><p><strong>输入:</strong> head = [4,5,1,9], node = 1<br><strong>输出:</strong> [4,5,9]<br><strong>解释:</strong> 给定你链表中值为 1 的第三个节点，那么在调用了你的函数之后，该链表应变为 4 -&gt; 5 -&gt; 9.     </p><h5 id="说明"><a href="#说明" class="headerlink" title="说明:"></a>说明:</h5></blockquote><blockquote><ul><li>链表至少包含两个节点。    </li><li>链表中所有节点的值都是唯一的。     </li><li>给定的节点为非末尾节点并且一定是链表中的一个有效节点。     </li><li>不要从你的函数中返回任何结果。          </li></ul></blockquote><h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>此题注意的点是没有给我们链表的起点，只给我们了一个要删的节点，与以往处理的情况稍许不同。</p><p><strong>这道题的处理方法是先把当前节点的值用下一个节点的值覆盖，然后我们删除下一个节点即可</strong></p><h2 id="动画演示"><a href="#动画演示" class="headerlink" title="动画演示"></a>动画演示</h2><p><strong>动画演示GIF有点大，请稍微等待一下加载显示^_^</strong></p><p><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181105171450.gif" alt=""></p><h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><p><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181105171512.png" alt=""></p><h2 id="执行结果"><a href="#执行结果" class="headerlink" title="执行结果"></a>执行结果</h2><p><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181105171613.png" alt=""></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title></title>
+      <link href="/2018/11/04/mei-tian-yi-suan-odd-even-linked-list-17/"/>
+      <url>/2018/11/04/mei-tian-yi-suan-odd-even-linked-list-17/</url>
+      
+        <content type="html"><![CDATA[<hr><p>title: LeetCode上第 328 号问题：Odd Even Linked List<br>date: 2019-01-27 11:40:19<br>author: 程序员小吴师兄<br>top: false<br>summary:<br>categories: LeetCode<br>tags:</p><ul><li>链表</li><li>节点</li></ul><hr><p>LeetCode上第328号问题：<strong><a href="https://leetcode-cn.com/problems/odd-even-linked-list/" target="_blank" rel="noopener">Odd Even Linked List</a></strong></p><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><blockquote><p>给定一个单链表，把所有的奇数节点和偶数节点分别排在一起。请注意，这里的奇数节点和偶数节点指的是节点编号的奇偶性，而不是节点的值的奇偶性。</p></blockquote><blockquote><p>请尝试使用原地算法完成。你的算法的空间复杂度应为 O(1)，时间复杂度应为 O(nodes)，nodes 为节点总数。</p></blockquote><blockquote><p><strong>示例 1:</strong></p></blockquote><blockquote><p><strong>输入:</strong> 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL<br><strong>输出:</strong> 1-&gt;3-&gt;5-&gt;2-&gt;4-&gt;NULL</p><p><strong>示例 2:</strong></p></blockquote><blockquote><p><strong>输入:</strong> 2-&gt;1-&gt;3-&gt;5-&gt;6-&gt;4-&gt;7-&gt;NULL<br><strong>输出:</strong> 2-&gt;3-&gt;6-&gt;7-&gt;1-&gt;5-&gt;4-&gt;NULL</p><p><strong>说明:</strong></p></blockquote><blockquote><ul><li>应当保持奇数节点和偶数节点的相对顺序。</li><li>链表的第一个节点视为奇数节点，第二个节点视为偶数节点，以此类推。</li></ul></blockquote><h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>这道题给了我们一个链表，让我们分开奇偶节点，所有奇节点在前，偶节点在后。</p><ul><li>设定两个虚拟节点，<code>dummyHead1</code>用来保存奇节点，<code>dummyHead2</code>来保存偶节点；</li><li>遍历整个原始链表，将奇节点放于<code>dummyHead1</code>中，其余的放置在<code>dummyHead2</code>中</li><li>遍历结束后，将<code>dummyHead2</code>插入到<code>dummyHead1</code>后面</li></ul><h2 id="动画演示"><a href="#动画演示" class="headerlink" title="动画演示"></a>动画演示</h2><p><strong>动画演示GIF有点大，请稍微等待一下加载显示^_^</strong></p><p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fzkzqr3h93g30qk0ewwo3.gif" alt=""></p><h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fzkzqncct3j30u00ygwmm.jpg" alt=""></p><h2 id="执行结果"><a href="#执行结果" class="headerlink" title="执行结果"></a>执行结果</h2><p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fzkzqplqhmj31sl0u0mzs.jpg" alt=""></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title></title>
+      <link href="/2018/11/04/mei-tian-yi-suan-partition-list-16/"/>
+      <url>/2018/11/04/mei-tian-yi-suan-partition-list-16/</url>
+      
+        <content type="html"><![CDATA[<hr><p>title: LeetCode上第86号问题：Partition List<br>date: 2019-01-27 11:40:51<br>author: 程序员小吴师兄<br>top: false<br>summary:<br>categories: LeetCode<br>tags:</p><ul><li>链表</li><li>分治</li></ul><hr><p>LeetCode上第86号问题：<strong><a href="https://leetcode-cn.com/problems/partition-list/" target="_blank" rel="noopener">Partition List</a></strong></p><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><blockquote><p>给定一个链表和一个特定值 x，对链表进行分隔，使得所有小于 x 的节点都在大于或等于 x 的节点之前。</p></blockquote><blockquote><p>你应当保留两个分区中每个节点的初始相对位置。</p></blockquote><blockquote><h5 id="示例"><a href="#示例" class="headerlink" title="示例:"></a>示例:</h5></blockquote><blockquote><p>输入: head = 1-&gt;4-&gt;3-&gt;2-&gt;5-&gt;2, x = 3<br>输出: 1-&gt;2-&gt;2-&gt;4-&gt;3-&gt;5</p></blockquote><h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>这道题要求我们划分链表，把所有小于给定值的节点都移到前面，大于该值的节点顺序不变，相当于一个局部排序的问题。</p><ul><li>设定两个虚拟节点，<code>dummyHead1</code>用来保存小于于该值的链表，<code>dummyHead2</code>来保存大于等于该值的链表</li><li>遍历整个原始链表，将小于该值的放于<code>dummyHead1</code>中，其余的放置在<code>dummyHead2</code>中</li><li>遍历结束后，将<code>dummyHead2</code>插入到<code>dummyHead1</code>后面</li></ul><h2 id="动画演示"><a href="#动画演示" class="headerlink" title="动画演示"></a>动画演示</h2><p><strong>动画演示GIF有点大，请稍微等待一下加载显示^_^</strong></p><p><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181104095701.gif" alt="动画演示"></p><h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><p><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181106090835.png" alt=""></p><h2 id="欢迎关注"><a href="#欢迎关注" class="headerlink" title="欢迎关注"></a>欢迎关注</h2><p>我们会在公众号（<strong>菠了个菜</strong>）每天早上8点30分准时推送一条LeetCode上的算法题目，并给出该题目的动画解析以及参考答案，每篇文章阅读时长为五分钟左右。</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title></title>
+      <link href="/2018/11/03/mei-tian-yi-suan-reverse-linked-list-ii-19/"/>
+      <url>/2018/11/03/mei-tian-yi-suan-reverse-linked-list-ii-19/</url>
+      
+        <content type="html"><![CDATA[<hr><p>title: LeetCode上第92号问题：Reverse Linked List II<br>date: 2019-01-27 11:44:36<br>author: 程序员小吴师兄<br>top: false<br>summary:<br>categories: LeetCode<br>tags:</p><ul><li>链表</li><li>指针</li></ul><hr><p>LeetCode上第92号问题：<strong><a href="https://leetcode-cn.com/problems/reverse-linked-list-ii/" target="_blank" rel="noopener">Reverse Linked List II</a></strong></p><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><blockquote><p>反转从位置 m 到 n 的链表。请使用一趟扫描完成反转。</p></blockquote><blockquote><h5 id="说明"><a href="#说明" class="headerlink" title="说明:"></a>说明:</h5><p>1 ≤ m ≤ n ≤ 链表长度。</p></blockquote><blockquote><h5 id="示例"><a href="#示例" class="headerlink" title="示例:"></a>示例:</h5></blockquote><blockquote><p><strong>输入</strong>: 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL, m = 2, n = 4.<br><strong>输出</strong>: 1-&gt;4-&gt;3-&gt;2-&gt;5-&gt;NULL</p></blockquote><h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p><strong><a href="https://xiaozhuanlan.com/topic/7513064892" target="_blank" rel="noopener">Reverse Linked List</a></strong>的延伸题。</p><p>可以考虑取出需要反转的这一小段链表，反转完后再插入到原先的链表中。</p><p><strong>以本题为例：</strong></p><p>变换的是2,3,4这三个点，那么我们可以先取出2，用front指针指向2，然后当取出3的时候，我们把3加到2的前面，把front指针前移到3，依次类推，到4后停止，这样我们得到一个新链表4-&gt;3-&gt;2, front指针指向4。</p><p>对于原链表来说，<strong>有两个点的位置很重要</strong>，需要用指针记录下来，分别是1和5，把新链表插入的时候需要这两个点的位置。</p><ul><li>用pre指针记录1的位置</li><li>当4结点被取走后，5的位置需要记下来</li><li>这样我们就可以把倒置后的那一小段链表加入到原链表中</li></ul><h2 id="动画演示"><a href="#动画演示" class="headerlink" title="动画演示"></a>动画演示</h2><p><strong>动画演示GIF有点大，请稍微等待一下加载显示^_^</strong></p><p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fzkzvp0nnyg30qk0ev4bt.gif" alt=""></p><h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fzkzvpvd7xj30vw0u0q82.jpg" alt=""></p><h2 id="执行结果"><a href="#执行结果" class="headerlink" title="执行结果"></a>执行结果</h2><p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fzkzvrexmqj31ss0u00vf.jpg" alt=""></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title></title>
+      <link href="/2018/11/02/mei-tian-yi-suan-remove-linked-list-elements/"/>
+      <url>/2018/11/02/mei-tian-yi-suan-remove-linked-list-elements/</url>
+      
+        <content type="html"><![CDATA[<hr><p>title: LeetCode上第203号问题：Remove Linked List Elements<br>date: 2019-01-27 11:41:44<br>author: 程序员小吴师兄<br>top: false<br>summary:<br>categories: LeetCode<br>tags:</p><ul><li>链表</li><li>指针</li></ul><hr><p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fzkzs7u2a6j31iu0mutbi.jpg" alt=""></p><p>LeetCode上第203号问题：<strong><a href="https://leetcode-cn.com/problems/remove-linked-list-elements/" target="_blank" rel="noopener">Remove Linked List Elements</a></strong></p><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><blockquote><p>删除链表中等于给定值 val 的所有节点。</p></blockquote><blockquote><h5 id="示例"><a href="#示例" class="headerlink" title="示例:"></a>示例:</h5></blockquote><blockquote><p>输入: 1-&gt;2-&gt;6-&gt;3-&gt;4-&gt;5-&gt;6, val = 6<br>输出: 1-&gt;2-&gt;3-&gt;4-&gt;5</p></blockquote><h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>主要考察了基本的链表遍历和设置指针的知识点。</p><p>定义一个虚拟头节点<code>dummyHead</code>，遍历查看原链表，遇到与给定值相同的元素，将该元素的前后两个节点连接起来，然后删除该元素即可。</p><h2 id="动画演示"><a href="#动画演示" class="headerlink" title="动画演示"></a>动画演示</h2><p><strong>动画演示GIF有点大，请稍微等待一下加载显示^_^</strong></p><p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fzkzs3cu9jg30qo0f0107.gif" alt="动画演示"></p><h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><h4 id="代码一"><a href="#代码一" class="headerlink" title="代码一"></a>代码一</h4><pre><code>// 203. Remove Linked List Elements// https://leetcode.com/problems/remove-linked-list-elements/description/// 使用虚拟头结点// 时间复杂度: O(n)// 空间复杂度: O(1)class Solution {public:    ListNode* removeElements(ListNode* head, int val) {        // 创建虚拟头结点        ListNode* dummyHead = new ListNode(0);        dummyHead-&gt;next = head;        ListNode* cur = dummyHead;        while(cur-&gt;next != NULL){            if(cur-&gt;next-&gt;val == val){                ListNode* delNode = cur-&gt;next;                cur-&gt;next = delNode-&gt;next;                delete delNode;            }            else                cur = cur-&gt;next;        }        ListNode* retNode = dummyHead-&gt;next;        delete dummyHead;        return retNode;    }};</code></pre><h4 id="代码二"><a href="#代码二" class="headerlink" title="代码二"></a>代码二</h4><p>用递归来解。</p><p>通过递归调用到链表末尾，然后回来，需要删的元素，将链表next指针指向下一个元素即可。</p><pre><code>class Solution {public:    ListNode* removeElements(ListNode* head, int val) {        if (!head) return NULL;        head-&gt;next = removeElements(head-&gt;next, val);        return head-&gt;val == val ? head-&gt;next : head;    }};</code></pre><h2 id="执行结果"><a href="#执行结果" class="headerlink" title="执行结果"></a>执行结果</h2><p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fzkzs66gunj31ri0u0773.jpg" alt="执行结果"></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title></title>
+      <link href="/2018/11/01/mei-tian-yi-suan-reverse-linked-list/"/>
+      <url>/2018/11/01/mei-tian-yi-suan-reverse-linked-list/</url>
+      
+        <content type="html"><![CDATA[<hr><p>title: LeetCode上第206号问题：Reverse Linked List<br>date: 2019-01-27 11:45:35<br>author: 程序员小吴师兄<br>top: false<br>summary:<br>categories: LeetCode<br>tags:</p><ul><li>链表</li><li>反转</li></ul><hr><p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fzkzvypae1j311m0g6gms.jpg" alt=""></p><p>LeetCode上第206号问题：<strong><a href="https://leetcode-cn.com/problems/reverse-linked-list/" target="_blank" rel="noopener">Reverse Linked List</a></strong></p><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><blockquote><p>反转一个单链表。</p></blockquote><blockquote><h5 id="示例"><a href="#示例" class="headerlink" title="示例:"></a>示例:</h5></blockquote><blockquote><p>输入: 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL<br>输出: 5-&gt;4-&gt;3-&gt;2-&gt;1-&gt;NULL</p><h5 id="进阶"><a href="#进阶" class="headerlink" title="进阶:"></a>进阶:</h5><p>你可以迭代或递归地反转链表。你能否用两种方法解决这道题？</p></blockquote><h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>设置三个节点<code>pre</code>、<code>cur</code>、<code>next</code></p><ul><li>（1）每次查看<code>cur</code>节点是否为<code>NULL</code>，如果是，则结束循环，获得结果</li><li>（2）如果<code>cur</code>节点不是为<code>NULL</code>，则先设置临时变量<code>next</code>为<code>cur</code>的下一个节点</li><li>（3）让<code>cur</code>的下一个节点变成指向<code>pre</code>，而后<code>pre</code>移动<code>cur</code>，<code>cur</code>移动到<code>next</code></li><li>（4）重复（1）（2）（3）</li></ul><h4 id="动画演示"><a href="#动画演示" class="headerlink" title="动画演示"></a>动画演示</h4><p><strong>动画演示GIF有点大，请稍微等待一下加载显示^_^</strong></p><p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fzkzw15rnng30nj0d9wqe.gif" alt="动画演示"></p><h4 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h4><h5 id="迭代的方式处理"><a href="#迭代的方式处理" class="headerlink" title="迭代的方式处理"></a>迭代的方式处理</h5><pre><code>// 206. Reverse Linked List// https://leetcode.com/problems/reverse-linked-list/description/// 时间复杂度: O(n)// 空间复杂度: O(1)class Solution {public:    ListNode* reverseList(ListNode* head) {        ListNode* pre = NULL;        ListNode* cur = head;        while(cur != NULL){            ListNode* next = cur-&gt;next;            cur-&gt;next = pre;            pre = cur;            cur = next;        }        return pre;    }};</code></pre><h5 id="递归的方式处理"><a href="#递归的方式处理" class="headerlink" title="递归的方式处理"></a>递归的方式处理</h5><pre><code>// 206. Reverse Linked List// https://leetcode.com/problems/reverse-linked-list/description///// 递归的方式反转链表// 时间复杂度: O(n)// 空间复杂度: O(1)class Solution {public:    ListNode* reverseList(ListNode* head) {        // 递归终止条件        if(head == NULL || head-&gt;next == NULL)            return head;        ListNode* rhead = reverseList(head-&gt;next);        // head-&gt;next此刻指向head后面的链表的尾节点        // head-&gt;next-&gt;next = head把head节点放在了尾部        head-&gt;next-&gt;next = head;        head-&gt;next = NULL;        return rhead;    }};</code></pre><h2 id="执行结果"><a href="#执行结果" class="headerlink" title="执行结果"></a>执行结果</h2><p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fzkzw3k5wkj31sn0u0gnx.jpg" alt=""></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title></title>
+      <link href="/2018/11/01/mei-tian-yi-suan-reverse-string/"/>
+      <url>/2018/11/01/mei-tian-yi-suan-reverse-string/</url>
+      
+        <content type="html"><![CDATA[<hr><p>title: LeetCode上第344号问题：Reverse String<br>date: 2019-01-27 11:46:45<br>author: 程序员小吴师兄<br>top: false<br>summary:<br>categories: LeetCode<br>tags:</p><ul><li>反转</li><li>字符串</li></ul><hr><p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fzkzwvxg08j311i0hot9w.jpg" alt=""></p><p>LeetCode上第344号问题：<strong><a href="https://leetcode-cn.com/problems/reverse-string/" target="_blank" rel="noopener">Reverse String</a></strong></p><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><blockquote><p>编写一个函数，其作用是将输入的字符串反转过来。</p></blockquote><blockquote><h5 id="示例-1"><a href="#示例-1" class="headerlink" title="示例 1:"></a>示例 1:</h5></blockquote><blockquote><p>输入: “hello”<br>输出: “olleh”   </p></blockquote><blockquote><h5 id="示例-2"><a href="#示例-2" class="headerlink" title="示例 2:"></a>示例 2:</h5></blockquote><blockquote><p>输入: “A man, a plan, a canal: Panama”<br>输出: “amanaP :lanac a ,nalp a ,nam A”</p></blockquote><h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>直接从两头往中间走，同时交换两边的字符即可</p><h2 id="动画演示"><a href="#动画演示" class="headerlink" title="动画演示"></a>动画演示</h2><p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fzkzwxdigqg30qm0ep0xp.gif" alt="动画演示"></p><h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><h4 id="代码一"><a href="#代码一" class="headerlink" title="代码一"></a>代码一</h4><pre><code>// 344. Reverse String// https://leetcode.com/problems/reverse-string/description/// Two Pointers// 时间复杂度: O(n)// 空间复杂度: O(1)class Solution {public:    string reverseString(string s) {        int i = 0, j = s.size() - 1;        while(i &lt; j){            swap(s[i], s[j]);            i ++;            j --;        }        return s;    }};</code></pre><h4 id="代码二"><a href="#代码二" class="headerlink" title="代码二"></a>代码二</h4><pre><code>// 344. Reverse String// https://leetcode.com/problems/reverse-string/description/// Two Pointers// 时间复杂度: O(n)// 空间复杂度: O(1)class Solution {public:    string reverseString(string s) {         int left = 0, right = s.size() - 1;        while (left &lt; right) {           char t = s[left];            s[left++] = s[right];           s[right--] = t;        }       return s;   }};</code></pre><h2 id="执行结果"><a href="#执行结果" class="headerlink" title="执行结果"></a>执行结果</h2><p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fzkzwzp763j313u0h6mxq.jpg" alt="执行结果"></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title></title>
+      <link href="/2018/10/28/mei-tian-yi-suan-two-sum-2018-nian-10-yue-28-ri/"/>
+      <url>/2018/10/28/mei-tian-yi-suan-two-sum-2018-nian-10-yue-28-ri/</url>
+      
+        <content type="html"><![CDATA[<hr><p>title: LeetCode上第 1 号问题：Two Sum<br>date: 2019-01-27 11:47:56<br>author: 程序员小吴师兄<br>top: false<br>summary:<br>categories: LeetCode<br>tags:</p><ul><li>查找表</li><li>索引</li></ul><hr><p>leetcode上第1号问题：<a href="https://leetcode-cn.com/problems/two-sum/" target="_blank" rel="noopener">Two Sum</a></p><blockquote><p>给定一个整数数组和一个目标值，找出数组中和为目标值的两个数。</p></blockquote><blockquote><p>你可以假设每个输入只对应一种答案，且同样的元素不能被重复利用。</p></blockquote><blockquote><p>示例:</p></blockquote><blockquote><p>给定 nums = [2, 7, 11, 15], target = 9</p></blockquote><blockquote><p>因为 nums[0] + nums[1] = 2 + 7 = 9<br>所以返回 [0, 1]</p></blockquote><h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>使用查找表来解决该问题。</p><blockquote><p>设置一个map容器record用来记录元素的值与索引</p><p>遍历数组nums</p><ul><li>每次遍历时使用临时变量complement用来保存目标值与当前值的差值</li><li>在此次遍历中查找record，查看是否有与complement一致的值，如果查找成功则返回查找值的索引值与当前变量的值i</li><li>如果未找到，则在record保存该元素与索引值i</li></ul></blockquote><h4 id="动画演示"><a href="#动画演示" class="headerlink" title="动画演示"></a>动画演示</h4><p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fzkzyntxibg30nn0dd458.gif" alt="Two Sum"></p><h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><pre><code>// 1. Two Sum// https://leetcode.com/problems/two-sum/description/// 时间复杂度：O(n)// 空间复杂度：O(n)class Solution {public:    vector&lt;int&gt; twoSum(vector&lt;int&gt;&amp; nums, int target) {        unordered_map&lt;int,int&gt; record;        for(int i = 0 ; i &lt; nums.size() ; i ++){            int complement = target - nums[i];            if(record.find(complement) != record.end()){                int res[] = {i, record[complement]};                return vector&lt;int&gt;(res, res + 2);            }            record[nums[i]] = i;        }    }};</code></pre><h4 id="执行结果"><a href="#执行结果" class="headerlink" title="执行结果"></a>执行结果</h4><p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fzkzymcdnzj31nx0u0q5l.jpg" alt=""></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title></title>
+      <link href="/2018/10/27/mei-tian-yi-suan-intersection-of-two-arrays/"/>
+      <url>/2018/10/27/mei-tian-yi-suan-intersection-of-two-arrays/</url>
+      
+        <content type="html"><![CDATA[<hr><p>title: LeetCode上第  349 号问题：Intersection of Two Arrays<br>date: 2019-01-27 11:38:21<br>author: 程序员小吴师兄<br>top: false<br>summary:<br>categories: LeetCode<br>tags:</p><ul><li>set</li><li>容器</li></ul><hr><p>leetcode上第 349 号问题：<a href="https://leetcode-cn.com/problems/intersection-of-two-arrays/" target="_blank" rel="noopener">Intersection of Two Arrays</a></p><blockquote><p>给定两个数组，编写一个函数来计算它们的交集。</p></blockquote><blockquote><p>示例 1:<br>输入: nums1 = [1,2,2,1], nums2 = [2,2]<br>输出: [2]  </p><p>示例 2:<br>输入: nums1 = [4,9,5], nums2 = [9,4,9,8,4]<br>输出: [9,4]</p><p>说明:  </p><ul><li>输出结果中的每个元素一定是唯一的。   </li><li>我们可以不考虑输出结果的顺序。</li></ul></blockquote><h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>容器类<a href="https://zh.cppreference.com/w/cpp/container/set" target="_blank" rel="noopener">set</a>的使用。</p><ul><li>遍历num1，通过set容器record存储num1的元素</li><li>遍历num2，在record中查找是否有相同的元素，如果有，用set容器resultSet进行存储</li><li>将resultSet转换为vector类型</li></ul><h4 id="动画演示"><a href="#动画演示" class="headerlink" title="动画演示"></a>动画演示</h4><p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fzkzoct4m6g30nk0dbq67.gif" alt="Intersection of Two Arrays"></p><h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><pre><code>// 349. Intersection of Two Arrays// https://leetcode.com/problems/intersection-of-two-arrays/description/// 时间复杂度: O(nlogn)// 空间复杂度: O(n)class Solution {public:    vector&lt;int&gt; intersection(vector&lt;int&gt;&amp; nums1, vector&lt;int&gt;&amp; nums2) {        set&lt;int&gt; record;        for( int i = 0 ; i &lt; nums1.size() ; i ++ ){            record.insert(nums1[i]);        }        set&lt;int&gt; resultSet;        for( int i = 0 ; i &lt; nums2.size() ; i ++ ){            if(record.find(nums2[i]) != record.end()){                resultSet.insert(nums2[i]);            }        }        vector&lt;int&gt; resultVector;        for(set&lt;int&gt;::iterator iter = resultSet.begin(); iter != resultSet.end(); iter ++ ){            resultVector.push_back(*iter);        }        return resultVector;    }};</code></pre>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title></title>
+      <link href="/2018/10/24/mei-zhou-yi-suan-two-sum-ii/"/>
+      <url>/2018/10/24/mei-zhou-yi-suan-two-sum-ii/</url>
+      
+        <content type="html"><![CDATA[<hr><p>title: LeetCode上第167号问题：Two Sum II<br>date: 2019-01-27 11:50:40<br>author: 程序员小吴师兄<br>top: false<br>summary:<br>categories: LeetCode<br>tags:</p><ul><li>数组</li><li>指针</li></ul><hr><p>leetcode上第167号问题：<a href="https://leetcode-cn.com/problems/two-sum-ii-input-array-is-sorted/" target="_blank" rel="noopener">Two Sum II</a></p><blockquote><p>给定一个已按照升序排列 的有序数组，找到两个数使得它们相加之和等于目标数。</p></blockquote><blockquote><p>函数应该返回这两个下标值 index1 和 index2，其中 index1 必须小于 index2。</p></blockquote><blockquote><p>说明:</p></blockquote><blockquote><ul><li>返回的下标值（index1 和 index2）不是从零开始的。</li><li>你可以假设每个输入只对应唯一的答案，而且你不可以重复使用相同的元素。</li></ul></blockquote><blockquote><p>示例:</p></blockquote><blockquote><p>输入: numbers = [2, 7, 11, 15], target = 9<br>输出: [1,2]<br>解释: 2 与 7 之和等于目标数 9 。因此 index1 = 1, index2 = 2 。</p></blockquote><h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>初始化左指针left指向数组起始，初始化右指针right指向数组结尾。</p><p>根据<strong>已排序</strong>这个特性，</p><ul><li><p>（1）如果numbers[left]与numbers[right]的和tmp小于target，说明应该增加tmp,因此left右移指向一个较大的值。</p></li><li><p>（2）如果tmp大于target，说明应该减小tmp,因此right左移指向一个较小的值。</p></li><li><p>（3）tmp等于target，则找到，返回left+1和right+1。（注意以1为起始下标）</p></li></ul><h4 id="动画演示"><a href="#动画演示" class="headerlink" title="动画演示"></a>动画演示</h4><p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fzl02exvalg30np0cpjsz.gif" alt="Two sum"></p><h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><pre><code>// 对撞指针// 时间复杂度: O(n)// 空间复杂度: O(1)class Solution {public:    vector&lt;int&gt; twoSum(vector&lt;int&gt;&amp; numbers, int target) {        int l = 0, r = numbers.size() - 1;        while(l &lt; r){            if(numbers[l] + numbers[r] == target){                int res[2] = {l+1, r+1};                return vector&lt;int&gt;(res, res+2);            }            else if(numbers[l] + numbers[r] &lt; target)                l ++;            else // numbers[l] + numbers[r] &gt; target                r --;        }    }</code></pre>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title></title>
+      <link href="/2018/10/24/mei-zhou-yi-suan-sort-colors/"/>
+      <url>/2018/10/24/mei-zhou-yi-suan-sort-colors/</url>
+      
+        <content type="html"><![CDATA[<hr><p>title: LeetCode上第75号问题：Sort Colors<br>date: 2019-01-27 11:49:32<br>author: 程序员小吴师兄<br>top: false<br>summary:<br>categories: LeetCode<br>tags:</p><ul><li>分治</li><li>快速</li></ul><hr><p>leetcode上第75号问题：<a href="https://leetcode-cn.com/problems/sort-colors/" target="_blank" rel="noopener">Sort Colors</a></p><blockquote><p>给定一个包含红色、白色和蓝色，一共 n 个元素的数组，原地对它们进行排序，使得相同颜色的元素相邻，并按照红色、白色、蓝色顺序排列。</p></blockquote><blockquote><p>此题中，我们使用整数 0、 1 和 2 分别表示红色、白色和蓝色。</p></blockquote><blockquote><p>注意:<br>不能使用代码库中的排序函数来解决这道题。</p></blockquote><blockquote><p>示例:</p></blockquote><blockquote><p>输入: [2,0,2,1,1,0]</p></blockquote><blockquote><p>输出: [0,0,1,1,2,2]</p></blockquote><h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>结合三路快排partition思路的应用，设定两个索引，一个从左往右滑动<code>zero</code>，一个从右往左滑动<code>two</code>，遍历<code>nums</code>，当<code>nums[i]</code>的值为1时，<code>i++</code>；当<code>nums[i]</code>的值为2时，<code>two</code>的值先减1，而后交换<code>nums[i]</code>与<code>nums[two]</code>，此时在观察<code>nums[i]</code>的值；当<code>nums[i]</code>的值为0时，<code>zero++</code>，而后交换<code>nums[i]</code>与<code>nums[zero]</code>，<code>i++</code>;当 <code>i = two</code>时，结束循环。</p><h4 id="动画演示"><a href="#动画演示" class="headerlink" title="动画演示"></a>动画演示</h4><p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fzl014a9kug30np0cp42x.gif" alt="Sort Colors"></p><h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><pre><code>// 三路快速排序的思想// 对整个数组只遍历了一遍// 时间复杂度: O(n)// 空间复杂度: O(1)class Solution {public:    void sortColors(vector&lt;int&gt; &amp;nums) {        int zero = -1;          // [0...zero] == 0        int two = nums.size();  // [two...n-1] == 2        for(int i = 0 ; i &lt; two ; ){            if(nums[i] == 1){                 i ++;            }else if (nums[i] == 2){                 two--;                 swap( nums[i] , nums[two]);            }else{ // nums[i] == 0                 zero++;                 swap(nums[zero] , nums[i]);                 i++;            }        }    }};</code></pre>]]></content>
+      
+      
       
     </entry>
     
