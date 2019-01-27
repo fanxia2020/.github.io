@@ -4,11 +4,163 @@
   
     
     <entry>
+      <title>LeetCode上第 94 号问题：二叉树的中序遍历</title>
+      <link href="/2019/01/27/mei-tian-yi-suan-binary-tree-inorder-traversal-24/"/>
+      <url>/2019/01/27/mei-tian-yi-suan-binary-tree-inorder-traversal-24/</url>
+      
+        <content type="html"><![CDATA[<p>LeetCode上第 94 号问题：<strong><a href="https://leetcode-cn.com/problems/binary-tree-inorder-traversal/" target="_blank" rel="noopener">二叉树的中序遍历</a></strong></p><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><blockquote><p>给定一个二叉树，返回它的 中序 遍历。</p></blockquote><blockquote><h4 id="示例"><a href="#示例" class="headerlink" title="示例:"></a>示例:</h4></blockquote><blockquote><p><strong>输入:</strong> [1,null,2,3]  </p></blockquote><p> <img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181109101353.png" alt="">   </p><blockquote><p><strong>输出:</strong> [1,3,2]<br><strong>进阶:</strong> 递归算法很简单，你可以通过迭代算法完成吗？</p></blockquote><h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>用<strong>栈(Stack)</strong>的思路来处理问题。</p><p>中序遍历的顺序为<strong>左-根-右</strong>，具体算法为：</p><ul><li>从根节点开始，先将根节点压入栈</li><li>然后再将其所有左子结点压入栈，取出栈顶节点，保存节点值</li><li>再将当前指针移到其右子节点上，若存在右子节点，则在下次循环时又可将其所有左子结点压入栈中</li></ul><h2 id="动画演示"><a href="#动画演示" class="headerlink" title="动画演示"></a>动画演示</h2><p><strong>动画演示GIF有点大，请稍微等待一下加载显示^_^</strong></p><p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fzkxkmfacog30qp0eywoh.gif" alt="动画演示"></p><h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fzkxkq7y97j30u00u17db.jpg" alt="参考代码"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> LeetCode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 二叉树 </tag>
+            
+            <tag> 中序遍历 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>LeetCode上第 2 号问题：两个数字相加</title>
+      <link href="/2019/01/27/mei-tian-yi-suan-add-two-numbers-31/"/>
+      <url>/2019/01/27/mei-tian-yi-suan-add-two-numbers-31/</url>
+      
+        <content type="html"><![CDATA[<p>LeetCode上第 2 号问题：<strong><a href="https://leetcode-cn.com/problems/add-two-numbers/" target="_blank" rel="noopener">两个数字相加</a></strong></p><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><blockquote><p>给定两个非空链表来表示两个非负整数。位数按照逆序方式存储，它们的每个节点只存储单个数字。将两数相加返回一个新的链表。</p></blockquote><blockquote><p>你可以假设除了数字 0 之外，这两个数字都不会以零开头。</p></blockquote><blockquote><h5 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h5></blockquote><blockquote><p>输入：(2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)<br>输出：7 -&gt; 0 -&gt; 8<br>原因：342 + 465 = 807</p></blockquote><h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>设立一个表示进位的变量<code>carried</code>，建立一个新链表，把输入的两个链表从头往后同时处理，每两个相加，将结果加上<code>carried</code>后的值作为一个新节点到新链表后面。</p><h2 id="动画演示"><a href="#动画演示" class="headerlink" title="动画演示"></a>动画演示</h2><p>动画演示GIF加载有点慢，请稍等片刻^_^</p><p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fzkxjfcatug30qh0eon5c.gif" alt=""></p><h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fzkxjhpat9j30ub0u0n4r.jpg" alt=""></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> LeetCode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 链表 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>LeetCode 上第 26 号问题：删除排序数组中的重复项</title>
+      <link href="/2019/01/27/mei-tian-yi-suan-shan-chu-pai-xu-shu-zu-zhong-de-chong-fu-xiang-30/"/>
+      <url>/2019/01/27/mei-tian-yi-suan-shan-chu-pai-xu-shu-zu-zhong-de-chong-fu-xiang-30/</url>
+      
+        <content type="html"><![CDATA[<p>LeetCode上第26 号问题：<strong><a href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/" target="_blank" rel="noopener">删除排序数组中的重复项</a></strong></p><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个排序数组，你需要在原地删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。</p><p>不要使用额外的数组空间，你必须在原地修改输入数组并在使用 O(1) 额外空间的条件下完成。</p><h4 id="示例-1"><a href="#示例-1" class="headerlink" title="示例 1:"></a>示例 1:</h4><blockquote><p>给定数组 nums = [1,1,2], </p></blockquote><blockquote><p>函数应该返回新的长度 2, 并且原数组 nums 的前两个元素被修改为 1, 2。 </p></blockquote><blockquote><p>你不需要考虑数组中超出新长度后面的元素。</p></blockquote><h4 id="示例-2"><a href="#示例-2" class="headerlink" title="示例 2:"></a>示例 2:</h4><blockquote><p>给定 nums = [0,0,1,1,1,2,2,3,3,4],</p></blockquote><blockquote><p>函数应该返回新的长度 5, 并且原数组 nums 的前五个元素被修改为 0, 1, 2, 3, 4。</p></blockquote><blockquote><p>你不需要考虑数组中超出新长度后面的元素。</p></blockquote><h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>使用快慢指针来记录遍历的坐标。</p><ul><li>开始时这两个指针都指向第一个数字</li><li>如果两个指针指的数字相同，则快指针向前走一步</li><li>如果不同，则两个指针都向前走一步</li><li>当快指针走完整个数组后，慢指针当前的坐标加1就是数组中不同数字的个数</li></ul><h2 id="动画演示"><a href="#动画演示" class="headerlink" title="动画演示"></a>动画演示</h2><p>动画演示GIF加载有点慢，请稍等片刻^_^</p><p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fzkxjo8a76g30qg0esju1.gif" alt=""></p><h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fzkxjmqk58j30xo0tktci.jpg" alt=""></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> LeetCode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 数组 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>LeetCode 上第 454 号问题：4Sum II</title>
+      <link href="/2019/01/27/mei-tian-yi-suan-4sum-ii-di-jiu-pian/"/>
+      <url>/2019/01/27/mei-tian-yi-suan-4sum-ii-di-jiu-pian/</url>
+      
+        <content type="html"><![CDATA[<p>LeetCode 上第 454 号问题：<strong><a href="https://leetcode-cn.com/problems/4sum-ii/" target="_blank" rel="noopener">4Sum II</a></strong></p><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><blockquote><p>给定四个包含整数的数组列表 A , B , C , D ,计算有多少个元组 (i, j, k, l) ，使得 A[i] &gt; + B[j] + C[k] + D[l] = 0。</p></blockquote><blockquote><p>为了使问题简单化，所有的 A, B, C, D 具有相同的长度 N，且 0 ≤ N ≤ 500 。所有整数的范围在 -228 到 228 - 1 之间，最终结果不会超过 231 - 1 。</p></blockquote><blockquote><p><em>例如:</em></p></blockquote><blockquote><p>输入:<br>A = [ 1, 2]<br>B = [-2,-1]<br>C = [-1, 2]<br>D = [ 0, 2] </p></blockquote><blockquote><p>输出:<br>2 </p><p>解释:<br>两个元组如下:       </p><ol><li>(0, 0, 0, 1) -&gt; A[0] + B[0] + C[0] + D[1] = 1 + (-2) + (-1) + 2 = 0  </li><li>(1, 1, 0, 0) -&gt; A[1] + B[1] + C[0] + D[0] = 2 + (-1) + (-1) + 0 = 0</li></ol></blockquote><h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>与<a href="https://xiaozhuanlan.com/topic/7923618450" target="_blank" rel="noopener">Two Sum</a>类似，需要用哈希表来解决问题。</p><ul><li>把A和B的两两之和都求出来，在哈希表中建立两数之和与其出现次数之间的映射</li><li>遍历C和D中任意两个数之和，只要看哈希表存不存在这两数之和的相反数就行了</li></ul><p>##动画演示</p><p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fzkxffnjo7g30np0dbadt.gif" alt="4Sum II"></p><h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><pre><code>// 454. 4Sum II// https://leetcode.com/problems/4sum-ii/description/// 时间复杂度: O(n^2)// 空间复杂度: O(n^2)class Solution {public:    int fourSumCount(vector&lt;int&gt;&amp; A, vector&lt;int&gt;&amp; B, vector&lt;int&gt;&amp; C, vector&lt;int&gt;&amp; D) {        unordered_map&lt;int,int&gt; hashtable;        for(int i = 0 ; i &lt; A.size() ; i ++){            for(int j = 0 ; j &lt; B.size() ; j ++){                 hashtable[A[i]+B[j]] += 1;            }        }        int res = 0;        for(int i = 0 ; i &lt; C.size() ; i ++){            for(int j = 0 ; j &lt; D.size() ; j ++){                if(hashtable.find(-C[i]-D[j]) != hashtable.end()){                    res += hashtable[-C[i]-D[j]];                }            }        }        return res;    }};</code></pre><h2 id="执行结果"><a href="#执行结果" class="headerlink" title="执行结果"></a>执行结果</h2><p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fzkxfhd78yj313c0i5wfd.jpg" alt="执行结果"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> LeetCode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 数组 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>LeetCode上第 447 号问题：Number of Boomerangs</title>
+      <link href="/2019/01/27/mei-tian-yi-suan-number-of-boomerangs/"/>
+      <url>/2019/01/27/mei-tian-yi-suan-number-of-boomerangs/</url>
+      
+        <content type="html"><![CDATA[<p>LeetCode上第 447 号问题：<a href="https://leetcode-cn.com/problems/number-of-boomerangs/" target="_blank" rel="noopener">Number of Boomerangs</a></p><blockquote><p>给定平面上 n 对不同的点，“回旋镖” 是由点表示的元组 (i, j, k) ，其中 i 和 j 之间的距离和 &gt; i 和 k 之间的距离相等（需要考虑元组的顺序）。</p></blockquote><blockquote><p>找到所有回旋镖的数量。你可以假设 n 最大为 500，所有点的坐标在闭区间 [-10000, 10000] 中。</p></blockquote><blockquote><p>示例:</p></blockquote><blockquote><p>输入:<br>[[0,0],[1,0],[2,0]]   </p></blockquote><blockquote><p>输出:<br>2</p></blockquote><blockquote><p>解释:<br>两个回旋镖为 [[1,0],[0,0],[2,0]] 和 [[1,0],[2,0],[0,0]]</p></blockquote><h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>n最大为500，可以使用时间复杂度为 O(n^2)的算法。</p><ul><li>遍历所有的点，让每个点作为一个锚点</li><li>然后再遍历其他的点，统计和锚点距离相等的点有多少个</li><li>然后分别带入n(n-1)计算结果并累加到res中</li></ul><h5 id="Tips："><a href="#Tips：" class="headerlink" title="Tips："></a>Tips：</h5><h6 id="Tip1"><a href="#Tip1" class="headerlink" title="Tip1"></a>Tip1</h6><ul><li>如果有一个点a，还有两个点b和c，如果ab和ac之间的距离相等，那么就有两种排列方法abc和acb；</li><li>如果有三个点b，c，d都分别和a之间的距离相等，那么有六种排列方法，abc, acb, acd, adc, abd, adb；</li><li>如果有n个点和点a距离相等，那么排列方式为n(n-1)。</li></ul><h6 id="Tip2"><a href="#Tip2" class="headerlink" title="Tip2"></a>Tip2</h6><ul><li>计算距离时不进行开根运算, 以保证精度；</li><li>只有当n大于等于2时，res值才会真正增加，因为当n=1时，增加量为<code>1*(1-1)=0</code>。</li></ul><h4 id="动画演示"><a href="#动画演示" class="headerlink" title="动画演示"></a>动画演示</h4><p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fzkx8sx3zlg30qn0estfw.gif" alt=""></p><h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><pre><code>// 447. Number of Boomerangs// https://leetcode.com/problems/number-of-boomerangs/description/// 时间复杂度: O(n^2)// 空间复杂度: O(n)class Solution {public:    int numberOfBoomerangs(vector&lt;pair&lt;int, int&gt;&gt;&amp; points) {        int res = 0;        for( int i = 0 ; i &lt; points.size() ; i ++ ){            // record中存储 点i 到所有其他点的距离出现的频次            unordered_map&lt;int, int&gt; record;            for(int j = 0 ; j &lt; points.size() ; j ++){                if(j != i){                    // 计算距离时不进行开根运算, 以保证精度                    record[dis(points[i], points[j])] += 1;                }            }            for(unordered_map&lt;int, int&gt;::iterator iter = record.begin() ; iter != record.end() ; iter ++){                res += (iter-&gt;second) * (iter-&gt;second - 1);            }        }        return res;    }private:    int dis(const pair&lt;int,int&gt; &amp;pa, const pair&lt;int,int&gt; &amp;pb){        return (pa.first - pb.first) * (pa.first - pb.first) +               (pa.second - pb.second) * (pa.second - pb.second);    }};</code></pre><h4 id="执行结果"><a href="#执行结果" class="headerlink" title="执行结果"></a>执行结果</h4><p><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181030113403.png" alt=""></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> LeetCode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 元祖 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>LeetCode上第 103 号问题：二叉树的锯齿形层次遍历</title>
+      <link href="/2019/01/27/mei-tian-yi-suan-binary-tree-zigzag-level-order-traversal-28/"/>
+      <url>/2019/01/27/mei-tian-yi-suan-binary-tree-zigzag-level-order-traversal-28/</url>
+      
+        <content type="html"><![CDATA[<p>LeetCode上第103 号问题：<strong><a href="https://leetcode-cn.com/problems/binary-tree-zigzag-level-order-traversal/" target="_blank" rel="noopener">二叉树的锯齿形层次遍历</a></strong></p><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><blockquote><p>给定一个二叉树，返回其节点值的锯齿形层次遍历。（即先从左往右，再从右往左进行下一层遍历，以此类推，层与层之间交替进行）。</p></blockquote><blockquote><p>例如:<br>给定二叉树: [3,9,20,null,null,15,7],</p></blockquote><blockquote><p> <img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181112084143.png" alt=""></p><p>返回其层次遍历结果：</p></blockquote><blockquote><p>[<br>   [3],<br>   [20,9],<br>   [15,7]<br>]</p></blockquote><h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>该问题需要用到<strong>队列</strong>，与之前的<a href="https://xiaozhuanlan.com/topic/8579460312" target="_blank" rel="noopener">二叉树的层次遍历</a>类似，不同点在于在偶数层需要翻转一下。</p><ul><li>建立一个queue</li><li>先把根节点放进去，这时候找根节点的左右两个子节点</li><li>去掉根节点，此时queue里的元素就是下一层的所有节点</li><li>循环遍历，将结果存到一个一维向量里</li><li>遍历完之后再把这个一维向量存到二维向量里</li><li>如果该层为偶数层，则reverse翻转一下</li><li>以此类推，可以完成层序遍历</li></ul><h2 id="动画演示"><a href="#动画演示" class="headerlink" title="动画演示"></a>动画演示</h2><p>动画演示GIF加载有点慢，请稍等片刻^_^</p><p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fzkx5g05uxg30qg0esgy0.gif" alt=""></p><h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fzkx56go9ij30xa0u0wgi.jpg" alt=""></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> LeetCode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 二叉树 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>从零开始搭建一个酷炫免费的个人博客</title>
       <link href="/2019/01/26/xin-shou-xiang-cong-ling-kai-shi-da-jian-yi-ge-ku-xuan-mian-fei-de-ge-ren-bo-ke/"/>
       <url>/2019/01/26/xin-shou-xiang-cong-ling-kai-shi-da-jian-yi-ge-ku-xuan-mian-fei-de-ge-ren-bo-ke/</url>
       
-        <content type="html"><![CDATA[<h1 id="【新手向】从零开始搭建一个酷炫免费的个人博客"><a href="#【新手向】从零开始搭建一个酷炫免费的个人博客" class="headerlink" title="【新手向】从零开始搭建一个酷炫免费的个人博客"></a>【新手向】从零开始搭建一个酷炫免费的个人博客</h1><p>由于公众号的文章不易后续整理阅读，于是小吴昨天上午花了半个小时使用 GitHub + Hexo 搭建了一下个人博客，打算将公众号的文章搬过去，支持关键字搜索、分类标签功能。效果是下面这样子的👇</p><p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fzk130ii6qg313l0ixx6q.gif" alt=""></p><p>结果后台好多小伙伴挺好奇博客是怎么搭建的，实际上这个挺简单的，小吴就从零开始分享一波如何搭建一个酷炫免费的个人博客吧，如果已经有博客的小伙伴可以留言一波网站地址：）</p><h3 id="前言：为什么要写技术博客"><a href="#前言：为什么要写技术博客" class="headerlink" title="前言：为什么要写技术博客"></a>前言：为什么要写技术博客</h3><h3 id="GitHub创建个人仓库"><a href="#GitHub创建个人仓库" class="headerlink" title="GitHub创建个人仓库"></a>GitHub创建个人仓库</h3><p>登录到 GitHub ，如果没有 GitHub 帐号，请使用你的邮箱注册 GitHub 帐号：<a href="https://github.com/join?source=header-home">https://github.com/join?source=header-home</a></p><p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fzk21xjx8gj31420myn1f.jpg" alt="注册"></p><p>登录成功之后，点击 GitHub 中的 New repository 创建新仓库，仓库名应该为：<strong>用户名</strong> .github.io 。这里<strong>用户名</strong>使用你的 GitHub 帐号名称代替，这是固定写法。</p><p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fzk2601f8kg313l0ixqca.gif" alt="创建新仓库"></p><p>ps: 因为我已经注册了同名仓库，因此第二次创建时会报错。</p><p>我的仓库名为👇：</p><p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fzk29gwq48j30fu03igls.jpg" alt="仓库名"></p><h3 id="Git管理"><a href="#Git管理" class="headerlink" title="Git管理"></a>Git管理</h3><p>Git 是目前世界上最先进的分布式版本控制系统（没有之一）。这是使用 Git 的目的是为了将我们的网站从本地提交上服务器（GitHub）上面去。我认为 Git 操作是程序员应该具备的一个基本操作，具体的 Git 操作细节可以查看廖雪峰的教程，讲的十分详细 <a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="noopener">https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000</a></p><p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fzk2hsewy8j313r0k0n5i.jpg" alt="QQ20190126-162933"></p><p>安装好 Git 后，只需要进行下面的配置即可。</p><h4 id="配置信息"><a href="#配置信息" class="headerlink" title="配置信息"></a>配置信息</h4><p>在终端进行操作，设置 user.name 和 user.email 配置信息，我这里设置为全局。</p><pre class=" language-java"><code class="language-java">git config <span class="token operator">--</span>global user<span class="token punctuation">.</span>name <span class="token string">"你的GitHub用户名"</span>git config <span class="token operator">--</span>global user<span class="token punctuation">.</span>email <span class="token string">"你的GitHub注册邮箱"</span></code></pre><h4 id="生成密钥"><a href="#生成密钥" class="headerlink" title="生成密钥"></a>生成密钥</h4><p>通过注册的邮箱生成 ssh 密钥文件：</p><pre class=" language-bash"><code class="language-bash">ssh-keygen -t rsa -C <span class="token string">"你的GitHub注册邮箱"</span></code></pre><p>然后直接三个回车即可，默认不需要设置密码。最后得到了两个文件：<code>id_rsa</code>和<code>id_rsa.pub</code>。</p><h4 id="拷贝密钥"><a href="#拷贝密钥" class="headerlink" title="拷贝密钥"></a>拷贝密钥</h4><p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fzk2vog35vj30mw0f2mzq.jpg" alt="拷贝密钥"></p><p>打开 <code>id_rsa.pub 文件</code>，将里面的内容全部复制。</p><p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fzk2xjwnthj30tv0b5dh4.jpg" alt="内容全部复制"></p><h4 id="粘贴到GitHub"><a href="#粘贴到GitHub" class="headerlink" title="粘贴到GitHub"></a>粘贴到GitHub</h4><p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fzk36z40lzj313s0k1n08.jpg" alt="GitHub SSh"></p><p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fzk376rh7yj313r0ketbj.jpg" alt="添加新的 SSH"></p><h4 id="测试GitHub-SSH"><a href="#测试GitHub-SSH" class="headerlink" title="测试GitHub SSH"></a>测试GitHub SSH</h4><p>添加好 <code>SSH Key</code>后，进行测试。</p><pre><code>ssh -T git@github.com</code></pre><p>你将会看到：</p><pre><code>The authenticity of host &#39;github.com (207.97.227.239)&#39; can&#39;t be established.RSA key fingerprint is 16:27:ac:a5:76:28:2d:36:63:1b:56:4d:eb:df:a6:48.Are you sure you want to continue connecting (yes/no)?</code></pre><p>选择 <code>yes</code></p><pre><code>Hi MisterBooo! You&#39;ve successfully authenticated, but GitHub does not provide shell access.</code></pre><p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fzk3bfd4wzj30i10213yk.jpg" alt="ssh -T"></p><p>如果看到<code>Hi</code>后面是你的用户名，就说明成功了。</p><h3 id="安装Node-js"><a href="#安装Node-js" class="headerlink" title="安装Node.js"></a>安装Node.js</h3><p>Hexo 基于 Node.js，因此需要先安装 Node.js，你可以在这里进行对应电脑版本的下载：<a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">https://nodejs.org/en/download/</a></p><p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fzk3ecq45aj313u0jkju0.jpg" alt="Node.js下载"></p><p>你也可以通过命令行进行安装：</p><p>cURL:</p><pre><code>$ curl https://raw.github.com/creationix/nvm/v0.33.11/install.sh | sh</code></pre><p>Wget:</p><pre><code>$ wget -qO- https://raw.github.com/creationix/nvm/v0.33.11/install.sh | sh</code></pre><p>安装完成后，重启终端并执行下列命令即可安装 Node.js。</p><pre><code>$ nvm install stable</code></pre><h3 id="Hexo安装"><a href="#Hexo安装" class="headerlink" title="Hexo安装"></a>Hexo安装</h3><p>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 <a href="http://daringfireball.net/projects/markdown/" target="_blank" rel="noopener">Markdown</a>（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。</p><p>所有必备的应用程序安装完成后，即可使用 npm 安装 Hexo。</p><pre><code>$ npm install -g hexo-cli</code></pre><h3 id="Hexo使用"><a href="#Hexo使用" class="headerlink" title="Hexo使用"></a>Hexo使用</h3><p>安装好 Hexo 后，马上就能使用了。首先初始化博客，输入：</p><pre><code>$ hexo init myBlog</code></pre><p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fzk3pvt34mj319f0u0qcz.jpg" alt=""></p><p>接下来，进入文件夹 <code>myBlog</code>,输入</p><pre><code>$ hexo s</code></pre><p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fzk3s50l94j30hy054t96.jpg" alt=""></p><p>然后，打开浏览器输入地址：</p><pre><code>localhost:4000</code></pre><p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fzk3te442qj313t0n1gxs.jpg" alt="hexo网站"></p><p>执行到这里事实上博客就已经搭建好了，接下来就是去完善它。</p><p>注意：下面的命令都是在 <code>myBlog</code>文件里进行操作的。</p><h3 id="添加文章"><a href="#添加文章" class="headerlink" title="添加文章"></a>添加文章</h3><p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fzk7dls02rj31840kiaco.jpg" alt="添加文章"></p><h4 id="1-直接导入文章"><a href="#1-直接导入文章" class="headerlink" title="1.直接导入文章"></a>1.直接导入文章</h4><p>你可以将你平时写的文章直接导入到 <code>_posts</code>  文件夹里，注意文章类型得是 <code>md</code>格式。</p><h4 id="2-写新文章"><a href="#2-写新文章" class="headerlink" title="2.写新文章"></a>2.写新文章</h4><p>你可以执行下列命令来创建一篇新文章。</p><pre><code>$ hexo new [layout] &lt;title&gt;</code></pre><p>你可以在命令中指定文章的布局（layout），默认为 <code>post</code>，可以通过修改 <code>_config.yml</code> 中的 <code>default_layout</code> 参数来指定默认布局。</p><p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fzk7hoiy3ij30z6042q3w.jpg" alt="写新文章"></p><p>这样在 <code>_posts</code>  文件夹里也生成了一篇新的文章。</p><p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fzk7j5ffx5j316c0ewmzp.jpg" alt="新的文章"></p><h3 id="生成网页"><a href="#生成网页" class="headerlink" title="生成网页"></a>生成网页</h3><p>使用 Hexo 生成静态文件快速而且简单。</p><pre><code>$ hexo generate</code></pre><p>你也可以简写成</p><pre><code>$ hexo g</code></pre><p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fzk7n3i1jyj318d0u0wpf.jpg" alt="生成文章"></p><h3 id="启动服务预览文章"><a href="#启动服务预览文章" class="headerlink" title="启动服务预览文章"></a>启动服务预览文章</h3><p>输入以下命令以启动服务器，你的网站会在 <code>http://localhost:4000</code> 下启动。在服务器启动期间，Hexo 会监视文件变动并自动更新，无须重启服务器。</p><pre><code>$ hexo server</code></pre><p>你也可以简写成</p><pre><code>$ hexo s</code></pre><p>如果你想要更改端口，或是在执行时遇到了 <code>EADDRINUSE</code> 错误，可以在执行时使用 <code>-p</code> 选项指定其他端口，如下：</p><pre><code>$ hexo server -p 5000</code></pre><p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fzk7pthinwj315606kdhh.jpg" alt="查看文章"></p><p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fzk7rs1dp8j31iy0u0e81.jpg" alt="网站"></p><h3 id="小总结"><a href="#小总结" class="headerlink" title="小总结"></a>小总结</h3><pre><code>hexo new &quot;我的博客文章&quot; #新建文章</code></pre><pre><code>hexo generate #生成网页</code></pre><pre><code>hexo server #启动服务预览</code></pre><p>这三个命令依次就是新建一篇博客文章、生成网页、在本地预览的操作。</p><h3 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h3><p>Hexo 提供了快速方便的一键部署功能，只需一条命令就能将网站部署到服务器上。</p><pre><code>$ hexo deploy</code></pre><p>你也可以简写成</p><pre><code>$ hexo d</code></pre><p>在开始之前，必须先在 <code>_config.yml</code> 中修改参数，一个正确的部署配置中至少要有 <code>type</code> 参数，例如：</p><pre><code>deploy:  type: git</code></pre><p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fzk7w0wzlyj30mk0eetae.jpg" alt="config"></p><p>在<code>_config.yml</code>中进行修改。</p><p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fzk7xrf4smj30y40u00yx.jpg" alt=""></p><p>这一步的目的是将 Hexo 与 GitHub 进行关联。</p><p>配置好后通过</p><pre><code>$ hexo d</code></pre><p>命令，稍等片刻，网站就已经部署好了，可以在浏览器输入<code>你的GitHub名称.github.io</code>，这样一个免费的博客就已经搭建好了。</p><h3 id="Hexo-主题"><a href="#Hexo-主题" class="headerlink" title="Hexo 主题"></a>Hexo 主题</h3><p>hexo 默认的主题可能显得有点呆板，你可以在 <a href="https://hexo.io/themes/index.html" target="_blank" rel="noopener">https://hexo.io/themes/index.html</a>进行主题的挑选更换。将下好的主题安放在<code>themes</code>文件夹内，同时在<code>_config.yml</code>中进行主题修改就好了。</p><p>经过一个小时的主题筛选，我选择了<code>hexo-theme-matery</code> 这款主题。通过<a href="https://blinkfox.github.io/2018/09/28/qian-duan/hexo-bo-ke-zhu-ti-zhi-hexo-theme-matery-de-jie-shao/" target="_blank" rel="noopener">https://blinkfox.github.io/2018/09/28/qian-duan/hexo-bo-ke-zhu-ti-zhi-hexo-theme-matery-de-jie-shao/</a>文档说明，经过简单的配置，效果就出来了！</p><p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fzk9f1968uj30yk0jmtb2.jpg" alt=""></p><p>一般大佬们提供的主题都会提供文档说明，按照说明进行简单的设置就能拥有一个酷炫的页面了。</p><p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fzk130ii6qg313l0ixx6q.gif" alt=""></p><h3 id="Markdown-写作"><a href="#Markdown-写作" class="headerlink" title="Markdown 写作"></a>Markdown 写作</h3><p>Markdown是一种可以使用普通文本编辑器编写的标记语言，通过简单的标记语法，它可以使普通文本内容具有一定的格式。</p><p>世面上支持 Markdown 语法的编辑器不胜枚举，选择起来十分困难，小吴在这里推荐 Typora 这款 Markdown 写作软件。</p><p> Typora 是一款免费的 MD 编辑器，它是优雅简洁与强大开放的完美结合体。</p><p>官网直达 <a href="https://typora.io" target="_blank" rel="noopener">https://typora.io</a></p><h4 id="Image"><a href="#Image" class="headerlink" title="Image"></a>Image</h4><p>选择 Typora 一个最主要的原因是它对图片的良好支持。</p><p>在 Mac 上安装好 iPic 后 ，并在设置中将图片插入修改为 通过 iPic 上传 ，快捷键是 control + command + i ，就可以十分快捷优雅地完成图片插入。强调一点：图床使用默认的微博图床即可，建议不要折腾。</p><p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fzk9r3q6toj30s40rwh1u.jpg" alt=""></p><p>这样，每次写作时，将图片拖入到 Typora 里，图片就能自动上传到图床上。</p><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul><li><p>申请 GitHub 账号</p></li><li><p>在 GitHub 上创建仓库</p></li><li><p>配备 Git ，同时将 SSH Key 提交到 GitHub 上</p></li><li><p>安装 Node.js</p></li><li><p>安装 Hexo</p></li><li><p>安装 Hexo 主题</p></li><li><p>使用 Markdown 软件写文章</p></li></ul><p>希望这篇文章能帮到想写博客却还没付诸行动的人，毕竟拥有一个免费且酷炫的博客还是挺简单还挺好玩的：）</p>]]></content>
+        <content type="html"><![CDATA[<h1 id="【新手向】从零开始搭建一个酷炫免费的个人博客"><a href="#【新手向】从零开始搭建一个酷炫免费的个人博客" class="headerlink" title="【新手向】从零开始搭建一个酷炫免费的个人博客"></a>【新手向】从零开始搭建一个酷炫免费的个人博客</h1><p>由于公众号的文章不易后续整理阅读，于是小吴昨天上午花了半个小时使用 GitHub + Hexo 搭建了一下个人博客，打算将公众号的文章搬过去，支持关键字搜索、分类标签功能。效果是下面这样子的👇</p><p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fzk130ii6qg313l0ixx6q.gif" alt=""></p><p>结果后台好多小伙伴挺好奇博客是怎么搭建的，实际上这个挺简单的，小吴就从零开始分享一波如何搭建一个酷炫免费的个人博客吧，如果已经有博客的小伙伴可以留言一波网站地址：）</p><h3 id="GitHub创建个人仓库"><a href="#GitHub创建个人仓库" class="headerlink" title="GitHub创建个人仓库"></a>GitHub创建个人仓库</h3><p>登录到 GitHub ，如果没有 GitHub 帐号，请使用你的邮箱注册 GitHub 帐号：<a href="https://github.com/join?source=header-home">https://github.com/join?source=header-home</a></p><p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fzk21xjx8gj31420myn1f.jpg" alt="注册"></p><p>登录成功之后，点击 GitHub 中的 New repository 创建新仓库，仓库名应该为：<strong>用户名</strong> .github.io 。这里<strong>用户名</strong>使用你的 GitHub 帐号名称代替，这是固定写法。</p><p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fzk2601f8kg313l0ixqca.gif" alt="创建新仓库"></p><p>ps: 因为我已经注册了同名仓库，因此第二次创建时会报错。</p><p>我的仓库名为👇：</p><p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fzk29gwq48j30fu03igls.jpg" alt="仓库名"></p><h3 id="Git管理"><a href="#Git管理" class="headerlink" title="Git管理"></a>Git管理</h3><p>Git 是目前世界上最先进的分布式版本控制系统（没有之一）。这是使用 Git 的目的是为了将我们的网站从本地提交上服务器（GitHub）上面去。我认为 Git 操作是程序员应该具备的一个基本操作，具体的 Git 操作细节可以查看廖雪峰的教程，讲的十分详细 <a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="noopener">https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000</a></p><p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fzk2hsewy8j313r0k0n5i.jpg" alt=""></p><p>安装好 Git 后，只需要进行下面的配置即可。</p><h4 id="配置信息"><a href="#配置信息" class="headerlink" title="配置信息"></a>配置信息</h4><p>在终端进行操作，设置 user.name 和 user.email 配置信息，我这里设置为全局。</p><pre class=" language-java"><code class="language-java">git config <span class="token operator">--</span>global user<span class="token punctuation">.</span>name <span class="token string">"你的GitHub用户名"</span>git config <span class="token operator">--</span>global user<span class="token punctuation">.</span>email <span class="token string">"你的GitHub注册邮箱"</span></code></pre><h4 id="生成密钥"><a href="#生成密钥" class="headerlink" title="生成密钥"></a>生成密钥</h4><p>通过注册的邮箱生成 ssh 密钥文件：</p><pre class=" language-bash"><code class="language-bash">ssh-keygen -t rsa -C <span class="token string">"你的GitHub注册邮箱"</span></code></pre><p>然后直接三个回车即可，默认不需要设置密码。最后得到了两个文件：<code>id_rsa</code>和<code>id_rsa.pub</code>。</p><h4 id="拷贝密钥"><a href="#拷贝密钥" class="headerlink" title="拷贝密钥"></a>拷贝密钥</h4><p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fzk2vog35vj30mw0f2mzq.jpg" alt="拷贝密钥"></p><p>打开 <code>id_rsa.pub 文件</code>，将里面的内容全部复制。</p><p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fzk2xjwnthj30tv0b5dh4.jpg" alt="内容全部复制"></p><h4 id="粘贴到GitHub"><a href="#粘贴到GitHub" class="headerlink" title="粘贴到GitHub"></a>粘贴到GitHub</h4><p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fzk36z40lzj313s0k1n08.jpg" alt="GitHub SSh"></p><p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fzk376rh7yj313r0ketbj.jpg" alt="添加新的 SSH"></p><h4 id="测试GitHub-SSH"><a href="#测试GitHub-SSH" class="headerlink" title="测试GitHub SSH"></a>测试GitHub SSH</h4><p>添加好 <code>SSH Key</code>后，进行测试。</p><pre><code>ssh -T git@github.com</code></pre><p>你将会看到：</p><pre><code>The authenticity of host &#39;github.com (207.97.227.239)&#39; can&#39;t be established.RSA key fingerprint is 16:27:ac:a5:76:28:2d:36:63:1b:56:4d:eb:df:a6:48.Are you sure you want to continue connecting (yes/no)?</code></pre><p>选择 <code>yes</code></p><pre><code>Hi MisterBooo! You&#39;ve successfully authenticated, but GitHub does not provide shell access.</code></pre><p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fzk3bfd4wzj30i10213yk.jpg" alt="ssh -T"></p><p>如果看到<code>Hi</code>后面是你的用户名，就说明成功了。</p><h3 id="安装Node-js"><a href="#安装Node-js" class="headerlink" title="安装Node.js"></a>安装Node.js</h3><p>Hexo 基于 Node.js，因此需要先安装 Node.js，你可以在这里进行对应电脑版本的下载：<a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">https://nodejs.org/en/download/</a></p><p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fzk3ecq45aj313u0jkju0.jpg" alt="Node.js下载"></p><p>你也可以通过命令行进行安装：</p><p>cURL:</p><pre><code>$ curl https://raw.github.com/creationix/nvm/v0.33.11/install.sh | sh</code></pre><p>Wget:</p><pre><code>$ wget -qO- https://raw.github.com/creationix/nvm/v0.33.11/install.sh | sh</code></pre><p>安装完成后，重启终端并执行下列命令即可安装 Node.js。</p><pre><code>$ nvm install stable</code></pre><h3 id="Hexo安装"><a href="#Hexo安装" class="headerlink" title="Hexo安装"></a>Hexo安装</h3><p>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 <a href="http://daringfireball.net/projects/markdown/" target="_blank" rel="noopener">Markdown</a>（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。</p><p>所有必备的应用程序安装完成后，即可使用 npm 安装 Hexo。</p><pre><code>$ npm install -g hexo-cli</code></pre><h3 id="Hexo使用"><a href="#Hexo使用" class="headerlink" title="Hexo使用"></a>Hexo使用</h3><p>安装好 Hexo 后，马上就能使用了。首先初始化博客，输入：</p><pre><code>$ hexo init myBlog</code></pre><p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fzk3pvt34mj319f0u0qcz.jpg" alt=""></p><p>接下来，进入文件夹 <code>myBlog</code>,输入</p><pre><code>$ hexo s</code></pre><p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fzk3s50l94j30hy054t96.jpg" alt=""></p><p>然后，打开浏览器输入地址：</p><pre><code>localhost:4000</code></pre><p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fzk3te442qj313t0n1gxs.jpg" alt="hexo网站"></p><p>执行到这里事实上博客就已经搭建好了，接下来就是去完善它。</p><p>注意：下面的命令都是在 <code>myBlog</code>文件里进行操作的。</p><h3 id="添加文章"><a href="#添加文章" class="headerlink" title="添加文章"></a>添加文章</h3><p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fzk7dls02rj31840kiaco.jpg" alt="添加文章"></p><h4 id="1-直接导入文章"><a href="#1-直接导入文章" class="headerlink" title="1.直接导入文章"></a>1.直接导入文章</h4><p>你可以将你平时写的文章直接导入到 <code>_posts</code>  文件夹里，注意文章类型得是 <code>md</code>格式。</p><h4 id="2-写新文章"><a href="#2-写新文章" class="headerlink" title="2.写新文章"></a>2.写新文章</h4><p>你可以执行下列命令来创建一篇新文章。</p><pre><code>$ hexo new [layout] &lt;title&gt;</code></pre><p>你可以在命令中指定文章的布局（layout），默认为 <code>post</code>，可以通过修改 <code>_config.yml</code> 中的 <code>default_layout</code> 参数来指定默认布局。</p><p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fzk7hoiy3ij30z6042q3w.jpg" alt="写新文章"></p><p>这样在 <code>_posts</code>  文件夹里也生成了一篇新的文章。</p><p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fzk7j5ffx5j316c0ewmzp.jpg" alt="新的文章"></p><h3 id="生成网页"><a href="#生成网页" class="headerlink" title="生成网页"></a>生成网页</h3><p>使用 Hexo 生成静态文件快速而且简单。</p><pre><code>$ hexo generate</code></pre><p>你也可以简写成</p><pre><code>$ hexo g</code></pre><p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fzk7n3i1jyj318d0u0wpf.jpg" alt="生成文章"></p><h3 id="启动服务预览文章"><a href="#启动服务预览文章" class="headerlink" title="启动服务预览文章"></a>启动服务预览文章</h3><p>输入以下命令以启动服务器，你的网站会在 <code>http://localhost:4000</code> 下启动。在服务器启动期间，Hexo 会监视文件变动并自动更新，无须重启服务器。</p><pre><code>$ hexo server</code></pre><p>你也可以简写成</p><pre><code>$ hexo s</code></pre><p>如果你想要更改端口，或是在执行时遇到了 <code>EADDRINUSE</code> 错误，可以在执行时使用 <code>-p</code> 选项指定其他端口，如下：</p><pre><code>$ hexo server -p 5000</code></pre><p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fzk7pthinwj315606kdhh.jpg" alt="查看文章"></p><p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fzk7rs1dp8j31iy0u0e81.jpg" alt="网站"></p><h3 id="小总结"><a href="#小总结" class="headerlink" title="小总结"></a>小总结</h3><pre><code>hexo new &quot;我的博客文章&quot; #新建文章</code></pre><pre><code>hexo generate #生成网页</code></pre><pre><code>hexo server #启动服务预览</code></pre><p>这三个命令依次就是新建一篇博客文章、生成网页、在本地预览的操作。</p><h3 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h3><p>Hexo 提供了快速方便的一键部署功能，只需一条命令就能将网站部署到服务器上。</p><pre><code>$ hexo deploy</code></pre><p>你也可以简写成</p><pre><code>$ hexo d</code></pre><p>在开始之前，必须先在 <code>_config.yml</code> 中修改参数，一个正确的部署配置中至少要有 <code>type</code> 参数，例如：</p><pre><code>deploy:  type: git</code></pre><p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fzk7w0wzlyj30mk0eetae.jpg" alt="config"></p><p>在<code>_config.yml</code>中进行修改。</p><p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fzk7xrf4smj30y40u00yx.jpg" alt=""></p><p>这一步的目的是将 Hexo 与 GitHub 进行关联。</p><p>配置好后通过</p><pre><code>$ hexo d</code></pre><p>命令，稍等片刻，网站就已经部署好了，可以在浏览器输入<code>你的GitHub名称.github.io</code>，这样一个免费的博客就已经搭建好了。</p><h3 id="Hexo-主题"><a href="#Hexo-主题" class="headerlink" title="Hexo 主题"></a>Hexo 主题</h3><p>hexo 默认的主题可能显得有点呆板，你可以在 <a href="https://hexo.io/themes/index.html" target="_blank" rel="noopener">https://hexo.io/themes/index.html</a>进行主题的挑选更换。将下好的主题安放在<code>themes</code>文件夹内，同时在<code>_config.yml</code>中进行主题修改就好了。</p><p>经过一个小时的主题筛选，我选择了<code>hexo-theme-matery</code> 这款主题。通过<a href="https://blinkfox.github.io/2018/09/28/qian-duan/hexo-bo-ke-zhu-ti-zhi-hexo-theme-matery-de-jie-shao/" target="_blank" rel="noopener">https://blinkfox.github.io/2018/09/28/qian-duan/hexo-bo-ke-zhu-ti-zhi-hexo-theme-matery-de-jie-shao/</a>文档说明，经过简单的配置，效果就出来了！</p><p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fzk9f1968uj30yk0jmtb2.jpg" alt=""></p><p>一般大佬们提供的主题都会提供文档说明，按照说明进行简单的设置就能拥有一个酷炫的页面了。</p><p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fzk130ii6qg313l0ixx6q.gif" alt=""></p><h3 id="Markdown-写作"><a href="#Markdown-写作" class="headerlink" title="Markdown 写作"></a>Markdown 写作</h3><p>Markdown是一种可以使用普通文本编辑器编写的标记语言，通过简单的标记语法，它可以使普通文本内容具有一定的格式。</p><p>世面上支持 Markdown 语法的编辑器不胜枚举，选择起来十分困难，小吴在这里推荐 Typora 这款 Markdown 写作软件。</p><p> Typora 是一款免费的 MD 编辑器，它是优雅简洁与强大开放的完美结合体。</p><p>官网直达 <a href="https://typora.io" target="_blank" rel="noopener">https://typora.io</a></p><h4 id="Image"><a href="#Image" class="headerlink" title="Image"></a>Image</h4><p>选择 Typora 一个最主要的原因是它对图片的良好支持。</p><p>在 Mac 上安装好 iPic 后 ，并在设置中将图片插入修改为 通过 iPic 上传 ，快捷键是 control + command + i ，就可以十分快捷优雅地完成图片插入。强调一点：图床使用默认的微博图床即可，建议不要折腾。</p><p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fzk9r3q6toj30s40rwh1u.jpg" alt=""></p><p>这样，每次写作时，将图片拖入到 Typora 里，图片就能自动上传到图床上。</p><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul><li><p>申请 GitHub 账号</p></li><li><p>在 GitHub 上创建仓库</p></li><li><p>配备 Git ，同时将 SSH Key 提交到 GitHub 上</p></li><li><p>安装 Node.js</p></li><li><p>安装 Hexo</p></li><li><p>安装 Hexo 主题</p></li><li><p>使用 Markdown 软件写文章</p></li></ul><p>希望这篇文章能帮到想写博客却还没付诸行动的人，毕竟拥有一个免费且酷炫的博客还是挺简单还挺好玩的：）</p>]]></content>
       
       
       <categories>
@@ -153,9 +305,9 @@
       
         <tags>
             
-            <tag> 排序 </tag>
-            
             <tag> 基数排序 </tag>
+            
+            <tag> 排序 </tag>
             
         </tags>
       
@@ -261,9 +413,9 @@
       
         <tags>
             
-            <tag> 希尔排序 </tag>
-            
             <tag> 排序 </tag>
+            
+            <tag> 希尔排序 </tag>
             
         </tags>
       
