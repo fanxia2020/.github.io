@@ -5,12 +5,10 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="五分钟学算法">
-    <meta name="description" content="
-title: LeetCode上第20 号问题：有效的括号date: 2019-01-27 11:48:28author: 程序员小吴师兄top: falsesummary:categories: LeetCodetags:
+    <meta name="keywords" content="看动画理解「链表」实现LRU缓存淘汰算法, 五分钟学算法">
+    <meta name="description" content="前几节学习了「链表」、「时间与空间复杂度」的概念，本节将结合「循环链表」、「双向链表」与 「用空间换时间的设计思想」来设计一个很有意思的缓存淘汰策略：LRU缓存淘汰算法。
 
-栈
-数据结">
+循环链表的概念如上图所示：单链表的尾结点指针指向空地址，表示这就是">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -18,7 +16,7 @@ title: LeetCode上第20 号问题：有效的括号date: 2019-01-27 11:48:28auth
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>五分钟学算法</title>
+    <title>看动画理解「链表」实现LRU缓存淘汰算法 | 五分钟学算法</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -260,13 +258,13 @@ title: LeetCode上第20 号问题：有效的括号date: 2019-01-27 11:48:28auth
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        
+                        看动画理解「链表」实现LRU缓存淘汰算法
                     </div>
                 </div>
             </div>
@@ -377,12 +375,29 @@ title: LeetCode上第20 号问题：有效的括号date: 2019-01-27 11:48:28auth
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/链表/" target="_blank">
+                                <span class="chip bg-color">链表</span>
+                            </a>
+                        
+                            <a href="/tags/数据结构/" target="_blank">
+                                <span class="chip bg-color">数据结构</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/高级算法/" class="post-category" target="_blank">
+                                高级算法
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -390,21 +405,21 @@ title: LeetCode上第20 号问题：有效的括号date: 2019-01-27 11:48:28auth
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2018-11-08
+                    2019-01-29
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        332
+                        1.7k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        1 分
+                        5 分
                     </div>
                     
                 
@@ -420,61 +435,70 @@ title: LeetCode上第20 号问题：有效的括号date: 2019-01-27 11:48:28auth
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <hr>
-<p>title: LeetCode上第20 号问题：有效的括号<br>date: 2019-01-27 11:48:28<br>author: 程序员小吴师兄<br>top: false<br>summary:<br>categories: LeetCode<br>tags:</p>
+                <p>前几节学习了「链表」、「时间与空间复杂度」的概念，本节将结合「循环链表」、「双向链表」与 「用空间换时间的设计思想」来设计一个很有意思的缓存淘汰策略：LRU缓存淘汰算法。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1940317-68c9e41fd4b0ef90?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="三种最常见的链表结构"></p>
+<h3 id="循环链表的概念"><a href="#循环链表的概念" class="headerlink" title="循环链表的概念"></a>循环链表的概念</h3><p>如上图所示：单链表的尾结点指针指向空地址，表示这就是最后的结点了。而循环链表的尾结点指针是指向链表的头结点。</p>
+<p>因此<strong>循环链表是一种特殊的单链表。</strong>它跟单链表唯一的区别就在于尾结点。它像一个环一样首尾相连，所以叫作「循环链表」。</p>
+<h3 id="循环链表的特点"><a href="#循环链表的特点" class="headerlink" title="循环链表的特点"></a>循环链表的特点</h3><p>和单链表相比，循环链表的优点是从链尾到链头比较方便，当要处理的数据具有环型结构特点时，适合采用循环链表。</p>
+<h3 id="双向链表概念"><a href="#双向链表概念" class="headerlink" title="双向链表概念"></a>双向链表概念</h3><p>双向链表也叫双链表，是链表的一种，它的链接方向是双向的，它的每个数据结点中都包含有两个指针，分别指向直接后继和直接前驱。</p>
+<p>所以，从双向链表中的任意一个结点开始，都可以很方便地访问它的前驱结点和后继结点。</p>
+<p>双向链表的数据结构中，会有两个比较重要的参数： <code>pre</code> 和 <code>next</code> 。</p>
 <ul>
-<li>栈</li>
-<li>数据结构</li>
+<li><code>pre</code> 指向前一个数据结构</li>
+<li><code>next</code> 指向下一个数据结构</li>
 </ul>
-<hr>
-<p>LeetCode上第20 号问题：<strong><a href="https://leetcode-cn.com/problems/valid-parentheses/" target="_blank" rel="noopener">有效的括号</a></strong></p>
-<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><blockquote>
-<p>给定一个只包括 ‘(‘，’)’，’{‘，’}’，’[‘，’]’ 的字符串，判断字符串是否有效。</p>
-</blockquote>
-<blockquote>
-<p>有效字符串需满足：</p>
-</blockquote>
-<blockquote>
-<p>左括号必须用相同类型的右括号闭合。<br>左括号必须以正确的顺序闭合。<br>注意空字符串可被认为是有效字符串。    </p>
-</blockquote>
-<blockquote>
-<h4 id="示例-1"><a href="#示例-1" class="headerlink" title="示例 1:"></a>示例 1:</h4></blockquote>
-<blockquote>
-<p>输入: “()”<br>输出: true</p>
-</blockquote>
-<blockquote>
-<h4 id="示例-2"><a href="#示例-2" class="headerlink" title="示例 2:"></a>示例 2:</h4></blockquote>
-<blockquote>
-<p>输入: “()[]{}”<br>输出: true</p>
-</blockquote>
-<blockquote>
-<h4 id="示例-3"><a href="#示例-3" class="headerlink" title="示例 3:"></a>示例 3:</h4></blockquote>
-<blockquote>
-<p>输入: “(]”<br>输出: false</p>
-</blockquote>
-<blockquote>
-<h4 id="示例-4"><a href="#示例-4" class="headerlink" title="示例 4:"></a>示例 4:</h4></blockquote>
-<blockquote>
-<p>输入: “([)]”<br>输出: false   </p>
-</blockquote>
-<blockquote>
-<h4 id="示例-5"><a href="#示例-5" class="headerlink" title="示例 5:"></a>示例 5:</h4></blockquote>
-<blockquote>
-<p>输入: “{[]}”<br>输出: true   </p>
-</blockquote>
-<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>这道题让我们验证输入的字符串是否为括号字符串，包括大括号，中括号和小括号。</p>
-<p>这里我们使用<strong>栈</strong>。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1940317-259b92057bd8e0db?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="单链表与双链表的对比"></p>
+<h3 id="双向链表的特点"><a href="#双向链表的特点" class="headerlink" title="双向链表的特点"></a>双向链表的特点</h3><ul>
+<li><p>与单链表对比，双链表需要多一个指针用于指向前驱节点，因此如果存储同样多的数据，双向链表要比单链表占用更多的内存空间</p>
+</li>
+<li><p>双链表的插入和删除需要同时维护 next 和 prev 两个指针。</p>
+</li>
+<li><p>双链表中的元素访问需要通过顺序访问，支持双向遍历，这就是双向链表操作的灵活性根本</p>
+</li>
+</ul>
+<h3 id="双向链表的基本操作"><a href="#双向链表的基本操作" class="headerlink" title="双向链表的基本操作"></a>双向链表的基本操作</h3><h4 id="1-添加元素。"><a href="#1-添加元素。" class="headerlink" title="1.添加元素。"></a>1.添加元素。</h4><p>与单向链表相对比双向链表可以在 O(1) 时间复杂度搞定，而单向链表需要 O(n) 的时间复杂度。</p>
+<p>双向链表的添加元素包括头插法和尾插法。<br><img src="http://upload-images.jianshu.io/upload_images/1940317-24711ed983f9482b?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="头插法和尾插法"></p>
+<p><strong>头插法：</strong>将链表的左边称为链表头部，右边称为链表尾部。头插法是将右边固定，每次新增的元素都在左边头部增加。</p>
+<p><strong>尾插法：</strong>将链表的左边称为链表头部，右边称为链表尾部。尾插法是将左边固定，每次新增都在链表的右边最尾部。</p>
+<h4 id="2-查询元素"><a href="#2-查询元素" class="headerlink" title="2.查询元素"></a>2.查询元素</h4><p><img src="http://upload-images.jianshu.io/upload_images/1940317-8a8215da4597d9ed?imageMogr2/auto-orient/strip" alt="查询元素"></p>
+<p>双向链表的灵活处就是<strong>知道链表中的一个元素结构就可以向左或者向右开始遍历查找需要的元素结构</strong>。因此对于一个有序链表，双向链表的按值查询的效率比单链表高一些。因为，我们可以记录上次查找的位置 p，每次查询时，根据要查找的值与 p 的大小关系，决定是往前还是往后查找，所以平均只需要查找一半的数据。</p>
+<h4 id="3-删除元素"><a href="#3-删除元素" class="headerlink" title="3.删除元素"></a>3.删除元素</h4><p>在实际的软件开发中，从链表中删除一个数据无外乎这两种情况：</p>
 <ul>
-<li>遍历输入字符串</li>
-<li>如果当前字符为左半边括号时，则将其压入栈中</li>
-<li>如果遇到右半边括号时，<strong>分类讨论：</strong></li>
-<li>1）如栈不为空且为对应的左半边括号，则取出栈顶元素，继续循环  </li>
-<li>2）若此时栈为空，则直接返回false</li>
-<li>3）若不为对应的左半边括号，反之返回false</li>
+<li><p>删除结点中“值等于某个给定值”的结点</p>
+</li>
+<li><p>删除给定指针指向的结点</p>
+</li>
 </ul>
-<h2 id="动画演示"><a href="#动画演示" class="headerlink" title="动画演示"></a>动画演示</h2><p><strong>动画演示GIF有点大，请稍微等待一下加载显示^_^</strong></p>
-<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fzkzzpkrjng30qo0f0n2n.gif" alt=""></p>
-<h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fzkzzqlgmij30u014awmf.jpg" alt=""></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1940317-cc0552cc91316155?imageMogr2/auto-orient/strip" alt="删除元素"></p>
+<p>对于双向链表来说，双向链表中的结点已经保存了前驱结点的指针，删除时不需要像单链表那样遍历。所以，针对第二种情况，单链表删除操作需要 O(n) 的时间复杂度，而双向链表只需要在 O(1) 的时间复杂度。</p>
+<h3 id="双向循环链表"><a href="#双向循环链表" class="headerlink" title="双向循环链表"></a>双向循环链表</h3><p><img src="http://upload-images.jianshu.io/upload_images/1940317-8ccbb5571edeefae?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="双向循环链表"></p>
+<p>如图所示，双向循环链表的概念很好理解：「双向链表」 + 「循环链表」的组合。</p>
+<h3 id="缓存淘汰策略"><a href="#缓存淘汰策略" class="headerlink" title="缓存淘汰策略"></a>缓存淘汰策略</h3><p>缓存是一种提高数据读取性能的技术，在硬件设计、软件开发中都有着非常广泛的应用，比如常见的 CPU 缓存、数据库缓存、浏览器缓存等等。</p>
+<p>缓存的大小有限，当缓存被用满时，哪些数据应该被清理出去，哪些数据应该被保留？这就需要缓存淘汰策略来决定。常见的策略有三种：先进先出策略 FIFO（First In，First Out）、最少使用策略 LFU（Least Frequently Used）、最近最少使用策略 LRU（Least Recently Used）。</p>
+<p>在各个语言的第三方框架中都大量使用到了 LRU 缓存策略。程序员小吴接触到的有Java中的 「 Mybatis 」，iOS中的 「YYCache」与「Lottie」等。</p>
+<h4 id="LRU缓存淘汰算法"><a href="#LRU缓存淘汰算法" class="headerlink" title="LRU缓存淘汰算法"></a>LRU缓存淘汰算法</h4><p>LRU是最近最少使用策略的缩写，是根据数据的历史访问记录来进行淘汰数据，其核心思想是“如果数据最近被访问过，那么将来被访问的几率也更高”。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1940317-f9f489649bb5a632?imageMogr2/auto-orient/strip" alt="LRU概念"></p>
+<h3 id="链表实现LRU"><a href="#链表实现LRU" class="headerlink" title="链表实现LRU"></a>链表实现LRU</h3><p>将Cache的所有位置都用双链表连接起来，当一个位置被命中之后，通过调整链表的指向，将该位置调整到链表头的位置，新加入的Cache直接加到链表头中。</p>
+<p>这样，在多次进行Cache操作后，最近被命中的，就会被向链表头方向移动，而没有命中的，而想链表后面移动，链表尾则表示最近最少使用的Cache。</p>
+<p>当需要替换内容时候，链表的最后位置就是最少被命中的位置，我们只需要淘汰链表最后的部分即可。</p>
+<h3 id="链表实现LRU动画演示"><a href="#链表实现LRU动画演示" class="headerlink" title="链表实现LRU动画演示"></a>链表实现LRU动画演示</h3><ol>
+<li>如果此数据之前已经被缓存在链表中了，通过遍历得到这个数据对应的结点，并将其从原来的位置删除，然后再插入到链表的头部。</li>
+<li><p>如果此数据没有在缓存链表中，可以分为两种情况：</p>
+<ul>
+<li>如果此时缓存未满，则将此结点直接插入到链表的头部；</li>
+<li>如果此时缓存已满，则链表尾结点删除，将新的数据结点插入链表的头部。</li>
+</ul>
+<p><img src="http://upload-images.jianshu.io/upload_images/1940317-fd0d9116ed986c7a?imageMogr2/auto-orient/strip" alt="链表实现LRU"></p>
+</li>
+</ol>
+<p>通过动图可以发现，如果缓存空间足够大，那么存储的数据也就足够多，通过缓存中命中数据的概率就越大，也就提高了代码的执行速度。这就是<strong>空间换时间的设计思想</strong>。</p>
+<p>对于程序开发来说，时间复杂度和空间复杂度是可以相互转化的。说通俗一点，就是：</p>
+<ul>
+<li><p>对于执行的慢的程序，可以通过消耗内存（即构造新的数据结构）来进行优化；</p>
+</li>
+<li><p>而消耗内存的程序，可以通过消耗时间来降低内存的消耗。</p>
+</li>
+</ul>
 
             </div>
             <hr>
@@ -498,7 +522,7 @@ title: LeetCode上第20 号问题：有效的括号date: 2019-01-27 11:48:28auth
                     </span>
                     <a href="http://cxyxiaowu.com" class="b-link-green">五分钟学算法</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/posts/13/" class="b-link-green"></a>
+                    <a href="/posts/f5f29cad/" class="b-link-green">看动画理解「链表」实现LRU缓存淘汰算法</a>
                 </p>
             </div>
         </div>
@@ -521,33 +545,50 @@ title: LeetCode上第20 号问题：有效的括号date: 2019-01-27 11:48:28auth
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/posts/4/">
+                <a href="/posts/f5f29cad/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="看动画理解「链表」实现LRU缓存淘汰算法">
                         
-                        <span class="card-title"></span>
+                        <span class="card-title">看动画理解「链表」实现LRU缓存淘汰算法</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">
-title: LeetCode上第 150 号问题：逆波兰表达式求值date: 2019-01-27 11:36:01author: 程序员小吴师兄top: falsesummary:categories: LeetCodetags:
+                    <div class="summary">前几节学习了「链表」、「时间与空间复杂度」的概念，本节将结合「循环链表」、「双向链表」与 「用空间换时间的设计思想」来设计一个很有意思的缓存淘汰策略：LRU缓存淘汰算法。
 
-</div>
+循环链表的概念如上图所示：单链表的尾结点指针指向空地址，表示这就是</div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-11-08
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-29
+                            </span>
                         <span class="publish-author">
                             
-                            <i class="fa fa-user fa-fw"></i>
-                            程序员小吴师兄
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/高级算法/" class="post-category" target="_blank">
+                                    高级算法
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/链表/" target="_blank">
+                        <span class="chip bg-color">链表</span>
+                    </a>
+                    
+                    <a href="/tags/数据结构/" target="_blank">
+                        <span class="chip bg-color">数据结构</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -559,29 +600,44 @@ title: LeetCode上第 150 号问题：逆波兰表达式求值date: 2019-01-27 1
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/posts/8/">
+                <a href="/posts/27410/">
                     <div class="card-image">
                         
+                        <img src="https://ws2.sinaimg.cn/large/006tNc79gy1fzmf688d8tj311o0aejyn.jpg" class="responsive-img" alt="准备下次编程面试前你应该知道的数据结构">
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
-                        
-                        <span class="card-title"></span>
+                        <span class="card-title">准备下次编程面试前你应该知道的数据结构</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary">
-title: LeetCode上第19号问题：Remove Nth Node From End of Listdate: 2019-01-27 11:43:55author: 程序员小吴师兄top: falsesummary:catego</div>
+国外 IT 教育学院 Educative.io 创始人 Fahim ul Haq 写过一篇过万赞的文章《The top data structures you should know for your next coding interv</div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-11-06
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-28
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fa fa-user fa-fw"></i>
-                            程序员小吴师兄
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/分享/" class="post-category" target="_blank">
+                                    分享
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/数据结构/" target="_blank">
+                        <span class="chip bg-color">数据结构</span>
+                    </a>
+                    
+                    <a href="/tags/算法/" target="_blank">
+                        <span class="chip bg-color">算法</span>
+                    </a>
+                    
                 </div>
                 
             </div>
