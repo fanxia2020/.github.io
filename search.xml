@@ -4,6 +4,170 @@
   
     
     <entry>
+      <title>啥是佩奇排名算法</title>
+      <link href="/posts/17626341/"/>
+      <url>/posts/17626341/</url>
+      
+        <content type="html"><![CDATA[<h3 id="佩奇排名介绍"><a href="#佩奇排名介绍" class="headerlink" title="佩奇排名介绍"></a>佩奇排名介绍</h3><p>佩奇排名是根据页面之间的链接结构计算页面的值的一种算法。下面我们通过动画来理解进行计算的具体流程。</p><p>假设一个正方形表示一个 WEB 页面，一个箭头表示一个页面之间的链接。</p><p><img src="https://user-gold-cdn.xitu.io/2019/1/22/16872fdce7fb77a8?w=2110&amp;h=1184&amp;f=png&amp;s=88799" alt="此图表明下面 3 页包含指向上面 1 页的链接"></p><p>在佩奇排名算法中，网页指向的链接越多，页面被确定为越重要。</p><p>因此，在这里，确定首页最重要。</p><p><img src="https://user-gold-cdn.xitu.io/2019/1/22/16872fdce863e479?w=958&amp;h=535&amp;f=gif&amp;s=29656" alt="确定首页最重要"></p><p>实际上，每个页面的重要性都是通过计算来量化的。</p><h4 id="基本的计算方法思想"><a href="#基本的计算方法思想" class="headerlink" title="基本的计算方法思想"></a>基本的计算方法思想</h4><p>1.未链接的页面分数为 1</p><p><img src="https://user-gold-cdn.xitu.io/2019/1/22/16872fdce88b9013?w=1920&amp;h=1078&amp;f=png&amp;s=78229" alt="未链接的页面分数为 1"></p><p>2.有链接的页面得分为正在链接的页面的总得分</p><p><img src="https://user-gold-cdn.xitu.io/2019/1/22/16872fdce8d11b44?w=1918&amp;h=1078&amp;f=png&amp;s=90471" alt=".有链接的页面得分为正在链接的页面的总得分"></p><p>3.当有多个网页的链接时，链接分数均匀分布</p><p><img src="https://user-gold-cdn.xitu.io/2019/1/22/16872fdcea312ae5?w=958&amp;h=535&amp;f=gif&amp;s=74616" alt="链接分数均匀分布"></p><p>4.来自高度链接网页的链接具有很高的价值</p><p><img src="https://user-gold-cdn.xitu.io/2019/1/22/16872fdceae34912?w=1914&amp;h=1088&amp;f=png&amp;s=91417" alt=""></p><p>该图中心页面有三个独立页面指向它的链接，所以它的分数是 3 。<br>首页有一个很大的分数，因为链接是从分数为 3 的页面指向它的。</p><p><img src="https://user-gold-cdn.xitu.io/2019/1/22/16872fdd163c0dcd?w=958&amp;h=535&amp;f=gif&amp;s=118317" alt=""></p><p>在动画中的六个页面中，判断最上面的页面是最重要的页面—-这是佩奇排名的基本思想。</p><h4 id="基本的计算方法思想的循环问题"><a href="#基本的计算方法思想的循环问题" class="headerlink" title="基本的计算方法思想的循环问题"></a>基本的计算方法思想的循环问题</h4><p><img src="https://user-gold-cdn.xitu.io/2019/1/22/16872fdd22e57fa0?w=1928&amp;h=1074&amp;f=png&amp;s=92132" alt=""></p><p>如果按照顺序来计算每个页面的分数时，那么就会出现问题：以这种方式计算，它将无限循环，并且在循环中的页面得分在任何地方都会很高。</p><p><img src="https://user-gold-cdn.xitu.io/2019/1/22/16872fdd36452959?w=958&amp;h=535&amp;f=gif&amp;s=147796" alt=""></p><p>循环的问题可以通过“随机游走模型”的计算方法来解决。</p><h3 id="随机游走模型"><a href="#随机游走模型" class="headerlink" title="随机游走模型"></a>随机游走模型</h3><p>以小猪佩奇浏览网页为例。</p><p>小猪佩奇开始访问「五分钟学算法」中有趣的页面，那么从这个左下角页面开始。</p><p><img src="https://user-gold-cdn.xitu.io/2019/1/22/16872fdd3662dfe4?w=958&amp;h=535&amp;f=gif&amp;s=270716" alt=""></p><p>它们跟随一个链接并移动到另外的一个页面，看了一些之后，发现不敢兴趣了，这样就停止了浏览。</p><p>然后，又一天，它在小吴的推荐下，在完全不同的页面进行浏览，跟随一个链接并移动到另外的一个页面，一旦失去兴趣就停止浏览。</p><p><img src="https://user-gold-cdn.xitu.io/2019/1/22/16872fdd39f892f5?w=958&amp;h=535&amp;f=gif&amp;s=182307" alt=""></p><p><strong>像这样，重复从某个页面开始浏览，移动几页后便停止的操作</strong>，如果从互联网空间一侧进行观察，就像网页浏览的人：重复移动页面几次后传送到一个完全不同的页面。</p><h3 id="量化随机游走模型"><a href="#量化随机游走模型" class="headerlink" title="量化随机游走模型"></a>量化随机游走模型</h3><p>假设 <code>1 - α</code> 代表选择当前页面中的一个链接的概率。</p><p> <code>α</code>代表该人将传送到其他页面的概率。</p><p> <img src="https://user-gold-cdn.xitu.io/2019/1/22/16872fdd3adbd09d?w=958&amp;h=535&amp;f=gif&amp;s=178680" alt=""></p><p> 现在用 随机游走模型 处理上述的循环问题。</p><p> <img src="https://user-gold-cdn.xitu.io/2019/1/22/16872fdd46b0fdd4?w=958&amp;h=535&amp;f=gif&amp;s=373034" alt=""></p><p> 如果总页面访问次数达到1000次之后，使用百分比进行表示：<strong>那么这个值就表示“在某个时间点查看页面的概率”</strong>。</p><p> <img src="https://user-gold-cdn.xitu.io/2019/1/22/16872fdd489adc67?w=958&amp;h=535&amp;f=gif&amp;s=97953" alt=""></p><h3 id="更实用的计算方法"><a href="#更实用的计算方法" class="headerlink" title="更实用的计算方法"></a>更实用的计算方法</h3><p> 如图所示，现在来尝试计算复杂的链接网络中每个页面的分数。</p><p> <img src="https://user-gold-cdn.xitu.io/2019/1/22/16872fdd70aafd4b?w=1914&amp;h=1076&amp;f=png&amp;s=100553" alt=""></p><p> 现在均匀设置分数，使总分加起来为 1 。而后根据网页浏览者的移动，来计算每个页面的概率。</p><blockquote><p>移动 n 次时出现在 A 中的概率表示未 <code>PAn</code>，移动 n 次时出现在 B 中的概率表示未 <code>PBn</code>。</p></blockquote><p> 举一个例子，在移动 1 次之后求在 A 的概率 <code>PA 1</code>。</p><p> <img src="https://user-gold-cdn.xitu.io/2019/1/22/16872fdd71168fcb?w=958&amp;h=535&amp;f=gif&amp;s=149470" alt=""></p><p> 在 C 选择移动的概率是 <code>1-α</code>。</p><p> 其中，移动到 A 的一种场景是，C 中的佩奇选择了移动而不是传送。另外，这里选择了 A 而不是 B 作为目的地。<br> 并且，根据上面的 <code>当有多个网页的链接时，链接分数均匀分布</code> 这条规则，从 A 或 B 选择 A 的概率是 0.5 。</p><p> <img src="https://user-gold-cdn.xitu.io/2019/1/22/16872fdd7238f422?w=958&amp;h=535&amp;f=gif&amp;s=149537" alt=""></p><p> 因此，从 C 移动到 A 的概率是 <code>PC0 ✖️ （1-α） ✖️ 0.5</code>。</p><p> <img src="https://user-gold-cdn.xitu.io/2019/1/22/16872fdd74811ed7?w=958&amp;h=535&amp;f=gif&amp;s=255773" alt="A 被选为传送目标的概率是 0.25"></p><p>A 被选为传送目标的概率是 0.25 ，根据前面的理论：在 A、B、C、D 中小佩奇选择传送的概率为 <code>α</code>。因此，通过传送移动到 A 的概率为 <code>α ✖️ 0.25</code>。<br> 所以，移动一次后在 A 的概率为<br> <code>PA1 = PC0 ✖️ （ 1 - α ) ✖️ 0.5  +  α ✖️ 0.25</code></p><p> 其中 <code>PC0 = 0.25</code> ， <code>α = 0.15</code>，代入计算后 <code>PA1 = 0.14375</code>。</p><p> 这样，通过计算后 B 、 C 、D 页的概率也更新了。</p><p> <img src="https://user-gold-cdn.xitu.io/2019/1/22/16872fdd7d493022?w=1916&amp;h=1070&amp;f=png&amp;s=102999" alt="B 、 C 、D 页的概率也更新了"></p><p>上面在移动 1 次之后这四个页面的概率更新情况，根据上述相同的方法计算 2 次后小佩奇浏览在每个页面的概率。</p><p> <img src="https://user-gold-cdn.xitu.io/2019/1/22/16872fdd83fa09b0?w=1924&amp;h=1078&amp;f=png&amp;s=103117" alt="移动 2 次后"></p><p>同样的，经过大量的移动，在每个页面上的概率逐渐趋于固定值。当数值固定是，计算也就完成了。</p><p><img src="https://user-gold-cdn.xitu.io/2019/1/22/16872fdd9f21920c?w=1930&amp;h=1088&amp;f=png&amp;s=122405" alt=""></p><h3 id="End"><a href="#End" class="headerlink" title="End"></a>End</h3><p>佩奇排名就是这样一种通过访问概率代替链接的权重来计算的机制。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 分享 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 新手 </tag>
+            
+            <tag> 分享 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>看动画轻松理解「Trie树」</title>
+      <link href="/posts/cb9dd1de/"/>
+      <url>/posts/cb9dd1de/</url>
+      
+        <content type="html"><![CDATA[<h3 id="Trie树"><a href="#Trie树" class="headerlink" title="Trie树"></a>Trie树</h3><blockquote><p>Trie这个名字取自“retrieval”，检索，因为Trie可以只用一个前缀便可以在一部字典中找到想要的单词。<br>虽然发音与「Tree」一致，但为了将这种 字典树 与 普通二叉树 以示区别，程序员小吴一般读「Trie」尾部会重读一声，可以理解为读「TreeE」。</p></blockquote><p>Trie 树，也叫“字典树”。顾名思义，它是一个<strong>树形结构</strong>。它是一种专门处理字符串匹配的数据结构，用来解决在一组字符串集合中快速查找某个字符串的问题。</p><p>此外 Trie 树也称前缀树（因为某节点的后代存在共同的前缀，比如pan是panda的前缀）。</p><p>它的key都为字符串，能做到高效查询和插入，时间复杂度为O(k)，k为字符串长度，缺点是如果大量字符串没有共同前缀时很耗内存。</p><p><strong>它的核心思想就是通过最大限度地减少无谓的字符串比较，使得查询高效率，即「用空间换时间」，再利用共同前缀来提高查询效率。</strong></p><h3 id="Trie树的特点"><a href="#Trie树的特点" class="headerlink" title="Trie树的特点"></a>Trie树的特点</h3><p>假设有 5 个字符串，它们分别是：code，cook，five，file，fat。现在需要在里面多次查找某个字符串是否存在。如果每次查找，都是拿要查找的字符串跟这 5 个字符串依次进行字符串匹配，那效率就比较低，有没有更高效的方法呢？</p><p>如果将这 5 个字符串组织成下图的结构，从肉眼上扫描过去感官上是不是比查找起来会更加迅速。</p><p><img src="https://user-gold-cdn.xitu.io/2019/1/2/1680c049b54e82cd?w=1922&amp;h=1074&amp;f=png&amp;s=102217" alt="Trie树样子"></p><p>通过上图，可以发现 Trie树 的三个特点：</p><ul><li>根节点不包含字符，除根节点外每一个节点都只包含一个字符</li><li>从根节点到某一节点，路径上经过的字符连接起来，为该节点对应的字符串</li><li>每个节点的所有子节点包含的字符都不相同</li></ul><p>通过动画理解 Trie 树构造的过程。在构造过程中的每一步，都相当于往 Trie 树中插入一个字符串。当所有字符串都插入完成之后，Trie 树就构造好了。<br> <img src="https://user-gold-cdn.xitu.io/2019/1/2/1680c049b5365880?w=957&amp;h=536&amp;f=gif&amp;s=125312" alt=" Trie 树构造"></p><h3 id="Trie树的插入操作"><a href="#Trie树的插入操作" class="headerlink" title="Trie树的插入操作"></a>Trie树的插入操作</h3><p><img src="https://user-gold-cdn.xitu.io/2019/1/2/1680c049b51f4db2?w=957&amp;h=536&amp;f=gif&amp;s=223535" alt="Trie树的插入操作"></p><p>Trie树的插入操作很简单，其实就是将单词的每个字母逐一插入 Trie树。插入前先看字母对应的节点是否存在，存在则共享该节点，不存在则创建对应的节点。比如要插入新单词<code>cook</code>，就有下面几步：</p><ul><li>插入第一个字母 <code>c</code>，发现 <code>root</code> 节点下方存在子节点 <code>c</code>，则共享节点 <code>c</code></li><li>插入第二个字母 <code>o</code>，发现 <code>c</code> 节点下方存在子节点 <code>o</code>，则共享节点 <code>o</code></li><li>插入第三个字母 <code>o</code>，发现 <code>o</code> 节点下方不存在子节点 <code>o</code>，则创建子节点 <code>o</code></li><li>插入第三个字母 <code>k</code>，发现 <code>o</code> 节点下方不存在子节点 <code>k</code>，则创建子节点 <code>k</code></li><li>至此，单词 <code>cook</code> 中所有字母已被插入 Trie树 中，然后设置节点 <code>k</code> 中的标志位，标记路径 <code>root-&gt;c-&gt;o-&gt;o-&gt;k</code>这条路径上所有节点的字符可以组成一个单词<code>cook</code></li></ul><h3 id="Trie树的查询操作"><a href="#Trie树的查询操作" class="headerlink" title="Trie树的查询操作"></a>Trie树的查询操作</h3><p>在 Trie 树中查找一个字符串的时候，比如查找字符串 <code>code</code>，可以将要查找的字符串分割成单个的字符 c，o，d，e，然后从 Trie 树的根节点开始匹配。如图所示，绿色的路径就是在 Trie 树中匹配的路径。</p><p><img src="https://user-gold-cdn.xitu.io/2019/1/2/1680c049b57767ae?w=1928&amp;h=1084&amp;f=png&amp;s=149652" alt="code的匹配路径"></p><p>如果要查找的是字符串<code>cod</code>(鳕鱼)呢？还是可以用上面同样的方法，从根节点开始，沿着某条路径来匹配，如图所示，绿色的路径，是字符串<code>cod</code>匹配的路径。但是，路径的最后一个节点「d」并不是橙色的，并不是单词标志位，所以<code>cod</code>字符串不存在。也就是说，<code>cod</code>是某个字符串的前缀子串，但并不能完全匹配任何字符串。</p><p><img src="https://user-gold-cdn.xitu.io/2019/1/2/1680c049b7443080?w=1920&amp;h=1082&amp;f=png&amp;s=138065" alt="cod的匹配路径"></p><blockquote><p>程序员不要当一条咸鱼，要向 <code>cook</code> 靠拢：）</p></blockquote><h3 id="Trie树的删除操作"><a href="#Trie树的删除操作" class="headerlink" title="Trie树的删除操作"></a>Trie树的删除操作</h3><p>Trie树的删除操作与二叉树的删除操作有类似的地方，需要考虑删除的节点所处的位置，这里分三种情况进行分析：</p><h4 id="删除整个单词（比如hi）"><a href="#删除整个单词（比如hi）" class="headerlink" title="删除整个单词（比如hi）"></a>删除整个单词（比如<code>hi</code>）</h4><p><img src="https://user-gold-cdn.xitu.io/2019/1/2/1680c049b68802a6?w=957&amp;h=536&amp;f=gif&amp;s=177162" alt="删除整个单词"></p><ul><li>从根节点开始查找第一个字符<code>h</code></li><li>找到<code>h</code>子节点后，继续查找<code>h</code>的下一个子节点<code>i</code></li><li><code>i</code>是单词<code>hi</code>的标志位，将该标志位去掉</li><li><code>i</code>节点是<code>hi</code>的叶子节点，将其删除</li><li>删除后发现<code>h</code>节点为叶子节点，并且不是单词标志位，也将其删除</li><li>这样就完成了<code>hi</code>单词的删除操作</li></ul><h4 id="删除前缀单词（比如cod）"><a href="#删除前缀单词（比如cod）" class="headerlink" title="删除前缀单词（比如cod）"></a>删除前缀单词（比如<code>cod</code>）</h4><p><img src="https://user-gold-cdn.xitu.io/2019/1/2/1680c04a41644ab1?w=957&amp;h=536&amp;f=gif&amp;s=193343" alt="删除前缀单词"><br>这种方式删除比较简单。<br>只需要将<code>cod</code>单词整个字符串查找完后，<code>d</code>节点因为不是叶子节点，只需将其单词标志去掉即可。</p><h4 id="删除分支单词（比如cook）"><a href="#删除分支单词（比如cook）" class="headerlink" title="删除分支单词（比如cook）"></a>删除分支单词（比如<code>cook</code>）</h4><p><img src="https://user-gold-cdn.xitu.io/2019/1/2/1680c04a415421ef?w=957&amp;h=536&amp;f=gif&amp;s=173918" alt="删除分支单词"><br>与 <strong>删除整个单词</strong> 情况类似，区别点在于删除到 <code>cook</code> 的第一个 <code>o</code> 时，该节点为非叶子节点，停止删除，这样就完成<code>cook</code>字符串的删除操作。</p><h3 id="Trie树的应用"><a href="#Trie树的应用" class="headerlink" title="Trie树的应用"></a>Trie树的应用</h3><p>事实上 Trie树 在日常生活中的使用随处可见，比如这个：</p><p>具体来说就是经常用于统计和排序大量的字符串（但不仅限于字符串），所以经常被搜索引擎系统用于文本词频统计。它的优点是：最大限度地减少无谓的字符串比较，查询效率比哈希表高。</p><h4 id="1-前缀匹配"><a href="#1-前缀匹配" class="headerlink" title="1. 前缀匹配"></a>1. 前缀匹配</h4><p>例如：找出一个字符串集合中所有以 <code>五分钟</code> 开头的字符串。我们只需要用所有字符串构造一个 trie树，然后输出以 五−&gt;分−&gt;钟 开头的路径上的关键字即可。</p><p>trie树前缀匹配常用于搜索提示。如当输入一个网址，可以自动搜索出可能的选择。当没有完全匹配的搜索结果，可以返回前缀最相似的可能</p><p><img src="https://user-gold-cdn.xitu.io/2019/1/2/1680c04a4167a729?w=1430&amp;h=1210&amp;f=png&amp;s=392579" alt="google搜索"></p><h4 id="2-字符串检索"><a href="#2-字符串检索" class="headerlink" title="2. 字符串检索"></a>2. 字符串检索</h4><p>给出 N 个单词组成的熟词表，以及一篇全用小写英文书写的文章，按最早出现的顺序写出所有不在熟词表中的生词。</p><p>检索/查询功能是Trie树最原始的功能。给定一组字符串，查找某个字符串是否出现过，思路就是从根节点开始一个一个字符进行比较：</p><ul><li>如果沿路比较，发现不同的字符，则表示该字符串在集合中不存在。</li><li>如果所有的字符全部比较完并且全部相同，还需判断最后一个节点的标志位（标记该节点是否代表一个关键字）。</li></ul><h3 id="Trie树的局限性"><a href="#Trie树的局限性" class="headerlink" title="Trie树的局限性"></a>Trie树的局限性</h3><p>如前文所讲，Trie的核心思想是空间换时间，利用字符串的公共前缀来降低查询时间的开销以达到提高效率的目的。</p><p>假设字符的种数有<code>m</code>个，有若干个长度为n的字符串构成了一个 Trie树 ，则每个节点的出度为 <code>m</code>（即每个节点的可能子节点数量为<code>m</code>），Trie树 的高度为<code>n</code>。很明显我们浪费了大量的空间来存储字符，此时Trie树的最坏空间复杂度为<code>O(m^n)</code>。也正由于每个节点的出度为<code>m</code>，所以我们能够沿着树的一个个分支高效的向下逐个字符的查询，而不是遍历所有的字符串来查询，此时Trie树的最坏时间复杂度为<code>O(n)</code>。</p><p>这正是空间换时间的体现，也是利用公共前缀降低查询时间开销的体现。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 高级算法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 二叉树 </tag>
+            
+            <tag> 查找 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>看动画轻松理解「递归」与「动态规划」</title>
+      <link href="/posts/ccd7f89d/"/>
+      <url>/posts/ccd7f89d/</url>
+      
+        <content type="html"><![CDATA[<p>在学习「数据结构和算法」的过程中，因为人习惯了平铺直叙的思维方式，所以「递归」与「动态规划」这种带循环概念（绕来绕去）的往往是相对比较难以理解的两个抽象知识点。</p><p>程序员小吴打算使用动画的形式来帮助理解「递归」，然后通过「递归」的概念延伸至理解「动态规划」算法思想。</p><h3 id="什么是递归"><a href="#什么是递归" class="headerlink" title="什么是递归"></a>什么是递归</h3><p>先下定义：<strong>递归算法是一种直接或者间接调用自身函数或者方法的算法。</strong></p><p>通俗来说，递归算法的实质是把问题分解成规模缩小的同类问题的子问题，然后递归调用方法来表示问题的解。它有如下特点：</p><ul><li><ol><li>一个问题的解可以分解为几个子问题的解</li></ol></li><li><ol start="2"><li>这个问题与分解之后的子问题，除了数据规模不同，求解思路完全一样</li></ol></li><li><ol start="3"><li>存在递归终止条件，即必须有一个明确的递归结束条件，称之为递归出口</li></ol></li></ul><p><img src="https://user-gold-cdn.xitu.io/2018/12/26/167e8d9d047ce29b?w=953&amp;h=537&amp;f=gif&amp;s=156148" alt="递归动画"></p><p>通过动画一个一个特点来进行分析。</p><h4 id="1-一个问题的解可以分解为几个子问题的解"><a href="#1-一个问题的解可以分解为几个子问题的解" class="headerlink" title="1.一个问题的解可以分解为几个子问题的解"></a>1.一个问题的解可以分解为几个子问题的解</h4><p>子问题就是相对与其前面的问题数据规模更小的问题。</p><p>在动图中①号问题（一块大区域）划分为②号问题，②号问题由两个子问题（两块中区域）组成。</p><h4 id="2-这个问题与分解之后的子问题，除了数据规模不同，求解思路完全一样"><a href="#2-这个问题与分解之后的子问题，除了数据规模不同，求解思路完全一样" class="headerlink" title="2. 这个问题与分解之后的子问题，除了数据规模不同，求解思路完全一样"></a>2. 这个问题与分解之后的子问题，除了数据规模不同，求解思路完全一样</h4><p>「①号划分为②号」与「②号划分为③号」的逻辑是一致的，求解思路是一样的。</p><h4 id="3-存在递归终止条件，即存在递归出口"><a href="#3-存在递归终止条件，即存在递归出口" class="headerlink" title="3. 存在递归终止条件，即存在递归出口"></a>3. 存在递归终止条件，即存在递归出口</h4><p>把问题分解为子问题，把子问题再分解为子子问题，一层一层分解下去，不能存在无限循环，这就需要有终止条件。</p><p>①号划分为②号，②号划分为③号，③号划分为④号，划分到④号的时候每个区域只有一个不能划分的问题，这就表明存在递归终止条件。</p><h3 id="从递归的经典示例开始"><a href="#从递归的经典示例开始" class="headerlink" title="从递归的经典示例开始"></a>从递归的经典示例开始</h3><h4 id="一-数组求和"><a href="#一-数组求和" class="headerlink" title="一.数组求和"></a>一.数组求和</h4><p><img src="https://user-gold-cdn.xitu.io/2018/12/26/167e8d9d04680364?w=953&amp;h=537&amp;f=gif&amp;s=170958" alt="数组求和"></p><pre><code>Sum(arr[0...n-1]) = arr[0] + Sum(arr[1...n-1])</code></pre><p>后面的 Sum 函数要解决的就是比前一个 Sum 更小的同一问题。</p><pre><code>Sum(arr[1...n-1]) = arr[1] + Sum(arr[2...n-1])</code></pre><p>以此类推，直到对一个空数组求和，空数组和为 0 ，此时变成了最基本的问题。</p><pre><code>Sum(arr[n-1...n-1] ) = arr[n-1] + Sum([])</code></pre><h4 id="二-汉诺塔问题"><a href="#二-汉诺塔问题" class="headerlink" title="二.汉诺塔问题"></a>二.汉诺塔问题</h4><p>汉诺塔（Hanoi Tower）问题也是一个经典的递归问题，该问题描述如下：</p><blockquote><p>汉诺塔问题：古代有一个梵塔，塔内有三个座A、B、C，A座上有64个盘子，盘子大小不等，大的在下，小的在上。有一个和尚想把这个盘子从A座移到B座，但每次只能允许移动一个盘子，并且在移动过程中，3个座上的盘子始终保持大盘在下，小盘在上。</p></blockquote><p><img src="https://user-gold-cdn.xitu.io/2018/12/26/167e8d9d06ac04b2?w=953&amp;h=537&amp;f=gif&amp;s=129013" alt="两个盘子"></p><p><img src="https://user-gold-cdn.xitu.io/2018/12/26/167e8d9d053ae4f6?w=953&amp;h=537&amp;f=gif&amp;s=191396" alt="三个盘子"></p><ul><li><p>①  如果只有 1 个盘子，则不需要利用 B 塔，直接将盘子从 A 移动到 C 。</p></li><li><p>② 如果有 2 个盘子，可以先将盘子 2 上的盘子 1 移动到 B ；将盘子 2 移动到 C ；将盘子 1 移动到 C 。这说明了：可以借助 B 将 2 个盘子从 A 移动到 C ，当然，也可以借助 C 将 2 个盘子从 A 移动到 B 。</p></li><li><p>③ 如果有 3 个盘子，那么根据 2 个盘子的结论，可以借助 C 将盘子 3 上的两个盘子从 A 移动到 B ；将盘子 3 从 A 移动到 C ，A 变成空座；借助 A 座，将 B 上的两个盘子移动到 C 。</p></li><li><p>④ 以此类推，上述的思路可以一直扩展到 n 个盘子的情况，将将较小的 n-1个盘子看做一个整体，也就是我们要求的子问题，以借助 B 塔为例，可以借助空塔 B 将盘子A上面的 n-1 个盘子从 A 移动到 B ；将A 最大的盘子移动到 C ， A 变成空塔；借助空塔 A ，将 B 塔上的 n-2 个盘子移动到 A，将 C 最大的盘子移动到 C， B 变成空塔。。。</p></li></ul><h4 id="三-爬台阶问题"><a href="#三-爬台阶问题" class="headerlink" title="三.爬台阶问题"></a>三.爬台阶问题</h4><p>问题描述：</p><blockquote><p> 一个人爬楼梯，每次只能爬1个或2个台阶，假设有n个台阶，那么这个人有多少种不同的爬楼梯方法？ </p></blockquote><p>先从简单的开始，以 4 个台阶为例，可以通过每次爬 1 个台阶爬完楼梯：</p><p><img src="https://user-gold-cdn.xitu.io/2018/12/26/167e8d9d06bc802f?w=953&amp;h=537&amp;f=gif&amp;s=160386" alt="每次爬 1 个台阶"></p><p>可以通过先爬 2 个台阶，剩下的每次爬 1 个台阶爬完楼梯</p><p><img src="https://user-gold-cdn.xitu.io/2018/12/26/167e8d9d06c90ce5?w=953&amp;h=537&amp;f=gif&amp;s=123221" alt="先爬 2 个台阶"></p><p>在这里，可以思考一下：可以根据第一步的走法把所有走法分为两类：</p><ul><li>① 第一类是第一步走了 1 个台阶</li><li>② 第二类是第一步走了 2 个台阶</li></ul><p>所以 n 个台阶的走法就等于先走 1 阶后，n-1 个台阶的走法 ，然后加上先走 2 阶后，n-2 个台阶的走法。</p><p>用公式表示就是：</p><blockquote><p><code>f(n) = f(n-1)+f(n-2)</code></p></blockquote><p>有了递推公式，递归代码基本上就完成了一半。那么接下来考虑递归终止条件。</p><p>当有一个台阶时，我们不需要再继续递归，就只有一种走法。</p><p>所以 <code>f(1)=1</code>。</p><p>通过用 <code>n = 2</code>，<code>n = 3</code> 这样比较小的数试验一下后发现这个递归终止条件还不足够。</p><p><code>n = 2</code> 时，<code>f(2) = f(1) + f(0)</code>。如果递归终止条件只有一个<code>f(1) = 1</code>，那 <code>f(2)</code> 就无法求解，递归无法结束。<br>所以除了 <code>f(1) = 1</code> 这一个递归终止条件外，还要有 <code>f(0) = 1</code>，表示走 0 个台阶有一种走法，从思维上以及动图上来看，这显得的有点不符合逻辑。所以为了便于理解，把 <code>f(2) = 2</code> 作为一种终止条件，表示走 2 个台阶，有两种走法，一步走完或者分两步来走。</p><p>总结如下：</p><ul><li>① 假设只有一个台阶，那么只有一种走法，那就是爬 1 个台阶</li><li>② 假设有两个个台阶，那么有两种走法，一步走完或者分两步来走</li></ul><p><img src="https://user-gold-cdn.xitu.io/2018/12/26/167e8d9d3cd8be6b?w=953&amp;h=537&amp;f=gif&amp;s=303733" alt="递归终止条件"></p><p>通过递归条件：</p><pre><code>f(1) = 1;f(2) = 2;f(n) = f(n-1)+f(n-2)</code></pre><p>很容易推导出递归代码：</p><pre><code>int f(int n) {  if (n == 1) return 1;  if (n == 2) return 2;  return f(n-1) + f(n-2);}</code></pre><p>通过上述三个示例，总结一下如何写递归代码：</p><ul><li>1.找到如何将大问题分解为小问题的规律</li><li>2.通过规律写出递推公式</li><li>3.通过递归公式的临界点推敲出终止条件</li><li>4.将递推公式和终止条件翻译成代码</li></ul><h3 id="什么是动态规划"><a href="#什么是动态规划" class="headerlink" title="什么是动态规划"></a>什么是动态规划</h3><p>介绍动态规划之前先介绍一下分治策略（Divide and Conquer）。</p><h4 id="分治策略"><a href="#分治策略" class="headerlink" title="分治策略"></a>分治策略</h4><p>将原问题分解为若干个规模较小但类似于原问题的子问题（<strong>Divide</strong>），「递归」的求解这些子问题（<strong>Conquer</strong>），然后再合并这些子问题的解来建立原问题的解。</p><p>因为在求解大问题时，需要递归的求小问题，因此一般用「递归」的方法实现，即自顶向下。</p><h4 id="动态规划（Dynamic-Programming）"><a href="#动态规划（Dynamic-Programming）" class="headerlink" title="动态规划（Dynamic Programming）"></a>动态规划（Dynamic Programming）</h4><p>动态规划其实和分治策略是类似的，也是将一个原问题分解为若干个规模较小的子问题，递归的求解这些子问题，然后合并子问题的解得到原问题的解。<br>区别在于这些子问题会有重叠，一个子问题在求解后，可能会再次求解，于是我们想到将这些子问题的<strong>解存储起来</strong>，当下次再次求解这个子问题时，直接拿过来就是。<br>其实就是说，动态规划所解决的问题是分治策略所解决问题的一个子集，只是这个子集更适合用动态规划来解决从而得到更小的运行时间。<br><strong>即用动态规划能解决的问题分治策略肯定能解决，只是运行时间长了</strong>。因此，分治策略一般用来解决子问题相互对立的问题，称为标准分治，而动态规划用来解决子问题重叠的问题。</p><p>与「分治策略」「动态规划」概念接近的还有「贪心算法」「回溯算法」，由于篇幅限制，程序员小吴就不在这进行展开，在后续的文章中将分别详细的介绍「贪心算法」、「回溯算法」、「分治算法」，敬请关注：）</p><p>将「动态规划」的概念关键点抽离出来描述就是这样的：</p><ul><li>1.动态规划法试图只解决每个子问题一次</li><li>2.一旦某个给定子问题的解已经算出，则将其记忆化存储，以便下次需要同一个子问题解之时直接查表。 </li></ul><h3 id="从递归到动态规划"><a href="#从递归到动态规划" class="headerlink" title="从递归到动态规划"></a>从递归到动态规划</h3><p>还是以 <strong>爬台阶</strong> 为例，如果以递归的方式解决的话，那么这种方法的时间复杂度为O(2^n)，具体的计算可以查看笔者之前的文章 《冰与火之歌：时间复杂度与空间复杂度》。</p><blockquote><p>相同颜色代表着 爬台阶问题 在递归计算过程中重复计算的部分。</p></blockquote><p><img src="https://user-gold-cdn.xitu.io/2018/12/26/167e8d9d3cf51362?w=1518&amp;h=858&amp;f=png&amp;s=86406" alt="爬台阶的时间复杂度"></p><p>通过图片可以发现一个现象，我们是 自顶向下 的进行递归运算，比如：<code>f(n)</code> 是<code>f(n-1)</code>与<code>f(n-2)</code>相加，<code>f(n-1)</code> 是<code>f(n-2)</code>与<code>f(n-3)</code>相加。</p><p>思考一下：如果反过来，采取自底向上，用迭代的方式进行推导会怎么样了？</p><p>下面通过表格来解释 <code>f(n)</code>自底向上的求解过程。</p><table><thead><tr><th style="text-align:left">台阶数</th><th style="text-align:center">1</th><th style="text-align:right">2</th><th style="text-align:right">3</th><th style="text-align:right">4</th><th style="text-align:right">5</th><th style="text-align:right">6</th><th style="text-align:right">7</th><th style="text-align:right">8</th><th style="text-align:right">9</th></tr></thead><tbody><tr><td style="text-align:left">走法数</td><td style="text-align:center">1</td><td style="text-align:right">2</td><td style="text-align:right"></td><td style="text-align:right"></td><td style="text-align:right"></td><td style="text-align:right"></td><td style="text-align:right"></td><td style="text-align:right"></td></tr></tbody></table><p>表格的第一行代表了楼梯台阶的数目，第二行代表了若干台阶对应的走法数。<br>其中<code>f(1) = 1</code> 和 <code>f(2) = 2</code>是前面明确的结果。</p><p>第一次迭代，如果台阶数为 3 ，那么走法数为 3 ，通过 <code>f(3) = f(2) + f(1)</code>得来。</p><table><thead><tr><th style="text-align:left">台阶数</th><th style="text-align:center">1</th><th style="text-align:right">2</th><th style="text-align:right">3</th><th style="text-align:right">4</th><th style="text-align:right">5</th><th style="text-align:right">6</th><th style="text-align:right">7</th><th style="text-align:right">8</th><th style="text-align:right">9</th></tr></thead><tbody><tr><td style="text-align:left">走法数</td><td style="text-align:center">1</td><td style="text-align:right">2</td><td style="text-align:right">3</td><td style="text-align:right"></td><td style="text-align:right"></td><td style="text-align:right"></td><td style="text-align:right"></td><td style="text-align:right"></td></tr></tbody></table><p>第二次迭代，如果台阶数为 4 ，那么走法数为 5 ，通过 <code>f(4) = f(3) + f(2)</code>得来。</p><table><thead><tr><th style="text-align:left">台阶数</th><th style="text-align:center">1</th><th style="text-align:right">2</th><th style="text-align:right">3</th><th style="text-align:right">4</th><th style="text-align:right">5</th><th style="text-align:right">6</th><th style="text-align:right">7</th><th style="text-align:right">8</th><th style="text-align:right">9</th></tr></thead><tbody><tr><td style="text-align:left">走法数</td><td style="text-align:center">1</td><td style="text-align:right">2</td><td style="text-align:right">3</td><td style="text-align:right">5</td><td style="text-align:right"></td><td style="text-align:right"></td><td style="text-align:right"></td><td style="text-align:right"></td></tr></tbody></table><p><img src="https://user-gold-cdn.xitu.io/2018/12/26/167e8d9d3ded7651?w=953&amp;h=537&amp;f=gif&amp;s=71448" alt=""></p><p>由此可见，每一次迭代过程中，只需要保留之前的两个状态，就可以推到出新的状态。</p><blockquote><p>show me the code</p></blockquote><pre><code>int f(int n) {    if (n == 1) return 1;    if (n == 2) return 2;    // a 保存倒数第二个子状态数据，b 保存倒数第一个子状态数据， temp 保存当前状态的数据    int a = 1, b = 2;    int temp = a + b;    for (int i = 3; i &lt;= n; i++) {        temp = a + b;        a = b;        b = temp;     }    return temp; }</code></pre><p>程序从 <code>i = 3</code> 开始迭代，一直到 <code>i = n</code> 结束。每一次迭代，都会计算出多一级台阶的走法数量。迭代过程中只需保留两个临时变量 a 和 b ，分别代表了上一次和上上次迭代的结果。为了便于理解，引入了temp变量。temp代表了当前迭代的结果值。</p><p>看一看出，事实上并没有增加太多的代码，只是简单的进行了优化，时间复杂度便就降为O(n)，而空间复杂度也变为O(1)，这，就是「动态规划」的强大！</p><h3 id="详解动态规划"><a href="#详解动态规划" class="headerlink" title="详解动态规划"></a>详解动态规划</h3><p>「动态规划」中包含三个重要的概念：</p><ul><li>【最优子结构】</li><li>【边界】</li><li>【状态转移公式】</li></ul><p>在「 爬台阶问题 」中</p><blockquote><p><code>f(10) = f(9) + f(8)</code> 是【最优子结构】<br><code>f(1) 与 f(2)</code> 是【边界】<br><code>f(n) = f(n-1) + f(n-2)</code> 【状态转移公式】</p></blockquote><p>「 爬台阶问题 」 只是动态规划中相对简单的问题，因为它只有一个变化维度，如果涉及多个维度的话，那么问题就变得复杂多了。 </p><p><strong>难点就在于找出 「动态规划」中的这三个概念。</strong></p><p>比如「 国王和金矿问题 」。</p><h4 id="国王和金矿问题"><a href="#国王和金矿问题" class="headerlink" title="国王和金矿问题"></a>国王和金矿问题</h4><blockquote><p>有一个国家发现了 5 座金矿，每座金矿的黄金储量不同，需要参与挖掘的工人数也不同。参与挖矿工人的总数是 10 人。每座金矿要么全挖，要么不挖，不能派出一半人挖取一半金矿。要求用程序求解出，要想得到尽可能多的黄金，应该选择挖取哪几座金矿？<br><img src="https://user-gold-cdn.xitu.io/2018/12/26/167e8d9d3e0c8a2a?w=1448&amp;h=284&amp;f=png&amp;s=27005" alt=" 5 座金矿"></p></blockquote><p><strong>找出 「动态规划」中的这三个概念</strong> </p><h5 id="国王和金矿问题中的【最优子结构】"><a href="#国王和金矿问题中的【最优子结构】" class="headerlink" title="国王和金矿问题中的【最优子结构】"></a>国王和金矿问题中的【最优子结构】</h5><p><img src="https://user-gold-cdn.xitu.io/2018/12/26/167e8d9d3e263ca2?w=1918&amp;h=1080&amp;f=png&amp;s=126900" alt="国王和金矿问题中的【最优子结构】"></p><p>国王和金矿问题中的【最优子结构】有两个：</p><ul><li>① 4 金矿 10 工人的最优选择</li><li>② 4 金矿 （10 - 5） 工人的最优选择</li></ul><p>4 金矿的最优选择与 5 金矿的最优选择之间的关系是</p><p><code>MAX[（4 金矿 10 工人的挖金数量），（4 金矿 5 工人的挖金数量 + 第 5 座金矿的挖金数量）]</code></p><h5 id="国王和金矿问题中的【边界】"><a href="#国王和金矿问题中的【边界】" class="headerlink" title="国王和金矿问题中的【边界】"></a>国王和金矿问题中的【边界】</h5><p>国王和金矿问题中的【边界】 有两个：</p><ul><li>① 当只有 1 座金矿时，只能挖这座唯一的金矿，得到的黄金数量为该金矿的数量</li><li>② 当给定的工人数量不够挖 1 座金矿时，获取的黄金数量为 0 </li></ul><h5 id="国王和金矿问题中的【状态转移公式】"><a href="#国王和金矿问题中的【状态转移公式】" class="headerlink" title="国王和金矿问题中的【状态转移公式】"></a>国王和金矿问题中的【状态转移公式】</h5><p>我们把金矿数量设为 N，工人数设为 W，金矿的黄金量设为数组G[]，金矿的用工量设为数组P[]，得到【状态转移公式】：</p><ul><li><p>边界值：F(n,w) = 0    (n &lt;= 1, w &lt; p[0])</p></li><li><p><code>F(n,w) = g[0]   (n==1, w &gt;= p[0])</code></p></li><li><p>F(n,w) = F(n-1,w)    (n &gt; 1, w &lt; p[n-1]) </p></li><li><p><code>F(n,w) = max(F(n-1,w),  F(n-1,w-p[n-1]) + g[n-1])    (n &gt; 1, w &gt;= p[n-1])</code></p></li></ul><h3 id="国王和金矿问题中的【实现】"><a href="#国王和金矿问题中的【实现】" class="headerlink" title="国王和金矿问题中的【实现】"></a>国王和金矿问题中的【实现】</h3><p>先通过几幅动画来理解 「工人」 与 「金矿」 搭配的方式</p><h6 id="1-只挖第一座金矿"><a href="#1-只挖第一座金矿" class="headerlink" title="1.只挖第一座金矿"></a>1.只挖第一座金矿</h6><p><img src="https://user-gold-cdn.xitu.io/2018/12/26/167e8d9d670b0774?w=957&amp;h=538&amp;f=gif&amp;s=318658" alt="只挖第一座金矿"></p><p>在只挖第一座金矿前面两个工人挖矿收益为 零，当有三个工人时，才开始产生收益为 200，而后即使增加再多的工人收益不变，因为只有一座金矿可挖。</p><h6 id="2-挖第一座与第二座金矿"><a href="#2-挖第一座与第二座金矿" class="headerlink" title="2.挖第一座与第二座金矿"></a>2.挖第一座与第二座金矿</h6><p><img src="https://user-gold-cdn.xitu.io/2018/12/26/167e8d9d404376c8?w=957&amp;h=538&amp;f=gif&amp;s=586737" alt="挖第一座与第二座金矿"></p><p>在第一座与第二座金矿这种情况中，前面两个工人挖矿收益为 零，因为 W &lt; 3,所以F(N,W) = F(N-1,W) = 0。  </p><p>当有 三 个工人时，将其安排挖第 一 个金矿，开始产生收益为 200。</p><p>当有 四 个工人时，挖矿位置变化，将其安排挖第 二 个金矿，开始产生收益为 300。</p><p>当有 五、六 个工人时，由于多于 四 个工人的人数不足以去开挖第 一 座矿，因此收益还是为 300。</p><p>当有 七 个工人时，可以同时开采第 一 个和第 二 个金矿，开始产生收益为 500。</p><h6 id="3-挖前三座金矿"><a href="#3-挖前三座金矿" class="headerlink" title="3.挖前三座金矿"></a>3.挖前三座金矿</h6><p><strong>这是「国王和金矿」 问题中最重要的一个动画之一，可以多看几遍</strong><br><img src="https://user-gold-cdn.xitu.io/2018/12/26/167e8d9d685f6826?w=957&amp;h=536&amp;f=gif&amp;s=543368" alt="挖前三座金矿"></p><h6 id="4-挖前四座金矿"><a href="#4-挖前四座金矿" class="headerlink" title="4.挖前四座金矿"></a>4.挖前四座金矿</h6><p><strong>这是「国王和金矿」 问题中最重要的一个动画之一，可以多看几遍</strong>    </p><p><img src="https://user-gold-cdn.xitu.io/2018/12/26/167e8d9d6ef42679?w=957&amp;h=536&amp;f=gif&amp;s=329570" alt="挖前四座金矿"></p><h3 id="国王和金矿问题中的【规律】"><a href="#国王和金矿问题中的【规律】" class="headerlink" title="国王和金矿问题中的【规律】"></a>国王和金矿问题中的【规律】</h3><p>仔细观察上面的几组动画可以发现：</p><ul><li><p>对比「挖第一座与第二座金矿」和「挖前三座金矿」，在「挖前三座金矿」中，3 金矿 7 工人的挖矿收益，来自于 2 金矿 7 工人和  2 金矿 4 工人的结果，Max(500,300 + 350) = 650；</p></li><li><p>对比「挖前三座金矿」和「挖前四座金矿」，在「挖前四座金矿」中，4 金矿 10 工人的挖矿收益，来自于 3 金矿 10 工人和  3 金矿 5 工人的结果，Max(850,400 + 300) = 850；</p></li></ul><h3 id="国王和金矿问题中的【动态规划代码】"><a href="#国王和金矿问题中的【动态规划代码】" class="headerlink" title="国王和金矿问题中的【动态规划代码】"></a>国王和金矿问题中的【动态规划代码】</h3><pre><code>代码来源：https://www.cnblogs.com/SDJL/archive/2008/08/22/1274312.html//maxGold[i][j] 保存了i个人挖前j个金矿能够得到的最大金子数，等于 -1 时表示未知int maxGold[max_people][max_n];int GetMaxGold(int people, int mineNum){    int retMaxGold;                            //声明返回的最大金矿数量    //如果这个问题曾经计算过    if(maxGold[people][mineNum] != -1){        retMaxGold = maxGold[people][mineNum]; //获得保存起来的值    }else if(mineNum == 0) {                   //如果仅有一个金矿时 [ 对应动态规划中的&quot;边界&quot;]        if(people &gt;= peopleNeed[mineNum])      //当给出的人数足够开采这座金矿            retMaxGold = gold[mineNum];        //得到的最大值就是这座金矿的金子数        else                                   //否则这唯一的一座金矿也不能开采            retMaxGold = 0;                    //得到的最大值为 0 个金子    }else if(people &gt;= peopleNeed[mineNum])    // 如果人够开采这座金矿[对应动态规划中的&quot;最优子结构&quot;]    {        //考虑开采与不开采两种情况，取最大值        retMaxGold = max(                         GetMaxGold(people - peopleNeed[mineNum],mineNum - 1) + gold[mineNum],                         GetMaxGold(people,mineNum - 1)                         );    }else//否则给出的人不够开采这座金矿 [ 对应动态规划中的&quot;最优子结构&quot;]    {        retMaxGold = GetMaxGold(people,mineNum - 1);     //仅考虑不开采的情况        maxGold[people][mineNum] = retMaxGold;    }    return retMaxGold;}</code></pre><p><img src="https://user-gold-cdn.xitu.io/2018/12/26/167e8d9d6fea1634?w=2048&amp;h=1708&amp;f=png&amp;s=555294" alt="动态规划代码"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 高级算法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 分享 </tag>
+            
+            <tag> 动态规划 </tag>
+            
+            <tag> 递归 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>一道让你拍案叫绝的算法题</title>
+      <link href="/posts/d9a29023/"/>
+      <url>/posts/d9a29023/</url>
+      
+        <content type="html"><![CDATA[<p>这是一道看完答案会觉得很简单，但做之前很难想到答案的题目！！！</p><p>不信？</p><p>Let us go ！</p><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>给定一个非空整数数组，除了某个元素只出现一次以外，其余每个元素均出现两次。找出那个只出现了一次的元素。</p><h4 id="说明："><a href="#说明：" class="headerlink" title="说明："></a>说明：</h4><p>你的算法应该具有线性时间复杂度。 你可以不使用额外空间来实现吗？</p><h4 id="示例-1"><a href="#示例-1" class="headerlink" title="示例 1:"></a>示例 1:</h4><p>输入: [2,2,1]<br>输出: 1</p><h4 id="示例-2"><a href="#示例-2" class="headerlink" title="示例 2:"></a>示例 2:</h4><p>输入: [4,1,2,1,2]<br>输出: 4</p><h3 id="题目解析"><a href="#题目解析" class="headerlink" title="题目解析"></a>题目解析</h3><p>根据题目描述，由于加上了时间复杂度必须是O(n)，并且空间复杂度为O(1)的条件，因此不能用排序方法，也不能使用map数据结构。</p><p>小吴想了一下午没想出来，答案是使用 <strong>位操作Bit Operation</strong> 来解此题。</p><p>将所有元素做异或运算，即a[1] ⊕  a[2] ⊕  a[3] ⊕ …⊕  a[n]，所得的结果就是那个只出现一次的数字，时间复杂度为O(n)。</p><h3 id="异或"><a href="#异或" class="headerlink" title="异或"></a>异或</h3><p>异或运算A ⊕  B的真值表如下：</p><table><thead><tr><th style="text-align:left">A</th><th style="text-align:center">B</th><th style="text-align:right">⊕</th></tr></thead><tbody><tr><td style="text-align:left">F</td><td style="text-align:center">F</td><td style="text-align:right">F</td></tr><tr><td style="text-align:left">F</td><td style="text-align:center">T</td><td style="text-align:right">T</td></tr><tr><td style="text-align:left">T</td><td style="text-align:center">F</td><td style="text-align:right">T</td></tr><tr><td style="text-align:left">T</td><td style="text-align:center">T</td><td style="text-align:right">F</td></tr></tbody></table><h3 id="动画演示"><a href="#动画演示" class="headerlink" title="动画演示"></a>动画演示</h3><p><img src="https://user-gold-cdn.xitu.io/2019/1/16/168542e800a21633?w=959&amp;h=537&amp;f=gif&amp;s=456512" alt=""></p><h3 id="进阶版"><a href="#进阶版" class="headerlink" title="进阶版"></a>进阶版</h3><p>有一个 n 个元素的数组，除了两个数只出现一次外，其余元素都出现两次，让你找出这两个只出现一次的数分别是几，要求时间复杂度为 O(n) 且再开辟的内存空间固定(与 n 无关)。</p><h4 id="示例"><a href="#示例" class="headerlink" title="示例 :"></a>示例 :</h4><p>输入: [1,2,2,1,3,4]<br>输出: [3,4]</p><h3 id="题目再解析"><a href="#题目再解析" class="headerlink" title="题目再解析"></a>题目再解析</h3><p>根据前面找一个不同数的思路算法，在这里把所有元素都异或，那么得到的结果就是那两个只出现一次的元素异或的结果。</p><p>然后，因为这两个只出现一次的元素一定是不相同的，所以这两个元素的二进制形式肯定至少有某一位是不同的，即一个为 0 ，另一个为 1 ，现在需要找到这一位。</p><p>根据异或的性质 <code>任何一个数字异或它自己都等于 0</code>，得到这个数字二进制形式中任意一个为 1 的位都是我们要找的那一位。</p><p>再然后，以这一位是 1 还是 0 为标准，将数组的 n 个元素分成两部分。</p><ul><li><p>将这一位为 0 的所有元素做异或，得出的数就是只出现一次的数中的一个</p></li><li><p>将这一位为 1 的所有元素做异或，得出的数就是只出现一次的数中的另一个。</p></li></ul><p>这样就解出题目。忽略寻找不同位的过程，总共遍历数组两次，时间复杂度为O(n)。</p><h3 id="动画再演示"><a href="#动画再演示" class="headerlink" title="动画再演示"></a>动画再演示</h3><p><img src="https://user-gold-cdn.xitu.io/2019/1/16/168542e800e97866?w=958&amp;h=535&amp;f=gif&amp;s=413228" alt=""></p><h3 id="End"><a href="#End" class="headerlink" title="End"></a>End</h3><p>本题的基础版来源于 LeetCode 第 136 号问题：只出现一次的数字。虽然题目难度是 简单，但解法真的很巧妙。感兴趣的同学可以根据思路去回答一下：<a href="https://leetcode-cn.com/problems/single-number/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/single-number/</a> 。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 分享 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 新手 </tag>
+            
+            <tag> 分享 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>什么是鸡尾酒排序和地精排序？</title>
+      <link href="/posts/9a8663f9/"/>
+      <url>/posts/9a8663f9/</url>
+      
+        <content type="html"><![CDATA[<p>奇葩排序第二弹：）</p><h3 id="从冒泡排序开始"><a href="#从冒泡排序开始" class="headerlink" title="从冒泡排序开始"></a>从冒泡排序开始</h3><p>先来看回顾一下冒泡排序的思想和原理。</p><h4 id="冒泡排序的思想"><a href="#冒泡排序的思想" class="headerlink" title="冒泡排序的思想"></a>冒泡排序的思想</h4><p>冒泡排序的每一个元素都可以像小气泡一样，根据自身大小，一点一点向着数组的一侧移动。</p><h4 id="冒泡排序算法的原理"><a href="#冒泡排序算法的原理" class="headerlink" title="冒泡排序算法的原理"></a>冒泡排序算法的原理</h4><ul><li><p>比较相邻的元素。如果第一个比第二个大，就交换他们两个。</p></li><li><p>对每一对相邻元素作同样的工作，从开始第一对到结尾的最后一对。这步做完后，最后的元素会是最大的数。</p></li><li><p>针对所有的元素重复以上的步骤，除了最后一个。</p></li><li><p>持续每次对越来越少的元素重复上面的步骤，直到没有任何一对数字需要比较。</p></li></ul><p>一般情况下，可以通过下面的动画理解冒泡排序。</p><p><img src="https://user-gold-cdn.xitu.io/2019/1/11/1683a569b8f9419f?w=954&amp;h=537&amp;f=gif&amp;s=906068" alt="冒泡排序"></p><p>现在我们来看一组特殊数据如果使用冒泡排序会怎么样。</p><p>将无序数列：2，3，4，5，6，7，8，1，使用冒泡排序使其从小到大排序。</p><p><img src="https://user-gold-cdn.xitu.io/2019/1/11/1683a569b9213adb?w=1706&amp;h=308&amp;f=png&amp;s=26112" alt="无序数列"></p><p>进行逐步分析：</p><ol><li>第一轮操作（ 8 和 1 交换 ）<br><img src="https://user-gold-cdn.xitu.io/2019/1/11/1683a569b8b5a9df?w=849&amp;h=316&amp;f=gif&amp;s=130463" alt="第一轮操作（ 8 和 1 交换 ）"></li><li>第二轮操作（ 7 和 1 交换 ）<br><img src="https://user-gold-cdn.xitu.io/2019/1/11/1683a569bb608e55?w=849&amp;h=316&amp;f=gif&amp;s=99952" alt="第二轮操作（ 7 和 1 交换 ）"></li><li>第三轮操作（ 6 和 1 交换 ）<br><img src="https://user-gold-cdn.xitu.io/2019/1/11/1683a569baff9449?w=849&amp;h=316&amp;f=gif&amp;s=100137" alt="第三轮操作（ 6 和 1 交换 ）"></li><li>第四轮操作（ 5 和 1 交换 ）<br><img src="https://user-gold-cdn.xitu.io/2019/1/11/1683a569b946b782?w=849&amp;h=316&amp;f=gif&amp;s=92676" alt="第四轮操作（ 5 和 1 交换 ）"></li><li>第五轮操作（ 4 和 1 交换 ）<br><img src="https://user-gold-cdn.xitu.io/2019/1/11/1683a569e9873cdc?w=849&amp;h=316&amp;f=gif&amp;s=74263" alt="第五轮操作（ 4 和 1 交换 ）"></li><li>第六轮操作（ 3 和 1 交换 ）<br><img src="https://user-gold-cdn.xitu.io/2019/1/11/1683a569ea5cd54e?w=849&amp;h=316&amp;f=gif&amp;s=68982" alt="第六轮操作（ 3 和 1 交换 ）"></li><li>第七轮操作（ 2 和 1 交换 ）<br><img src="https://user-gold-cdn.xitu.io/2019/1/11/1683a569ec41b088?w=849&amp;h=316&amp;f=gif&amp;s=52410" alt="第七轮操作（ 2 和 1 交换 ）"></li></ol><p>仔细观察上面的这组无序数列，实际上只有 1 的位置不在该在的位置，而 2 ，3 ，4 ，5 ，6 ，7 ，8 都已经有序了，结果使用冒泡排序，需要 <strong>折腾 7 次</strong> 才能将 1 归位。</p><h3 id="鸡尾酒排序"><a href="#鸡尾酒排序" class="headerlink" title="鸡尾酒排序"></a>鸡尾酒排序</h3><p><img src="https://user-gold-cdn.xitu.io/2019/1/11/1683a569ef8b3ade?w=277&amp;h=257&amp;f=gif&amp;s=900082" alt="鸡尾酒排序"></p><p>鸡尾酒排序，也就是定向冒泡排序，鸡尾酒搅拌排序，搅拌排序（也可以视作选择排序的一种变形），涟漪排序，来回排序或快乐小时排序，是冒泡排序的一种变形。</p><p><strong>此算法与冒泡排序的不同处在于排序时是以双向在序列中进行排序。</strong></p><p>排序过程：</p><ul><li>先对数组从左到右进行冒泡排序（升序），则最大的元素去到最右端</li><li>再对数组从右到左进行冒泡排序（降序），则最小的元素去到最左端</li><li>以此类推，依次改变冒泡的方向，并不断缩小未排序元素的范围，直到最后一个元素结束</li></ul><p><strong>Show Me The Animation</strong></p><ol><li>第一轮操作（ 8 和 1 交换 ）<br><img src="https://user-gold-cdn.xitu.io/2019/1/11/1683a569f211de41?w=849&amp;h=316&amp;f=gif&amp;s=137385" alt="第一轮操作（ 8 和 1 交换 ）"></li><li>第二轮操作 ( 从序列右边开始遍历 ）<br><img src="https://user-gold-cdn.xitu.io/2019/1/11/1683a56a052f9d04?w=849&amp;h=316&amp;f=gif&amp;s=238107" alt="第二轮操作 ( 从序列右边开始遍历 ）"></li><li>第三轮操作 ( 从左向右比较和交换 )<br><img src="https://user-gold-cdn.xitu.io/2019/1/11/1683a56a14d62bde?w=849&amp;h=316&amp;f=gif&amp;s=142025" alt="第三轮操作 ( 从左向右比较和交换 )"><br>在这一轮操作中，没有元素位置交换，证明已经有序，排序结束。</li></ol><p>对比 冒泡排序 ，鸡尾酒排序只需要 3 轮操作就可以完成排序。</p><h3 id="地精排序"><a href="#地精排序" class="headerlink" title="地精排序"></a>地精排序</h3><blockquote><p>Gnome 排序（地精排序），起初由 Hamid Sarbazi-Azad 于 2000 年提出，并被称为 <strong>stupid</strong> 排序，后来被 Dick Grune 描述并命名为 “地精排序” 。</p></blockquote><p>地精排序和插入排序类似，除了移动一个元素到最终的位置，是通过交换一系列的元素实现，就像冒泡排序一样。概念上十分简单，不需要嵌套循环。时间复杂度为O(n2)，但是如果初始数列基本有序，时间复杂度将降为O(n)。实际上 Gnome 算法可以和插入排序算法一样快。平均运行时间为O(n^2)。</p><p>将无序数列：6，2，4，1，5，使用地精排序使其从小到大排序。</p><p>通过设计标识 i = 0 ，然后从头开始判断，什么时候 ( i &lt; 4 ) 不成立,什么时候排序结束。</p><p>这里的核心点就是 <strong>如何控制 i 的值</strong>。</p><h4 id="第一轮操作「i-0」"><a href="#第一轮操作「i-0」" class="headerlink" title="第一轮操作「i = 0」"></a>第一轮操作「i = 0」</h4><p><img src="https://user-gold-cdn.xitu.io/2019/1/11/1683a56a2dd5946a?w=849&amp;h=284&amp;f=gif&amp;s=22189" alt=""></p><p>先让 i 自增 1 ，达到值为 1 才开始比较 ：</p><p>交换前 [ 6 2 4 1 ] 『 <strong>i = 0</strong> 』</p><p>交换后 [ 6 2 4 1 ] 『 <strong>i = 1</strong> 』</p><h4 id="第二轮操作「i-1」"><a href="#第二轮操作「i-1」" class="headerlink" title="第二轮操作「i = 1」"></a>第二轮操作「i = 1」</h4><p><img src="https://user-gold-cdn.xitu.io/2019/1/11/1683a56a2f974af7?w=849&amp;h=284&amp;f=gif&amp;s=60337" alt=""></p><p>比较 6 和 2 ，发生交换，<strong>只要发生交换 i 就减 1</strong> 。</p><p>交换前 [ 6 2 4 1 ]『 i = 1 』</p><p>交换后 [ 2 6 4 1 ]『 i = 0 』</p><h4 id="第三轮操作「i-0」"><a href="#第三轮操作「i-0」" class="headerlink" title="第三轮操作「i = 0」"></a>第三轮操作「i = 0」</h4><p><img src="https://user-gold-cdn.xitu.io/2019/1/11/1683a56a472e0671?w=849&amp;h=284&amp;f=gif&amp;s=35838" alt=""></p><p>i 变成 0 了，啥也不干，自增变成 1 再说。</p><p>交换前 [ 2 6 4 1 ]『 i = 0 』</p><p>交换后 [ 2 6 4 1 ]『 i = 1 』</p><h4 id="第四轮操作「i-1」"><a href="#第四轮操作「i-1」" class="headerlink" title="第四轮操作「i = 1」"></a>第四轮操作「i = 1」</h4><p><img src="https://user-gold-cdn.xitu.io/2019/1/11/1683a56a45323fb0?w=849&amp;h=284&amp;f=gif&amp;s=39303" alt=""></p><p>比较 2 和 6 ，不交换，<strong>只要不要换就自增 1</strong>。</p><p>交换前 [ 2 6 4 1 ]『 i = 1 』</p><p>交换后 [ 2 6 4 1 ]『 i = 2 』</p><h4 id="第五轮操作「i-2」"><a href="#第五轮操作「i-2」" class="headerlink" title="第五轮操作「i = 2」"></a>第五轮操作「i = 2」</h4><p><img src="https://user-gold-cdn.xitu.io/2019/1/11/1683a56a4aeb364c?w=849&amp;h=284&amp;f=gif&amp;s=58413" alt=""></p><p>比较 6 和 4 ，发生交换，<strong>只要发生交换 i 就减 1</strong> 。</p><p>交换前 [ 2 6 4 1 ]『 i = 2 』</p><p>交换后 [ 2 4 6 1 ]『 i = 1 』</p><h4 id="第六轮操作「i-1」"><a href="#第六轮操作「i-1」" class="headerlink" title="第六轮操作「i = 1」"></a>第六轮操作「i = 1」</h4><p><img src="https://user-gold-cdn.xitu.io/2019/1/11/1683a56a59238d49?w=849&amp;h=284&amp;f=gif&amp;s=34234" alt=""></p><p>比较 2 和 4 ，不交换，<strong>只要不要换就自增 1</strong> 。</p><p>交换前 [ 2 6 4 1 ]『 i = 1 』</p><p>交换后 [ 2 4 6 1 ]『 i = 2 』</p><h4 id="第七轮操作「i-2」"><a href="#第七轮操作「i-2」" class="headerlink" title="第七轮操作「i = 2」"></a>第七轮操作「i = 2」</h4><p><img src="https://user-gold-cdn.xitu.io/2019/1/11/1683a56a69973a0b?w=849&amp;h=284&amp;f=gif&amp;s=37032" alt=""></p><p>比较 4 和 6 ，不交换，<strong>只要不要换就自增 1</strong> 。</p><p>交换前 [ 2 4 6 1 ]『 i = 2 』</p><p>交换后 [ 2 4 6 1 ]『 i = 3 』</p><h4 id="第八轮操作「i-3」"><a href="#第八轮操作「i-3」" class="headerlink" title="第八轮操作「i = 3」"></a>第八轮操作「i = 3」</h4><p><img src="https://user-gold-cdn.xitu.io/2019/1/11/1683a56a6a5948ac?w=849&amp;h=284&amp;f=gif&amp;s=58152" alt=""></p><p>比较 6 和 1 ，发生交换，<strong>只要发生交换 i 就减 1</strong> 。</p><p>交换前 [ 2 4 6 1 ]『 i = 3 』</p><p>交换后 [ 2 4 1 6 ]『 i = 2 』</p><h4 id="第九轮操作「i-2」"><a href="#第九轮操作「i-2」" class="headerlink" title="第九轮操作「i = 2」"></a>第九轮操作「i = 2」</h4><p><img src="https://user-gold-cdn.xitu.io/2019/1/11/1683a56a6f54f0f3?w=849&amp;h=284&amp;f=gif&amp;s=56016" alt=""></p><p>比较 4 和 1 ，发生交换，<strong>只要发生交换 i 就减 1</strong> 。</p><p>交换前 [ 2 4 1 6 ]『 i = 2 』</p><p>交换后 [ 2 1 4 6 ]『 i = 1 』</p><h4 id="第十轮操作「i-1」"><a href="#第十轮操作「i-1」" class="headerlink" title="第十轮操作「i = 1」"></a>第十轮操作「i = 1」</h4><p><img src="https://user-gold-cdn.xitu.io/2019/1/11/1683a56a70ad5a94?w=849&amp;h=284&amp;f=gif&amp;s=57170" alt=""></p><p>比较 2 和 1 ，发生交换，<strong>只要发生交换 i 就减 1</strong> 。</p><p>交换前 [ 2 1 4 6 ]『 i = 1 』</p><p>交换后 [ 1 2 4 6 ]『 i = 0 』</p><h4 id="第十一轮操作「i-0」"><a href="#第十一轮操作「i-0」" class="headerlink" title="第十一轮操作「i = 0」"></a>第十一轮操作「i = 0」</h4><p><img src="https://user-gold-cdn.xitu.io/2019/1/11/1683a56a7089a4da?w=849&amp;h=284&amp;f=gif&amp;s=86734" alt=""></p><p>啥也不干，先让 i 自增1，达到值为 1 才开始真正的比较。   </p><p>『 i = 1 』时，比较 1 和 2 ，不交换，只要不交换就自增 1 。<br>『 i = 2 』时，比较 2 和 4 ，不交换，只要不交换就自增 1 。<br>『 i = 3 』时，比较 4 和 6 ，不交换，只要不交换就自增 1 。<br>『 i = 4 』时，表达式 （ i &lt; n ) 不成立，排序结束。  </p><p>顺序输出为 [ 1 2 4 6 ]。</p><h5 id="地精排序算法代码"><a href="#地精排序算法代码" class="headerlink" title="地精排序算法代码"></a>地精排序算法代码</h5><pre><code>template &lt;class T&gt;void gnome_sort_1(T data[], int n, bool comparator(T, T)){    int i = 1;    while (i &lt; n){       if (i &gt; 0 &amp;&amp; comparator(data[i], data[i-1])){           swap(data[i], data[i-1]);           i--;       }else{           i++;       }    }}</code></pre><p>这种地精排序算法还有很多优化的空间，这里小吴就不展开来讲了。</p><h3 id="End"><a href="#End" class="headerlink" title="End"></a>End</h3><p>鸡尾酒排序和地精排序虽然被程序员小吴归为奇葩排序一类，但是它们还是有一定的使用场景的。</p><ul><li>在「大部分元素有序」的情况下，使用鸡尾酒排序可以减少排序的回合数。</li><li>地精排序最著名的特点是代码只有一层循环，在「大部分元素有序」的情况下，可以减少排序回合数。</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 高级算法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 排序 </tag>
+            
+            <tag> 动画 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>什么是散列表</title>
+      <link href="/posts/5e0d3e1b/"/>
+      <url>/posts/5e0d3e1b/</url>
+      
+        <content type="html"><![CDATA[<h1 id="【算法动画】：什么是散列表"><a href="#【算法动画】：什么是散列表" class="headerlink" title="【算法动画】：什么是散列表"></a>【算法动画】：什么是散列表</h1><h3 id="散列表"><a href="#散列表" class="headerlink" title="散列表"></a>散列表</h3><p>散列表（Hash table，也叫哈希表），是根据键（Key）而直接访问在内存存储位置的数据结构。也就是说，它通过计算一个关于键值的函数，将所需查询的数据映射到表中一个位置来访问记录，这加快了查找速度。这个映射函数称做散列函数，存放记录的数组称做散列表。</p><h3 id="散列函数"><a href="#散列函数" class="headerlink" title="散列函数"></a>散列函数</h3><p>散列函数，顾名思义，它是一个函数。如果把它定义成 <strong>hash(key)</strong> ，其中 key 表示元素的键值，则 <strong>hash(key)</strong> 的值表示经过散列函数计算得到的散列值。</p><p>散列函数的特点：</p><h4 id="1-确定性"><a href="#1-确定性" class="headerlink" title="1.确定性"></a>1.确定性</h4><p>如果两个散列值是不相同的（根据同一函数），那么这两个散列值的原始输入也是不相同的。</p><h4 id="2-散列碰撞（collision）"><a href="#2-散列碰撞（collision）" class="headerlink" title="2.散列碰撞（collision）"></a>2.散列碰撞（collision）</h4><p>散列函数的输入和输出不是唯一对应关系的，如果两个散列值相同，两个输入值很可能是相同的，但也可能不同。</p><h4 id="3-不可逆性"><a href="#3-不可逆性" class="headerlink" title="3.不可逆性"></a>3.不可逆性</h4><p>一个哈希值对应无数个明文，理论上你并不知道哪个是。</p><blockquote><p>“船长，如果一样东西你知道在哪里，还算不算丢了。”</p></blockquote><blockquote><p>“不算。”</p></blockquote><blockquote><p>“好的，那您的酒壶没有丢。”</p></blockquote><h4 id="4-混淆特性"><a href="#4-混淆特性" class="headerlink" title="4.混淆特性"></a>4.混淆特性</h4><p>输入一些数据计算出散列值，然后部分改变输入值，一个具有强混淆特性的散列函数会产生一个完全不同的散列值。</p><h3 id="常见的散列函数"><a href="#常见的散列函数" class="headerlink" title="常见的散列函数"></a>常见的散列函数</h3><h4 id="1-MD5"><a href="#1-MD5" class="headerlink" title="1. MD5"></a>1. MD5</h4><p><strong>MD5</strong> 即 Message-Digest Algorithm 5（信息-摘要算法5），用于确保信息传输完整一致。是计算机广泛使用的杂凑算法之一，主流编程语言普遍已有 <strong>MD5</strong> 实现。</p><p>将数据（如汉字）运算为另一固定长度值，是杂凑算法的基础原理，<strong>MD5</strong> 的前身有 MD2 、MD3 和 MD4 。</p><p><strong>MD5</strong> 是输入不定长度信息，输出固定长度 128-bits 的算法。经过程序流程，生成四个32位数据，最后联合起来成为一个 128-bits 散列。</p><p>基本方式为，求余、取余、调整长度、与链接变量进行循环运算，得出结果。</p><p><strong>MD5</strong> 计算广泛应用于错误检查。在一些 BitTorrent 下载中，软件通过计算 MD5 来检验下载到的碎片的完整性。</p><p><img src="https://user-gold-cdn.xitu.io/2019/1/7/16825d390f3b1755?w=960&amp;h=536&amp;f=gif&amp;s=50918" alt=" MD5 校验"></p><h4 id="2-SHA-1"><a href="#2-SHA-1" class="headerlink" title="2. SHA-1"></a>2. SHA-1</h4><p>SHA-1（英语：Secure Hash Algorithm 1，中文名：安全散列算法1）是一种密码散列函数，SHA-1可以生成一个被称为消息摘要的160位（20字节）散列值，散列值通常的呈现形式为40个十六进制数。</p><p>SHA-1 曾经在许多安全协议中广为使用，包括TLS和SSL、PGP、SSH、S/MIME和IPsec，曾被视为是MD5的后继者。</p><h3 id="散列冲突"><a href="#散列冲突" class="headerlink" title="散列冲突"></a>散列冲突</h3><p>理想中的一个散列函数，希望达到 </p><blockquote><p>如果 key1 ≠ key2，那 hash(key1) ≠ hash(key2)</p></blockquote><p>这种效果，然而在真实的情况下，要想找到一个不同的 key 对应的散列值都不一样的散列函数，几乎是不可能的，即使是 <strong>MD5</strong> 或者 由美国国家安全局设计的 <strong>SHA-1</strong> 算法也无法实现。</p><p><strong>事实上，再好的散列函数都无法避免散列冲突。</strong></p><p>为什么呢？</p><p>这涉及到数学中比较好理解的一个原理：抽屉原理。</p><p>抽屉原理：桌上有十个苹果，要把这十个苹果放到九个抽屉里，无论怎样放，我们会发现至少会有一个抽屉里面至少放两个苹果。这一现象就是我们所说的“抽屉原理”。</p><p><img src="https://user-gold-cdn.xitu.io/2019/1/7/16825d390fb8193d?w=952&amp;h=539&amp;f=gif&amp;s=113143" alt="抽屉原理"></p><p>对于散列表而言，无论设置的存储区域（n）有多大，当需要存储的数据大于 n 时，那么必然会存在哈希值相同的情况。这就是所谓的<strong>散列冲突</strong>。</p><p><img src="https://user-gold-cdn.xitu.io/2019/1/7/16825d390fce0635?w=960&amp;h=536&amp;f=gif&amp;s=75709" alt="散列冲突"></p><p>那应该如何解决散列冲突问题呢？</p><p>常用的散列冲突解决方法有两类，开放寻址法（open addressing）和链表法（chaining）。</p><h4 id="开放寻址法"><a href="#开放寻址法" class="headerlink" title="开放寻址法"></a>开放寻址法</h4><blockquote><p>定义：将散列函数扩展定义成探查序列，即每个关键字有一个探查序列h(k,0)、h(k,1)、…、h(k,m-1)，这个探查序列一定是0….m-1的一个排列（一定要包含散列表全部的下标，不然可能会发生虽然散列表没满，但是元素不能插入的情况），如果给定一个关键字k，首先会看h(k,0)是否为空，如果为空，则插入；如果不为空，则看h(k,1)是否为空，以此类推。</p></blockquote><p>开放寻址法是一种解决碰撞的方法，对于开放寻址冲突解决方法，比较经典的有线性探测方法（Linear Probing）、二次探测（Quadratic probing）和 双重散列（Double hashing）等方法。</p><p><strong>线性探测方法</strong></p><p><img src="https://user-gold-cdn.xitu.io/2019/1/7/16825d390f52d29d?w=952&amp;h=539&amp;f=gif&amp;s=110979" alt="开放寻址法之线性探测方法"></p><p>当我们往散列表中插入数据时，如果某个数据经过散列函数散列之后，存储位置已经被占用了，我们就从当前位置开始，依次往后查找，看是否有空闲位置，直到找到为止。</p><p>以上图为例，散列表的大小为 8 ，黄色区域表示空闲位置，橙色区域表示已经存储了数据。目前散列表中已经存储了 4 个元素。此时元素 7777777  经过 Hash 算法之后，被散列到位置下标为 7 的位置，但是这个位置已经有数据了，所以就产生了冲突。</p><p>于是按顺序地往后一个一个找，看有没有空闲的位置，此时，运气很好正巧在下一个位置就有空闲位置，将其插入，完成了数据存储。</p><p>线性探测法一个很大的弊端就是当散列表中插入的数据越来越多时，散列冲突发生的可能性就会越来越大，空闲位置会越来越少，线性探测的时间就会越来越久。极端情况下，需要从头到尾探测整个散列表，所以最坏情况下的时间复杂度为 O(n)。 </p><p><img src="https://user-gold-cdn.xitu.io/2019/1/7/16825d39107d1894?w=952&amp;h=539&amp;f=gif&amp;s=231211" alt="开放寻址法之线性探测方法的弊端"></p><p><strong>二次探测方法</strong></p><p>二次探测是二次方探测法的简称。顾名思义，使用二次探测进行探测的步长变成了原来的“二次方”，也就是说，它探测的下标序列为 <code>hash(key)+0</code>，<code>hash(key)+1^2</code>或<code>[hash(key)-1^2]</code>，<code>hash(key)+2^2</code>或<code>[hash(key)-2^2]</code>。</p><p><img src="https://user-gold-cdn.xitu.io/2019/1/7/16825d3910b39490?w=960&amp;h=536&amp;f=gif&amp;s=126340" alt="二次探测方法"></p><p>以上图为例，散列表的大小为 8 ，黄色区域表示空闲位置，橙色区域表示已经存储了数据。目前散列表中已经存储了 7 个元素。此时元素 7777777  经过 Hash 算法之后，被散列到位置下标为 7 的位置，但是这个位置已经有数据了，所以就产生了冲突。</p><p>按照<strong>二次探测方法</strong>的操作，有冲突就先 + 1^2，8 这个位置有值，冲突；变为 - 1^2，6 这个位置有值，还是有冲突；于是 - 2^2， 3 这个位置是空闲的，插入。</p><p><strong>双重散列方法</strong></p><p>所谓双重散列，意思就是不仅要使用一个散列函数，而是使用一组散列函数 <code>hash1(key)</code>，<code>hash2(key)</code>，<code>hash3(key)</code>。。。。。。先用第一个散列函数，如果计算得到的存储位置已经被占用，再用第二个散列函数，依次类推，直到找到空闲的存储位置。</p><p><img src="https://user-gold-cdn.xitu.io/2019/1/7/16825d393a80c3e7?w=960&amp;h=536&amp;f=gif&amp;s=130065" alt="双重散列方法"></p><p>以上图为例，散列表的大小为 8 ，黄色区域表示空闲位置，橙色区域表示已经存储了数据。目前散列表中已经存储了 7 个元素。此时元素 7777777  经过 Hash 算法之后，被散列到位置下标为 7 的位置，但是这个位置已经有数据了，所以就产生了冲突。</p><p>此时，再将数据进行一次哈希算法处理，经过另外的 Hash 算法之后，被散列到位置下标为 3 的位置，完成操作。</p><p>事实上，不管采用哪种探测方法，只要当散列表中空闲位置不多的时候，散列冲突的概率就会大大提高。为了尽可能保证散列表的操作效率，一般情况下，需要尽可能保证散列表中有一定比例的空闲槽位。</p><p>一般使用<strong>加载因子</strong>（load factor）来表示空位的多少。</p><p><strong>加载因子</strong>是表示 Hsah 表中元素的填满的程度，若加载因子越大，则填满的元素越多,这样的好处是：空间利用率高了,但冲突的机会加大了。反之,加载因子越小,填满的元素越少,好处是冲突的机会减小了，但空间浪费多了。</p><h4 id="链表法"><a href="#链表法" class="headerlink" title="链表法"></a>链表法</h4><p>链表法是一种更加常用的散列冲突解决办法，相比开放寻址法，它要简单很多。如下动图所示，在散列表中，每个位置对应一条链表，所有散列值相同的元素都放到相同位置对应的链表中。</p><p><img src="https://user-gold-cdn.xitu.io/2019/1/7/16825d393a9cd43d?w=952&amp;h=539&amp;f=gif&amp;s=155331" alt="链表法"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 高级算法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 动画 </tag>
+            
+            <tag> 散列表 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>看动画理解「链表」实现LRU缓存淘汰算法</title>
       <link href="/posts/f5f29cad/"/>
       <url>/posts/f5f29cad/</url>
@@ -58,11 +222,308 @@
     
     
     <entry>
+      <title>LeetCode上第167号问题：Two Sum II</title>
+      <link href="/posts/f772505c/"/>
+      <url>/posts/f772505c/</url>
+      
+        <content type="html"><![CDATA[<p>leetcode上第167号问题：<a href="https://leetcode-cn.com/problems/two-sum-ii-input-array-is-sorted/" target="_blank" rel="noopener">Two Sum II</a></p><blockquote><p>给定一个已按照升序排列 的有序数组，找到两个数使得它们相加之和等于目标数。</p></blockquote><blockquote><p>函数应该返回这两个下标值 index1 和 index2，其中 index1 必须小于 index2。</p></blockquote><blockquote><p>说明:</p></blockquote><blockquote><ul><li>返回的下标值（index1 和 index2）不是从零开始的。</li><li>你可以假设每个输入只对应唯一的答案，而且你不可以重复使用相同的元素。</li></ul></blockquote><blockquote><p>示例:</p></blockquote><blockquote><p>输入: numbers = [2, 7, 11, 15], target = 9<br>输出: [1,2]<br>解释: 2 与 7 之和等于目标数 9 。因此 index1 = 1, index2 = 2 。</p></blockquote><h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>初始化左指针left指向数组起始，初始化右指针right指向数组结尾。</p><p>根据<strong>已排序</strong>这个特性，</p><ul><li><p>（1）如果numbers[left]与numbers[right]的和tmp小于target，说明应该增加tmp,因此left右移指向一个较大的值。</p></li><li><p>（2）如果tmp大于target，说明应该减小tmp,因此right左移指向一个较小的值。</p></li><li><p>（3）tmp等于target，则找到，返回left+1和right+1。（注意以1为起始下标）</p></li></ul><h4 id="动画演示"><a href="#动画演示" class="headerlink" title="动画演示"></a>动画演示</h4><p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fzl02exvalg30np0cpjsz.gif" alt="Two sum"></p><h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><pre><code>// 对撞指针// 时间复杂度: O(n)// 空间复杂度: O(1)class Solution {public:    vector&lt;int&gt; twoSum(vector&lt;int&gt;&amp; numbers, int target) {        int l = 0, r = numbers.size() - 1;        while(l &lt; r){            if(numbers[l] + numbers[r] == target){                int res[2] = {l+1, r+1};                return vector&lt;int&gt;(res, res+2);            }            else if(numbers[l] + numbers[r] &lt; target)                l ++;            else // numbers[l] + numbers[r] &gt; target                r --;        }    }</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> LeetCode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 数组 </tag>
+            
+            <tag> 指针 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>LeetCode上第75号问题：Sort Colors</title>
+      <link href="/posts/fe46b16f/"/>
+      <url>/posts/fe46b16f/</url>
+      
+        <content type="html"><![CDATA[<p>leetcode上第75号问题：<a href="https://leetcode-cn.com/problems/sort-colors/" target="_blank" rel="noopener">Sort Colors</a></p><blockquote><p>给定一个包含红色、白色和蓝色，一共 n 个元素的数组，原地对它们进行排序，使得相同颜色的元素相邻，并按照红色、白色、蓝色顺序排列。</p></blockquote><blockquote><p>此题中，我们使用整数 0、 1 和 2 分别表示红色、白色和蓝色。</p></blockquote><blockquote><p>注意:<br>不能使用代码库中的排序函数来解决这道题。</p></blockquote><blockquote><p>示例:</p></blockquote><blockquote><p>输入: [2,0,2,1,1,0]</p></blockquote><blockquote><p>输出: [0,0,1,1,2,2]</p></blockquote><h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>结合三路快排partition思路的应用，设定两个索引，一个从左往右滑动<code>zero</code>，一个从右往左滑动<code>two</code>，遍历<code>nums</code>，当<code>nums[i]</code>的值为1时，<code>i++</code>；当<code>nums[i]</code>的值为2时，<code>two</code>的值先减1，而后交换<code>nums[i]</code>与<code>nums[two]</code>，此时在观察<code>nums[i]</code>的值；当<code>nums[i]</code>的值为0时，<code>zero++</code>，而后交换<code>nums[i]</code>与<code>nums[zero]</code>，<code>i++</code>;当 <code>i = two</code>时，结束循环。</p><h4 id="动画演示"><a href="#动画演示" class="headerlink" title="动画演示"></a>动画演示</h4><p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fzl014a9kug30np0cp42x.gif" alt="Sort Colors"></p><h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><pre><code>// 三路快速排序的思想// 对整个数组只遍历了一遍// 时间复杂度: O(n)// 空间复杂度: O(1)class Solution {public:    void sortColors(vector&lt;int&gt; &amp;nums) {        int zero = -1;          // [0...zero] == 0        int two = nums.size();  // [two...n-1] == 2        for(int i = 0 ; i &lt; two ; ){            if(nums[i] == 1){                 i ++;            }else if (nums[i] == 2){                 two--;                 swap( nums[i] , nums[two]);            }else{ // nums[i] == 0                 zero++;                 swap(nums[zero] , nums[i]);                 i++;            }        }    }};</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> LeetCode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 分治 </tag>
+            
+            <tag> 快速 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>LeetCode上第20 号问题：有效的括号</title>
+      <link href="/posts/37d84b80/"/>
+      <url>/posts/37d84b80/</url>
+      
+        <content type="html"><![CDATA[<p>LeetCode上第20 号问题：<strong><a href="https://leetcode-cn.com/problems/valid-parentheses/" target="_blank" rel="noopener">有效的括号</a></strong></p><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><blockquote><p>给定一个只包括 ‘(‘，’)’，’{‘，’}’，’[‘，’]’ 的字符串，判断字符串是否有效。</p></blockquote><blockquote><p>有效字符串需满足：</p></blockquote><blockquote><p>左括号必须用相同类型的右括号闭合。<br>左括号必须以正确的顺序闭合。<br>注意空字符串可被认为是有效字符串。    </p></blockquote><blockquote><h4 id="示例-1"><a href="#示例-1" class="headerlink" title="示例 1:"></a>示例 1:</h4></blockquote><blockquote><p>输入: “()”<br>输出: true</p></blockquote><blockquote><h4 id="示例-2"><a href="#示例-2" class="headerlink" title="示例 2:"></a>示例 2:</h4></blockquote><blockquote><p>输入: “()[]{}”<br>输出: true</p></blockquote><blockquote><h4 id="示例-3"><a href="#示例-3" class="headerlink" title="示例 3:"></a>示例 3:</h4></blockquote><blockquote><p>输入: “(]”<br>输出: false</p></blockquote><blockquote><h4 id="示例-4"><a href="#示例-4" class="headerlink" title="示例 4:"></a>示例 4:</h4></blockquote><blockquote><p>输入: “([)]”<br>输出: false   </p></blockquote><blockquote><h4 id="示例-5"><a href="#示例-5" class="headerlink" title="示例 5:"></a>示例 5:</h4></blockquote><blockquote><p>输入: “{[]}”<br>输出: true   </p></blockquote><h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>这道题让我们验证输入的字符串是否为括号字符串，包括大括号，中括号和小括号。</p><p>这里我们使用<strong>栈</strong>。</p><ul><li>遍历输入字符串</li><li>如果当前字符为左半边括号时，则将其压入栈中</li><li>如果遇到右半边括号时，<strong>分类讨论：</strong></li><li>1）如栈不为空且为对应的左半边括号，则取出栈顶元素，继续循环  </li><li>2）若此时栈为空，则直接返回false</li><li>3）若不为对应的左半边括号，反之返回false</li></ul><h2 id="动画演示"><a href="#动画演示" class="headerlink" title="动画演示"></a>动画演示</h2><p><strong>动画演示GIF有点大，请稍微等待一下加载显示^_^</strong></p><p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fzkzzpkrjng30qo0f0n2n.gif" alt=""></p><h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fzkzzqlgmij30u014awmf.jpg" alt=""></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> LeetCode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 栈 </tag>
+            
+            <tag> 数据结构 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>LeetCode上第 1 号问题：Two Sum</title>
+      <link href="/posts/fc90665e/"/>
+      <url>/posts/fc90665e/</url>
+      
+        <content type="html"><![CDATA[<p>leetcode上第1号问题：<a href="https://leetcode-cn.com/problems/two-sum/" target="_blank" rel="noopener">Two Sum</a></p><blockquote><p>给定一个整数数组和一个目标值，找出数组中和为目标值的两个数。</p></blockquote><blockquote><p>你可以假设每个输入只对应一种答案，且同样的元素不能被重复利用。</p></blockquote><blockquote><p>示例:</p></blockquote><blockquote><p>给定 nums = [2, 7, 11, 15], target = 9</p></blockquote><blockquote><p>因为 nums[0] + nums[1] = 2 + 7 = 9<br>所以返回 [0, 1]</p></blockquote><h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>使用查找表来解决该问题。</p><blockquote><p>设置一个map容器record用来记录元素的值与索引</p><p>遍历数组nums</p><ul><li>每次遍历时使用临时变量complement用来保存目标值与当前值的差值</li><li>在此次遍历中查找record，查看是否有与complement一致的值，如果查找成功则返回查找值的索引值与当前变量的值i</li><li>如果未找到，则在record保存该元素与索引值i</li></ul></blockquote><h4 id="动画演示"><a href="#动画演示" class="headerlink" title="动画演示"></a>动画演示</h4><p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fzkzyntxibg30nn0dd458.gif" alt="Two Sum"></p><h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><pre><code>// 1. Two Sum// https://leetcode.com/problems/two-sum/description/// 时间复杂度：O(n)// 空间复杂度：O(n)class Solution {public:    vector&lt;int&gt; twoSum(vector&lt;int&gt;&amp; nums, int target) {        unordered_map&lt;int,int&gt; record;        for(int i = 0 ; i &lt; nums.size() ; i ++){            int complement = target - nums[i];            if(record.find(complement) != record.end()){                int res[] = {i, record[complement]};                return vector&lt;int&gt;(res, res + 2);            }            record[nums[i]] = i;        }    }};</code></pre><h4 id="执行结果"><a href="#执行结果" class="headerlink" title="执行结果"></a>执行结果</h4><p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fzkzymcdnzj31nx0u0q5l.jpg" alt=""></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> LeetCode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 查找表 </tag>
+            
+            <tag> 索引 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>LeetCode上第24号问题：Swap Nodes in Pairs</title>
       <link href="/posts/4988/"/>
       <url>/posts/4988/</url>
       
         <content type="html"><![CDATA[<p>LeetCode上第24号问题：<strong><a href="https://leetcode-cn.com/problems/swap-nodes-in-pairs/" target="_blank" rel="noopener">Swap Nodes in Pairs</a></strong></p><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><blockquote><p>给定一个链表，两两交换其中相邻的节点，并返回交换后的链表。</p></blockquote><blockquote><h4 id="示例"><a href="#示例" class="headerlink" title="示例:"></a>示例:</h4></blockquote><blockquote><p>给定 1-&gt;2-&gt;3-&gt;4, 你应该返回 2-&gt;1-&gt;4-&gt;3. </p><h4 id="说明"><a href="#说明" class="headerlink" title="说明:"></a>说明:</h4></blockquote><blockquote><ul><li>你的算法只能使用常数的额外空间。    </li><li>你<strong>不能只是单纯的改变节点内部的值</strong>，而是需要实际的进行节点交换。</li></ul></blockquote><h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>该题属于基本的链表操作题。</p><ul><li>设置一个虚拟头结点<code>dummyHead</code></li><li>设置需要交换的两个节点分别为<code>node1</code>、<code>node2</code>，同时设置<code>node2</code>的下一个节点<code>next</code></li></ul><h5 id="在这一轮操作中"><a href="#在这一轮操作中" class="headerlink" title="在这一轮操作中"></a>在这一轮操作中</h5><ul><li>将<code>node2</code>节点的next设置为<code>node1</code>节点</li><li>将<code>node1</code>节点的next设置为<code>next</code>节点</li><li>将<code>dummyHead</code>节点的next设置为<code>node2</code></li><li>结束本轮操作</li></ul><p>接下来的每轮操作都按照上述进行。</p><h2 id="动画演示"><a href="#动画演示" class="headerlink" title="动画演示"></a>动画演示</h2><p><strong>动画演示GIF有点大，请稍微等待一下加载显示^_^</strong></p><p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fzkzyet4u8g30qk0evqbw.gif" alt=""></p><h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><pre><code>// 24. Swap Nodes in Pairs// https://leetcode.com/problems/swap-nodes-in-pairs/description/// 时间复杂度: O(n)// 空间复杂度: O(1)class Solution {public:    ListNode* swapPairs(ListNode* head) {        ListNode* dummyHead = new ListNode(0);        dummyHead-&gt;next = head;        ListNode* p = dummyHead;        while(p-&gt;next &amp;&amp; p-&gt;next-&gt;next){            ListNode* node1 = p-&gt;next;            ListNode* node2 = node1-&gt;next;            ListNode* next = node2-&gt;next;            node2-&gt;next = node1;            node1-&gt;next = next;            p-&gt;next = node2;            p = node1;        }        ListNode* retHead = dummyHead-&gt;next;        delete dummyHead;        return retHead;    }};</code></pre><h2 id="执行结果"><a href="#执行结果" class="headerlink" title="执行结果"></a>执行结果</h2><p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fzkzyg6vkrj31ss0u0die.jpg" alt=""></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> LeetCode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 链表 </tag>
+            
+            <tag> 节点 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>LeetCode上第344号问题：Reverse String</title>
+      <link href="/posts/cb301f5a/"/>
+      <url>/posts/cb301f5a/</url>
+      
+        <content type="html"><![CDATA[<p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fzkzwvxg08j311i0hot9w.jpg" alt=""></p><p>LeetCode上第344号问题：<strong><a href="https://leetcode-cn.com/problems/reverse-string/" target="_blank" rel="noopener">Reverse String</a></strong></p><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><blockquote><p>编写一个函数，其作用是将输入的字符串反转过来。</p></blockquote><blockquote><h5 id="示例-1"><a href="#示例-1" class="headerlink" title="示例 1:"></a>示例 1:</h5></blockquote><blockquote><p>输入: “hello”<br>输出: “olleh”   </p></blockquote><blockquote><h5 id="示例-2"><a href="#示例-2" class="headerlink" title="示例 2:"></a>示例 2:</h5></blockquote><blockquote><p>输入: “A man, a plan, a canal: Panama”<br>输出: “amanaP :lanac a ,nalp a ,nam A”</p></blockquote><h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>直接从两头往中间走，同时交换两边的字符即可</p><h2 id="动画演示"><a href="#动画演示" class="headerlink" title="动画演示"></a>动画演示</h2><p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fzkzwxdigqg30qm0ep0xp.gif" alt="动画演示"></p><h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><h4 id="代码一"><a href="#代码一" class="headerlink" title="代码一"></a>代码一</h4><pre><code>// 344. Reverse String// https://leetcode.com/problems/reverse-string/description/// Two Pointers// 时间复杂度: O(n)// 空间复杂度: O(1)class Solution {public:    string reverseString(string s) {        int i = 0, j = s.size() - 1;        while(i &lt; j){            swap(s[i], s[j]);            i ++;            j --;        }        return s;    }};</code></pre><h4 id="代码二"><a href="#代码二" class="headerlink" title="代码二"></a>代码二</h4><pre><code>// 344. Reverse String// https://leetcode.com/problems/reverse-string/description/// Two Pointers// 时间复杂度: O(n)// 空间复杂度: O(1)class Solution {public:    string reverseString(string s) {         int left = 0, right = s.size() - 1;        while (left &lt; right) {           char t = s[left];            s[left++] = s[right];           s[right--] = t;        }       return s;   }};</code></pre><h2 id="执行结果"><a href="#执行结果" class="headerlink" title="执行结果"></a>执行结果</h2><p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fzkzwzp763j313u0h6mxq.jpg" alt="执行结果"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> LeetCode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 字符串 </tag>
+            
+            <tag> 反转 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>LeetCode上第206号问题：Reverse Linked List</title>
+      <link href="/posts/10709e63/"/>
+      <url>/posts/10709e63/</url>
+      
+        <content type="html"><![CDATA[<p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fzkzvypae1j311m0g6gms.jpg" alt=""></p><p>LeetCode上第206号问题：<strong><a href="https://leetcode-cn.com/problems/reverse-linked-list/" target="_blank" rel="noopener">Reverse Linked List</a></strong></p><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><blockquote><p>反转一个单链表。</p></blockquote><blockquote><h5 id="示例"><a href="#示例" class="headerlink" title="示例:"></a>示例:</h5></blockquote><blockquote><p>输入: 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL<br>输出: 5-&gt;4-&gt;3-&gt;2-&gt;1-&gt;NULL</p><h5 id="进阶"><a href="#进阶" class="headerlink" title="进阶:"></a>进阶:</h5><p>你可以迭代或递归地反转链表。你能否用两种方法解决这道题？</p></blockquote><h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>设置三个节点<code>pre</code>、<code>cur</code>、<code>next</code></p><ul><li>（1）每次查看<code>cur</code>节点是否为<code>NULL</code>，如果是，则结束循环，获得结果</li><li>（2）如果<code>cur</code>节点不是为<code>NULL</code>，则先设置临时变量<code>next</code>为<code>cur</code>的下一个节点</li><li>（3）让<code>cur</code>的下一个节点变成指向<code>pre</code>，而后<code>pre</code>移动<code>cur</code>，<code>cur</code>移动到<code>next</code></li><li>（4）重复（1）（2）（3）</li></ul><h4 id="动画演示"><a href="#动画演示" class="headerlink" title="动画演示"></a>动画演示</h4><p><strong>动画演示GIF有点大，请稍微等待一下加载显示^_^</strong></p><p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fzkzw15rnng30nj0d9wqe.gif" alt="动画演示"></p><h4 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h4><h5 id="迭代的方式处理"><a href="#迭代的方式处理" class="headerlink" title="迭代的方式处理"></a>迭代的方式处理</h5><pre><code>// 206. Reverse Linked List// https://leetcode.com/problems/reverse-linked-list/description/// 时间复杂度: O(n)// 空间复杂度: O(1)class Solution {public:    ListNode* reverseList(ListNode* head) {        ListNode* pre = NULL;        ListNode* cur = head;        while(cur != NULL){            ListNode* next = cur-&gt;next;            cur-&gt;next = pre;            pre = cur;            cur = next;        }        return pre;    }};</code></pre><h5 id="递归的方式处理"><a href="#递归的方式处理" class="headerlink" title="递归的方式处理"></a>递归的方式处理</h5><pre><code>// 206. Reverse Linked List// https://leetcode.com/problems/reverse-linked-list/description///// 递归的方式反转链表// 时间复杂度: O(n)// 空间复杂度: O(1)class Solution {public:    ListNode* reverseList(ListNode* head) {        // 递归终止条件        if(head == NULL || head-&gt;next == NULL)            return head;        ListNode* rhead = reverseList(head-&gt;next);        // head-&gt;next此刻指向head后面的链表的尾节点        // head-&gt;next-&gt;next = head把head节点放在了尾部        head-&gt;next-&gt;next = head;        head-&gt;next = NULL;        return rhead;    }};</code></pre><h2 id="执行结果"><a href="#执行结果" class="headerlink" title="执行结果"></a>执行结果</h2><p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fzkzw3k5wkj31sn0u0gnx.jpg" alt=""></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> LeetCode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 链表 </tag>
+            
+            <tag> 反转 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>LeetCode上第92号问题：Reverse Linked List II</title>
+      <link href="/posts/970ebf8d/"/>
+      <url>/posts/970ebf8d/</url>
+      
+        <content type="html"><![CDATA[<p>LeetCode上第92号问题：<strong><a href="https://leetcode-cn.com/problems/reverse-linked-list-ii/" target="_blank" rel="noopener">Reverse Linked List II</a></strong></p><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><blockquote><p>反转从位置 m 到 n 的链表。请使用一趟扫描完成反转。</p></blockquote><blockquote><h5 id="说明"><a href="#说明" class="headerlink" title="说明:"></a>说明:</h5><p>1 ≤ m ≤ n ≤ 链表长度。</p></blockquote><blockquote><h5 id="示例"><a href="#示例" class="headerlink" title="示例:"></a>示例:</h5></blockquote><blockquote><p><strong>输入</strong>: 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL, m = 2, n = 4.<br><strong>输出</strong>: 1-&gt;4-&gt;3-&gt;2-&gt;5-&gt;NULL</p></blockquote><h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p><strong><a href="https://xiaozhuanlan.com/topic/7513064892" target="_blank" rel="noopener">Reverse Linked List</a></strong>的延伸题。</p><p>可以考虑取出需要反转的这一小段链表，反转完后再插入到原先的链表中。</p><p><strong>以本题为例：</strong></p><p>变换的是2,3,4这三个点，那么我们可以先取出2，用front指针指向2，然后当取出3的时候，我们把3加到2的前面，把front指针前移到3，依次类推，到4后停止，这样我们得到一个新链表4-&gt;3-&gt;2, front指针指向4。</p><p>对于原链表来说，<strong>有两个点的位置很重要</strong>，需要用指针记录下来，分别是1和5，把新链表插入的时候需要这两个点的位置。</p><ul><li>用pre指针记录1的位置</li><li>当4结点被取走后，5的位置需要记下来</li><li>这样我们就可以把倒置后的那一小段链表加入到原链表中</li></ul><h2 id="动画演示"><a href="#动画演示" class="headerlink" title="动画演示"></a>动画演示</h2><p><strong>动画演示GIF有点大，请稍微等待一下加载显示^_^</strong></p><p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fzkzvp0nnyg30qk0ev4bt.gif" alt=""></p><h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fzkzvpvd7xj30vw0u0q82.jpg" alt=""></p><h2 id="执行结果"><a href="#执行结果" class="headerlink" title="执行结果"></a>执行结果</h2><p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fzkzvrexmqj31ss0u00vf.jpg" alt=""></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> LeetCode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 指针 </tag>
+            
+            <tag> 链表 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>LeetCode上第19号问题：Remove Nth Node From End of List</title>
+      <link href="/posts/160c6ff6/"/>
+      <url>/posts/160c6ff6/</url>
+      
+        <content type="html"><![CDATA[<p>LeetCode上第19号问题：<strong><a href="https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/" target="_blank" rel="noopener">Remove Nth Node From End of List</a></strong></p><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><blockquote><p>给定一个链表，删除链表的倒数第 n 个节点，并且返回链表的头结点。</p></blockquote><blockquote><h4 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h4></blockquote><blockquote><p>给定一个链表: 1-&gt;2-&gt;3-&gt;4-&gt;5, 和 n = 2.</p></blockquote><blockquote><p>当删除了倒数第二个节点后，链表变为 1-&gt;2-&gt;3-&gt;5</p><h4 id="说明："><a href="#说明：" class="headerlink" title="说明："></a>说明：</h4></blockquote><blockquote><p>给定的 n 保证是有效的。</p></blockquote><blockquote><h4 id="进阶："><a href="#进阶：" class="headerlink" title="进阶："></a>进阶：</h4></blockquote><blockquote><p>你能尝试使用一趟扫描实现吗？</p></blockquote><h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>采取双重遍历肯定是可以解决问题的，但题目要求我们一次遍历解决问题，那我们的思路得发散一下。</p><p>我们可以设想假设设定了双指针<code>p</code>和<code>q</code>的话，当<code>q</code>指向末尾的<code>NULL</code>，<code>p</code>与<code>q</code>之间相隔的元素个数为<code>n</code>时，那么删除掉<code>p</code>的下一个指针就完成了要求。</p><ul><li>设置虚拟节点<code>dummyHead</code>指向<code>head</code></li><li>设定双指针<code>p</code>和<code>q</code>，初始都指向虚拟节点<code>dummyHead</code></li><li>移动<code>q</code>，直到<code>p</code>与<code>q</code>之间相隔的元素个数为<code>n</code></li><li>同时移动<code>p</code>与<code>q</code>，直到<code>q</code>指向的为<code>NULL</code></li><li>将<code>p</code>的下一个节点指向下下个节点</li></ul><h2 id="动画演示"><a href="#动画演示" class="headerlink" title="动画演示"></a>动画演示</h2><p><strong>动画演示GIF有点大，请稍微等待一下加载显示^_^</strong></p><p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fzkzv25jlbg30qn0ezajr.gif" alt=""></p><h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fzkzv3cllbj30u012d760.jpg" alt=""></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> LeetCode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 指针 </tag>
+            
+            <tag> 链表 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>LeetCode上第203号问题：Remove Linked List Elements</title>
+      <link href="/posts/5c7d04c/"/>
+      <url>/posts/5c7d04c/</url>
+      
+        <content type="html"><![CDATA[<p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fzkzs7u2a6j31iu0mutbi.jpg" alt=""></p><p>LeetCode上第203号问题：<strong><a href="https://leetcode-cn.com/problems/remove-linked-list-elements/" target="_blank" rel="noopener">Remove Linked List Elements</a></strong></p><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><blockquote><p>删除链表中等于给定值 val 的所有节点。</p></blockquote><blockquote><h5 id="示例"><a href="#示例" class="headerlink" title="示例:"></a>示例:</h5></blockquote><blockquote><p>输入: 1-&gt;2-&gt;6-&gt;3-&gt;4-&gt;5-&gt;6, val = 6<br>输出: 1-&gt;2-&gt;3-&gt;4-&gt;5</p></blockquote><h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>主要考察了基本的链表遍历和设置指针的知识点。</p><p>定义一个虚拟头节点<code>dummyHead</code>，遍历查看原链表，遇到与给定值相同的元素，将该元素的前后两个节点连接起来，然后删除该元素即可。</p><h2 id="动画演示"><a href="#动画演示" class="headerlink" title="动画演示"></a>动画演示</h2><p><strong>动画演示GIF有点大，请稍微等待一下加载显示^_^</strong></p><p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fzkzs3cu9jg30qo0f0107.gif" alt="动画演示"></p><h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><h4 id="代码一"><a href="#代码一" class="headerlink" title="代码一"></a>代码一</h4><pre><code>// 203. Remove Linked List Elements// https://leetcode.com/problems/remove-linked-list-elements/description/// 使用虚拟头结点// 时间复杂度: O(n)// 空间复杂度: O(1)class Solution {public:    ListNode* removeElements(ListNode* head, int val) {        // 创建虚拟头结点        ListNode* dummyHead = new ListNode(0);        dummyHead-&gt;next = head;        ListNode* cur = dummyHead;        while(cur-&gt;next != NULL){            if(cur-&gt;next-&gt;val == val){                ListNode* delNode = cur-&gt;next;                cur-&gt;next = delNode-&gt;next;                delete delNode;            }            else                cur = cur-&gt;next;        }        ListNode* retNode = dummyHead-&gt;next;        delete dummyHead;        return retNode;    }};</code></pre><h4 id="代码二"><a href="#代码二" class="headerlink" title="代码二"></a>代码二</h4><p>用递归来解。</p><p>通过递归调用到链表末尾，然后回来，需要删的元素，将链表next指针指向下一个元素即可。</p><pre><code>class Solution {public:    ListNode* removeElements(ListNode* head, int val) {        if (!head) return NULL;        head-&gt;next = removeElements(head-&gt;next, val);        return head-&gt;val == val ? head-&gt;next : head;    }};</code></pre><h2 id="执行结果"><a href="#执行结果" class="headerlink" title="执行结果"></a>执行结果</h2><p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fzkzs66gunj31ri0u0773.jpg" alt="执行结果"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> LeetCode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 指针 </tag>
+            
+            <tag> 链表 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>LeetCode上第86号问题：Partition List</title>
+      <link href="/posts/8dd6b93/"/>
+      <url>/posts/8dd6b93/</url>
+      
+        <content type="html"><![CDATA[<p>LeetCode上第86号问题：<strong><a href="https://leetcode-cn.com/problems/partition-list/" target="_blank" rel="noopener">Partition List</a></strong></p><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><blockquote><p>给定一个链表和一个特定值 x，对链表进行分隔，使得所有小于 x 的节点都在大于或等于 x 的节点之前。</p></blockquote><blockquote><p>你应当保留两个分区中每个节点的初始相对位置。</p></blockquote><blockquote><h5 id="示例"><a href="#示例" class="headerlink" title="示例:"></a>示例:</h5></blockquote><blockquote><p>输入: head = 1-&gt;4-&gt;3-&gt;2-&gt;5-&gt;2, x = 3<br>输出: 1-&gt;2-&gt;2-&gt;4-&gt;3-&gt;5</p></blockquote><h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>这道题要求我们划分链表，把所有小于给定值的节点都移到前面，大于该值的节点顺序不变，相当于一个局部排序的问题。</p><ul><li>设定两个虚拟节点，<code>dummyHead1</code>用来保存小于于该值的链表，<code>dummyHead2</code>来保存大于等于该值的链表</li><li>遍历整个原始链表，将小于该值的放于<code>dummyHead1</code>中，其余的放置在<code>dummyHead2</code>中</li><li>遍历结束后，将<code>dummyHead2</code>插入到<code>dummyHead1</code>后面</li></ul><h2 id="动画演示"><a href="#动画演示" class="headerlink" title="动画演示"></a>动画演示</h2><p><strong>动画演示GIF有点大，请稍微等待一下加载显示^_^</strong></p><p><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181104095701.gif" alt="动画演示"></p><h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><p><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181106090835.png" alt=""></p><h2 id="欢迎关注"><a href="#欢迎关注" class="headerlink" title="欢迎关注"></a>欢迎关注</h2><p>我们会在公众号（<strong>菠了个菜</strong>）每天早上8点30分准时推送一条LeetCode上的算法题目，并给出该题目的动画解析以及参考答案，每篇文章阅读时长为五分钟左右。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> LeetCode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 分治 </tag>
+            
+            <tag> 链表 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>LeetCode上第 328 号问题：Odd Even Linked List</title>
+      <link href="/posts/770f47b8/"/>
+      <url>/posts/770f47b8/</url>
+      
+        <content type="html"><![CDATA[<p>LeetCode上第328号问题：<strong><a href="https://leetcode-cn.com/problems/odd-even-linked-list/" target="_blank" rel="noopener">Odd Even Linked List</a></strong></p><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><blockquote><p>给定一个单链表，把所有的奇数节点和偶数节点分别排在一起。请注意，这里的奇数节点和偶数节点指的是节点编号的奇偶性，而不是节点的值的奇偶性。</p></blockquote><blockquote><p>请尝试使用原地算法完成。你的算法的空间复杂度应为 O(1)，时间复杂度应为 O(nodes)，nodes 为节点总数。</p></blockquote><blockquote><p><strong>示例 1:</strong></p></blockquote><blockquote><p><strong>输入:</strong> 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL<br><strong>输出:</strong> 1-&gt;3-&gt;5-&gt;2-&gt;4-&gt;NULL</p><p><strong>示例 2:</strong></p></blockquote><blockquote><p><strong>输入:</strong> 2-&gt;1-&gt;3-&gt;5-&gt;6-&gt;4-&gt;7-&gt;NULL<br><strong>输出:</strong> 2-&gt;3-&gt;6-&gt;7-&gt;1-&gt;5-&gt;4-&gt;NULL</p><p><strong>说明:</strong></p></blockquote><blockquote><ul><li>应当保持奇数节点和偶数节点的相对顺序。</li><li>链表的第一个节点视为奇数节点，第二个节点视为偶数节点，以此类推。</li></ul></blockquote><h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>这道题给了我们一个链表，让我们分开奇偶节点，所有奇节点在前，偶节点在后。</p><ul><li>设定两个虚拟节点，<code>dummyHead1</code>用来保存奇节点，<code>dummyHead2</code>来保存偶节点；</li><li>遍历整个原始链表，将奇节点放于<code>dummyHead1</code>中，其余的放置在<code>dummyHead2</code>中</li><li>遍历结束后，将<code>dummyHead2</code>插入到<code>dummyHead1</code>后面</li></ul><h2 id="动画演示"><a href="#动画演示" class="headerlink" title="动画演示"></a>动画演示</h2><p><strong>动画演示GIF有点大，请稍微等待一下加载显示^_^</strong></p><p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fzkzqr3h93g30qk0ewwo3.gif" alt=""></p><h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fzkzqncct3j30u00ygwmm.jpg" alt=""></p><h2 id="执行结果"><a href="#执行结果" class="headerlink" title="执行结果"></a>执行结果</h2><p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fzkzqplqhmj31sl0u0mzs.jpg" alt=""></p>]]></content>
       
       
       <categories>
@@ -112,6 +573,33 @@
     
     
     <entry>
+      <title>LeetCode上第  349 号问题：Intersection of Two Arrays</title>
+      <link href="/posts/6b380d52/"/>
+      <url>/posts/6b380d52/</url>
+      
+        <content type="html"><![CDATA[<p>leetcode上第 349 号问题：<a href="https://leetcode-cn.com/problems/intersection-of-two-arrays/" target="_blank" rel="noopener">Intersection of Two Arrays</a></p><blockquote><p>给定两个数组，编写一个函数来计算它们的交集。</p></blockquote><blockquote><p>示例 1:<br>输入: nums1 = [1,2,2,1], nums2 = [2,2]<br>输出: [2]  </p><p>示例 2:<br>输入: nums1 = [4,9,5], nums2 = [9,4,9,8,4]<br>输出: [9,4]</p><p>说明:  </p><ul><li>输出结果中的每个元素一定是唯一的。   </li><li>我们可以不考虑输出结果的顺序。</li></ul></blockquote><h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>容器类<a href="https://zh.cppreference.com/w/cpp/container/set" target="_blank" rel="noopener">set</a>的使用。</p><ul><li>遍历num1，通过set容器record存储num1的元素</li><li>遍历num2，在record中查找是否有相同的元素，如果有，用set容器resultSet进行存储</li><li>将resultSet转换为vector类型</li></ul><h4 id="动画演示"><a href="#动画演示" class="headerlink" title="动画演示"></a>动画演示</h4><p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fzkzoct4m6g30nk0dbq67.gif" alt="Intersection of Two Arrays"></p><h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><pre><code>// 349. Intersection of Two Arrays// https://leetcode.com/problems/intersection-of-two-arrays/description/// 时间复杂度: O(nlogn)// 空间复杂度: O(n)class Solution {public:    vector&lt;int&gt; intersection(vector&lt;int&gt;&amp; nums1, vector&lt;int&gt;&amp; nums2) {        set&lt;int&gt; record;        for( int i = 0 ; i &lt; nums1.size() ; i ++ ){            record.insert(nums1[i]);        }        set&lt;int&gt; resultSet;        for( int i = 0 ; i &lt; nums2.size() ; i ++ ){            if(record.find(nums2[i]) != record.end()){                resultSet.insert(nums2[i]);            }        }        vector&lt;int&gt; resultVector;        for(set&lt;int&gt;::iterator iter = resultSet.begin(); iter != resultSet.end(); iter ++ ){            resultVector.push_back(*iter);        }        return resultVector;    }};</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> LeetCode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> set </tag>
+            
+            <tag> 容器 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>LeetCode上第 350 号问题：Intersection of Two Arrays II</title>
       <link href="/posts/52620/"/>
       <url>/posts/52620/</url>
@@ -131,6 +619,58 @@
             <tag> map </tag>
             
             <tag> 查找 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>LeetCode上第 150 号问题：逆波兰表达式求值</title>
+      <link href="/posts/dfbd1df8/"/>
+      <url>/posts/dfbd1df8/</url>
+      
+        <content type="html"><![CDATA[<p>LeetCode上第150号问题：<strong><a href="https://leetcode-cn.com/problems/evaluate-reverse-polish-notation/" target="_blank" rel="noopener">逆波兰表达式求值</a></strong></p><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><blockquote><p>根据逆波兰表示法，求表达式的值。</p></blockquote><blockquote><p>有效的运算符包括 +, -, *, / 。每个运算对象可以是整数，也可以是另一个逆波兰表达式。</p></blockquote><blockquote><h5 id="说明："><a href="#说明：" class="headerlink" title="说明："></a>说明：</h5></blockquote><blockquote><p>整数除法只保留整数部分。<br>给定逆波兰表达式总是有效的。换句话说，表达式总会得出有效数值且不存在除数为 0 的情况。   </p><h5 id="示例-1："><a href="#示例-1：" class="headerlink" title="示例 1："></a>示例 1：</h5></blockquote><blockquote><p>输入: [“2”, “1”, “+”, “3”, “<em>“]<br>输出: 9<br>解释: ((2 + 1) </em> 3) = 9   </p><h5 id="示例-2："><a href="#示例-2：" class="headerlink" title="示例 2："></a>示例 2：</h5></blockquote><blockquote><p>输入: [“4”, “13”, “5”, “/“, “+”]<br>输出: 6<br>解释: (4 + (13 / 5)) = 6   </p><h5 id="示例-3："><a href="#示例-3：" class="headerlink" title="示例 3："></a>示例 3：</h5></blockquote><blockquote><p>输入: [“10”, “6”, “9”, “3”, “+”, “-11”, “<em>“, “/“, “</em>“, “17”, “+”, “5”, “+”]<br>输出: 22<br>解释:<br>  ((10 <em> (6 / ((9 + 3) </em> -11))) + 17) + 5<br>= ((10 <em> (6 / (12 </em> -11))) + 17) + 5<br>= ((10 <em> (6 / -132)) + 17) + 5<br>= ((10 </em> 0) + 17) + 5<br>= (0 + 17) + 5<br>= 17 + 5<br>= 22   </p></blockquote><h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>用数据结构<code>栈</code>来解决这个问题。</p><ul><li>从前往后遍历数组</li><li>遇到数字则压入栈中</li><li>遇到符号，则把栈顶的两个数字拿出来运算，把结果再压入栈中</li><li>遍历完整个数组，栈顶数字即为最终答案</li></ul><h2 id="动画演示"><a href="#动画演示" class="headerlink" title="动画演示"></a>动画演示</h2><p><strong>动画演示GIF有点大，请稍微等待一下加载显示^_^</strong><br><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fzkzntpqf2g30qx0f4485.gif" alt=""></p><h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fzkznqdhk8j30u00wedha.jpg" alt=""></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> LeetCode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 栈 </tag>
+            
+            <tag> 数据结构 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>LeetCode上第 237 号问题：Delete Node in a Linked List</title>
+      <link href="/posts/497f8fc8/"/>
+      <url>/posts/497f8fc8/</url>
+      
+        <content type="html"><![CDATA[<p>LeetCode上第237号问题：<strong><a href="https://leetcode-cn.com/problems/delete-node-in-a-linked-list/" target="_blank" rel="noopener">Delete Node in a Linked List</a></strong></p><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><blockquote><p>请编写一个函数，使其可以删除某个链表中给定的（非末尾）节点，你将只被给定要求被删除的节点。</p></blockquote><blockquote><p>现有一个链表 – head = [4,5,1,9]，它可以表示为:</p></blockquote><blockquote><pre><code>4 -&gt; 5 -&gt; 1 -&gt; 9##### 示例 1:</code></pre></blockquote><blockquote><p><strong>输入:</strong> head = [4,5,1,9], node = 5<br><strong>输出:</strong> [4,1,9]<br><strong>解释:</strong> 给定你链表中值为 5 的第二个节点，那么在调用了你的函数之后，该链表应变为 4 -&gt; 1 -&gt;  9.</p><h5 id="示例-2"><a href="#示例-2" class="headerlink" title="示例 2:"></a>示例 2:</h5></blockquote><blockquote><p><strong>输入:</strong> head = [4,5,1,9], node = 1<br><strong>输出:</strong> [4,5,9]<br><strong>解释:</strong> 给定你链表中值为 1 的第三个节点，那么在调用了你的函数之后，该链表应变为 4 -&gt; 5 -&gt; 9.     </p><h5 id="说明"><a href="#说明" class="headerlink" title="说明:"></a>说明:</h5></blockquote><blockquote><ul><li>链表至少包含两个节点。    </li><li>链表中所有节点的值都是唯一的。     </li><li>给定的节点为非末尾节点并且一定是链表中的一个有效节点。     </li><li>不要从你的函数中返回任何结果。          </li></ul></blockquote><h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>此题注意的点是没有给我们链表的起点，只给我们了一个要删的节点，与以往处理的情况稍许不同。</p><p><strong>这道题的处理方法是先把当前节点的值用下一个节点的值覆盖，然后我们删除下一个节点即可</strong></p><h2 id="动画演示"><a href="#动画演示" class="headerlink" title="动画演示"></a>动画演示</h2><p><strong>动画演示GIF有点大，请稍微等待一下加载显示^_^</strong></p><p><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181105171450.gif" alt=""></p><h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><p><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181105171512.png" alt=""></p><h2 id="执行结果"><a href="#执行结果" class="headerlink" title="执行结果"></a>执行结果</h2><p><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181105171613.png" alt=""></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> LeetCode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 链表 </tag>
             
         </tags>
       
@@ -721,33 +1261,6 @@
     
     
     <entry>
-      <title>【图解数据结构】 一组动画演示计数排序</title>
-      <link href="/posts/33704/"/>
-      <url>/posts/33704/</url>
-      
-        <content type="html"><![CDATA[<h1 id="【图解数据结构】-一组动画彻底理解计数排序"><a href="#【图解数据结构】-一组动画彻底理解计数排序" class="headerlink" title="【图解数据结构】 一组动画彻底理解计数排序"></a>【图解数据结构】 一组动画彻底理解计数排序</h1><h2 id="计数排序"><a href="#计数排序" class="headerlink" title="计数排序"></a>计数排序</h2><p>计数排序是一种非基于比较的排序算法，其空间复杂度和时间复杂度均为O(n+k)，其中k是整数的范围。基于比较的排序算法时间复杂度最小是O(nlogn)的。该算法于1954年由 Harold H. Seward 提出。</p><p>计数排序的核心在于将输入的数据值转化为键存储在额外开辟的数组空间中。作为一种线性时间复杂度的排序，计数排序要求输入的数据必须是有<strong>确定范围的整数</strong>。</p><h2 id="算法步骤"><a href="#算法步骤" class="headerlink" title="算法步骤"></a>算法步骤</h2><ol><li><p>花O(n)的时间扫描一下整个序列 A，获取最小值 min 和最大值 max</p></li><li><p>开辟一块新的空间创建新的数组 B，长度为 ( max - min + 1)</p></li><li><p>数组 B 中 index 的元素记录的值是 A 中某元素出现的次数</p></li><li><p>最后输出目标整数序列，具体的逻辑是遍历数组 B，输出相应元素以及对应的个数</p></li></ol><h2 id="算法演示"><a href="#算法演示" class="headerlink" title="算法演示"></a>算法演示</h2><p><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181126190814.gif" alt=""></p><h2 id="排序动画过程解释"><a href="#排序动画过程解释" class="headerlink" title="排序动画过程解释"></a>排序动画过程解释</h2><ol><li><p>首先，扫描一下整个序列</p></li><li><p>获得最小值为 2 ，最大值为 7</p></li><li><p>新建数组包含 2~7 的元素</p></li><li><p>再次扫描序列，将序列的值放置在新建数组中</p></li><li><p>扫描数字 5，数组中 index 为 3 的值为 5，次数为 1</p></li><li><p>扫描数字 3，数组中 index 为 1 的值为 3，次数为 1</p></li><li><p>扫描数字 4，数组中 index 为 2 的值为 4，次数为 1</p></li><li><p>扫描数字 7，数组中 index 为 5 的值为 7，次数为 1</p></li><li><p>扫描数字 2，数组中 index 为 0 的值为 2，次数为 1</p></li><li><p>扫描数字 4，数组中 index 为 2 的值为 4，次数为 2</p></li><li><p>扫描数字 3，数组中 index 为 1 的值为 3，次数为 2</p></li><li><p>按照这种节奏，扫描结束后，新建数组中存放了整个序列以及每个数字出现的次数</p></li><li><p>最后输出目标整数序列</p></li><li><p>输出数字 2，同时数组中 index 为 0 的值为 2 的元素次数变为 0</p></li><li><p>输出数字 3，同时数组中 index 为 1 的值为 3 的元素次数变为 1</p></li><li><p>同样的操作，整个序列就完全输出了</p></li></ol><h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><p>为了更好的让读者用自己熟悉的编程语言来理解动画，笔者将贴出多种编程语言的参考代码，代码全部来源于网上。</p><h4 id="Go代码实现"><a href="#Go代码实现" class="headerlink" title="Go代码实现"></a>Go代码实现</h4><p><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181126191921.png" alt=""></p><h4 id="Java代码实现"><a href="#Java代码实现" class="headerlink" title="Java代码实现"></a>Java代码实现</h4><p><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181126191936.png" alt=""></p><h4 id="Python代码实现"><a href="#Python代码实现" class="headerlink" title="Python代码实现"></a>Python代码实现</h4><p><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181126191943.png" alt=""></p><h4 id="JavaScript代码实现"><a href="#JavaScript代码实现" class="headerlink" title="JavaScript代码实现"></a>JavaScript代码实现</h4><p><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181126191949.png" alt=""></p><p>如果你是iOS开发者，可以在GitHub上 <a href="https://github.com/MisterBooo/Play-With-Sort-OC" target="_blank" rel="noopener">https://github.com/MisterBooo/Play-With-Sort-OC</a> 获取更直观可调试运行的源码。</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 十大经典排序 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 排序 </tag>
-            
-            <tag> 计数排序 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>【图解数据结构】 一组动画演示插入排序</title>
       <link href="/posts/42319/"/>
       <url>/posts/42319/</url>
@@ -775,182 +1288,27 @@
     
     
     <entry>
-      <title></title>
-      <link href="/posts/4/"/>
-      <url>/posts/4/</url>
+      <title>【图解数据结构】 一组动画演示计数排序</title>
+      <link href="/posts/33704/"/>
+      <url>/posts/33704/</url>
       
-        <content type="html"><![CDATA[<hr><p>title: LeetCode上第 150 号问题：逆波兰表达式求值<br>date: 2019-01-27 11:36:01<br>author: 程序员小吴师兄<br>top: false<br>summary:<br>categories: LeetCode<br>tags:</p><ul><li>栈</li><li>数据结构</li></ul><hr><p>LeetCode上第150号问题：<strong><a href="https://leetcode-cn.com/problems/evaluate-reverse-polish-notation/" target="_blank" rel="noopener">逆波兰表达式求值</a></strong></p><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><blockquote><p>根据逆波兰表示法，求表达式的值。</p></blockquote><blockquote><p>有效的运算符包括 +, -, *, / 。每个运算对象可以是整数，也可以是另一个逆波兰表达式。</p></blockquote><blockquote><h5 id="说明："><a href="#说明：" class="headerlink" title="说明："></a>说明：</h5></blockquote><blockquote><p>整数除法只保留整数部分。<br>给定逆波兰表达式总是有效的。换句话说，表达式总会得出有效数值且不存在除数为 0 的情况。   </p><h5 id="示例-1："><a href="#示例-1：" class="headerlink" title="示例 1："></a>示例 1：</h5></blockquote><blockquote><p>输入: [“2”, “1”, “+”, “3”, “<em>“]<br>输出: 9<br>解释: ((2 + 1) </em> 3) = 9   </p><h5 id="示例-2："><a href="#示例-2：" class="headerlink" title="示例 2："></a>示例 2：</h5></blockquote><blockquote><p>输入: [“4”, “13”, “5”, “/“, “+”]<br>输出: 6<br>解释: (4 + (13 / 5)) = 6   </p><h5 id="示例-3："><a href="#示例-3：" class="headerlink" title="示例 3："></a>示例 3：</h5></blockquote><blockquote><p>输入: [“10”, “6”, “9”, “3”, “+”, “-11”, “<em>“, “/“, “</em>“, “17”, “+”, “5”, “+”]<br>输出: 22<br>解释:<br>  ((10 <em> (6 / ((9 + 3) </em> -11))) + 17) + 5<br>= ((10 <em> (6 / (12 </em> -11))) + 17) + 5<br>= ((10 <em> (6 / -132)) + 17) + 5<br>= ((10 </em> 0) + 17) + 5<br>= (0 + 17) + 5<br>= 17 + 5<br>= 22   </p></blockquote><h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>用数据结构<code>栈</code>来解决这个问题。</p><ul><li>从前往后遍历数组</li><li>遇到数字则压入栈中</li><li>遇到符号，则把栈顶的两个数字拿出来运算，把结果再压入栈中</li><li>遍历完整个数组，栈顶数字即为最终答案</li></ul><h2 id="动画演示"><a href="#动画演示" class="headerlink" title="动画演示"></a>动画演示</h2><p><strong>动画演示GIF有点大，请稍微等待一下加载显示^_^</strong><br><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fzkzntpqf2g30qx0f4485.gif" alt=""></p><h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fzkznqdhk8j30u00wedha.jpg" alt=""></p>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
-      <link href="/posts/13/"/>
-      <url>/posts/13/</url>
-      
-        <content type="html"><![CDATA[<hr><p>title: LeetCode上第20 号问题：有效的括号<br>date: 2019-01-27 11:48:28<br>author: 程序员小吴师兄<br>top: false<br>summary:<br>categories: LeetCode<br>tags:</p><ul><li>栈</li><li>数据结构</li></ul><hr><p>LeetCode上第20 号问题：<strong><a href="https://leetcode-cn.com/problems/valid-parentheses/" target="_blank" rel="noopener">有效的括号</a></strong></p><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><blockquote><p>给定一个只包括 ‘(‘，’)’，’{‘，’}’，’[‘，’]’ 的字符串，判断字符串是否有效。</p></blockquote><blockquote><p>有效字符串需满足：</p></blockquote><blockquote><p>左括号必须用相同类型的右括号闭合。<br>左括号必须以正确的顺序闭合。<br>注意空字符串可被认为是有效字符串。    </p></blockquote><blockquote><h4 id="示例-1"><a href="#示例-1" class="headerlink" title="示例 1:"></a>示例 1:</h4></blockquote><blockquote><p>输入: “()”<br>输出: true</p></blockquote><blockquote><h4 id="示例-2"><a href="#示例-2" class="headerlink" title="示例 2:"></a>示例 2:</h4></blockquote><blockquote><p>输入: “()[]{}”<br>输出: true</p></blockquote><blockquote><h4 id="示例-3"><a href="#示例-3" class="headerlink" title="示例 3:"></a>示例 3:</h4></blockquote><blockquote><p>输入: “(]”<br>输出: false</p></blockquote><blockquote><h4 id="示例-4"><a href="#示例-4" class="headerlink" title="示例 4:"></a>示例 4:</h4></blockquote><blockquote><p>输入: “([)]”<br>输出: false   </p></blockquote><blockquote><h4 id="示例-5"><a href="#示例-5" class="headerlink" title="示例 5:"></a>示例 5:</h4></blockquote><blockquote><p>输入: “{[]}”<br>输出: true   </p></blockquote><h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>这道题让我们验证输入的字符串是否为括号字符串，包括大括号，中括号和小括号。</p><p>这里我们使用<strong>栈</strong>。</p><ul><li>遍历输入字符串</li><li>如果当前字符为左半边括号时，则将其压入栈中</li><li>如果遇到右半边括号时，<strong>分类讨论：</strong></li><li>1）如栈不为空且为对应的左半边括号，则取出栈顶元素，继续循环  </li><li>2）若此时栈为空，则直接返回false</li><li>3）若不为对应的左半边括号，反之返回false</li></ul><h2 id="动画演示"><a href="#动画演示" class="headerlink" title="动画演示"></a>动画演示</h2><p><strong>动画演示GIF有点大，请稍微等待一下加载显示^_^</strong></p><p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fzkzzpkrjng30qo0f0n2n.gif" alt=""></p><h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fzkzzqlgmij30u014awmf.jpg" alt=""></p>]]></content>
+        <content type="html"><![CDATA[<h1 id="【图解数据结构】-一组动画彻底理解计数排序"><a href="#【图解数据结构】-一组动画彻底理解计数排序" class="headerlink" title="【图解数据结构】 一组动画彻底理解计数排序"></a>【图解数据结构】 一组动画彻底理解计数排序</h1><h2 id="计数排序"><a href="#计数排序" class="headerlink" title="计数排序"></a>计数排序</h2><p>计数排序是一种非基于比较的排序算法，其空间复杂度和时间复杂度均为O(n+k)，其中k是整数的范围。基于比较的排序算法时间复杂度最小是O(nlogn)的。该算法于1954年由 Harold H. Seward 提出。</p><p>计数排序的核心在于将输入的数据值转化为键存储在额外开辟的数组空间中。作为一种线性时间复杂度的排序，计数排序要求输入的数据必须是有<strong>确定范围的整数</strong>。</p><h2 id="算法步骤"><a href="#算法步骤" class="headerlink" title="算法步骤"></a>算法步骤</h2><ol><li><p>花O(n)的时间扫描一下整个序列 A，获取最小值 min 和最大值 max</p></li><li><p>开辟一块新的空间创建新的数组 B，长度为 ( max - min + 1)</p></li><li><p>数组 B 中 index 的元素记录的值是 A 中某元素出现的次数</p></li><li><p>最后输出目标整数序列，具体的逻辑是遍历数组 B，输出相应元素以及对应的个数</p></li></ol><h2 id="算法演示"><a href="#算法演示" class="headerlink" title="算法演示"></a>算法演示</h2><p><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181126190814.gif" alt=""></p><h2 id="排序动画过程解释"><a href="#排序动画过程解释" class="headerlink" title="排序动画过程解释"></a>排序动画过程解释</h2><ol><li><p>首先，扫描一下整个序列</p></li><li><p>获得最小值为 2 ，最大值为 7</p></li><li><p>新建数组包含 2~7 的元素</p></li><li><p>再次扫描序列，将序列的值放置在新建数组中</p></li><li><p>扫描数字 5，数组中 index 为 3 的值为 5，次数为 1</p></li><li><p>扫描数字 3，数组中 index 为 1 的值为 3，次数为 1</p></li><li><p>扫描数字 4，数组中 index 为 2 的值为 4，次数为 1</p></li><li><p>扫描数字 7，数组中 index 为 5 的值为 7，次数为 1</p></li><li><p>扫描数字 2，数组中 index 为 0 的值为 2，次数为 1</p></li><li><p>扫描数字 4，数组中 index 为 2 的值为 4，次数为 2</p></li><li><p>扫描数字 3，数组中 index 为 1 的值为 3，次数为 2</p></li><li><p>按照这种节奏，扫描结束后，新建数组中存放了整个序列以及每个数字出现的次数</p></li><li><p>最后输出目标整数序列</p></li><li><p>输出数字 2，同时数组中 index 为 0 的值为 2 的元素次数变为 0</p></li><li><p>输出数字 3，同时数组中 index 为 1 的值为 3 的元素次数变为 1</p></li><li><p>同样的操作，整个序列就完全输出了</p></li></ol><h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><p>为了更好的让读者用自己熟悉的编程语言来理解动画，笔者将贴出多种编程语言的参考代码，代码全部来源于网上。</p><h4 id="Go代码实现"><a href="#Go代码实现" class="headerlink" title="Go代码实现"></a>Go代码实现</h4><p><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181126191921.png" alt=""></p><h4 id="Java代码实现"><a href="#Java代码实现" class="headerlink" title="Java代码实现"></a>Java代码实现</h4><p><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181126191936.png" alt=""></p><h4 id="Python代码实现"><a href="#Python代码实现" class="headerlink" title="Python代码实现"></a>Python代码实现</h4><p><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181126191943.png" alt=""></p><h4 id="JavaScript代码实现"><a href="#JavaScript代码实现" class="headerlink" title="JavaScript代码实现"></a>JavaScript代码实现</h4><p><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181126191949.png" alt=""></p><p>如果你是iOS开发者，可以在GitHub上 <a href="https://github.com/MisterBooo/Play-With-Sort-OC" target="_blank" rel="noopener">https://github.com/MisterBooo/Play-With-Sort-OC</a> 获取更直观可调试运行的源码。</p>]]></content>
       
       
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
-      <link href="/posts/8/"/>
-      <url>/posts/8/</url>
-      
-        <content type="html"><![CDATA[<hr><p>title: LeetCode上第19号问题：Remove Nth Node From End of List<br>date: 2019-01-27 11:43:55<br>author: 程序员小吴师兄<br>top: false<br>summary:<br>categories: LeetCode<br>tags:</p><ul><li>链表</li><li>指针</li></ul><hr><p>LeetCode上第19号问题：<strong><a href="https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/" target="_blank" rel="noopener">Remove Nth Node From End of List</a></strong></p><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><blockquote><p>给定一个链表，删除链表的倒数第 n 个节点，并且返回链表的头结点。</p></blockquote><blockquote><h4 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h4></blockquote><blockquote><p>给定一个链表: 1-&gt;2-&gt;3-&gt;4-&gt;5, 和 n = 2.</p></blockquote><blockquote><p>当删除了倒数第二个节点后，链表变为 1-&gt;2-&gt;3-&gt;5</p><h4 id="说明："><a href="#说明：" class="headerlink" title="说明："></a>说明：</h4></blockquote><blockquote><p>给定的 n 保证是有效的。</p></blockquote><blockquote><h4 id="进阶："><a href="#进阶：" class="headerlink" title="进阶："></a>进阶：</h4></blockquote><blockquote><p>你能尝试使用一趟扫描实现吗？</p></blockquote><h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>采取双重遍历肯定是可以解决问题的，但题目要求我们一次遍历解决问题，那我们的思路得发散一下。</p><p>我们可以设想假设设定了双指针<code>p</code>和<code>q</code>的话，当<code>q</code>指向末尾的<code>NULL</code>，<code>p</code>与<code>q</code>之间相隔的元素个数为<code>n</code>时，那么删除掉<code>p</code>的下一个指针就完成了要求。</p><ul><li>设置虚拟节点<code>dummyHead</code>指向<code>head</code></li><li>设定双指针<code>p</code>和<code>q</code>，初始都指向虚拟节点<code>dummyHead</code></li><li>移动<code>q</code>，直到<code>p</code>与<code>q</code>之间相隔的元素个数为<code>n</code></li><li>同时移动<code>p</code>与<code>q</code>，直到<code>q</code>指向的为<code>NULL</code></li><li>将<code>p</code>的下一个节点指向下下个节点</li></ul><h2 id="动画演示"><a href="#动画演示" class="headerlink" title="动画演示"></a>动画演示</h2><p><strong>动画演示GIF有点大，请稍微等待一下加载显示^_^</strong></p><p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fzkzv25jlbg30qn0ezajr.gif" alt=""></p><h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fzkzv3cllbj30u012d760.jpg" alt=""></p>]]></content>
+      <categories>
+          
+          <category> 十大经典排序 </category>
+          
+      </categories>
       
       
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
-      <link href="/posts/2/"/>
-      <url>/posts/2/</url>
-      
-        <content type="html"><![CDATA[<hr><p>title: LeetCode上第 237 号问题：Delete Node in a Linked List<br>date: 2019-01-27 11:35:29<br>author: 程序员小吴师兄<br>top: false<br>summary:<br>categories: LeetCode<br>tags:</p><ul><li>链表</li></ul><hr><p>LeetCode上第237号问题：<strong><a href="https://leetcode-cn.com/problems/delete-node-in-a-linked-list/" target="_blank" rel="noopener">Delete Node in a Linked List</a></strong></p><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><blockquote><p>请编写一个函数，使其可以删除某个链表中给定的（非末尾）节点，你将只被给定要求被删除的节点。</p></blockquote><blockquote><p>现有一个链表 – head = [4,5,1,9]，它可以表示为:</p></blockquote><blockquote><pre><code>4 -&gt; 5 -&gt; 1 -&gt; 9##### 示例 1:</code></pre></blockquote><blockquote><p><strong>输入:</strong> head = [4,5,1,9], node = 5<br><strong>输出:</strong> [4,1,9]<br><strong>解释:</strong> 给定你链表中值为 5 的第二个节点，那么在调用了你的函数之后，该链表应变为 4 -&gt; 1 -&gt;  9.</p><h5 id="示例-2"><a href="#示例-2" class="headerlink" title="示例 2:"></a>示例 2:</h5></blockquote><blockquote><p><strong>输入:</strong> head = [4,5,1,9], node = 1<br><strong>输出:</strong> [4,5,9]<br><strong>解释:</strong> 给定你链表中值为 1 的第三个节点，那么在调用了你的函数之后，该链表应变为 4 -&gt; 5 -&gt; 9.     </p><h5 id="说明"><a href="#说明" class="headerlink" title="说明:"></a>说明:</h5></blockquote><blockquote><ul><li>链表至少包含两个节点。    </li><li>链表中所有节点的值都是唯一的。     </li><li>给定的节点为非末尾节点并且一定是链表中的一个有效节点。     </li><li>不要从你的函数中返回任何结果。          </li></ul></blockquote><h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>此题注意的点是没有给我们链表的起点，只给我们了一个要删的节点，与以往处理的情况稍许不同。</p><p><strong>这道题的处理方法是先把当前节点的值用下一个节点的值覆盖，然后我们删除下一个节点即可</strong></p><h2 id="动画演示"><a href="#动画演示" class="headerlink" title="动画演示"></a>动画演示</h2><p><strong>动画演示GIF有点大，请稍微等待一下加载显示^_^</strong></p><p><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181105171450.gif" alt=""></p><h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><p><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181105171512.png" alt=""></p><h2 id="执行结果"><a href="#执行结果" class="headerlink" title="执行结果"></a>执行结果</h2><p><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181105171613.png" alt=""></p>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
-      <link href="/posts/6/"/>
-      <url>/posts/6/</url>
-      
-        <content type="html"><![CDATA[<hr><p>title: LeetCode上第 328 号问题：Odd Even Linked List<br>date: 2019-01-27 11:40:19<br>author: 程序员小吴师兄<br>top: false<br>summary:<br>categories: LeetCode<br>tags:</p><ul><li>链表</li><li>节点</li></ul><hr><p>LeetCode上第328号问题：<strong><a href="https://leetcode-cn.com/problems/odd-even-linked-list/" target="_blank" rel="noopener">Odd Even Linked List</a></strong></p><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><blockquote><p>给定一个单链表，把所有的奇数节点和偶数节点分别排在一起。请注意，这里的奇数节点和偶数节点指的是节点编号的奇偶性，而不是节点的值的奇偶性。</p></blockquote><blockquote><p>请尝试使用原地算法完成。你的算法的空间复杂度应为 O(1)，时间复杂度应为 O(nodes)，nodes 为节点总数。</p></blockquote><blockquote><p><strong>示例 1:</strong></p></blockquote><blockquote><p><strong>输入:</strong> 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL<br><strong>输出:</strong> 1-&gt;3-&gt;5-&gt;2-&gt;4-&gt;NULL</p><p><strong>示例 2:</strong></p></blockquote><blockquote><p><strong>输入:</strong> 2-&gt;1-&gt;3-&gt;5-&gt;6-&gt;4-&gt;7-&gt;NULL<br><strong>输出:</strong> 2-&gt;3-&gt;6-&gt;7-&gt;1-&gt;5-&gt;4-&gt;NULL</p><p><strong>说明:</strong></p></blockquote><blockquote><ul><li>应当保持奇数节点和偶数节点的相对顺序。</li><li>链表的第一个节点视为奇数节点，第二个节点视为偶数节点，以此类推。</li></ul></blockquote><h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>这道题给了我们一个链表，让我们分开奇偶节点，所有奇节点在前，偶节点在后。</p><ul><li>设定两个虚拟节点，<code>dummyHead1</code>用来保存奇节点，<code>dummyHead2</code>来保存偶节点；</li><li>遍历整个原始链表，将奇节点放于<code>dummyHead1</code>中，其余的放置在<code>dummyHead2</code>中</li><li>遍历结束后，将<code>dummyHead2</code>插入到<code>dummyHead1</code>后面</li></ul><h2 id="动画演示"><a href="#动画演示" class="headerlink" title="动画演示"></a>动画演示</h2><p><strong>动画演示GIF有点大，请稍微等待一下加载显示^_^</strong></p><p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fzkzqr3h93g30qk0ewwo3.gif" alt=""></p><h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fzkzqncct3j30u00ygwmm.jpg" alt=""></p><h2 id="执行结果"><a href="#执行结果" class="headerlink" title="执行结果"></a>执行结果</h2><p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fzkzqplqhmj31sl0u0mzs.jpg" alt=""></p>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
-      <link href="/posts/5/"/>
-      <url>/posts/5/</url>
-      
-        <content type="html"><![CDATA[<hr><p>title: LeetCode上第86号问题：Partition List<br>date: 2019-01-27 11:40:51<br>author: 程序员小吴师兄<br>top: false<br>summary:<br>categories: LeetCode<br>tags:</p><ul><li>链表</li><li>分治</li></ul><hr><p>LeetCode上第86号问题：<strong><a href="https://leetcode-cn.com/problems/partition-list/" target="_blank" rel="noopener">Partition List</a></strong></p><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><blockquote><p>给定一个链表和一个特定值 x，对链表进行分隔，使得所有小于 x 的节点都在大于或等于 x 的节点之前。</p></blockquote><blockquote><p>你应当保留两个分区中每个节点的初始相对位置。</p></blockquote><blockquote><h5 id="示例"><a href="#示例" class="headerlink" title="示例:"></a>示例:</h5></blockquote><blockquote><p>输入: head = 1-&gt;4-&gt;3-&gt;2-&gt;5-&gt;2, x = 3<br>输出: 1-&gt;2-&gt;2-&gt;4-&gt;3-&gt;5</p></blockquote><h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>这道题要求我们划分链表，把所有小于给定值的节点都移到前面，大于该值的节点顺序不变，相当于一个局部排序的问题。</p><ul><li>设定两个虚拟节点，<code>dummyHead1</code>用来保存小于于该值的链表，<code>dummyHead2</code>来保存大于等于该值的链表</li><li>遍历整个原始链表，将小于该值的放于<code>dummyHead1</code>中，其余的放置在<code>dummyHead2</code>中</li><li>遍历结束后，将<code>dummyHead2</code>插入到<code>dummyHead1</code>后面</li></ul><h2 id="动画演示"><a href="#动画演示" class="headerlink" title="动画演示"></a>动画演示</h2><p><strong>动画演示GIF有点大，请稍微等待一下加载显示^_^</strong></p><p><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181104095701.gif" alt="动画演示"></p><h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><p><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181106090835.png" alt=""></p><h2 id="欢迎关注"><a href="#欢迎关注" class="headerlink" title="欢迎关注"></a>欢迎关注</h2><p>我们会在公众号（<strong>菠了个菜</strong>）每天早上8点30分准时推送一条LeetCode上的算法题目，并给出该题目的动画解析以及参考答案，每篇文章阅读时长为五分钟左右。</p>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
-      <link href="/posts/11/"/>
-      <url>/posts/11/</url>
-      
-        <content type="html"><![CDATA[<hr><p>title: LeetCode上第92号问题：Reverse Linked List II<br>date: 2019-01-27 11:44:36<br>author: 程序员小吴师兄<br>top: false<br>summary:<br>categories: LeetCode<br>tags:</p><ul><li>链表</li><li>指针</li></ul><hr><p>LeetCode上第92号问题：<strong><a href="https://leetcode-cn.com/problems/reverse-linked-list-ii/" target="_blank" rel="noopener">Reverse Linked List II</a></strong></p><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><blockquote><p>反转从位置 m 到 n 的链表。请使用一趟扫描完成反转。</p></blockquote><blockquote><h5 id="说明"><a href="#说明" class="headerlink" title="说明:"></a>说明:</h5><p>1 ≤ m ≤ n ≤ 链表长度。</p></blockquote><blockquote><h5 id="示例"><a href="#示例" class="headerlink" title="示例:"></a>示例:</h5></blockquote><blockquote><p><strong>输入</strong>: 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL, m = 2, n = 4.<br><strong>输出</strong>: 1-&gt;4-&gt;3-&gt;2-&gt;5-&gt;NULL</p></blockquote><h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p><strong><a href="https://xiaozhuanlan.com/topic/7513064892" target="_blank" rel="noopener">Reverse Linked List</a></strong>的延伸题。</p><p>可以考虑取出需要反转的这一小段链表，反转完后再插入到原先的链表中。</p><p><strong>以本题为例：</strong></p><p>变换的是2,3,4这三个点，那么我们可以先取出2，用front指针指向2，然后当取出3的时候，我们把3加到2的前面，把front指针前移到3，依次类推，到4后停止，这样我们得到一个新链表4-&gt;3-&gt;2, front指针指向4。</p><p>对于原链表来说，<strong>有两个点的位置很重要</strong>，需要用指针记录下来，分别是1和5，把新链表插入的时候需要这两个点的位置。</p><ul><li>用pre指针记录1的位置</li><li>当4结点被取走后，5的位置需要记下来</li><li>这样我们就可以把倒置后的那一小段链表加入到原链表中</li></ul><h2 id="动画演示"><a href="#动画演示" class="headerlink" title="动画演示"></a>动画演示</h2><p><strong>动画演示GIF有点大，请稍微等待一下加载显示^_^</strong></p><p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fzkzvp0nnyg30qk0ev4bt.gif" alt=""></p><h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fzkzvpvd7xj30vw0u0q82.jpg" alt=""></p><h2 id="执行结果"><a href="#执行结果" class="headerlink" title="执行结果"></a>执行结果</h2><p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fzkzvrexmqj31ss0u00vf.jpg" alt=""></p>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
-      <link href="/posts/7/"/>
-      <url>/posts/7/</url>
-      
-        <content type="html"><![CDATA[<hr><p>title: LeetCode上第203号问题：Remove Linked List Elements<br>date: 2019-01-27 11:41:44<br>author: 程序员小吴师兄<br>top: false<br>summary:<br>categories: LeetCode<br>tags:</p><ul><li>链表</li><li>指针</li></ul><hr><p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fzkzs7u2a6j31iu0mutbi.jpg" alt=""></p><p>LeetCode上第203号问题：<strong><a href="https://leetcode-cn.com/problems/remove-linked-list-elements/" target="_blank" rel="noopener">Remove Linked List Elements</a></strong></p><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><blockquote><p>删除链表中等于给定值 val 的所有节点。</p></blockquote><blockquote><h5 id="示例"><a href="#示例" class="headerlink" title="示例:"></a>示例:</h5></blockquote><blockquote><p>输入: 1-&gt;2-&gt;6-&gt;3-&gt;4-&gt;5-&gt;6, val = 6<br>输出: 1-&gt;2-&gt;3-&gt;4-&gt;5</p></blockquote><h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>主要考察了基本的链表遍历和设置指针的知识点。</p><p>定义一个虚拟头节点<code>dummyHead</code>，遍历查看原链表，遇到与给定值相同的元素，将该元素的前后两个节点连接起来，然后删除该元素即可。</p><h2 id="动画演示"><a href="#动画演示" class="headerlink" title="动画演示"></a>动画演示</h2><p><strong>动画演示GIF有点大，请稍微等待一下加载显示^_^</strong></p><p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fzkzs3cu9jg30qo0f0107.gif" alt="动画演示"></p><h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><h4 id="代码一"><a href="#代码一" class="headerlink" title="代码一"></a>代码一</h4><pre><code>// 203. Remove Linked List Elements// https://leetcode.com/problems/remove-linked-list-elements/description/// 使用虚拟头结点// 时间复杂度: O(n)// 空间复杂度: O(1)class Solution {public:    ListNode* removeElements(ListNode* head, int val) {        // 创建虚拟头结点        ListNode* dummyHead = new ListNode(0);        dummyHead-&gt;next = head;        ListNode* cur = dummyHead;        while(cur-&gt;next != NULL){            if(cur-&gt;next-&gt;val == val){                ListNode* delNode = cur-&gt;next;                cur-&gt;next = delNode-&gt;next;                delete delNode;            }            else                cur = cur-&gt;next;        }        ListNode* retNode = dummyHead-&gt;next;        delete dummyHead;        return retNode;    }};</code></pre><h4 id="代码二"><a href="#代码二" class="headerlink" title="代码二"></a>代码二</h4><p>用递归来解。</p><p>通过递归调用到链表末尾，然后回来，需要删的元素，将链表next指针指向下一个元素即可。</p><pre><code>class Solution {public:    ListNode* removeElements(ListNode* head, int val) {        if (!head) return NULL;        head-&gt;next = removeElements(head-&gt;next, val);        return head-&gt;val == val ? head-&gt;next : head;    }};</code></pre><h2 id="执行结果"><a href="#执行结果" class="headerlink" title="执行结果"></a>执行结果</h2><p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fzkzs66gunj31ri0u0773.jpg" alt="执行结果"></p>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
-      <link href="/posts/9/"/>
-      <url>/posts/9/</url>
-      
-        <content type="html"><![CDATA[<hr><p>title: LeetCode上第206号问题：Reverse Linked List<br>date: 2019-01-27 11:45:35<br>author: 程序员小吴师兄<br>top: false<br>summary:<br>categories: LeetCode<br>tags:</p><ul><li>链表</li><li>反转</li></ul><hr><p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fzkzvypae1j311m0g6gms.jpg" alt=""></p><p>LeetCode上第206号问题：<strong><a href="https://leetcode-cn.com/problems/reverse-linked-list/" target="_blank" rel="noopener">Reverse Linked List</a></strong></p><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><blockquote><p>反转一个单链表。</p></blockquote><blockquote><h5 id="示例"><a href="#示例" class="headerlink" title="示例:"></a>示例:</h5></blockquote><blockquote><p>输入: 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL<br>输出: 5-&gt;4-&gt;3-&gt;2-&gt;1-&gt;NULL</p><h5 id="进阶"><a href="#进阶" class="headerlink" title="进阶:"></a>进阶:</h5><p>你可以迭代或递归地反转链表。你能否用两种方法解决这道题？</p></blockquote><h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>设置三个节点<code>pre</code>、<code>cur</code>、<code>next</code></p><ul><li>（1）每次查看<code>cur</code>节点是否为<code>NULL</code>，如果是，则结束循环，获得结果</li><li>（2）如果<code>cur</code>节点不是为<code>NULL</code>，则先设置临时变量<code>next</code>为<code>cur</code>的下一个节点</li><li>（3）让<code>cur</code>的下一个节点变成指向<code>pre</code>，而后<code>pre</code>移动<code>cur</code>，<code>cur</code>移动到<code>next</code></li><li>（4）重复（1）（2）（3）</li></ul><h4 id="动画演示"><a href="#动画演示" class="headerlink" title="动画演示"></a>动画演示</h4><p><strong>动画演示GIF有点大，请稍微等待一下加载显示^_^</strong></p><p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fzkzw15rnng30nj0d9wqe.gif" alt="动画演示"></p><h4 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h4><h5 id="迭代的方式处理"><a href="#迭代的方式处理" class="headerlink" title="迭代的方式处理"></a>迭代的方式处理</h5><pre><code>// 206. Reverse Linked List// https://leetcode.com/problems/reverse-linked-list/description/// 时间复杂度: O(n)// 空间复杂度: O(1)class Solution {public:    ListNode* reverseList(ListNode* head) {        ListNode* pre = NULL;        ListNode* cur = head;        while(cur != NULL){            ListNode* next = cur-&gt;next;            cur-&gt;next = pre;            pre = cur;            cur = next;        }        return pre;    }};</code></pre><h5 id="递归的方式处理"><a href="#递归的方式处理" class="headerlink" title="递归的方式处理"></a>递归的方式处理</h5><pre><code>// 206. Reverse Linked List// https://leetcode.com/problems/reverse-linked-list/description///// 递归的方式反转链表// 时间复杂度: O(n)// 空间复杂度: O(1)class Solution {public:    ListNode* reverseList(ListNode* head) {        // 递归终止条件        if(head == NULL || head-&gt;next == NULL)            return head;        ListNode* rhead = reverseList(head-&gt;next);        // head-&gt;next此刻指向head后面的链表的尾节点        // head-&gt;next-&gt;next = head把head节点放在了尾部        head-&gt;next-&gt;next = head;        head-&gt;next = NULL;        return rhead;    }};</code></pre><h2 id="执行结果"><a href="#执行结果" class="headerlink" title="执行结果"></a>执行结果</h2><p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fzkzw3k5wkj31sn0u0gnx.jpg" alt=""></p>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
-      <link href="/posts/10/"/>
-      <url>/posts/10/</url>
-      
-        <content type="html"><![CDATA[<hr><p>title: LeetCode上第344号问题：Reverse String<br>date: 2019-01-27 11:46:45<br>author: 程序员小吴师兄<br>top: false<br>summary:<br>categories: LeetCode<br>tags:</p><ul><li>反转</li><li>字符串</li></ul><hr><p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fzkzwvxg08j311i0hot9w.jpg" alt=""></p><p>LeetCode上第344号问题：<strong><a href="https://leetcode-cn.com/problems/reverse-string/" target="_blank" rel="noopener">Reverse String</a></strong></p><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><blockquote><p>编写一个函数，其作用是将输入的字符串反转过来。</p></blockquote><blockquote><h5 id="示例-1"><a href="#示例-1" class="headerlink" title="示例 1:"></a>示例 1:</h5></blockquote><blockquote><p>输入: “hello”<br>输出: “olleh”   </p></blockquote><blockquote><h5 id="示例-2"><a href="#示例-2" class="headerlink" title="示例 2:"></a>示例 2:</h5></blockquote><blockquote><p>输入: “A man, a plan, a canal: Panama”<br>输出: “amanaP :lanac a ,nalp a ,nam A”</p></blockquote><h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>直接从两头往中间走，同时交换两边的字符即可</p><h2 id="动画演示"><a href="#动画演示" class="headerlink" title="动画演示"></a>动画演示</h2><p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fzkzwxdigqg30qm0ep0xp.gif" alt="动画演示"></p><h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><h4 id="代码一"><a href="#代码一" class="headerlink" title="代码一"></a>代码一</h4><pre><code>// 344. Reverse String// https://leetcode.com/problems/reverse-string/description/// Two Pointers// 时间复杂度: O(n)// 空间复杂度: O(1)class Solution {public:    string reverseString(string s) {        int i = 0, j = s.size() - 1;        while(i &lt; j){            swap(s[i], s[j]);            i ++;            j --;        }        return s;    }};</code></pre><h4 id="代码二"><a href="#代码二" class="headerlink" title="代码二"></a>代码二</h4><pre><code>// 344. Reverse String// https://leetcode.com/problems/reverse-string/description/// Two Pointers// 时间复杂度: O(n)// 空间复杂度: O(1)class Solution {public:    string reverseString(string s) {         int left = 0, right = s.size() - 1;        while (left &lt; right) {           char t = s[left];            s[left++] = s[right];           s[right--] = t;        }       return s;   }};</code></pre><h2 id="执行结果"><a href="#执行结果" class="headerlink" title="执行结果"></a>执行结果</h2><p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fzkzwzp763j313u0h6mxq.jpg" alt="执行结果"></p>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
-      <link href="/posts/12/"/>
-      <url>/posts/12/</url>
-      
-        <content type="html"><![CDATA[<hr><p>title: LeetCode上第 1 号问题：Two Sum<br>date: 2019-01-27 11:47:56<br>author: 程序员小吴师兄<br>top: false<br>summary:<br>categories: LeetCode<br>tags:</p><ul><li>查找表</li><li>索引</li></ul><hr><p>leetcode上第1号问题：<a href="https://leetcode-cn.com/problems/two-sum/" target="_blank" rel="noopener">Two Sum</a></p><blockquote><p>给定一个整数数组和一个目标值，找出数组中和为目标值的两个数。</p></blockquote><blockquote><p>你可以假设每个输入只对应一种答案，且同样的元素不能被重复利用。</p></blockquote><blockquote><p>示例:</p></blockquote><blockquote><p>给定 nums = [2, 7, 11, 15], target = 9</p></blockquote><blockquote><p>因为 nums[0] + nums[1] = 2 + 7 = 9<br>所以返回 [0, 1]</p></blockquote><h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>使用查找表来解决该问题。</p><blockquote><p>设置一个map容器record用来记录元素的值与索引</p><p>遍历数组nums</p><ul><li>每次遍历时使用临时变量complement用来保存目标值与当前值的差值</li><li>在此次遍历中查找record，查看是否有与complement一致的值，如果查找成功则返回查找值的索引值与当前变量的值i</li><li>如果未找到，则在record保存该元素与索引值i</li></ul></blockquote><h4 id="动画演示"><a href="#动画演示" class="headerlink" title="动画演示"></a>动画演示</h4><p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fzkzyntxibg30nn0dd458.gif" alt="Two Sum"></p><h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><pre><code>// 1. Two Sum// https://leetcode.com/problems/two-sum/description/// 时间复杂度：O(n)// 空间复杂度：O(n)class Solution {public:    vector&lt;int&gt; twoSum(vector&lt;int&gt;&amp; nums, int target) {        unordered_map&lt;int,int&gt; record;        for(int i = 0 ; i &lt; nums.size() ; i ++){            int complement = target - nums[i];            if(record.find(complement) != record.end()){                int res[] = {i, record[complement]};                return vector&lt;int&gt;(res, res + 2);            }            record[nums[i]] = i;        }    }};</code></pre><h4 id="执行结果"><a href="#执行结果" class="headerlink" title="执行结果"></a>执行结果</h4><p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fzkzymcdnzj31nx0u0q5l.jpg" alt=""></p>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
-      <link href="/posts/3/"/>
-      <url>/posts/3/</url>
-      
-        <content type="html"><![CDATA[<hr><p>title: LeetCode上第  349 号问题：Intersection of Two Arrays<br>date: 2019-01-27 11:38:21<br>author: 程序员小吴师兄<br>top: false<br>summary:<br>categories: LeetCode<br>tags:</p><ul><li>set</li><li>容器</li></ul><hr><p>leetcode上第 349 号问题：<a href="https://leetcode-cn.com/problems/intersection-of-two-arrays/" target="_blank" rel="noopener">Intersection of Two Arrays</a></p><blockquote><p>给定两个数组，编写一个函数来计算它们的交集。</p></blockquote><blockquote><p>示例 1:<br>输入: nums1 = [1,2,2,1], nums2 = [2,2]<br>输出: [2]  </p><p>示例 2:<br>输入: nums1 = [4,9,5], nums2 = [9,4,9,8,4]<br>输出: [9,4]</p><p>说明:  </p><ul><li>输出结果中的每个元素一定是唯一的。   </li><li>我们可以不考虑输出结果的顺序。</li></ul></blockquote><h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>容器类<a href="https://zh.cppreference.com/w/cpp/container/set" target="_blank" rel="noopener">set</a>的使用。</p><ul><li>遍历num1，通过set容器record存储num1的元素</li><li>遍历num2，在record中查找是否有相同的元素，如果有，用set容器resultSet进行存储</li><li>将resultSet转换为vector类型</li></ul><h4 id="动画演示"><a href="#动画演示" class="headerlink" title="动画演示"></a>动画演示</h4><p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fzkzoct4m6g30nk0dbq67.gif" alt="Intersection of Two Arrays"></p><h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><pre><code>// 349. Intersection of Two Arrays// https://leetcode.com/problems/intersection-of-two-arrays/description/// 时间复杂度: O(nlogn)// 空间复杂度: O(n)class Solution {public:    vector&lt;int&gt; intersection(vector&lt;int&gt;&amp; nums1, vector&lt;int&gt;&amp; nums2) {        set&lt;int&gt; record;        for( int i = 0 ; i &lt; nums1.size() ; i ++ ){            record.insert(nums1[i]);        }        set&lt;int&gt; resultSet;        for( int i = 0 ; i &lt; nums2.size() ; i ++ ){            if(record.find(nums2[i]) != record.end()){                resultSet.insert(nums2[i]);            }        }        vector&lt;int&gt; resultVector;        for(set&lt;int&gt;::iterator iter = resultSet.begin(); iter != resultSet.end(); iter ++ ){            resultVector.push_back(*iter);        }        return resultVector;    }};</code></pre>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
-      <link href="/posts/1/"/>
-      <url>/posts/1/</url>
-      
-        <content type="html"><![CDATA[<hr><p>title: LeetCode上第167号问题：Two Sum II<br>date: 2019-01-27 11:50:40<br>author: 程序员小吴师兄<br>top: false<br>summary:<br>categories: LeetCode<br>tags:</p><ul><li>数组</li><li>指针</li></ul><hr><p>leetcode上第167号问题：<a href="https://leetcode-cn.com/problems/two-sum-ii-input-array-is-sorted/" target="_blank" rel="noopener">Two Sum II</a></p><blockquote><p>给定一个已按照升序排列 的有序数组，找到两个数使得它们相加之和等于目标数。</p></blockquote><blockquote><p>函数应该返回这两个下标值 index1 和 index2，其中 index1 必须小于 index2。</p></blockquote><blockquote><p>说明:</p></blockquote><blockquote><ul><li>返回的下标值（index1 和 index2）不是从零开始的。</li><li>你可以假设每个输入只对应唯一的答案，而且你不可以重复使用相同的元素。</li></ul></blockquote><blockquote><p>示例:</p></blockquote><blockquote><p>输入: numbers = [2, 7, 11, 15], target = 9<br>输出: [1,2]<br>解释: 2 与 7 之和等于目标数 9 。因此 index1 = 1, index2 = 2 。</p></blockquote><h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>初始化左指针left指向数组起始，初始化右指针right指向数组结尾。</p><p>根据<strong>已排序</strong>这个特性，</p><ul><li><p>（1）如果numbers[left]与numbers[right]的和tmp小于target，说明应该增加tmp,因此left右移指向一个较大的值。</p></li><li><p>（2）如果tmp大于target，说明应该减小tmp,因此right左移指向一个较小的值。</p></li><li><p>（3）tmp等于target，则找到，返回left+1和right+1。（注意以1为起始下标）</p></li></ul><h4 id="动画演示"><a href="#动画演示" class="headerlink" title="动画演示"></a>动画演示</h4><p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fzl02exvalg30np0cpjsz.gif" alt="Two sum"></p><h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><pre><code>// 对撞指针// 时间复杂度: O(n)// 空间复杂度: O(1)class Solution {public:    vector&lt;int&gt; twoSum(vector&lt;int&gt;&amp; numbers, int target) {        int l = 0, r = numbers.size() - 1;        while(l &lt; r){            if(numbers[l] + numbers[r] == target){                int res[2] = {l+1, r+1};                return vector&lt;int&gt;(res, res+2);            }            else if(numbers[l] + numbers[r] &lt; target)                l ++;            else // numbers[l] + numbers[r] &gt; target                r --;        }    }</code></pre>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
-      <link href="/posts/0/"/>
-      <url>/posts/0/</url>
-      
-        <content type="html"><![CDATA[<hr><p>title: LeetCode上第75号问题：Sort Colors<br>date: 2019-01-27 11:49:32<br>author: 程序员小吴师兄<br>top: false<br>summary:<br>categories: LeetCode<br>tags:</p><ul><li>分治</li><li>快速</li></ul><hr><p>leetcode上第75号问题：<a href="https://leetcode-cn.com/problems/sort-colors/" target="_blank" rel="noopener">Sort Colors</a></p><blockquote><p>给定一个包含红色、白色和蓝色，一共 n 个元素的数组，原地对它们进行排序，使得相同颜色的元素相邻，并按照红色、白色、蓝色顺序排列。</p></blockquote><blockquote><p>此题中，我们使用整数 0、 1 和 2 分别表示红色、白色和蓝色。</p></blockquote><blockquote><p>注意:<br>不能使用代码库中的排序函数来解决这道题。</p></blockquote><blockquote><p>示例:</p></blockquote><blockquote><p>输入: [2,0,2,1,1,0]</p></blockquote><blockquote><p>输出: [0,0,1,1,2,2]</p></blockquote><h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>结合三路快排partition思路的应用，设定两个索引，一个从左往右滑动<code>zero</code>，一个从右往左滑动<code>two</code>，遍历<code>nums</code>，当<code>nums[i]</code>的值为1时，<code>i++</code>；当<code>nums[i]</code>的值为2时，<code>two</code>的值先减1，而后交换<code>nums[i]</code>与<code>nums[two]</code>，此时在观察<code>nums[i]</code>的值；当<code>nums[i]</code>的值为0时，<code>zero++</code>，而后交换<code>nums[i]</code>与<code>nums[zero]</code>，<code>i++</code>;当 <code>i = two</code>时，结束循环。</p><h4 id="动画演示"><a href="#动画演示" class="headerlink" title="动画演示"></a>动画演示</h4><p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fzl014a9kug30np0cp42x.gif" alt="Sort Colors"></p><h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><pre><code>// 三路快速排序的思想// 对整个数组只遍历了一遍// 时间复杂度: O(n)// 空间复杂度: O(1)class Solution {public:    void sortColors(vector&lt;int&gt; &amp;nums) {        int zero = -1;          // [0...zero] == 0        int two = nums.size();  // [two...n-1] == 2        for(int i = 0 ; i &lt; two ; ){            if(nums[i] == 1){                 i ++;            }else if (nums[i] == 2){                 two--;                 swap( nums[i] , nums[two]);            }else{ // nums[i] == 0                 zero++;                 swap(nums[zero] , nums[i]);                 i++;            }        }    }};</code></pre>]]></content>
-      
-      
+        <tags>
+            
+            <tag> 排序 </tag>
+            
+            <tag> 计数排序 </tag>
+            
+        </tags>
       
     </entry>
     
