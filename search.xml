@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>什么是平衡二叉树（AVL）</title>
+      <link href="/posts/65aa991e/"/>
+      <url>/posts/65aa991e/</url>
+      
+        <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote><p>Wiki:在<a href="https://zh.wikipedia.org/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6" target="_blank" rel="noopener">计算机科学</a>中，<strong>AVL树</strong>是最早被发明的<a href="https://zh.wikipedia.org/wiki/%E8%87%AA%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%9F%A5%E6%89%BE%E6%A0%91" target="_blank" rel="noopener">自平衡二叉查找树</a>。在AVL树中，任一节点对应的两棵子树的最大高度差为1，因此它也被称为<strong>高度平衡树</strong>。查找、插入和删除在平均和最坏情况下的<a href="https://zh.wikipedia.org/wiki/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6" target="_blank" rel="noopener">时间复杂度</a>都是{\displaystyle O(\log {n})}<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/653ab6d6fd99537d220f179d2591955ff4f37b99" alt="O(\log{n})">。增加和删除元素的操作则可能需要借由一次或多次<a href="https://zh.wikipedia.org/wiki/%E6%A0%91%E6%97%8B%E8%BD%AC" target="_blank" rel="noopener">树旋转</a>，以实现树的重新平衡。AVL 树得名于它的发明者 <a href="https://zh.wikipedia.org/wiki/%E6%A0%BC%E5%A5%A5%E5%B0%94%E5%90%89%C2%B7%E9%98%BF%E6%9D%B0%E5%B0%94%E6%9D%BE-%E9%9F%A6%E5%88%A9%E6%96%AF%E5%9F%BA" target="_blank" rel="noopener">G. M. Adelson-Velsky</a> 和 <a href="https://zh.wikipedia.org/w/index.php?title=Evgenii_Landis&amp;action=edit&amp;redlink=1" target="_blank" rel="noopener">Evgenii Landis</a>，他们在1962年的论文《An algorithm for the organization of information》中公开了这一数据结构。</p></blockquote><h3 id="1-为什么要有平衡二叉树"><a href="#1-为什么要有平衡二叉树" class="headerlink" title="1 为什么要有平衡二叉树"></a>1 为什么要有平衡二叉树</h3><p>二叉搜索树一定程度上可以提高搜索效率，但是当原序列有序时，例如序列 A = {1，2，3，4，5，6}，构造二叉搜索树如图 1.1。依据此序列构造的二叉搜索树为右斜树，同时二叉树退化成单链表，搜索效率降低为 O(n)。</p><p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fzofsmoafpj31hc0u0t8y.jpg" alt="图 1.1"></p><p>在此二叉搜索树中查找元素 6 需要查找 6 次。</p><p>二叉搜索树的查找效率取决于树的高度，因此保持树的高度最小，即可保证树的查找效率。同样的序列 A，将其改为图 1.2 的方式存储，查找元素 6 时只需比较 3 次，查找效率提升一倍。</p><p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fzofyo9w0wj31k60mcjrg.jpg" alt="图 1.2"></p><p>可以看出当节点数目一定，保持树的左右两端保持平衡，树的查找效率最高。</p><p><strong>这种左右子树的高度相差不超过 1 的树为平衡二叉树。</strong></p><h3 id="2-定义"><a href="#2-定义" class="headerlink" title="2. 定义"></a>2. 定义</h3><p><strong>平衡二叉查找树</strong>：简称平衡二叉树。由前苏联的数学家 <strong>A</strong>delse-<strong>V</strong>elskil 和 <strong>L</strong>andis 在 1962 年提出的高度平衡的二叉树，根据科学家的英文名也称为 AVL 树。它具有如下几个性质：</p><ol><li>可以是空树。</li><li>假如不是空树，任何一个结点的左子树与右子树都是平衡二叉树，并且高度之差的绝对值不超过 1。</li></ol><p>平衡之意，如天平，即两边的分量大约相同。</p><p>例如图 2.1 不是平衡二叉树，因为结点 60 的左子树不是平衡二叉树。</p><p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fzogeu6pn5j31ke0nyq35.jpg" alt="图 2.1"></p><p>图 2.2 也不是平衡二叉树，因为虽然任何一个结点的左子树与右子树都是平衡二叉树，但高度之差已经超过 1 。</p><p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fzogewh2naj31kc0n6t8w.jpg" alt="图 2.2"></p><p>图 2.3 是平衡二叉树。</p><p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fzogk65q2jj31ke0tit94.jpg" alt="图 2.3"></p><h3 id="3-平衡因子"><a href="#3-平衡因子" class="headerlink" title="3. 平衡因子"></a>3. 平衡因子</h3><p><strong>定义：</strong>某节点的左子树与右子树的高度(深度)差即为该节点的平衡因子（BF,Balance Factor），平衡二叉树中不存在平衡因子大于 1 的节点。在一棵平衡二叉树中，节点的平衡因子只能取 0 、1 或者 -1 ，分别对应着左右子树等高，左子树比较高，右子树比较高。</p><p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fzogqxlo4zj31k80lc3yl.jpg" alt="图 3.1"></p><p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fzogscuvtzj31jy0kwaa5.jpg" alt="图 3.2"></p><p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fzogsc9r7xj31jw0laglp.jpg" alt="图 3.3"></p><h3 id="4-节点结构"><a href="#4-节点结构" class="headerlink" title="4. 节点结构"></a>4. 节点结构</h3><p>定义平衡二叉树的节点结构：</p><pre class=" language-c++"><code class="language-c++">typedef struct AVLNode *Tree;typedef int ElementType;struct AVLNode{    int depth; //深度，这里计算每个结点的深度，通过深度的比较可得出是否平衡    Tree parent; //该结点的父节点    ElementType val; //结点值    Tree lchild;    Tree rchild;    AVLNode(int val=0) {        parent = NULL;        depth = 0;        lchild = rchild = NULL;        this->val=val;    }};</code></pre><h3 id="5-AVL树插入时的失衡与调整"><a href="#5-AVL树插入时的失衡与调整" class="headerlink" title="5. AVL树插入时的失衡与调整"></a>5. AVL树插入时的失衡与调整</h3><p>图 5.1 是一颗平衡二叉树</p><p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fzolcmx1qqj31b00g6glk.jpg" alt="图 5.1 "></p><p>在此平衡二叉树插入节点 99 ，树结构变为： </p><p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fzolopfxzxg30q60be41k.gif" alt="动图 5.2"></p><p>在动图 5.2 中，节点 66 的左子树高度为 1，右子树高度为 3，此时平衡因子为 -2，树失去平衡。</p><p>在动图 5.2 中，以节点 66 为父节点的那颗树就称为 <strong>最小失衡子树</strong>。</p><p><strong>最小失衡子树</strong>：在新插入的结点向上查找，以第一个平衡因子的<strong>绝对值</strong>超过 1 的结点为根的子树称为最小不平衡子树。也就是说，一棵失衡的树，是有可能有多棵子树同时失衡的。而这个时候，我们只要调整最小的不平衡子树，就能够将不平衡的树调整为平衡的树。</p><p><strong>平衡二叉树的失衡调整主要是通过旋转最小失衡子树来实现的</strong>。根据旋转的方向有两种处理方式，<strong>左旋</strong> 与 <strong>右旋</strong> 。</p><p>旋转的目的就是减少高度，通过降低整棵树的高度来平衡。哪边的树高，就把那边的树向上旋转。</p><h4 id="5-1-左旋"><a href="#5-1-左旋" class="headerlink" title="5.1 左旋"></a>5.1 左旋</h4><p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fzolu39ojoj31gw0lumx9.jpg" alt="图 5.1.1"></p><p>以图 5.1.1 为例，加入新节点 99 后， 节点 66 的左子树高度为 1，右子树高度为 3，此时平衡因子为 -2。为保证树的平衡，此时需要对节点 66 做出旋转，因为右子树高度高于左子树，对节点进行左旋操作，流程如下：</p><p>（1）节点的右孩子替代此节点位置<br>（2）右孩子的左子树变为该节点的右子树<br>（3）节点本身变为右孩子的左子树</p><p>整个操作流程如动图 5.1.2 所示。</p><p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fzom2pmmr5g30q50ekdiy.gif" alt="动图 5.1.2"></p><ul><li>节点的右孩子替代此节点位置 —— 节点 66 的右孩子是节点 77 ，将节点 77 代替节点 66 的位置</li><li>右孩子的左子树变为该节点的右子树 —— 节点 77 的左子树为节点 75，将节点 75 挪到节点 66 的右子树位置</li><li>节点本身变为右孩子的左子树 —— 节点 66 变为了节点 77 的左子树</li></ul><h4 id="5-2-右旋"><a href="#5-2-右旋" class="headerlink" title="5.2 右旋"></a>5.2 右旋</h4><p>右旋操作与左旋类似，操作流程为：</p><p>（1）节点的左孩子代表此节点<br>（2）节点的左孩子的右子树变为节点的左子树<br>（3）将此节点作为左孩子节点的右子树。</p><p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fzomfzo5eag30q50ek40u.gif" alt="动图 5.2.1"></p><h3 id="6-AVL树的四种插入节点方式"><a href="#6-AVL树的四种插入节点方式" class="headerlink" title="6. AVL树的四种插入节点方式"></a>6. AVL树的四种插入节点方式</h3><p>假设一颗 AVL 树的某个节点为 A，有四种操作会使 A 的左右子树高度差大于 1，从而破坏了原有 AVL 树的平衡性。平衡二叉树插入节点的情况分为以下四种：</p><table><thead><tr><th>插入方式</th><th>描述</th><th>旋转方式</th></tr></thead><tbody><tr><td>LL</td><td>在 A 的<strong>左子树</strong>根节点的<strong>左子树</strong>上插入节点而破坏平衡</td><td>右旋转</td></tr><tr><td>RR</td><td>在 A 的<strong>右子树</strong>根节点的<strong>右子树</strong>上插入节点而破坏平衡</td><td>左旋转</td></tr><tr><td>LR</td><td>在A的<strong>左子树</strong>根节点的<strong>右子树</strong>上插入节点而破坏平衡</td><td>先左旋后右旋</td></tr><tr><td>RL</td><td>在 A 的<strong>右子树</strong>根节点的<strong>左子树</strong>上插入节点而破坏平衡</td><td>先右旋后左旋</td></tr></tbody></table><p>具体分析如下：</p><h4 id="6-1-A的左孩子的左子树插入节点-LL"><a href="#6-1-A的左孩子的左子树插入节点-LL" class="headerlink" title="6.1 A的左孩子的左子树插入节点(LL)"></a>6.1 A的左孩子的左子树插入节点(LL)</h4><p>只需要执行一次右旋即可。</p><p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fzomzssf3ng30q50ekmyt.gif" alt="动图 6.1"></p><p>实现代码如下：</p><pre class=" language-c++"><code class="language-c++">//LL型调整函数//返回:新父节点Tree LL_rotate(Tree node){    //node为离操作结点最近的失衡的结点    Tree parent=NULL,son;    //获取失衡结点的父节点    parent=node->parent;    //获取失衡结点的左孩子    son=node->lchild;    //设置son结点右孩子的父指针    if (son->rchild!=NULL)  son->rchild->parent=node;    //失衡结点的左孩子变更为son的右孩子    node->lchild=son->rchild;    //更新失衡结点的高度信息    update_depth(node);    //失衡结点变成son的右孩子    son->rchild=node;    //设置son的父结点为原失衡结点的父结点    son->parent=parent;    //如果失衡结点不是根结点，则开始更新父节点    if (parent!=NULL){        //如果父节点的左孩子是失衡结点，指向现在更新后的新孩子son        if (parent->lchild==node){            parent->lchild=son;        }else{             //父节点的右孩子是失衡结点              parent->rchild=son;        }     }    //设置失衡结点的父亲    node->parent=son;    //更新son结点的高度信息    update_depth(son);    return son;}</code></pre><h4 id="6-2-A的右孩子的右子树插入节点-RR"><a href="#6-2-A的右孩子的右子树插入节点-RR" class="headerlink" title="6.2 A的右孩子的右子树插入节点(RR)"></a>6.2 A的右孩子的右子树插入节点(RR)</h4><p>只需要执行一次左旋即可。</p><p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fzonjzgewgg30q50ek0uh.gif" alt="动图 6.2"></p><p>实现代码如下：</p><pre class=" language-c++"><code class="language-c++">//RR型调整函数//返回新父节点Tree RR_rotate(Tree node){    //node为离操作结点最近的失衡的结点    Tree parent=NULL,son;    //获取失衡结点的父节点    parent=node->parent;    //获取失衡结点的右孩子    son=node->rchild;    //设置son结点左孩子的父指针    if (son->lchild!=NULL){          son->lchild->parent=node;    }    //失衡结点的右孩子变更为son的左孩子    node->rchild=son->lchild;    //更新失衡结点的高度信息    update_depth(node);    //失衡结点变成son的左孩子    son->lchild=node;    //设置son的父结点为原失衡结点的父结点    son->parent=parent;    //如果失衡结点不是根结点，则开始更新父节点    if (parent!=NULL){        //如果父节点的左孩子是失衡结点，指向现在更新后的新孩子son        if (parent->lchild==node){            parent->lchild=son;        }else{            //父节点的右孩子是失衡结点            parent->rchild=son;        }     }    //设置失衡结点的父亲    node->parent=son;    //更新son结点的高度信息    update_depth(son);    return son;}</code></pre><h4 id="6-3-A的左孩子的右子树插入节点-LR"><a href="#6-3-A的左孩子的右子树插入节点-LR" class="headerlink" title="6.3 A的左孩子的右子树插入节点(LR)"></a>6.3 A的左孩子的右子树插入节点(LR)</h4><p>若 A 的左孩子节点 B 的右子树 E 插入节点 F ，导致节点 A 失衡，如图：</p><p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fzonocvbarj31gm0k4jrh.jpg" alt="图 6.3"></p><p>A 的平衡因子为 2 ，若仍按照右旋调整，则变化后的图形为这样：</p><p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fzonqswj1cj31gy0j074a.jpg" alt="图 6.3.1"></p><p>经过右旋调整发现，调整后树仍然失衡，说明这种情况单纯的进行右旋操作不能使树重新平衡。那么这种插入方式需要执行两步操作，使得旋转之后为 <strong>原来根结点的左孩子的右孩子作为新的根节点 </strong>。</p><p>（1）对失衡节点 A 的左孩子 B 进行左旋操作，即上述 RR 情形操作。<br>（2）对失衡节点 A 做右旋操作，即上述 LL 情形操作。</p><p>调整过程如下：</p><p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fzoo8glkatj31gq0l0t8v.jpg" alt="图 6.3.2"></p><p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fzoo8g596dj31gw0jit8t.jpg" alt="图 6.3.3"></p><p>也就是说，经过这两步操作，使得 <strong>原来根节点的左孩子的右孩子 E 节点成为了新的根节点</strong>。</p><p>代码实现：</p><pre class=" language-c++"><code class="language-c++">//LR型，先左旋转，再右旋转//返回：新父节点Tree LR_rotate(Tree node){    RR_rotate(node->lchild);    return LL_rotate(node);}</code></pre><h4 id="6-4-A的右孩子的左子树插入节点-RL"><a href="#6-4-A的右孩子的左子树插入节点-RL" class="headerlink" title="6.4 A的右孩子的左子树插入节点(RL)"></a>6.4 A的右孩子的左子树插入节点(RL)</h4><p>右孩子插入左节点的过程与左孩子插入右节点过程类似，也是需要执行两步操作，使得旋转之后为 <strong>原来根结点的右孩子的左孩子作为新的根节点 </strong>。</p><p>（1）对失衡节点 A 的右孩子 C 进行右旋操作，即上述 LL 情形操作。<br>（2）对失衡节点 A 做左旋操作，即上述 RR 情形操作。</p><p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fzoobw8bmmj31gw0jsdfu.jpg" alt="图 6.4"></p><p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fzooj35wnqj31gs0jsmxb.jpg" alt="图 6.4.1"></p><p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fzooj2th5lj31gc0jqwel.jpg" alt="图 6.4.2"></p><p>也就是说，经过这两步操作，使得 <strong>原来根节点的右孩子的左孩子 D 节点成为了新的根节点</strong>。</p><p>代码实现：</p><pre class=" language-c++"><code class="language-c++">//RL型，先右旋转，再左旋转//返回:新父节点Tree RL_rotate(Tree node){    LL_rotate(node->rchild);    return RR_rotate(node);}</code></pre><p><strong>补充</strong>：</p><p>上述四种插入方式的代码实现的辅助代码如下：</p><pre class=" language-c++"><code class="language-c++">//更新当前深度void update_depth(Tree node){    if (node==NULL){        return;    }else{        int depth_Lchild=get_balance(node->lchild); //左孩子深度        int depth_Rchild=get_balance(node->rchild); //右孩子深度        node->depth=max(depth_Lchild,depth_Rchild)+1;    }}//获取当前结点的深度int get_balance(Tree node){    if (node==NULL){         return 0;    }    return node->depth;}//返回当前平衡因子int is_balance(Tree node){    if (node==NULL){         return 0;    }else{         return get_balance(node->lchild)-get_balance(node->rchild);     }}</code></pre><h4 id="6-5-小总结"><a href="#6-5-小总结" class="headerlink" title="6.5 小总结"></a>6.5 小总结</h4><ol><li>在所有的不平衡情况中，都是按照先 <strong>寻找最小不平衡树</strong>，然后 <strong>寻找所属的不平衡类别</strong>，再 <strong>根据 4 种类别进行固定化程序的操作</strong>。</li><li>LL , LR ，RR ，RL其实已经为我们提供了最后哪个结点作为新的根指明了方向。如 LR 型最后的根结点为原来的根的左孩子的右孩子，RL 型最后的根结点为原来的根的右孩子的左孩子。只要记住这四种情况，可以很快地推导出所有的情况。</li><li>维护平衡二叉树，最麻烦的地方在于平衡因子的维护。建议读者们根据小吴提供的图片和动图，自己动手画一遍，这样可以更加感性的理解操作。</li></ol><h3 id="7-AVL树的四种删除节点方式"><a href="#7-AVL树的四种删除节点方式" class="headerlink" title="7. AVL树的四种删除节点方式"></a>7. AVL树的四种删除节点方式</h3><p>AVL 树和二叉查找树的删除操作情况一致，都分为四种情况：</p><p>（1）删除叶子节点<br>（2）删除的节点只有左子树<br>（3）删除的节点只有右子树<br>（4）删除的节点既有左子树又有右子树</p><p>只不过 AVL 树在删除节点后需要重新检查平衡性并修正，同时，删除操作与插入操作后的平衡修正区别在于，插入操作后只需要对插入栈中的弹出的第一个非平衡节点进行修正，而删除操作需要修正栈中的所有非平衡节点。</p><p>删除操作的大致步骤如下：</p><ul><li>以前三种情况为基础尝试删除节点，并将访问节点入栈。</li><li>如果尝试删除成功，则依次检查栈顶节点的平衡状态，遇到非平衡节点，即进行旋转平衡，直到栈空。</li><li>如果尝试删除失败，证明是第四种情况。这时先找到被删除节点的右子树最小节点并删除它，将访问节点继续入栈。</li><li>再依次检查栈顶节点的平衡状态和修正直到栈空。</li></ul><p>对于删除操作造成的非平衡状态的修正，可以这样理解：对左或者右子树的删除操作相当于对右或者左子树的插入操作，然后再对应上插入的四种情况选择相应的旋转就好了。</p><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>AVL 的旋转问题看似复杂，但实际上如果你亲自用笔纸操作一下还是很好理解的。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 高级算法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 二叉树 </tag>
+            
+            <tag> 动画 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>啥是佩奇排名算法</title>
       <link href="/posts/17626341/"/>
       <url>/posts/17626341/</url>
@@ -508,9 +535,9 @@
       
         <tags>
             
-            <tag> 分治 </tag>
-            
             <tag> 链表 </tag>
+            
+            <tag> 分治 </tag>
             
         </tags>
       
@@ -1261,33 +1288,6 @@
     
     
     <entry>
-      <title>【图解数据结构】 一组动画演示插入排序</title>
-      <link href="/posts/42319/"/>
-      <url>/posts/42319/</url>
-      
-        <content type="html"><![CDATA[<h1 id="【图解数据结构】-一组动画演示插入排序"><a href="#【图解数据结构】-一组动画演示插入排序" class="headerlink" title="【图解数据结构】 一组动画演示插入排序"></a>【图解数据结构】 一组动画演示插入排序</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>由于LeetCode上的算法题很多涉及到一些基础的数据结构，为了更好的理解后续更新的一些复杂题目的动画，推出一个新系列 —–《图解数据结构》，主要使用动画来描述常见的数据结构和算法。本系列包括十大排序、堆、队列、树、并查集、图等等大概几十篇。</p><h2 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h2><p>插入排序的代码实现虽然没有冒泡排序和选择排序那么简单粗暴，但它的原理应该是最容易理解的了，因为只要打过扑克牌的人都应该能够秒懂。插入排序是一种最简单直观的排序算法，它的工作原理是通过构建有序序列，对于未排序数据，在已排序序列中从后向前扫描，找到相应位置并插入。</p><h2 id="算法步骤"><a href="#算法步骤" class="headerlink" title="算法步骤"></a>算法步骤</h2><ol><li><p>将第一待排序序列第一个元素看做一个有序序列，把第二个元素到最后一个元素当成是未排序序列。</p></li><li><p>从头到尾依次扫描未排序序列，将扫描到的每个元素插入有序序列的适当位置。（如果待插入的元素与有序序列中的某个元素相等，则将待插入元素插入到相等元素的后面。）。</p></li></ol><p>来源：<a href="https://github.com/hustcc/JS-Sorting-Algorithm" target="_blank" rel="noopener">https://github.com/hustcc/JS-Sorting-Algorithm</a></p><h2 id="算法演示"><a href="#算法演示" class="headerlink" title="算法演示"></a>算法演示</h2><p><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181120164938.gif" alt=""></p><h2 id="排序动画过程解释"><a href="#排序动画过程解释" class="headerlink" title="排序动画过程解释"></a>排序动画过程解释</h2><ol><li><p>一开始左端数字已经排序，数字 5 不动</p></li><li><p>然后，取出剩余未操作的左端数字 3 </p></li><li><p>将其与已经操作的左侧数字相比较</p></li><li><p>如果左边的数字较大，则交换两个数字</p></li><li><p>这种情况下，由于 5 大于 3 ，所以交换两个数字</p></li><li><p>重复此操作，直到出现一个较小的数字或者数字到达左端</p></li><li><p>数字 3 已经完成排序</p></li><li><p>接下来，和之前一样取出剩余未操作的左端数字 4  </p></li><li><p>与其相邻的左边数字进行比较</p></li><li><p>这种情况下，由于 5 大于 4 ，所以交换两个数字</p></li><li><p>继续操作，由于 3 小于 4 ，即出现了更小的数字，所以 4 停止移动</p></li><li><p>数字 4 已经完成排序</p></li><li><p>重复相同的操作，直到所有的数字完成排序</p></li></ol><h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><p>为了更好的让读者用自己熟悉的编程语言来理解动画，笔者将贴出多种编程语言的参考代码，代码全部来源于网上。</p><h4 id="C-代码实现"><a href="#C-代码实现" class="headerlink" title="C++代码实现"></a>C++代码实现</h4><p><img src="http://upload-images.jianshu.io/upload_images/1940317-ce2bac560fc4620a?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p><h4 id="Java代码实现"><a href="#Java代码实现" class="headerlink" title="Java代码实现"></a>Java代码实现</h4><p><img src="http://upload-images.jianshu.io/upload_images/1940317-e29b04076de62c3a?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p><h4 id="Python代码实现"><a href="#Python代码实现" class="headerlink" title="Python代码实现"></a>Python代码实现</h4><p><img src="http://upload-images.jianshu.io/upload_images/1940317-25d430ac861b8bdd?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p><h4 id="JavaScript代码实现"><a href="#JavaScript代码实现" class="headerlink" title="JavaScript代码实现"></a>JavaScript代码实现</h4><p><img src="http://upload-images.jianshu.io/upload_images/1940317-575eb47403e08c3f?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 十大经典排序 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 排序 </tag>
-            
-            <tag> 插入排序 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>【图解数据结构】 一组动画演示计数排序</title>
       <link href="/posts/33704/"/>
       <url>/posts/33704/</url>
@@ -1307,6 +1307,33 @@
             <tag> 排序 </tag>
             
             <tag> 计数排序 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>【图解数据结构】 一组动画演示插入排序</title>
+      <link href="/posts/42319/"/>
+      <url>/posts/42319/</url>
+      
+        <content type="html"><![CDATA[<h1 id="【图解数据结构】-一组动画演示插入排序"><a href="#【图解数据结构】-一组动画演示插入排序" class="headerlink" title="【图解数据结构】 一组动画演示插入排序"></a>【图解数据结构】 一组动画演示插入排序</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>由于LeetCode上的算法题很多涉及到一些基础的数据结构，为了更好的理解后续更新的一些复杂题目的动画，推出一个新系列 —–《图解数据结构》，主要使用动画来描述常见的数据结构和算法。本系列包括十大排序、堆、队列、树、并查集、图等等大概几十篇。</p><h2 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h2><p>插入排序的代码实现虽然没有冒泡排序和选择排序那么简单粗暴，但它的原理应该是最容易理解的了，因为只要打过扑克牌的人都应该能够秒懂。插入排序是一种最简单直观的排序算法，它的工作原理是通过构建有序序列，对于未排序数据，在已排序序列中从后向前扫描，找到相应位置并插入。</p><h2 id="算法步骤"><a href="#算法步骤" class="headerlink" title="算法步骤"></a>算法步骤</h2><ol><li><p>将第一待排序序列第一个元素看做一个有序序列，把第二个元素到最后一个元素当成是未排序序列。</p></li><li><p>从头到尾依次扫描未排序序列，将扫描到的每个元素插入有序序列的适当位置。（如果待插入的元素与有序序列中的某个元素相等，则将待插入元素插入到相等元素的后面。）。</p></li></ol><p>来源：<a href="https://github.com/hustcc/JS-Sorting-Algorithm" target="_blank" rel="noopener">https://github.com/hustcc/JS-Sorting-Algorithm</a></p><h2 id="算法演示"><a href="#算法演示" class="headerlink" title="算法演示"></a>算法演示</h2><p><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181120164938.gif" alt=""></p><h2 id="排序动画过程解释"><a href="#排序动画过程解释" class="headerlink" title="排序动画过程解释"></a>排序动画过程解释</h2><ol><li><p>一开始左端数字已经排序，数字 5 不动</p></li><li><p>然后，取出剩余未操作的左端数字 3 </p></li><li><p>将其与已经操作的左侧数字相比较</p></li><li><p>如果左边的数字较大，则交换两个数字</p></li><li><p>这种情况下，由于 5 大于 3 ，所以交换两个数字</p></li><li><p>重复此操作，直到出现一个较小的数字或者数字到达左端</p></li><li><p>数字 3 已经完成排序</p></li><li><p>接下来，和之前一样取出剩余未操作的左端数字 4  </p></li><li><p>与其相邻的左边数字进行比较</p></li><li><p>这种情况下，由于 5 大于 4 ，所以交换两个数字</p></li><li><p>继续操作，由于 3 小于 4 ，即出现了更小的数字，所以 4 停止移动</p></li><li><p>数字 4 已经完成排序</p></li><li><p>重复相同的操作，直到所有的数字完成排序</p></li></ol><h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><p>为了更好的让读者用自己熟悉的编程语言来理解动画，笔者将贴出多种编程语言的参考代码，代码全部来源于网上。</p><h4 id="C-代码实现"><a href="#C-代码实现" class="headerlink" title="C++代码实现"></a>C++代码实现</h4><p><img src="http://upload-images.jianshu.io/upload_images/1940317-ce2bac560fc4620a?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p><h4 id="Java代码实现"><a href="#Java代码实现" class="headerlink" title="Java代码实现"></a>Java代码实现</h4><p><img src="http://upload-images.jianshu.io/upload_images/1940317-e29b04076de62c3a?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p><h4 id="Python代码实现"><a href="#Python代码实现" class="headerlink" title="Python代码实现"></a>Python代码实现</h4><p><img src="http://upload-images.jianshu.io/upload_images/1940317-25d430ac861b8bdd?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p><h4 id="JavaScript代码实现"><a href="#JavaScript代码实现" class="headerlink" title="JavaScript代码实现"></a>JavaScript代码实现</h4><p><img src="http://upload-images.jianshu.io/upload_images/1940317-575eb47403e08c3f?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 十大经典排序 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 排序 </tag>
+            
+            <tag> 插入排序 </tag>
             
         </tags>
       
