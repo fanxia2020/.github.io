@@ -5,9 +5,9 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="什么是平衡二叉树（AVL）, 五分钟学算法">
+    <meta name="keywords" content="详解什么是平衡二叉树（AVL）, 五分钟学算法">
     <meta name="description" content="前言
-Wiki:在计算机科学中，AVL树是最早被发明的自平衡二叉查找树。在AVL树中，任一节点对应的两棵子树的最大高度差为1，因此它也被称为高度平衡树。查找、插入和删除在平均和最坏情况下的时间复杂度都是{\displaystyle O(\l">
+Wiki:在计算机科学中，AVL树是最早被发明的自平衡二叉查找树。在AVL树中，任一节点对应的两棵子树的最大高度差为1，因此它也被称为高度平衡树。查找、插入和删除在平均和最坏情况下的时间复杂度都是 O(logn）。增加和删除元素的操作">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -15,7 +15,7 @@ Wiki:在计算机科学中，AVL树是最早被发明的自平衡二叉查找树
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>什么是平衡二叉树（AVL） | 五分钟学算法</title>
+    <title>详解什么是平衡二叉树（AVL） | 五分钟学算法</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -257,13 +257,13 @@ Wiki:在计算机科学中，AVL树是最早被发明的自平衡二叉查找树
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        什么是平衡二叉树（AVL）
+                        详解什么是平衡二叉树（AVL）
                     </div>
                 </div>
             </div>
@@ -411,14 +411,14 @@ Wiki:在计算机科学中，AVL树是最早被发明的自平衡二叉查找树
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        3.4k
+                        4.3k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        12 分
+                        15 分
                     </div>
                     
                 
@@ -435,7 +435,7 @@ Wiki:在计算机科学中，AVL树是最早被发明的自平衡二叉查找树
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
-<p>Wiki:在<a href="https://zh.wikipedia.org/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6" target="_blank" rel="noopener">计算机科学</a>中，<strong>AVL树</strong>是最早被发明的<a href="https://zh.wikipedia.org/wiki/%E8%87%AA%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%9F%A5%E6%89%BE%E6%A0%91" target="_blank" rel="noopener">自平衡二叉查找树</a>。在AVL树中，任一节点对应的两棵子树的最大高度差为1，因此它也被称为<strong>高度平衡树</strong>。查找、插入和删除在平均和最坏情况下的<a href="https://zh.wikipedia.org/wiki/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6" target="_blank" rel="noopener">时间复杂度</a>都是{\displaystyle O(\log {n})}<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/653ab6d6fd99537d220f179d2591955ff4f37b99" alt="O(\log{n})">。增加和删除元素的操作则可能需要借由一次或多次<a href="https://zh.wikipedia.org/wiki/%E6%A0%91%E6%97%8B%E8%BD%AC" target="_blank" rel="noopener">树旋转</a>，以实现树的重新平衡。AVL 树得名于它的发明者 <a href="https://zh.wikipedia.org/wiki/%E6%A0%BC%E5%A5%A5%E5%B0%94%E5%90%89%C2%B7%E9%98%BF%E6%9D%B0%E5%B0%94%E6%9D%BE-%E9%9F%A6%E5%88%A9%E6%96%AF%E5%9F%BA" target="_blank" rel="noopener">G. M. Adelson-Velsky</a> 和 <a href="https://zh.wikipedia.org/w/index.php?title=Evgenii_Landis&amp;action=edit&amp;redlink=1" target="_blank" rel="noopener">Evgenii Landis</a>，他们在1962年的论文《An algorithm for the organization of information》中公开了这一数据结构。</p>
+<p>Wiki:在<a href="https://zh.wikipedia.org/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6" target="_blank" rel="noopener">计算机科学</a>中，<strong>AVL树</strong>是最早被发明的<a href="https://zh.wikipedia.org/wiki/%E8%87%AA%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%9F%A5%E6%89%BE%E6%A0%91" target="_blank" rel="noopener">自平衡二叉查找树</a>。在AVL树中，任一节点对应的两棵子树的最大高度差为1，因此它也被称为<strong>高度平衡树</strong>。查找、插入和删除在平均和最坏情况下的<a href="https://zh.wikipedia.org/wiki/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6" target="_blank" rel="noopener">时间复杂度</a>都是 O(logn）。增加和删除元素的操作则可能需要借由一次或多次<a href="https://zh.wikipedia.org/wiki/%E6%A0%91%E6%97%8B%E8%BD%AC" target="_blank" rel="noopener">树旋转</a>，以实现树的重新平衡。AVL 树得名于它的发明者 <a href="https://zh.wikipedia.org/wiki/%E6%A0%BC%E5%A5%A5%E5%B0%94%E5%90%89%C2%B7%E9%98%BF%E6%9D%B0%E5%B0%94%E6%9D%BE-%E9%9F%A6%E5%88%A9%E6%96%AF%E5%9F%BA" target="_blank" rel="noopener">G. M. Adelson-Velsky</a> 和 <a href="https://zh.wikipedia.org/w/index.php?title=Evgenii_Landis&amp;action=edit&amp;redlink=1" target="_blank" rel="noopener">Evgenii Landis</a>，他们在1962年的论文《An algorithm for the organization of information》中公开了这一数据结构。</p>
 </blockquote>
 <h3 id="1-为什么要有平衡二叉树"><a href="#1-为什么要有平衡二叉树" class="headerlink" title="1 为什么要有平衡二叉树"></a>1 为什么要有平衡二叉树</h3><p>二叉搜索树一定程度上可以提高搜索效率，但是当原序列有序时，例如序列 A = {1，2，3，4，5，6}，构造二叉搜索树如图 1.1。依据此序列构造的二叉搜索树为右斜树，同时二叉树退化成单链表，搜索效率降低为 O(n)。</p>
 <p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fzofsmoafpj31hc0u0t8y.jpg" alt="图 1.1"></p>
@@ -447,15 +447,15 @@ Wiki:在计算机科学中，AVL树是最早被发明的自平衡二叉查找树
 <h3 id="2-定义"><a href="#2-定义" class="headerlink" title="2. 定义"></a>2. 定义</h3><p><strong>平衡二叉查找树</strong>：简称平衡二叉树。由前苏联的数学家 <strong>A</strong>delse-<strong>V</strong>elskil 和 <strong>L</strong>andis 在 1962 年提出的高度平衡的二叉树，根据科学家的英文名也称为 AVL 树。它具有如下几个性质：</p>
 <ol>
 <li>可以是空树。</li>
-<li>假如不是空树，任何一个结点的左子树与右子树都是平衡二叉树，并且高度之差的绝对值不超过 1。</li>
+<li>假如不是空树，任何一个节点的左子树与右子树都是平衡二叉树，并且高度之差的绝对值不超过 1。</li>
 </ol>
 <p>平衡之意，如天平，即两边的分量大约相同。</p>
-<p>例如图 2.1 不是平衡二叉树，因为结点 60 的左子树不是平衡二叉树。</p>
+<p>例如图 2.1 不是平衡二叉树，因为节点 60 的左子树不是平衡二叉树。</p>
 <p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fzogeu6pn5j31ke0nyq35.jpg" alt="图 2.1"></p>
-<p>图 2.2 也不是平衡二叉树，因为虽然任何一个结点的左子树与右子树都是平衡二叉树，但高度之差已经超过 1 。</p>
+<p>图 2.2 也不是平衡二叉树，因为虽然任何一个节点的左子树与右子树都是平衡二叉树，但高度之差已经超过 1 。</p>
 <p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fzogewh2naj31kc0n6t8w.jpg" alt="图 2.2"></p>
 <p>图 2.3 是平衡二叉树。</p>
-<p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fzogk65q2jj31ke0tit94.jpg" alt="图 2.3"></p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fzqme36qn7j31h40rmac6.jpg" alt="图 2.3"></p>
 <h3 id="3-平衡因子"><a href="#3-平衡因子" class="headerlink" title="3. 平衡因子"></a>3. 平衡因子</h3><p><strong>定义：</strong>某节点的左子树与右子树的高度(深度)差即为该节点的平衡因子（BF,Balance Factor），平衡二叉树中不存在平衡因子大于 1 的节点。在一棵平衡二叉树中，节点的平衡因子只能取 0 、1 或者 -1 ，分别对应着左右子树等高，左子树比较高，右子树比较高。</p>
 <p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fzogqxlo4zj31k80lc3yl.jpg" alt="图 3.1"></p>
 <p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fzogscuvtzj31jy0kwaa5.jpg" alt="图 3.2"></p>
@@ -467,11 +467,11 @@ typedef int ElementType;
 
 struct AVLNode{
 
-    int depth; //深度，这里计算每个结点的深度，通过深度的比较可得出是否平衡
+    int depth; //深度，这里计算每个节点的深度，通过深度的比较可得出是否平衡
 
-    Tree parent; //该结点的父节点
+    Tree parent; //该节点的父节点
 
-    ElementType val; //结点值
+    ElementType val; //节点值
 
     Tree lchild;
 
@@ -491,7 +491,7 @@ struct AVLNode{
 <p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fzolopfxzxg30q60be41k.gif" alt="动图 5.2"></p>
 <p>在动图 5.2 中，节点 66 的左子树高度为 1，右子树高度为 3，此时平衡因子为 -2，树失去平衡。</p>
 <p>在动图 5.2 中，以节点 66 为父节点的那颗树就称为 <strong>最小失衡子树</strong>。</p>
-<p><strong>最小失衡子树</strong>：在新插入的结点向上查找，以第一个平衡因子的<strong>绝对值</strong>超过 1 的结点为根的子树称为最小不平衡子树。也就是说，一棵失衡的树，是有可能有多棵子树同时失衡的。而这个时候，我们只要调整最小的不平衡子树，就能够将不平衡的树调整为平衡的树。</p>
+<p><strong>最小失衡子树</strong>：在新插入的节点向上查找，以第一个平衡因子的<strong>绝对值</strong>超过 1 的节点为根的子树称为最小不平衡子树。也就是说，一棵失衡的树，是有可能有多棵子树同时失衡的。而这个时候，我们只要调整最小的不平衡子树，就能够将不平衡的树调整为平衡的树。</p>
 <p><strong>平衡二叉树的失衡调整主要是通过旋转最小失衡子树来实现的</strong>。根据旋转的方向有两种处理方式，<strong>左旋</strong> 与 <strong>右旋</strong> 。</p>
 <p>旋转的目的就是减少高度，通过降低整棵树的高度来平衡。哪边的树高，就把那边的树向上旋转。</p>
 <h4 id="5-1-左旋"><a href="#5-1-左旋" class="headerlink" title="5.1 左旋"></a>5.1 左旋</h4><p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fzolu39ojoj31gw0lumx9.jpg" alt="图 5.1.1"></p>
@@ -508,74 +508,43 @@ struct AVLNode{
 <p>（1）节点的左孩子代表此节点<br>（2）节点的左孩子的右子树变为节点的左子树<br>（3）将此节点作为左孩子节点的右子树。</p>
 <p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fzomfzo5eag30q50ek40u.gif" alt="动图 5.2.1"></p>
 <h3 id="6-AVL树的四种插入节点方式"><a href="#6-AVL树的四种插入节点方式" class="headerlink" title="6. AVL树的四种插入节点方式"></a>6. AVL树的四种插入节点方式</h3><p>假设一颗 AVL 树的某个节点为 A，有四种操作会使 A 的左右子树高度差大于 1，从而破坏了原有 AVL 树的平衡性。平衡二叉树插入节点的情况分为以下四种：</p>
-<table>
-<thead>
-<tr>
-<th>插入方式</th>
-<th>描述</th>
-<th>旋转方式</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>LL</td>
-<td>在 A 的<strong>左子树</strong>根节点的<strong>左子树</strong>上插入节点而破坏平衡</td>
-<td>右旋转</td>
-</tr>
-<tr>
-<td>RR</td>
-<td>在 A 的<strong>右子树</strong>根节点的<strong>右子树</strong>上插入节点而破坏平衡</td>
-<td>左旋转</td>
-</tr>
-<tr>
-<td>LR</td>
-<td>在A的<strong>左子树</strong>根节点的<strong>右子树</strong>上插入节点而破坏平衡</td>
-<td>先左旋后右旋</td>
-</tr>
-<tr>
-<td>RL</td>
-<td>在 A 的<strong>右子树</strong>根节点的<strong>左子树</strong>上插入节点而破坏平衡</td>
-<td>先右旋后左旋</td>
-</tr>
-</tbody>
-</table>
+<p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fzqpwcjzy5j318i0akq3t.jpg" alt="图 6.0"></p>
 <p>具体分析如下：</p>
 <h4 id="6-1-A的左孩子的左子树插入节点-LL"><a href="#6-1-A的左孩子的左子树插入节点-LL" class="headerlink" title="6.1 A的左孩子的左子树插入节点(LL)"></a>6.1 A的左孩子的左子树插入节点(LL)</h4><p>只需要执行一次右旋即可。</p>
 <p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fzomzssf3ng30q50ekmyt.gif" alt="动图 6.1"></p>
 <p>实现代码如下：</p>
-<pre class=" language-c++"><code class="language-c++">
-//LL型调整函数
+<pre class=" language-c++"><code class="language-c++">//LL型调整函数
 //返回:新父节点
 Tree LL_rotate(Tree node){
-    //node为离操作结点最近的失衡的结点
+    //node为离操作节点最近的失衡的节点
     Tree parent=NULL,son;
-    //获取失衡结点的父节点
+    //获取失衡节点的父节点
     parent=node->parent;
-    //获取失衡结点的左孩子
+    //获取失衡节点的左孩子
     son=node->lchild;
-    //设置son结点右孩子的父指针
+    //设置son节点右孩子的父指针
     if (son->rchild!=NULL)  son->rchild->parent=node;
-    //失衡结点的左孩子变更为son的右孩子
+    //失衡节点的左孩子变更为son的右孩子
     node->lchild=son->rchild;
-    //更新失衡结点的高度信息
+    //更新失衡节点的高度信息
     update_depth(node);
-    //失衡结点变成son的右孩子
+    //失衡节点变成son的右孩子
     son->rchild=node;
-    //设置son的父结点为原失衡结点的父结点
+    //设置son的父节点为原失衡节点的父节点
     son->parent=parent;
-    //如果失衡结点不是根结点，则开始更新父节点
+    //如果失衡节点不是根节点，则开始更新父节点
     if (parent!=NULL){
-        //如果父节点的左孩子是失衡结点，指向现在更新后的新孩子son
+        //如果父节点的左孩子是失衡节点，指向现在更新后的新孩子son
         if (parent->lchild==node){
             parent->lchild=son;
         }else{
-             //父节点的右孩子是失衡结点
+             //父节点的右孩子是失衡节点
               parent->rchild=son;
         }
      }
-    //设置失衡结点的父亲
+    //设置失衡节点的父亲
     node->parent=son;
-    //更新son结点的高度信息
+    //更新son节点的高度信息
     update_depth(son);
     return son;
 }
@@ -587,37 +556,37 @@ Tree LL_rotate(Tree node){
 <pre class=" language-c++"><code class="language-c++">//RR型调整函数
 //返回新父节点
 Tree RR_rotate(Tree node){
-    //node为离操作结点最近的失衡的结点
+    //node为离操作节点最近的失衡的节点
     Tree parent=NULL,son;
-    //获取失衡结点的父节点
+    //获取失衡节点的父节点
     parent=node->parent;
-    //获取失衡结点的右孩子
+    //获取失衡节点的右孩子
     son=node->rchild;
-    //设置son结点左孩子的父指针
+    //设置son节点左孩子的父指针
     if (son->lchild!=NULL){
           son->lchild->parent=node;
     }
-    //失衡结点的右孩子变更为son的左孩子
+    //失衡节点的右孩子变更为son的左孩子
     node->rchild=son->lchild;
-    //更新失衡结点的高度信息
+    //更新失衡节点的高度信息
     update_depth(node);
-    //失衡结点变成son的左孩子
+    //失衡节点变成son的左孩子
     son->lchild=node;
-    //设置son的父结点为原失衡结点的父结点
+    //设置son的父节点为原失衡节点的父节点
     son->parent=parent;
-    //如果失衡结点不是根结点，则开始更新父节点
+    //如果失衡节点不是根节点，则开始更新父节点
     if (parent!=NULL){
-        //如果父节点的左孩子是失衡结点，指向现在更新后的新孩子son
+        //如果父节点的左孩子是失衡节点，指向现在更新后的新孩子son
         if (parent->lchild==node){
             parent->lchild=son;
         }else{
-            //父节点的右孩子是失衡结点
+            //父节点的右孩子是失衡节点
             parent->rchild=son;
         } 
     }
-    //设置失衡结点的父亲
+    //设置失衡节点的父亲
     node->parent=son;
-    //更新son结点的高度信息
+    //更新son节点的高度信息
     update_depth(son);
     return son;
 }
@@ -626,7 +595,7 @@ Tree RR_rotate(Tree node){
 <p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fzonocvbarj31gm0k4jrh.jpg" alt="图 6.3"></p>
 <p>A 的平衡因子为 2 ，若仍按照右旋调整，则变化后的图形为这样：</p>
 <p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fzonqswj1cj31gy0j074a.jpg" alt="图 6.3.1"></p>
-<p>经过右旋调整发现，调整后树仍然失衡，说明这种情况单纯的进行右旋操作不能使树重新平衡。那么这种插入方式需要执行两步操作，使得旋转之后为 <strong>原来根结点的左孩子的右孩子作为新的根节点 </strong>。</p>
+<p>经过右旋调整发现，调整后树仍然失衡，说明这种情况单纯的进行右旋操作不能使树重新平衡。那么这种插入方式需要执行两步操作，使得旋转之后为 <strong>原来根节点的左孩子的右孩子作为新的根节点</strong>。</p>
 <p>（1）对失衡节点 A 的左孩子 B 进行左旋操作，即上述 RR 情形操作。<br>（2）对失衡节点 A 做右旋操作，即上述 LL 情形操作。</p>
 <p>调整过程如下：</p>
 <p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fzoo8glkatj31gq0l0t8v.jpg" alt="图 6.3.2"></p>
@@ -640,9 +609,9 @@ Tree LR_rotate(Tree node){
     return LL_rotate(node);
 }
 </code></pre>
-<h4 id="6-4-A的右孩子的左子树插入节点-RL"><a href="#6-4-A的右孩子的左子树插入节点-RL" class="headerlink" title="6.4 A的右孩子的左子树插入节点(RL)"></a>6.4 A的右孩子的左子树插入节点(RL)</h4><p>右孩子插入左节点的过程与左孩子插入右节点过程类似，也是需要执行两步操作，使得旋转之后为 <strong>原来根结点的右孩子的左孩子作为新的根节点 </strong>。</p>
+<h4 id="6-4-A的右孩子的左子树插入节点-RL"><a href="#6-4-A的右孩子的左子树插入节点-RL" class="headerlink" title="6.4 A的右孩子的左子树插入节点(RL)"></a>6.4 A的右孩子的左子树插入节点(RL)</h4><p>右孩子插入左节点的过程与左孩子插入右节点过程类似，也是需要执行两步操作，使得旋转之后为 <strong>原来根节点的右孩子的左孩子作为新的根节点</strong>。</p>
 <p>（1）对失衡节点 A 的右孩子 C 进行右旋操作，即上述 LL 情形操作。<br>（2）对失衡节点 A 做左旋操作，即上述 RR 情形操作。</p>
-<p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fzoobw8bmmj31gw0jsdfu.jpg" alt="图 6.4"></p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fzqmh6y5ohj31me0mc3yl.jpg" alt="图 6.4"></p>
 <p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fzooj35wnqj31gs0jsmxb.jpg" alt="图 6.4.1"></p>
 <p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fzooj2th5lj31gc0jqwel.jpg" alt="图 6.4.2"></p>
 <p>也就是说，经过这两步操作，使得 <strong>原来根节点的右孩子的左孩子 D 节点成为了新的根节点</strong>。</p>
@@ -667,7 +636,7 @@ void update_depth(Tree node){
     }
 }
 
-//获取当前结点的深度
+//获取当前节点的深度
 int get_balance(Tree node){
     if (node==NULL){
          return 0;
@@ -686,12 +655,12 @@ int is_balance(Tree node){
 </code></pre>
 <h4 id="6-5-小总结"><a href="#6-5-小总结" class="headerlink" title="6.5 小总结"></a>6.5 小总结</h4><ol>
 <li>在所有的不平衡情况中，都是按照先 <strong>寻找最小不平衡树</strong>，然后 <strong>寻找所属的不平衡类别</strong>，再 <strong>根据 4 种类别进行固定化程序的操作</strong>。</li>
-<li>LL , LR ，RR ，RL其实已经为我们提供了最后哪个结点作为新的根指明了方向。如 LR 型最后的根结点为原来的根的左孩子的右孩子，RL 型最后的根结点为原来的根的右孩子的左孩子。只要记住这四种情况，可以很快地推导出所有的情况。</li>
+<li>LL , LR ，RR ，RL其实已经为我们提供了最后哪个节点作为新的根指明了方向。如 LR 型最后的根节点为原来的根的左孩子的右孩子，RL 型最后的根节点为原来的根的右孩子的左孩子。只要记住这四种情况，可以很快地推导出所有的情况。</li>
 <li>维护平衡二叉树，最麻烦的地方在于平衡因子的维护。建议读者们根据小吴提供的图片和动图，自己动手画一遍，这样可以更加感性的理解操作。</li>
 </ol>
 <h3 id="7-AVL树的四种删除节点方式"><a href="#7-AVL树的四种删除节点方式" class="headerlink" title="7. AVL树的四种删除节点方式"></a>7. AVL树的四种删除节点方式</h3><p>AVL 树和二叉查找树的删除操作情况一致，都分为四种情况：</p>
 <p>（1）删除叶子节点<br>（2）删除的节点只有左子树<br>（3）删除的节点只有右子树<br>（4）删除的节点既有左子树又有右子树</p>
-<p>只不过 AVL 树在删除节点后需要重新检查平衡性并修正，同时，删除操作与插入操作后的平衡修正区别在于，插入操作后只需要对插入栈中的弹出的第一个非平衡节点进行修正，而删除操作需要修正栈中的所有非平衡节点。</p>
+<p>只不过 AVL 树在删除节点后需要重新<strong>检查平衡性并修正</strong>，同时，删除操作与插入操作后的平衡修正区别在于，插入操作后只需要对插入栈中的弹出的第一个非平衡节点进行修正，而删除操作需要修正栈中的所有非平衡节点。</p>
 <p>删除操作的大致步骤如下：</p>
 <ul>
 <li>以前三种情况为基础尝试删除节点，并将访问节点入栈。</li>
@@ -700,7 +669,30 @@ int is_balance(Tree node){
 <li>再依次检查栈顶节点的平衡状态和修正直到栈空。</li>
 </ul>
 <p>对于删除操作造成的非平衡状态的修正，可以这样理解：对左或者右子树的删除操作相当于对右或者左子树的插入操作，然后再对应上插入的四种情况选择相应的旋转就好了。</p>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>AVL 的旋转问题看似复杂，但实际上如果你亲自用笔纸操作一下还是很好理解的。</p>
+<h4 id="7-1-删除叶子节点"><a href="#7-1-删除叶子节点" class="headerlink" title="7.1 删除叶子节点"></a>7.1 删除叶子节点</h4><p>处理步骤：</p>
+<p>  ①、将该节点直接从树中删除；</p>
+<p>  ②、其父节点的子树高度的变化将导致父节点平衡因子的变化，通过向上检索并推算其父节点是否失衡；</p>
+<p>  ③、如果其父节点未失衡，则继续向上检索推算其父节点的父节点是否失衡…如此反复②的判断，直到根节点 ；如果向上推算过程中发现了失衡的现象，则进行 ④ 的处理；</p>
+<p>  ④、如果其父节点失衡，则判断是哪种失衡类型 [LL、LR、RR、RL] ，并对其进行相应的平衡化处理。如果平衡化处理结束后，发现与原来以父节点为根节点的树的高度发生变化，则继续进行 ② 的检索推算；如果与原来以父节点为根节点的高度一致时，则可说明父节点的父节点及祖先节点的平衡因子将不会有变化，因此可以退出处理；</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fzqnvf8q5mg30qe0epach.gif" alt="动图 7.1.1"></p>
+<p>具体数字演示：</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fzqne0cjl8g30qe0epdi7.gif" alt="动图 7.1"></p>
+<h4 id="7-2-amp-7-3-删除的节点只有左子树或右子树"><a href="#7-2-amp-7-3-删除的节点只有左子树或右子树" class="headerlink" title="7.2  &amp; 7.3 删除的节点只有左子树或右子树"></a>7.2  &amp; 7.3 删除的节点只有左子树或右子树</h4><p>处理步骤：</p>
+<p>  ①、将左子树（右子树）替代原有节点 C 的位置；</p>
+<p>  ②、节点  C 被删除后，则以 C 的父节点  B 为起始推算点，依此向上检索推算各节点（父、祖先）是否失衡；</p>
+<p>  ③、如果其父节点未失衡，则继续向上检索推算其父节点 的父节点 是否失衡…如此反复 ② 的判断，直到根节点 ；如果向上推算过程中发现了失衡的现象，则进行 ④ 的处理；</p>
+<p> ④、如果其父节点失衡，则判断是哪种失衡类型 [LL、LR、RR、RL] ，并对其进行相应的平衡化处理。如果平衡化处理结束后，发现与原来以父节点为根节点的树的高度发生变化，则继续进行 ② 的检索推算；如果与原来以父节点为根节点的高度一致时，则可说明父节点的父节点及祖先节点的平衡因子将不会有变化，因此可以退出处理；</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fzqovwao9xg30qe0epwfv.gif" alt="动图 7.2"></p>
+<h4 id="7-4-删除的节点既有左子树又有右子树"><a href="#7-4-删除的节点既有左子树又有右子树" class="headerlink" title="7.4 删除的节点既有左子树又有右子树"></a>7.4 删除的节点既有左子树又有右子树</h4><p>处理步骤：</p>
+<p>  ①、找到被删节点 B 和替代节点 BLR (节点 B 的前继节点或后继节点 —— 在此选择 <strong>前继</strong>)；</p>
+<p>  ②、将替代节点 BLR 的值赋给节点 B ，再把替代节点 BLR 的左孩子 BLRL 替换替代节点 BLR 的位置；</p>
+<p>  ③、以 BLR 的父节点 BL 为起始推算点，依此向上检索推算父节点或祖先节点是否失衡；</p>
+<p>  ④、如果其父节点未失衡，则继续向上检索推算其父节点的父节点是否失衡…如此反复③的判断，直到根节点；如果向上推算过程中发现了失衡的现象，则进行⑤的处理；</p>
+<p>  ⑤、如果其父节点失衡，则判断是哪种失衡类型  [LL、LR、RR、RL]  ，并对其进行相应的平衡化处理。如果平衡化处理结束后，发现与原来以父节点为根节点的树的高度发生变化，则继续进行 ② 的检索推算；如果与原来以父节点为根节点的高度一致时，则可说明父节点的父节点及祖先节点的平衡因子将不会有变化，因此可以退出处理；</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fzqpk97lodg30qe0epju1.gif" alt="动图 7.4"></p>
+<p>注：在这里，小吴并没有给出 AVL 的删除操作的代码，也没有给出平衡性修复的动画，因为我并不打算过多去讨论它，更复杂的删除操作过程将放在后续的 <strong>红黑树</strong> 中进行讨论。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>通过对 AVL 的插入操作和删除操作可以看出，平衡二叉树的优势在于不会出现普通二叉查找树的最差情况，即退化成链表结构，但为了保证高度平衡（对称），动态插入和删除的代价也随之增加。</p>
+<p>AVL 的旋转问题看似复杂，但实际上如果你亲自用笔纸操作一下还是很好理解的。</p>
 
             </div>
             <hr>
@@ -724,7 +716,7 @@ int is_balance(Tree node){
                     </span>
                     <a href="http://cxyxiaowu.com" class="b-link-green">五分钟学算法</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/posts/65aa991e/" class="b-link-green">什么是平衡二叉树（AVL）</a>
+                    <a href="/posts/65aa991e/" class="b-link-green">详解什么是平衡二叉树（AVL）</a>
                 </p>
             </div>
         </div>
@@ -754,14 +746,14 @@ int is_balance(Tree node){
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="什么是平衡二叉树（AVL）">
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="详解什么是平衡二叉树（AVL）">
                         
-                        <span class="card-title">什么是平衡二叉树（AVL）</span>
+                        <span class="card-title">详解什么是平衡二叉树（AVL）</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary">前言
-Wiki:在计算机科学中，AVL树是最早被发明的自平衡二叉查找树。在AVL树中，任一节点对应的两棵子树的最大高度差为1，因此它也被称为高度平衡树。查找、插入和删除在平均和最坏情况下的时间复杂度都是{\displaystyle O(\l</div>
+Wiki:在计算机科学中，AVL树是最早被发明的自平衡二叉查找树。在AVL树中，任一节点对应的两棵子树的最大高度差为1，因此它也被称为高度平衡树。查找、插入和删除在平均和最坏情况下的时间复杂度都是 O(logn）。增加和删除元素的操作</div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-31
@@ -949,7 +941,7 @@ Wiki:在计算机科学中，AVL树是最早被发明的自平衡二叉查找树
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">38.4k</span>
+                <span class="white-color">39.3k</span>
             
     
             
