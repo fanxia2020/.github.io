@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>生活中用过的那些高级算法知识</title>
+      <link href="/posts/a0e8c677/"/>
+      <url>/posts/a0e8c677/</url>
+      
+        <content type="html"><![CDATA[<h3 id="打牌排序"><a href="#打牌排序" class="headerlink" title="打牌排序"></a>打牌排序</h3><p>绝大部分小伙伴在打牌的时候使用 插入排序，而我就不一样，带四个桶去打牌！！！</p><p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fzrvalqxjdg30nk0d8do4.gif" alt=""></p><h3 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h3><p>前几天去交房租，房东突然问我：</p><p>小吴呀，你是程序员，问你个问题哈，我孩子的玩具现在多起来了，弄的满屋子都是，然后他要玩什么玩具又找不到，一直在哇哇叫，能不能通过算法的知识去解决这个问题？</p><p>这难不倒我。根据小孩子的习惯，他们一般会集中喜欢玩某些玩具，这样你可以专门拿一个箱子作为“缓存”，把最近玩的玩具都往里放，这样好找，只要当“缓存”满了的时候做分类就好了。</p><p>房东笑而不语，推开门。</p><p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fzrvamnvj7g306v057qv5.gif" alt="缓存"></p><h3 id="二分法"><a href="#二分法" class="headerlink" title="二分法"></a>二分法</h3><p>昨天去书店挑选要送的书，抱着一堆书出来，可能有一本没有消磁，于是警报响了。</p><p>我一本一本拿出来靠近警报看到底是哪一本。。。</p><p>保安大哥一把抢过来，鄙视的看着我，然后把所有的书分成两堆，果然只有一堆警报会响，然后把响的那一堆再分成两堆。。。log(N)的时间找出了没消磁的那本。</p><p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fzrvmlnuxhg305k05ktyb.gif" alt="二分法"></p><h3 id="B树"><a href="#B树" class="headerlink" title="B树"></a>B树</h3><p>总算抢到火车票了，出发的时候发现票不见了，我打开行李箱查找，结果半天找不到，同行的朋友就喷我：票放哪了你心里没点 B 树。我一想，说的对呀，我可以用 B 树来查找，结果还是不知道怎么找。</p><p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fzrvapv4ysj30al03odfs.jpg" alt="B树"></p><h3 id="蒙特卡洛"><a href="#蒙特卡洛" class="headerlink" title="蒙特卡洛"></a>蒙特卡洛</h3><p>后来，我想起了我的票可能落在厕所。于是我决定用蒙特卡洛的方法在同样的位置随机模拟车票滑落，仔细观察路径。</p><p>我先取出回广州的车票，松手，就看它飘进了路边的下水道。</p><p>就这样，我付出两张车票的代价，终于明白，无风时在那个地方掉火车票，它会落进下水道。</p><p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fzrw2u9u3xg30aw0aiu0x.gif" alt="蒙特卡洛"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 分享 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 新手 </tag>
+            
+            <tag> 分享 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>详解什么是平衡二叉树（AVL）</title>
       <link href="/posts/65aa991e/"/>
       <url>/posts/65aa991e/</url>
@@ -400,9 +427,9 @@
       
         <tags>
             
-            <tag> 字符串 </tag>
-            
             <tag> 反转 </tag>
+            
+            <tag> 字符串 </tag>
             
         </tags>
       
@@ -1142,9 +1169,9 @@
       
         <tags>
             
-            <tag> 基数排序 </tag>
-            
             <tag> 排序 </tag>
+            
+            <tag> 基数排序 </tag>
             
         </tags>
       
@@ -1277,9 +1304,9 @@
       
         <tags>
             
-            <tag> 排序 </tag>
-            
             <tag> 堆排序 </tag>
+            
+            <tag> 排序 </tag>
             
         </tags>
       

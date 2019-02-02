@@ -5,19 +5,11 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="LeetCode上第 1 号问题：Two Sum, 五分钟学算法">
-    <meta name="description" content="leetcode上第1号问题：Two Sum
+    <meta name="keywords" content="生活中用过的那些高级算法知识, 五分钟学算法">
+    <meta name="description" content="打牌排序绝大部分小伙伴在打牌的时候使用 插入排序，而我就不一样，带四个桶去打牌！！！
 
-给定一个整数数组和一个目标值，找出数组中和为目标值的两个数。
-
-
-你可以假设每个输入只对应一种答案，且同样的元素不能被重复利用。
-
-
-示例:
-
-
-给定 nums = [2, 7, 11, 15">
+缓存前几天去交房租，房东突然问我：
+小吴呀，你是程序员，问你个问题哈，我孩子的玩具现在多起来了，弄的满屋子都是，然后他要玩什么玩具又找不到，一直在哇哇叫">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -25,7 +17,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>LeetCode上第 1 号问题：Two Sum | 五分钟学算法</title>
+    <title>生活中用过的那些高级算法知识 | 五分钟学算法</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -267,13 +259,13 @@
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        LeetCode上第 1 号问题：Two Sum
+                        生活中用过的那些高级算法知识
                     </div>
                 </div>
             </div>
@@ -386,12 +378,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/查找表/" target="_blank">
-                                <span class="chip bg-color">查找表</span>
+                            <a href="/tags/新手/" target="_blank">
+                                <span class="chip bg-color">新手</span>
                             </a>
                         
-                            <a href="/tags/索引/" target="_blank">
-                                <span class="chip bg-color">索引</span>
+                            <a href="/tags/分享/" target="_blank">
+                                <span class="chip bg-color">分享</span>
                             </a>
                         
                     </div>
@@ -402,8 +394,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/LeetCode/" class="post-category" target="_blank">
-                                LeetCode
+                            <a href="/categories/分享/" class="post-category" target="_blank">
+                                分享
                             </a>
                         
                     </div>
@@ -414,14 +406,14 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-01-27
+                    2019-02-02
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        307
+                        514
                     </div>
                     
 
@@ -444,56 +436,23 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>leetcode上第1号问题：<a href="https://leetcode-cn.com/problems/two-sum/" target="_blank" rel="noopener">Two Sum</a></p>
-<blockquote>
-<p>给定一个整数数组和一个目标值，找出数组中和为目标值的两个数。</p>
-</blockquote>
-<blockquote>
-<p>你可以假设每个输入只对应一种答案，且同样的元素不能被重复利用。</p>
-</blockquote>
-<blockquote>
-<p>示例:</p>
-</blockquote>
-<blockquote>
-<p>给定 nums = [2, 7, 11, 15], target = 9</p>
-</blockquote>
-<blockquote>
-<p>因为 nums[0] + nums[1] = 2 + 7 = 9<br>所以返回 [0, 1]</p>
-</blockquote>
-<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>使用查找表来解决该问题。</p>
-<blockquote>
-<p>设置一个map容器record用来记录元素的值与索引</p>
-<p>遍历数组nums</p>
-<ul>
-<li>每次遍历时使用临时变量complement用来保存目标值与当前值的差值</li>
-<li>在此次遍历中查找record，查看是否有与complement一致的值，如果查找成功则返回查找值的索引值与当前变量的值i</li>
-<li>如果未找到，则在record保存该元素与索引值i</li>
-</ul>
-</blockquote>
-<h4 id="动画演示"><a href="#动画演示" class="headerlink" title="动画演示"></a>动画演示</h4><p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fzkzyntxibg30nn0dd458.gif" alt="Two Sum"></p>
-<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><pre><code>// 1. Two Sum
-// https://leetcode.com/problems/two-sum/description/
-// 时间复杂度：O(n)
-// 空间复杂度：O(n)
-class Solution {
-public:
-    vector&lt;int&gt; twoSum(vector&lt;int&gt;&amp; nums, int target) {
-
-        unordered_map&lt;int,int&gt; record;
-        for(int i = 0 ; i &lt; nums.size() ; i ++){
-
-            int complement = target - nums[i];
-            if(record.find(complement) != record.end()){
-                int res[] = {i, record[complement]};
-                return vector&lt;int&gt;(res, res + 2);
-            }
-
-            record[nums[i]] = i;
-        }
-    }
-};
-
-</code></pre><h4 id="执行结果"><a href="#执行结果" class="headerlink" title="执行结果"></a>执行结果</h4><p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fzkzymcdnzj31nx0u0q5l.jpg" alt=""></p>
+                <h3 id="打牌排序"><a href="#打牌排序" class="headerlink" title="打牌排序"></a>打牌排序</h3><p>绝大部分小伙伴在打牌的时候使用 插入排序，而我就不一样，带四个桶去打牌！！！</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fzrvalqxjdg30nk0d8do4.gif" alt=""></p>
+<h3 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h3><p>前几天去交房租，房东突然问我：</p>
+<p>小吴呀，你是程序员，问你个问题哈，我孩子的玩具现在多起来了，弄的满屋子都是，然后他要玩什么玩具又找不到，一直在哇哇叫，能不能通过算法的知识去解决这个问题？</p>
+<p>这难不倒我。根据小孩子的习惯，他们一般会集中喜欢玩某些玩具，这样你可以专门拿一个箱子作为“缓存”，把最近玩的玩具都往里放，这样好找，只要当“缓存”满了的时候做分类就好了。</p>
+<p>房东笑而不语，推开门。</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fzrvamnvj7g306v057qv5.gif" alt="缓存"></p>
+<h3 id="二分法"><a href="#二分法" class="headerlink" title="二分法"></a>二分法</h3><p>昨天去书店挑选要送的书，抱着一堆书出来，可能有一本没有消磁，于是警报响了。</p>
+<p>我一本一本拿出来靠近警报看到底是哪一本。。。</p>
+<p>保安大哥一把抢过来，鄙视的看着我，然后把所有的书分成两堆，果然只有一堆警报会响，然后把响的那一堆再分成两堆。。。log(N)的时间找出了没消磁的那本。</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fzrvmlnuxhg305k05ktyb.gif" alt="二分法"></p>
+<h3 id="B树"><a href="#B树" class="headerlink" title="B树"></a>B树</h3><p>总算抢到火车票了，出发的时候发现票不见了，我打开行李箱查找，结果半天找不到，同行的朋友就喷我：票放哪了你心里没点 B 树。我一想，说的对呀，我可以用 B 树来查找，结果还是不知道怎么找。</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fzrvapv4ysj30al03odfs.jpg" alt="B树"></p>
+<h3 id="蒙特卡洛"><a href="#蒙特卡洛" class="headerlink" title="蒙特卡洛"></a>蒙特卡洛</h3><p>后来，我想起了我的票可能落在厕所。于是我决定用蒙特卡洛的方法在同样的位置随机模拟车票滑落，仔细观察路径。</p>
+<p>我先取出回广州的车票，松手，就看它飘进了路边的下水道。</p>
+<p>就这样，我付出两张车票的代价，终于明白，无风时在那个地方掉火车票，它会落进下水道。</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fzrw2u9u3xg30aw0aiu0x.gif" alt="蒙特卡洛"></p>
 
             </div>
             <hr>
@@ -517,7 +476,7 @@ public:
                     </span>
                     <a href="http://cxyxiaowu.com" class="b-link-green">五分钟学算法</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/posts/fc90665e/" class="b-link-green">LeetCode上第 1 号问题：Two Sum</a>
+                    <a href="/posts/a0e8c677/" class="b-link-green">生活中用过的那些高级算法知识</a>
                 </p>
             </div>
         </div>
@@ -540,52 +499,49 @@ public:
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/posts/37d84b80/">
+                <a href="/posts/a0e8c677/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="LeetCode上第20 号问题：有效的括号">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="生活中用过的那些高级算法知识">
                         
-                        <span class="card-title">LeetCode上第20 号问题：有效的括号</span>
+                        <span class="card-title">生活中用过的那些高级算法知识</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">LeetCode上第20 号问题：有效的括号
-题目
-给定一个只包括 ‘(‘，’)’，’{‘，’}’，’[‘，’]’ 的字符串，判断字符串是否有效。
+                    <div class="summary">打牌排序绝大部分小伙伴在打牌的时候使用 插入排序，而我就不一样，带四个桶去打牌！！！
 
-
-有效字符串需满足：
-
-
-左括号必须用相同类型的右括号闭合。左括号必须以正确的顺序闭合。注</div>
+缓存前几天去交房租，房东突然问我：
+小吴呀，你是程序员，问你个问题哈，我孩子的玩具现在多起来了，弄的满屋子都是，然后他要玩什么玩具又找不到，一直在哇哇叫</div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-27
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-02-02
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/LeetCode/" class="post-category" target="_blank">
-                                    LeetCode
+                            <a href="/categories/分享/" class="post-category" target="_blank">
+                                    分享
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/栈/" target="_blank">
-                        <span class="chip bg-color">栈</span>
+                    <a href="/tags/新手/" target="_blank">
+                        <span class="chip bg-color">新手</span>
                     </a>
                     
-                    <a href="/tags/数据结构/" target="_blank">
-                        <span class="chip bg-color">数据结构</span>
+                    <a href="/tags/分享/" target="_blank">
+                        <span class="chip bg-color">分享</span>
                     </a>
                     
                 </div>
@@ -599,34 +555,28 @@ public:
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/posts/4988/">
+                <a href="/posts/65aa991e/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="LeetCode上第24号问题：Swap Nodes in Pairs">
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="详解什么是平衡二叉树（AVL）">
                         
-                        <span class="card-title">LeetCode上第24号问题：Swap Nodes in Pairs</span>
+                        <span class="card-title">详解什么是平衡二叉树（AVL）</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">LeetCode上第24号问题：Swap Nodes in Pairs
-题目
-给定一个链表，两两交换其中相邻的节点，并返回交换后的链表。
-
-
-示例:
-
-给定 1-&gt;2-&gt;3-&gt;4, 你应该返回 2-&gt;1-&gt;4-</div>
+                    <div class="summary">前言
+Wiki:在计算机科学中，AVL树是最早被发明的自平衡二叉查找树。在AVL树中，任一节点对应的两棵子树的最大高度差为1，因此它也被称为高度平衡树。查找、插入和删除在平均和最坏情况下的时间复杂度都是 O(logn）。增加和删除元素的操作</div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-27
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-31
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/LeetCode/" class="post-category" target="_blank">
-                                    LeetCode
+                            <a href="/categories/高级算法/" class="post-category" target="_blank">
+                                    高级算法
                                 </a>
                             
                             
@@ -636,12 +586,12 @@ public:
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/链表/" target="_blank">
-                        <span class="chip bg-color">链表</span>
+                    <a href="/tags/二叉树/" target="_blank">
+                        <span class="chip bg-color">二叉树</span>
                     </a>
                     
-                    <a href="/tags/节点/" target="_blank">
-                        <span class="chip bg-color">节点</span>
+                    <a href="/tags/动画/" target="_blank">
+                        <span class="chip bg-color">动画</span>
                     </a>
                     
                 </div>
