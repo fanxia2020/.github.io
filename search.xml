@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>算法科普：有趣的游程编码</title>
+      <link href="/posts/f20cf9ac/"/>
+      <url>/posts/f20cf9ac/</url>
+      
+        <content type="html"><![CDATA[<p>​    </p><p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1g04j23vtvyj30p00andkv.jpg" alt="游程编码"></p><p>在这个大数据时代，我们保存的数据量有时候往往是非常庞大的，存储它将会耗费非常多的内存，读取速度也相对减慢了。</p><p>因此常常需要对数据进行压缩编码存储，等到要用到这个数据的时候再解压缩就行，这样不仅可以节约大量的存储空间，而且节省了系统读取和反应的时间。</p><p>栅格数据压缩编码的方法有很多种，包括链式编码、行程编码、块式编码和四叉树编码。今天我们就来讲一下行程编码（也叫游程编码）。</p><p>首先从一个简单的例子开始：编码一个在  5 * 5 方块上使用三种颜色绘制的图像。</p><p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1g03y4jdn48j31gm0tewg4.jpg" alt="图 1"></p><p>根据方块不同的颜色匹配不同的字母。这里使用 <strong>Y</strong> 代表黄色，使用 <strong>G</strong> 代表绿色，使用 <strong>B</strong> 代表蓝色。</p><p>那么，根据这样的规则，图 1 的图形编码就变成了 25 个字母，如图 2 所示。</p><p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1g03y89g99gj31go0taabl.jpg" alt="图 2"></p><p>接下来，我们通过使用 <strong>游程编码</strong> 的方式来表示这个图像，以便使用 25 个字符以下的字符来表示。</p><p><strong>游程编码是一种将代码和重复的次数作为一组来编码的方法。</strong></p><p>例如，我们可以通过将第一个 “YYYY” 的部分表示未 “Y4”，这样就可以将其 <strong>缩短两个字符</strong> 。</p><p>按照这种操作，图 2 的 25 个字符就能缩短为 20 个字符了。</p><p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1g03ye9nrtrg30qb0er0yk.gif" alt="动图 3"></p><p>这样，如果我们知道每行有 5 个方块，原始图像就可以从代码中提取出来了。这种还原的操作也就是我们俗称的 <strong>解压</strong>。</p><p>当然，游程编码也不是万能的，它也有它的适用性与局限性。</p><p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1g03yhf9he1j31gs0ti0uj.jpg" alt="图 4"></p><p>观察图 4 的图像与对应的代码，可以发现：虽然使用 <strong>游程编码</strong> 使得总体的字符数减少，但对于那些不具备相同颜色的部分，在进行游程编码后，字符数反而会增加。</p><p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1g03yjnvkzdj31gs0to0up.jpg" alt="图 5"></p><p>特别的，如果对连续性极其差的数据进行游程编码，字符数不减反增：数据翻倍到 50 个字符了。</p><p>当然，对于具有连续性的数据进行游程编码，那压缩量就十分可观了。</p><p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1g03ynh4hb1j31h60tsjss.jpg" alt="图 6"></p><p>因此，根据要编码的数据，游程编码可能具有压缩效果，也可能不具有压缩效果。</p><p>所以，对一定数量连续的数据使用游程编码才是正确的使用时机。</p><p>再举个例子，考虑一下在单色传单上使用游程编码。</p><p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1g03yqg0i2hg30qb0erq7f.gif" alt="动图 7"></p><p>如动图 7 所示，使用 W （White）和 B（Black）字母来表示每个方块。</p><p>按照这样的逻辑，一开始只需要 25 个字符就能表示完毕。</p><p>如果使用 <strong>游程编码</strong>，那么最终的表达结果是需要 26 个字符表示。所以，在这种情况下，使用  <strong>游程编码</strong> 是没有意义的。</p><p>但仔细观察，在黑白图像中仅仅使用了黑和白这两种颜色。因此，在连续的白色方块之后必定出现的是黑色方块。那么即使没有字母 W 和字母 B，依旧可以通过代码还原恢复图像。</p><p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1g03yvjaqqhj31g00tqtak.jpg" alt="图 8"></p><p>如图 8 所示，通过省略字母 W 和字母 B，仅仅只需要 13 个字符就能表示图像，相对于之前的需要 26 个字符表示压缩了一半的大小。</p><p>当然，这样显示是有一个要求的，那就是 <strong>代码的第一个数字必须是白色方块的连续数</strong>。只有使用了这个规则，才能通过代码还原出之前的图像。</p><p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1g03yzth26pj31h40ts40c.jpg" alt="图 9"></p><p>所以，对于图 9 这种开头是黑色方块的图像的代码，需要在代码的开头处添加 0 ，这样就也遵守了 <strong>代码的第一个数字必须是白色方块的连续数</strong>这条规则。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 分享 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>生活中用过的那些高级算法知识</title>
       <link href="/posts/a0e8c677/"/>
       <url>/posts/a0e8c677/</url>
@@ -427,9 +452,9 @@
       
         <tags>
             
-            <tag> 反转 </tag>
-            
             <tag> 字符串 </tag>
+            
+            <tag> 反转 </tag>
             
         </tags>
       
@@ -1169,9 +1194,9 @@
       
         <tags>
             
-            <tag> 排序 </tag>
-            
             <tag> 基数排序 </tag>
+            
+            <tag> 排序 </tag>
             
         </tags>
       
@@ -1304,9 +1329,9 @@
       
         <tags>
             
-            <tag> 堆排序 </tag>
-            
             <tag> 排序 </tag>
+            
+            <tag> 堆排序 </tag>
             
         </tags>
       

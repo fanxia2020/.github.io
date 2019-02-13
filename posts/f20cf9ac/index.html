@@ -5,10 +5,11 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="LeetCode 上第 26 号问题：删除排序数组中的重复项, 五分钟学算法">
-    <meta name="description" content="LeetCode上第26 号问题：删除排序数组中的重复项
-题目给定一个排序数组，你需要在原地删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。
-不要使用额外的数组空间，你必须在原地修改输入数组并在使用 O(1) 额外空间的">
+    <meta name="keywords" content="算法科普：有趣的游程编码, 五分钟学算法">
+    <meta name="description" content="​    
+
+在这个大数据时代，我们保存的数据量有时候往往是非常庞大的，存储它将会耗费非常多的内存，读取速度也相对减慢了。
+因此常常需要对数据进行压缩编码存储，等到要用到这个数据的时候再解压缩就行，这样不仅可以节约大量的存储空间，而且节省了">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -16,7 +17,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>LeetCode 上第 26 号问题：删除排序数组中的重复项 | 五分钟学算法</title>
+    <title>算法科普：有趣的游程编码 | 五分钟学算法</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -258,13 +259,13 @@
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('https://ws3.sinaimg.cn/large/006tNc79gy1g04j23vtvyj30p00andkv.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        LeetCode 上第 26 号问题：删除排序数组中的重复项
+                        算法科普：有趣的游程编码
                     </div>
                 </div>
             </div>
@@ -377,8 +378,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/数组/" target="_blank">
-                                <span class="chip bg-color">数组</span>
+                            <a href="/tags/分享/" target="_blank">
+                                <span class="chip bg-color">分享</span>
                             </a>
                         
                     </div>
@@ -389,8 +390,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/LeetCode/" class="post-category" target="_blank">
-                                LeetCode
+                            <a href="/categories/算法/" class="post-category" target="_blank">
+                                算法
                             </a>
                         
                     </div>
@@ -401,21 +402,21 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-01-27
+                    2019-02-13
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        356
+                        1k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        1 分
+                        3 分
                     </div>
                     
                 
@@ -431,37 +432,42 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>LeetCode上第26 号问题：<strong><a href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/" target="_blank" rel="noopener">删除排序数组中的重复项</a></strong></p>
-<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个排序数组，你需要在原地删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。</p>
-<p>不要使用额外的数组空间，你必须在原地修改输入数组并在使用 O(1) 额外空间的条件下完成。</p>
-<h4 id="示例-1"><a href="#示例-1" class="headerlink" title="示例 1:"></a>示例 1:</h4><blockquote>
-<p>给定数组 nums = [1,1,2], </p>
-</blockquote>
-<blockquote>
-<p>函数应该返回新的长度 2, 并且原数组 nums 的前两个元素被修改为 1, 2。 </p>
-</blockquote>
-<blockquote>
-<p>你不需要考虑数组中超出新长度后面的元素。</p>
-</blockquote>
-<h4 id="示例-2"><a href="#示例-2" class="headerlink" title="示例 2:"></a>示例 2:</h4><blockquote>
-<p>给定 nums = [0,0,1,1,1,2,2,3,3,4],</p>
-</blockquote>
-<blockquote>
-<p>函数应该返回新的长度 5, 并且原数组 nums 的前五个元素被修改为 0, 1, 2, 3, 4。</p>
-</blockquote>
-<blockquote>
-<p>你不需要考虑数组中超出新长度后面的元素。</p>
-</blockquote>
-<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>使用快慢指针来记录遍历的坐标。</p>
-<ul>
-<li>开始时这两个指针都指向第一个数字</li>
-<li>如果两个指针指的数字相同，则快指针向前走一步</li>
-<li>如果不同，则两个指针都向前走一步</li>
-<li>当快指针走完整个数组后，慢指针当前的坐标加1就是数组中不同数字的个数</li>
-</ul>
-<h2 id="动画演示"><a href="#动画演示" class="headerlink" title="动画演示"></a>动画演示</h2><p>动画演示GIF加载有点慢，请稍等片刻^_^</p>
-<p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fzkxjo8a76g30qg0esju1.gif" alt=""></p>
-<h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fzkxjmqk58j30xo0tktci.jpg" alt=""></p>
+                <p>​    </p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1g04j23vtvyj30p00andkv.jpg" alt="游程编码"></p>
+<p>在这个大数据时代，我们保存的数据量有时候往往是非常庞大的，存储它将会耗费非常多的内存，读取速度也相对减慢了。</p>
+<p>因此常常需要对数据进行压缩编码存储，等到要用到这个数据的时候再解压缩就行，这样不仅可以节约大量的存储空间，而且节省了系统读取和反应的时间。</p>
+<p>栅格数据压缩编码的方法有很多种，包括链式编码、行程编码、块式编码和四叉树编码。今天我们就来讲一下行程编码（也叫游程编码）。</p>
+<p>首先从一个简单的例子开始：编码一个在  5 * 5 方块上使用三种颜色绘制的图像。</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1g03y4jdn48j31gm0tewg4.jpg" alt="图 1"></p>
+<p>根据方块不同的颜色匹配不同的字母。这里使用 <strong>Y</strong> 代表黄色，使用 <strong>G</strong> 代表绿色，使用 <strong>B</strong> 代表蓝色。</p>
+<p>那么，根据这样的规则，图 1 的图形编码就变成了 25 个字母，如图 2 所示。</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1g03y89g99gj31go0taabl.jpg" alt="图 2"></p>
+<p>接下来，我们通过使用 <strong>游程编码</strong> 的方式来表示这个图像，以便使用 25 个字符以下的字符来表示。</p>
+<p><strong>游程编码是一种将代码和重复的次数作为一组来编码的方法。</strong></p>
+<p>例如，我们可以通过将第一个 “YYYY” 的部分表示未 “Y4”，这样就可以将其 <strong>缩短两个字符</strong> 。</p>
+<p>按照这种操作，图 2 的 25 个字符就能缩短为 20 个字符了。</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1g03ye9nrtrg30qb0er0yk.gif" alt="动图 3"></p>
+<p>这样，如果我们知道每行有 5 个方块，原始图像就可以从代码中提取出来了。这种还原的操作也就是我们俗称的 <strong>解压</strong>。</p>
+<p>当然，游程编码也不是万能的，它也有它的适用性与局限性。</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1g03yhf9he1j31gs0ti0uj.jpg" alt="图 4"></p>
+<p>观察图 4 的图像与对应的代码，可以发现：虽然使用 <strong>游程编码</strong> 使得总体的字符数减少，但对于那些不具备相同颜色的部分，在进行游程编码后，字符数反而会增加。</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1g03yjnvkzdj31gs0to0up.jpg" alt="图 5"></p>
+<p>特别的，如果对连续性极其差的数据进行游程编码，字符数不减反增：数据翻倍到 50 个字符了。</p>
+<p>当然，对于具有连续性的数据进行游程编码，那压缩量就十分可观了。</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1g03ynh4hb1j31h60tsjss.jpg" alt="图 6"></p>
+<p>因此，根据要编码的数据，游程编码可能具有压缩效果，也可能不具有压缩效果。</p>
+<p>所以，对一定数量连续的数据使用游程编码才是正确的使用时机。</p>
+<p>再举个例子，考虑一下在单色传单上使用游程编码。</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1g03yqg0i2hg30qb0erq7f.gif" alt="动图 7"></p>
+<p>如动图 7 所示，使用 W （White）和 B（Black）字母来表示每个方块。</p>
+<p>按照这样的逻辑，一开始只需要 25 个字符就能表示完毕。</p>
+<p>如果使用 <strong>游程编码</strong>，那么最终的表达结果是需要 26 个字符表示。所以，在这种情况下，使用  <strong>游程编码</strong> 是没有意义的。</p>
+<p>但仔细观察，在黑白图像中仅仅使用了黑和白这两种颜色。因此，在连续的白色方块之后必定出现的是黑色方块。那么即使没有字母 W 和字母 B，依旧可以通过代码还原恢复图像。</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1g03yvjaqqhj31g00tqtak.jpg" alt="图 8"></p>
+<p>如图 8 所示，通过省略字母 W 和字母 B，仅仅只需要 13 个字符就能表示图像，相对于之前的需要 26 个字符表示压缩了一半的大小。</p>
+<p>当然，这样显示是有一个要求的，那就是 <strong>代码的第一个数字必须是白色方块的连续数</strong>。只有使用了这个规则，才能通过代码还原出之前的图像。</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1g03yzth26pj31h40ts40c.jpg" alt="图 9"></p>
+<p>所以，对于图 9 这种开头是黑色方块的图像的代码，需要在代码的开头处添加 0 ，这样就也遵守了 <strong>代码的第一个数字必须是白色方块的连续数</strong>这条规则。</p>
 
             </div>
             <hr>
@@ -485,7 +491,7 @@
                     </span>
                     <a href="http://cxyxiaowu.com" class="b-link-green">五分钟学算法</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/posts/46534/" class="b-link-green">LeetCode 上第 26 号问题：删除排序数组中的重复项</a>
+                    <a href="/posts/f20cf9ac/" class="b-link-green">算法科普：有趣的游程编码</a>
                 </p>
             </div>
         </div>
@@ -508,48 +514,44 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/posts/54060/">
+                <a href="/posts/f20cf9ac/">
                     <div class="card-image">
                         
+                        <img src="https://ws3.sinaimg.cn/large/006tNc79gy1g04j23vtvyj30p00andkv.jpg" class="responsive-img" alt="算法科普：有趣的游程编码">
                         
-                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="LeetCode上第 2 号问题：两个数字相加">
-                        
-                        <span class="card-title">LeetCode上第 2 号问题：两个数字相加</span>
+                        <span class="card-title">算法科普：有趣的游程编码</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">LeetCode上第 2 号问题：两个数字相加
-题目
-给定两个非空链表来表示两个非负整数。位数按照逆序方式存储，它们的每个节点只存储单个数字。将两数相加返回一个新的链表。
+                    <div class="summary">​    
 
-
-你可以假设除了数字 0 之外，这两个数字都不会以零开头。
-
-
-示</div>
+在这个大数据时代，我们保存的数据量有时候往往是非常庞大的，存储它将会耗费非常多的内存，读取速度也相对减慢了。
+因此常常需要对数据进行压缩编码存储，等到要用到这个数据的时候再解压缩就行，这样不仅可以节约大量的存储空间，而且节省了</div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-27
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-02-13
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/LeetCode/" class="post-category" target="_blank">
-                                    LeetCode
+                            <a href="/categories/算法/" class="post-category" target="_blank">
+                                    算法
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/链表/" target="_blank">
-                        <span class="chip bg-color">链表</span>
+                    <a href="/tags/分享/" target="_blank">
+                        <span class="chip bg-color">分享</span>
                     </a>
                     
                 </div>
@@ -563,29 +565,30 @@
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/posts/48182/">
+                <a href="/posts/a0e8c677/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="LeetCode 上第 454 号问题：4Sum II">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="生活中用过的那些高级算法知识">
                         
-                        <span class="card-title">LeetCode 上第 454 号问题：4Sum II</span>
+                        <span class="card-title">生活中用过的那些高级算法知识</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">LeetCode 上第 454 号问题：4Sum II
-题目
-给定四个包含整数的数组列表 A , B , C , D ,计算有多少个元组 (i, j, k, l) ，使得 A[i] &gt; + B[j] + C[k] + D[l] = 0</div>
+                    <div class="summary">打牌排序绝大部分小伙伴在打牌的时候使用 插入排序，而我就不一样，带四个桶去打牌！！！
+
+缓存前几天去交房租，房东突然问我：
+小吴呀，你是程序员，问你个问题哈，我孩子的玩具现在多起来了，弄的满屋子都是，然后他要玩什么玩具又找不到，一直在哇哇叫</div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-27
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-02-02
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/LeetCode/" class="post-category" target="_blank">
-                                    LeetCode
+                            <a href="/categories/分享/" class="post-category" target="_blank">
+                                    分享
                                 </a>
                             
                             
@@ -595,8 +598,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/数组/" target="_blank">
-                        <span class="chip bg-color">数组</span>
+                    <a href="/tags/新手/" target="_blank">
+                        <span class="chip bg-color">新手</span>
+                    </a>
+                    
+                    <a href="/tags/分享/" target="_blank">
+                        <span class="chip bg-color">分享</span>
                     </a>
                     
                 </div>
