@@ -4,6 +4,56 @@
   
     
     <entry>
+      <title>数据结构与算法——2-3-4树</title>
+      <link href="/posts/566c1253/"/>
+      <url>/posts/566c1253/</url>
+      
+        <content type="html"><![CDATA[<h1 id="数据结构与算法——2-3-4树"><a href="#数据结构与算法——2-3-4树" class="headerlink" title="数据结构与算法——2-3-4树"></a>数据结构与算法——2-3-4树</h1><h3 id="1）引言"><a href="#1）引言" class="headerlink" title="1）引言"></a>1）引言</h3><p>在上一篇文章中介绍了 2-3 树的定义以及插入删除操作。本篇文章将在 2-3 树的基础上更进一步，介绍比 2-3 树更为复杂的数据结构 <strong>2-3-4树</strong> 。之所以介绍 2-3-4 树是因为 2-3-4 树与极为重要的红黑树有着等价关系，通过先学习2-3-4 树为后面学习红黑树打下基础，增进对于红黑树的理解。</p><h3 id="2）-2-3-4树"><a href="#2）-2-3-4树" class="headerlink" title="2） 2-3-4树"></a>2） 2-3-4树</h3><p>2-3 树不再是单纯的二叉树了，因为 2-3 树中除了 2- 节点之外还存在 3- 节点。在 2-3 树的基础上进一步扩展， 2-3-4 树在 2-3 树的基础上添加 4- 节点。4- 节点可以存储 3 个键值，最多可以拥有 4 棵子树。</p><h3 id="3）定义"><a href="#3）定义" class="headerlink" title="3）定义"></a>3）定义</h3><p>（1）每个节点每个节点有 1、2 或 3 个 key ，分别称为 2- 节点，3- 节点，4- 节点。<br>（2）所有叶子节点到根节点的长度一致（也就是说叶子节点都在同一层）。<br>（3）每个节点的 key 从左到右保持了从小到大的顺序，两个 key 之间的子树中所有的 key 一定大于它的父节点的左 key ，小于父节点的右 key 。</p><p>例如图 3.1 所示的一棵 2-3-4 树：<br><img src="https://diycode.b0.upaiyun.com/photo/2019/31a4ad7a67f4b3ef31702d58560ddaeb.png" alt="图3.1"></p><h3 id="4）-查找"><a href="#4）-查找" class="headerlink" title="4） 查找"></a>4） 查找</h3><p>2-3-4 树的查找类似了二叉树的查找过程，通过键值的比较来决定遍历方向。</p><p>例如在图3.1所示树中查找22：<br><img src="https://diycode.b0.upaiyun.com/photo/2019/b7e615464fafe41bed102cc65191d814.png" alt=""></p><p>例如在图 3.1 所示树中查找 15 ：</p><p><img src="https://diycode.b0.upaiyun.com/photo/2019/a5c59046add70e07f2dac17c6126b58c.png" alt=""></p><p><img src="https://diycode.b0.upaiyun.com/photo/2019/3013fe5fbfd5107fdd64afe78c86cf4c.png" alt=""></p><h3 id="5）-插入"><a href="#5）-插入" class="headerlink" title="5） 插入"></a>5） 插入</h3><p>如果 2-3-4 树中已存在当前插入的 key ，则插入失败，否则最终一定是在叶子节点中进行插入操作，因为查找过程的结束位置在叶子节点。</p><h4 id="5-1-非-4-节点插入"><a href="#5-1-非-4-节点插入" class="headerlink" title="5.1 非 4- 节点插入"></a>5.1 非 4- 节点插入</h4><p>如果待插入的节点不是 4- 节点，那么直接在该节点插入。<br>例如在 2- 节点插入：</p><p><img src="https://diycode.b0.upaiyun.com/photo/2019/f7e82297b59b83bd9580f3a1f178b537.png" alt=""><br><img src="https://diycode.b0.upaiyun.com/photo/2019/ade8e3625b045353cf37760c0d38d07a.png" alt=""></p><p>例如在 3- 节点插入：<br><img src="https://diycode.b0.upaiyun.com/photo/2019/ea5acf773027d90c148038429c1e8a4f.png" alt=""><br><img src="https://diycode.b0.upaiyun.com/photo/2019/c45ddc7002638dca06497e3ede47bec8.png" alt=""></p><h4 id="5-2-4-节点插入"><a href="#5-2-4-节点插入" class="headerlink" title="5.2 4- 节点插入"></a>5.2 4- 节点插入</h4><p>如果待插入的节点是个 4- 节点，那么应该先分裂该节点然后再插入。一个 4- 节点可以分裂成一个根节点和两个子节点（这三个节点各含一个 key ）然后在子节点中插入，我们把分裂形成的根节点中的 key 看成向上层插入的 key ，然后重复 5.1 和 5.2 。</p><p><strong>图解：</strong><br><img src="https://diycode.b0.upaiyun.com/photo/2019/ce2fc06277592c02ed7a82adcc1f544e.png" alt=""><br><img src="https://diycode.b0.upaiyun.com/photo/2019/d108470ceaa0c9b8a4548f811aaaad4c.png" alt=""></p><h4 id="5-3-根节点分裂"><a href="#5-3-根节点分裂" class="headerlink" title="5.3 根节点分裂"></a>5.3 根节点分裂</h4><p>如果是在 4 节点中进行插入，每次插入会多出一个分支，如果插入操作导致根节点分裂，则 2-3-4 树会生长一层。</p><p><strong>图解：</strong><br><img src="https://diycode.b0.upaiyun.com/photo/2019/5e716bbdb4ae864f5f6454788ee65d6c.png" alt=""><br><img src="https://diycode.b0.upaiyun.com/photo/2019/ea450212cef53281b7f093891a2ff917.png" alt=""><br><img src="https://diycode.b0.upaiyun.com/photo/2019/ebc5a8bd187bdabcb483709be8f5fe61.png" alt=""><br><img src="https://diycode.b0.upaiyun.com/photo/2019/d5c93792c0da471c29e3a51cf3a54570.png" alt=""><br><img src="https://diycode.b0.upaiyun.com/photo/2019/e4cc4ea9b6d85471bfbdba1047211093.png" alt=""><br><img src="https://diycode.b0.upaiyun.com/photo/2019/ffcc7f58b7d00175b9e27a03afdb756a.png" alt=""></p><h3 id="6）-删除"><a href="#6）-删除" class="headerlink" title="6） 删除"></a>6） 删除</h3><p>执行删除之前需要对删除 key 进行查找，若查找失败则无法删除。查找成功，才可删除 key 。删除节点情况有以下几种：</p><h4 id="6-1-删除的节点不为-2-节点"><a href="#6-1-删除的节点不为-2-节点" class="headerlink" title="6.1 删除的节点不为 2- 节点"></a>6.1 删除的节点不为 2- 节点</h4><p>删除的节点不为 2- 节点，则将要删除的目标 key 直接删除即可。</p><p><strong>图解：</strong><br><img src="https://diycode.b0.upaiyun.com/photo/2019/fb15c616d169d2cf531a52a7f7193154.png" alt=""><br><img src="https://diycode.b0.upaiyun.com/photo/2019/30f7f3d7b5810bf506a1dbdc6c0bc682.png" alt=""></p><h4 id="6-2-删除非叶子节点"><a href="#6-2-删除非叶子节点" class="headerlink" title="6.2 删除非叶子节点"></a>6.2 删除非叶子节点</h4><p>当删除的节点是非叶子节点，无论待删除节点的 key 是多少个，先使用中序遍历找到待删除节点的后继节点，然后将后继节点与待删除节点位置互换，此时就将问题转化为删除节点为叶子节点（平衡树的非叶子节点中序遍历后继节点肯定叶子节点），如果该叶子是非 2- 节点，则与 2.4.1 一样，如果该节点是 2- 节点，则跟后面的 2.4.3 情形一样。</p><p><strong>图解：</strong><br><img src="https://diycode.b0.upaiyun.com/photo/2019/b69c16d767a96f8e140119959f130742.png" alt=""><br><img src="https://diycode.b0.upaiyun.com/photo/2019/405515d2395eaa77e651d659c04e9a55.png" alt=""></p><h4 id="6-3-删除的叶子节点为-2-节点"><a href="#6-3-删除的叶子节点为-2-节点" class="headerlink" title="6.3 删除的叶子节点为 2- 节点"></a>6.3 删除的叶子节点为 2- 节点</h4><p>当删除的叶子节点是 2- 节点，则将节点删除后，需要对树进行调整，调整规则如下：</p><p>1）当前节点的父节点是 2- 节点，兄弟节点不为 2- 节点，则将兄弟节点的一个 key 上移成父节点，而父节点下移成子节点，此时树满足 2-3-4 树，完成调整。</p><p>（2）当前节点的父节点是 2-节点，兄弟节点也为 2- 节点，则此时将父节点与兄弟节点合并，将合并后的节点看成当前节点，然后重复的判断，即判断合并后的当前节点的兄弟节点与父节点的情况，然后走对应的（1）（2）（3）处理，直到满足 2-3-4 树，完成调整。</p><p>（3）当前节点的父节点不为 2- 节点，即此时有两个或三个兄弟节点，此时需要根据相邻兄弟节点情形进行调整，规则如下：</p><blockquote><p>（3）-a：若当前节点的相邻兄弟节点为非 3 个 key ，则父节点的一个 key 下移，与相邻兄弟节点合并，此时树满足2-3树，完成调整。<br>（3）-b：若当前节点的相邻兄弟节点为 3 个 key ，则父节点的一个 key 下移成 1 个 key 的节点，相邻兄弟节点的一个 key 上移与父节点合并，此时树满足 2-3-4 树，完成调整。</p></blockquote><p><strong>图解：</strong><br><img src="https://diycode.b0.upaiyun.com/photo/2019/06c6211b94d0448a674110bca658aa7b.png" alt=""><br><img src="https://diycode.b0.upaiyun.com/photo/2019/6af4d48342ac3f713056b8f8acb722a8.png" alt=""></p><p><strong>图解：</strong><br><img src="https://diycode.b0.upaiyun.com/photo/2019/1f4c59d6d50c60e1eec51152e264d9cc.png" alt=""><br><img src="https://diycode.b0.upaiyun.com/photo/2019/a61e102f4d2fe54f05850f986d2349d5.png" alt=""></p><p><strong>图解：</strong><br><img src="https://diycode.b0.upaiyun.com/photo/2019/7e18eb4b8079e3e59d2a4641f63704ca.png" alt=""><br><img src="https://diycode.b0.upaiyun.com/photo/2019/e33f1712069cca999db1c8280c79bed1.png" alt=""></p><h3 id="7）-结语"><a href="#7）-结语" class="headerlink" title="7） 结语"></a>7） 结语</h3><p>本篇文章主要介绍了 2-3-4 树的性质，以及插入删除等操作。介绍 2-3-4 树的目的主要是为了为后续学习红黑树和B- 树打下一个基础。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 树 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>数据结构与算法——2-3树</title>
+      <link href="/posts/95cad743/"/>
+      <url>/posts/95cad743/</url>
+      
+        <content type="html"><![CDATA[<h1 id="数据结构与算法——2-3树"><a href="#数据结构与算法——2-3树" class="headerlink" title="数据结构与算法——2-3树"></a>数据结构与算法——2-3树</h1><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>前面讲到了二叉搜索树(BST)和二叉平衡树(AVL)，二叉搜索树在最好的情况下搜索的时间复杂度为O(logn)，但如果插入节点时，插入元素序列本身就是有序的，那么BST树就退化成一个线性表了，搜索的时间复杂度为O(n)。<br>如果想要减少比较次数，就需要降低树的高度。在插入和删除节点时，要保证插入节点后不能使叶子节点之间的深度之差大于 1，这样就能保证整棵树的深度最小，这就是AVL树解决BST搜索性能降低的策略。但由于每次插入或删除节点后，都可能会破坏AVL的平衡，而要动态保证AVL的平衡需要很多操作，这些操作会影响整个数据结构的性能，除非是在树的结构变化特别少的情形下，否则AVL树平衡带来的搜索性能提升有可能还不足为了平衡树所带来的性能损耗。<br>因此，引入了 2-3 树来提升效率。2-3 树本质也是一种平衡搜索树，但 2-3 树已经不是一棵二叉树了，因为 2-3 树允许存在 3 这种节点，3- 节点中可以存放两个元素，并且可以有三个子节点。</p><h3 id="2-3-树定义"><a href="#2-3-树定义" class="headerlink" title="2-3 树定义"></a>2-3 树定义</h3><p>2-3 树的定义如下：<br>（1）2-3 树要么为空要么具有以下性质：<br>（2）对于 2- 节点，和普通的 BST 节点一样，有一个数据域和两个子节点指针，两个子节点要么为空，要么也是一个2-3树，当前节点的数据的值要大于左子树中所有节点的数据，要小于右子树中所有节点的数据。<br>（3）对于 3- 节点，有两个数据域 a 和 b 和三个子节点指针，左子树中所有的节点数据要小于a，中子树中所有节点数据要大于 a 而小于 b ，右子树中所有节点数据要大于 b 。<br>例如图 2.1 所示的树为一棵 2-3 树：</p><p><img src="https://diycode.b0.upaiyun.com/photo/2019/a35c4aed00843dbb6aef8157483b7a9e.png" alt="图2.1"></p><h3 id="2-3-树性质"><a href="#2-3-树性质" class="headerlink" title="2-3 树性质"></a>2-3 树性质</h3><p>性质：<br>（1）对于每一个结点有 1 或者 2 个关键码。<br>（2）当节点有一个关键码的时，节点有 2 个子树。<br>（3）当节点有 2 个关键码时，节点有 3 个子树。<br>（4）所有叶子点都在树的同一层。</p><h3 id="2-3树查找"><a href="#2-3树查找" class="headerlink" title="2-3树查找"></a>2-3树查找</h3><p>2-3 树的查找类似二叉搜索树的查找过程，根据键值的比较来决定查找的方向。</p><p>例如在图 2.1 所示的 2-3 树中查找键为H的节点：<br><img src="https://diycode.b0.upaiyun.com/photo/2019/6916e37e045c6e88efb5c8611f4f20c1.png" alt="img"></p><p>例如在图 2.1 所示的 2-3 树中查找键为 B 的节点：<br><img src="https://diycode.b0.upaiyun.com/photo/2019/f65b244cd8bdc1b3b6052e396eaf33ab.png" alt="img"></p><p>###2-3树插入</p><h4 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h4><p>在树的插入之前需要对带插入的节点进行一次查找操作，若树中已经有此节点则不予插入，若没有查找到此节点则记录未命中查找结束时访问的最后一个节点。<br>空树的插入最简单，创建一个节点即可，这里不予赘述。<br>对于非空树插入主要分为4种情况：<br>（1）向 2- 节点中插入新节点<br>（2）向一棵只含 3- 节点的树中插入新节点<br>（3）向一个父节点为 2- 节点的 3- 节点中插入新节点<br>（4）向一个父节点为 3- 节点的 3- 节点中插入新节点</p><h4 id="向2-节点中插入新节点"><a href="#向2-节点中插入新节点" class="headerlink" title="向2-节点中插入新节点"></a>向2-节点中插入新节点</h4><p><strong>操作步骤：如果未命中查找结束于一个 2-节点，直接将 2- 节点替换为一个 3- 节点，并将要插入的键保存在其中。</strong></p><p><strong>图解：</strong><br><img src="https://diycode.b0.upaiyun.com/photo/2019/ccff8feed38e2fd2db5e51918f26c9d3.png" alt="img"></p><p><img src="https://diycode.b0.upaiyun.com/photo/2019/bd768163785f4e33e5f3316d5f1cc3e8.png" alt="img"></p><h4 id="向一棵只含-3-节点的树中插入新节点"><a href="#向一棵只含-3-节点的树中插入新节点" class="headerlink" title="向一棵只含 3- 节点的树中插入新节点"></a>向一棵只含 3- 节点的树中插入新节点</h4><p><strong>操作步骤：先临时将新键存入唯一的 3- 节点中，使其成为一个 4- 节点，再将它转化为一颗由 3 个 2- 节点组成的 2-3 树，分解后树高会增加 1。</strong></p><p><strong>图解：</strong></p><p><img src="https://diycode.b0.upaiyun.com/photo/2019/668493ecbe13fb8da90a0c7ed8229c66.png" alt="img"></p><h4 id="向一个父节点为-2-节点的-3-节点中插入新节点"><a href="#向一个父节点为-2-节点的-3-节点中插入新节点" class="headerlink" title="向一个父节点为 2- 节点的 3- 节点中插入新节点"></a>向一个父节点为 2- 节点的 3- 节点中插入新节点</h4><p><strong>操作步骤：先构造一个临时的 4- 节点并将其分解，分解时将中键移动到父节点中(中键移动后，其父节点中的位置由键的大小确定)</strong></p><p><strong>图解：</strong></p><p><img src="https://diycode.b0.upaiyun.com/photo/2019/46fa0c9c05446a180e1958f3111b577f.png" alt="img"><br><img src="https://diycode.b0.upaiyun.com/photo/2019/79b4a6a6eca96acafffc5c2b442c052d.png" alt="img"></p><p>####向一个父节点为3-节点的3-节点中插入新节点</p><p><strong>操作步骤：插入节点后一直向上分解构造的临时4-节点并将中键移动到更高层双亲节点，直到遇到一个-2节点并将其替换为一个不需要继续分解的3-节点，或是到达树根(3-节点)。</strong></p><p><strong>图解：</strong></p><p><img src="https://diycode.b0.upaiyun.com/photo/2019/fc4c8bd91d7e386238e6047b941ad429.png" alt="img"><br><img src="https://diycode.b0.upaiyun.com/photo/2019/235f51e0c838c7099db14d254a900444.png" alt="img"><br><img src="https://diycode.b0.upaiyun.com/photo/2019/285db0d032c3aae2c0e205fc017e75ec.png" alt="img"></p><h4 id="分解根节点"><a href="#分解根节点" class="headerlink" title="分解根节点"></a>分解根节点</h4><p><strong>操作步骤：如果从插入节点到根节点的路径上全是3-节点（包含根节点在内），根节点将最终被替换为一个临时的4-节点，将临时的4-节点分解为3个2-节点，分解后树高会增加1。</strong></p><p><strong>图解：</strong><br><img src="https://diycode.b0.upaiyun.com/photo/2019/4454c2d88df1f441e6ead6a550407fcd.png" alt="img"></p><h3 id="2-3树删除"><a href="#2-3树删除" class="headerlink" title="2-3树删除"></a>2-3树删除</h3><p>删除之前，先要对2-3树进行一次命中的查找，查找成功才可以进行删除操作。<br>删除节点大概分为3种情形</p><p>（1）删除非叶子节点。<br>（2）删除不为2-节点的叶子节点。<br>（3）删除为2-节点的叶子节点。</p><h4 id="删除非叶子节点"><a href="#删除非叶子节点" class="headerlink" title="删除非叶子节点"></a>删除非叶子节点</h4><p><strong>操作步骤：使用中序遍历下的直接后继节点key来覆盖当前待删除节点key，再删除用来覆盖的后继节点key。</strong></p><p><strong>图解：</strong><br><img src="https://diycode.b0.upaiyun.com/photo/2019/6aea6353a9c8e042c9f3fdf28c3cf2c6.png" alt="img"></p><h4 id="删除不为2-节点的叶子节点"><a href="#删除不为2-节点的叶子节点" class="headerlink" title="删除不为2-节点的叶子节点"></a>删除不为2-节点的叶子节点</h4><p>操作步骤：删除不为2-节点的叶子节点，直接删除节点即可。**</p><p><strong>图解：</strong><br><img src="https://diycode.b0.upaiyun.com/photo/2019/9eed47e91cdd721035760525f230f12c.png" alt="img"></p><h4 id="删除为2-节点的叶子节点"><a href="#删除为2-节点的叶子节点" class="headerlink" title="删除为2-节点的叶子节点"></a>删除为2-节点的叶子节点</h4><p>删除为2-节点的叶子节点的步骤相对复杂，删除节点后需要做出相应判断，并根据判断结果调整树结构。主要分为四种情形：</p><h5 id="删除节点为2-节点，父节点为2-节点，兄弟节点为3-节点"><a href="#删除节点为2-节点，父节点为2-节点，兄弟节点为3-节点" class="headerlink" title="删除节点为2-节点，父节点为2-节点，兄弟节点为3-节点"></a>删除节点为2-节点，父节点为2-节点，兄弟节点为3-节点</h5><p><strong>操作步骤：当前待删除节点的父节点是2-节点、兄弟节点是3-节点，将父节点移动到当前待删除节点位置，再将兄弟节点中最接近当前位置的key移动到父节点中。</strong></p><p><strong>图解：</strong><br><img src="https://diycode.b0.upaiyun.com/photo/2019/caa28467e8dcb3bf694a322263512500.png" alt="img"></p><h5 id="删除节点为2-节点，父节点为2-节点，兄弟节点为2-节点"><a href="#删除节点为2-节点，父节点为2-节点，兄弟节点为2-节点" class="headerlink" title="删除节点为2-节点，父节点为2-节点，兄弟节点为2-节点"></a>删除节点为2-节点，父节点为2-节点，兄弟节点为2-节点</h5><p><strong>操作步骤：当前待删除节点的父节点是2-节点、兄弟节点也是2-节点，先通过移动兄弟节点的中序遍历直接后驱到兄弟节点，以使兄弟节点变为3-节点；再进行6.3.1的操作。</strong></p><p><strong>图解：</strong></p><p><img src="https://diycode.b0.upaiyun.com/photo/2019/aaea050b8cd1be3572097b35a04e8926.png" alt="img"><br><img src="https://diycode.b0.upaiyun.com/photo/2019/fd41e34febe4651d4f9ca5d53c1325dc.png" alt="img"></p><h5 id="删除节点为2-节点，父节点为3-节点"><a href="#删除节点为2-节点，父节点为3-节点" class="headerlink" title="删除节点为2-节点，父节点为3-节点"></a>删除节点为2-节点，父节点为3-节点</h5><p><strong>操作步骤：当前待删除节点的父节点是3-节点，拆分父节点使其成为2-节点，再将再将父节点中最接近的一个拆分key与中孩子合并，将合并后的节点作为当前节点。</strong></p><p><strong>图解：</strong><br><img src="https://diycode.b0.upaiyun.com/photo/2019/ba52aba6e18ae595ee9aa499523f9d4d.png" alt="img"></p><h5 id="2-3树为满二叉树，删除叶子节点"><a href="#2-3树为满二叉树，删除叶子节点" class="headerlink" title="2-3树为满二叉树，删除叶子节点"></a>2-3树为满二叉树，删除叶子节点</h5><p><strong>操作步骤：若2-3树是一颗满二叉树，将2-3树层树减少，并将当前删除节点的兄弟节点合并到父节点中，同时将父节点的所有兄弟节点合并到父节点的父节点中，如果生成了4-节点，再分解4-节点。</strong></p><p><strong>图解：</strong><br><img src="https://diycode.b0.upaiyun.com/photo/2019/669908519dceaa20120985b6bfc5b0cf.png" alt="img"></p><h3 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h3><p>2-3 树作为一种平衡查找树，查询效率比普通的二叉排序树要稳定许多。但是2-3树需要维护两种不同类型的结点，查找和插入操作的实现需要大量的代码，而且它们所产生的额外开销可能会使算法比标准的二叉查找树更慢。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 树 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>知否？知否？情人眼里出代码</title>
       <link href="/posts/74c8c47d/"/>
       <url>/posts/74c8c47d/</url>
@@ -70,9 +120,9 @@
       
         <tags>
             
-            <tag> 分享 </tag>
-            
             <tag> 新手 </tag>
+            
+            <tag> 分享 </tag>
             
         </tags>
       
@@ -97,9 +147,9 @@
       
         <tags>
             
-            <tag> 二叉树 </tag>
-            
             <tag> 动画 </tag>
+            
+            <tag> 二叉树 </tag>
             
         </tags>
       
@@ -124,9 +174,9 @@
       
         <tags>
             
-            <tag> 分享 </tag>
-            
             <tag> 新手 </tag>
+            
+            <tag> 分享 </tag>
             
         </tags>
       
@@ -207,9 +257,9 @@
       
         <tags>
             
-            <tag> 分享 </tag>
-            
             <tag> 新手 </tag>
+            
+            <tag> 分享 </tag>
             
         </tags>
       
@@ -288,9 +338,9 @@
       
         <tags>
             
-            <tag> 链表 </tag>
-            
             <tag> 数据结构 </tag>
+            
+            <tag> 链表 </tag>
             
         </tags>
       
@@ -396,9 +446,9 @@
       
         <tags>
             
-            <tag> 栈 </tag>
-            
             <tag> 数据结构 </tag>
+            
+            <tag> 栈 </tag>
             
         </tags>
       
@@ -747,9 +797,9 @@
       
         <tags>
             
-            <tag> 栈 </tag>
-            
             <tag> 数据结构 </tag>
+            
+            <tag> 栈 </tag>
             
         </tags>
       
@@ -1086,9 +1136,9 @@
       
         <tags>
             
-            <tag> 分享 </tag>
-            
             <tag> 新手 </tag>
+            
+            <tag> 分享 </tag>
             
         </tags>
       
@@ -1365,33 +1415,6 @@
     
     
     <entry>
-      <title>【图解数据结构】 一组动画演示插入排序</title>
-      <link href="/posts/42319/"/>
-      <url>/posts/42319/</url>
-      
-        <content type="html"><![CDATA[<h1 id="【图解数据结构】-一组动画演示插入排序"><a href="#【图解数据结构】-一组动画演示插入排序" class="headerlink" title="【图解数据结构】 一组动画演示插入排序"></a>【图解数据结构】 一组动画演示插入排序</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>由于LeetCode上的算法题很多涉及到一些基础的数据结构，为了更好的理解后续更新的一些复杂题目的动画，推出一个新系列 —–《图解数据结构》，主要使用动画来描述常见的数据结构和算法。本系列包括十大排序、堆、队列、树、并查集、图等等大概几十篇。</p><h2 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h2><p>插入排序的代码实现虽然没有冒泡排序和选择排序那么简单粗暴，但它的原理应该是最容易理解的了，因为只要打过扑克牌的人都应该能够秒懂。插入排序是一种最简单直观的排序算法，它的工作原理是通过构建有序序列，对于未排序数据，在已排序序列中从后向前扫描，找到相应位置并插入。</p><h2 id="算法步骤"><a href="#算法步骤" class="headerlink" title="算法步骤"></a>算法步骤</h2><ol><li><p>将第一待排序序列第一个元素看做一个有序序列，把第二个元素到最后一个元素当成是未排序序列。</p></li><li><p>从头到尾依次扫描未排序序列，将扫描到的每个元素插入有序序列的适当位置。（如果待插入的元素与有序序列中的某个元素相等，则将待插入元素插入到相等元素的后面。）。</p></li></ol><p>来源：<a href="https://github.com/hustcc/JS-Sorting-Algorithm" target="_blank" rel="noopener">https://github.com/hustcc/JS-Sorting-Algorithm</a></p><h2 id="算法演示"><a href="#算法演示" class="headerlink" title="算法演示"></a>算法演示</h2><p><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181120164938.gif" alt=""></p><h2 id="排序动画过程解释"><a href="#排序动画过程解释" class="headerlink" title="排序动画过程解释"></a>排序动画过程解释</h2><ol><li><p>一开始左端数字已经排序，数字 5 不动</p></li><li><p>然后，取出剩余未操作的左端数字 3 </p></li><li><p>将其与已经操作的左侧数字相比较</p></li><li><p>如果左边的数字较大，则交换两个数字</p></li><li><p>这种情况下，由于 5 大于 3 ，所以交换两个数字</p></li><li><p>重复此操作，直到出现一个较小的数字或者数字到达左端</p></li><li><p>数字 3 已经完成排序</p></li><li><p>接下来，和之前一样取出剩余未操作的左端数字 4  </p></li><li><p>与其相邻的左边数字进行比较</p></li><li><p>这种情况下，由于 5 大于 4 ，所以交换两个数字</p></li><li><p>继续操作，由于 3 小于 4 ，即出现了更小的数字，所以 4 停止移动</p></li><li><p>数字 4 已经完成排序</p></li><li><p>重复相同的操作，直到所有的数字完成排序</p></li></ol><h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><p>为了更好的让读者用自己熟悉的编程语言来理解动画，笔者将贴出多种编程语言的参考代码，代码全部来源于网上。</p><h4 id="C-代码实现"><a href="#C-代码实现" class="headerlink" title="C++代码实现"></a>C++代码实现</h4><p><img src="http://upload-images.jianshu.io/upload_images/1940317-ce2bac560fc4620a?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p><h4 id="Java代码实现"><a href="#Java代码实现" class="headerlink" title="Java代码实现"></a>Java代码实现</h4><p><img src="http://upload-images.jianshu.io/upload_images/1940317-e29b04076de62c3a?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p><h4 id="Python代码实现"><a href="#Python代码实现" class="headerlink" title="Python代码实现"></a>Python代码实现</h4><p><img src="http://upload-images.jianshu.io/upload_images/1940317-25d430ac861b8bdd?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p><h4 id="JavaScript代码实现"><a href="#JavaScript代码实现" class="headerlink" title="JavaScript代码实现"></a>JavaScript代码实现</h4><p><img src="http://upload-images.jianshu.io/upload_images/1940317-575eb47403e08c3f?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 十大经典排序 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 排序 </tag>
-            
-            <tag> 插入排序 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>【图解数据结构】 一组动画演示计数排序</title>
       <link href="/posts/33704/"/>
       <url>/posts/33704/</url>
@@ -1411,6 +1434,33 @@
             <tag> 排序 </tag>
             
             <tag> 计数排序 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>【图解数据结构】 一组动画演示插入排序</title>
+      <link href="/posts/42319/"/>
+      <url>/posts/42319/</url>
+      
+        <content type="html"><![CDATA[<h1 id="【图解数据结构】-一组动画演示插入排序"><a href="#【图解数据结构】-一组动画演示插入排序" class="headerlink" title="【图解数据结构】 一组动画演示插入排序"></a>【图解数据结构】 一组动画演示插入排序</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>由于LeetCode上的算法题很多涉及到一些基础的数据结构，为了更好的理解后续更新的一些复杂题目的动画，推出一个新系列 —–《图解数据结构》，主要使用动画来描述常见的数据结构和算法。本系列包括十大排序、堆、队列、树、并查集、图等等大概几十篇。</p><h2 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h2><p>插入排序的代码实现虽然没有冒泡排序和选择排序那么简单粗暴，但它的原理应该是最容易理解的了，因为只要打过扑克牌的人都应该能够秒懂。插入排序是一种最简单直观的排序算法，它的工作原理是通过构建有序序列，对于未排序数据，在已排序序列中从后向前扫描，找到相应位置并插入。</p><h2 id="算法步骤"><a href="#算法步骤" class="headerlink" title="算法步骤"></a>算法步骤</h2><ol><li><p>将第一待排序序列第一个元素看做一个有序序列，把第二个元素到最后一个元素当成是未排序序列。</p></li><li><p>从头到尾依次扫描未排序序列，将扫描到的每个元素插入有序序列的适当位置。（如果待插入的元素与有序序列中的某个元素相等，则将待插入元素插入到相等元素的后面。）。</p></li></ol><p>来源：<a href="https://github.com/hustcc/JS-Sorting-Algorithm" target="_blank" rel="noopener">https://github.com/hustcc/JS-Sorting-Algorithm</a></p><h2 id="算法演示"><a href="#算法演示" class="headerlink" title="算法演示"></a>算法演示</h2><p><img src="https://bucket-1257126549.cos.ap-guangzhou.myqcloud.com/20181120164938.gif" alt=""></p><h2 id="排序动画过程解释"><a href="#排序动画过程解释" class="headerlink" title="排序动画过程解释"></a>排序动画过程解释</h2><ol><li><p>一开始左端数字已经排序，数字 5 不动</p></li><li><p>然后，取出剩余未操作的左端数字 3 </p></li><li><p>将其与已经操作的左侧数字相比较</p></li><li><p>如果左边的数字较大，则交换两个数字</p></li><li><p>这种情况下，由于 5 大于 3 ，所以交换两个数字</p></li><li><p>重复此操作，直到出现一个较小的数字或者数字到达左端</p></li><li><p>数字 3 已经完成排序</p></li><li><p>接下来，和之前一样取出剩余未操作的左端数字 4  </p></li><li><p>与其相邻的左边数字进行比较</p></li><li><p>这种情况下，由于 5 大于 4 ，所以交换两个数字</p></li><li><p>继续操作，由于 3 小于 4 ，即出现了更小的数字，所以 4 停止移动</p></li><li><p>数字 4 已经完成排序</p></li><li><p>重复相同的操作，直到所有的数字完成排序</p></li></ol><h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><p>为了更好的让读者用自己熟悉的编程语言来理解动画，笔者将贴出多种编程语言的参考代码，代码全部来源于网上。</p><h4 id="C-代码实现"><a href="#C-代码实现" class="headerlink" title="C++代码实现"></a>C++代码实现</h4><p><img src="http://upload-images.jianshu.io/upload_images/1940317-ce2bac560fc4620a?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p><h4 id="Java代码实现"><a href="#Java代码实现" class="headerlink" title="Java代码实现"></a>Java代码实现</h4><p><img src="http://upload-images.jianshu.io/upload_images/1940317-e29b04076de62c3a?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p><h4 id="Python代码实现"><a href="#Python代码实现" class="headerlink" title="Python代码实现"></a>Python代码实现</h4><p><img src="http://upload-images.jianshu.io/upload_images/1940317-25d430ac861b8bdd?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p><h4 id="JavaScript代码实现"><a href="#JavaScript代码实现" class="headerlink" title="JavaScript代码实现"></a>JavaScript代码实现</h4><p><img src="http://upload-images.jianshu.io/upload_images/1940317-575eb47403e08c3f?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 十大经典排序 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 排序 </tag>
+            
+            <tag> 插入排序 </tag>
             
         </tags>
       

@@ -1,0 +1,790 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    
+
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="数据结构与算法——2-3树, 五分钟学算法">
+    <meta name="description" content="数据结构与算法——2-3树前言前面讲到了二叉搜索树(BST)和二叉平衡树(AVL)，二叉搜索树在最好的情况下搜索的时间复杂度为O(logn)，但如果插入节点时，插入元素序列本身就是有序的，那么BST树就退化成一个线性表了，搜索的时间复杂度为">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>数据结构与算法——2-3树 | 五分钟学算法</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/css/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+</head>
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="container">
+            <div class="nav-wrapper">
+                <div class="brand-logo">
+                    <a href="/" class="waves-effect waves-light">
+                        
+                        <img src="/medias/logo.png" class="logo-img hide-on-small-only">
+                        
+                        <span class="logo-span">五分钟学算法</span>
+                    </a>
+                </div>
+                
+
+<a href="#" data-activates="mobile-nav" class="button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于</span>
+        </a>
+    </li>
+    
+    <li>
+        <a id="toggleSearch" class="waves-effect waves-light">
+            <i id="searchIcon" class="mdi-action-search" title="搜索"></i>
+        </a>
+    </li>
+
+</ul>
+
+<div class="side-nav" id="mobile-nav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">五分钟学算法</div>
+        <div class="logo-desc">
+            
+            不忘初心，方得始终
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于
+            </a>
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/MisterBooo" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>Follower Me
+            </a>
+        </li>
+        
+    </ul>
+
+    <div class="social-link">
+    <a href="https://github.com/MisterBooo" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:misterbigbooo@gmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+
+</div>
+</div>
+
+            </div>
+        </div>
+
+        
+        <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/MisterBooo" class="github-corner tooltipped hide-on-med-and-down" target="_blank" data-tooltip="Follower Me" data-position="left" data-delay="50">
+    <svg viewbox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/>
+    </svg>
+</a>
+        
+    </nav>
+</header>
+
+
+
+
+
+<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        数据结构与算法——2-3树
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1,
+    #articleContent h2,
+    #articleContent h3,
+    #articleContent h4,
+    #articleContent h5,
+    #articleContent h6 {
+        padding-top: 76px;
+        margin-top: -76px;
+    }
+
+    #articleContent h1 {
+        line-height: 3.5rem;
+    }
+
+    #articleContent h2 {
+        line-height: 3.2rem;
+    }
+
+    #articleContent h3 {
+        line-height: 2.8rem;
+    }
+
+    #articleContent h4 {
+        line-height: 2.5rem;
+    }
+
+    #articleContent h5 {
+        line-height: 2.2rem;
+    }
+
+    #articleContent h6 {
+        line-height: 1.9rem;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+</style>
+<div class="row">
+    <div class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/树/" target="_blank">
+                                <span class="chip bg-color">树</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/算法/" class="post-category" target="_blank">
+                                算法
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2019-02-16
+                </div>
+
+                
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
+                        2k
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                        7 分
+                    </div>
+                    
+                
+				
+				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="数据结构与算法——2-3树"><a href="#数据结构与算法——2-3树" class="headerlink" title="数据结构与算法——2-3树"></a>数据结构与算法——2-3树</h1><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>前面讲到了二叉搜索树(BST)和二叉平衡树(AVL)，二叉搜索树在最好的情况下搜索的时间复杂度为O(logn)，但如果插入节点时，插入元素序列本身就是有序的，那么BST树就退化成一个线性表了，搜索的时间复杂度为O(n)。<br>如果想要减少比较次数，就需要降低树的高度。在插入和删除节点时，要保证插入节点后不能使叶子节点之间的深度之差大于 1，这样就能保证整棵树的深度最小，这就是AVL树解决BST搜索性能降低的策略。但由于每次插入或删除节点后，都可能会破坏AVL的平衡，而要动态保证AVL的平衡需要很多操作，这些操作会影响整个数据结构的性能，除非是在树的结构变化特别少的情形下，否则AVL树平衡带来的搜索性能提升有可能还不足为了平衡树所带来的性能损耗。<br>因此，引入了 2-3 树来提升效率。2-3 树本质也是一种平衡搜索树，但 2-3 树已经不是一棵二叉树了，因为 2-3 树允许存在 3 这种节点，3- 节点中可以存放两个元素，并且可以有三个子节点。</p>
+<h3 id="2-3-树定义"><a href="#2-3-树定义" class="headerlink" title="2-3 树定义"></a>2-3 树定义</h3><p>2-3 树的定义如下：<br>（1）2-3 树要么为空要么具有以下性质：<br>（2）对于 2- 节点，和普通的 BST 节点一样，有一个数据域和两个子节点指针，两个子节点要么为空，要么也是一个2-3树，当前节点的数据的值要大于左子树中所有节点的数据，要小于右子树中所有节点的数据。<br>（3）对于 3- 节点，有两个数据域 a 和 b 和三个子节点指针，左子树中所有的节点数据要小于a，中子树中所有节点数据要大于 a 而小于 b ，右子树中所有节点数据要大于 b 。<br>例如图 2.1 所示的树为一棵 2-3 树：</p>
+<p><img src="https://diycode.b0.upaiyun.com/photo/2019/a35c4aed00843dbb6aef8157483b7a9e.png" alt="图2.1"></p>
+<h3 id="2-3-树性质"><a href="#2-3-树性质" class="headerlink" title="2-3 树性质"></a>2-3 树性质</h3><p>性质：<br>（1）对于每一个结点有 1 或者 2 个关键码。<br>（2）当节点有一个关键码的时，节点有 2 个子树。<br>（3）当节点有 2 个关键码时，节点有 3 个子树。<br>（4）所有叶子点都在树的同一层。</p>
+<h3 id="2-3树查找"><a href="#2-3树查找" class="headerlink" title="2-3树查找"></a>2-3树查找</h3><p>2-3 树的查找类似二叉搜索树的查找过程，根据键值的比较来决定查找的方向。</p>
+<p>例如在图 2.1 所示的 2-3 树中查找键为H的节点：<br><img src="https://diycode.b0.upaiyun.com/photo/2019/6916e37e045c6e88efb5c8611f4f20c1.png" alt="img"></p>
+<p>例如在图 2.1 所示的 2-3 树中查找键为 B 的节点：<br><img src="https://diycode.b0.upaiyun.com/photo/2019/f65b244cd8bdc1b3b6052e396eaf33ab.png" alt="img"></p>
+<p>###2-3树插入</p>
+<h4 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h4><p>在树的插入之前需要对带插入的节点进行一次查找操作，若树中已经有此节点则不予插入，若没有查找到此节点则记录未命中查找结束时访问的最后一个节点。<br>空树的插入最简单，创建一个节点即可，这里不予赘述。<br>对于非空树插入主要分为4种情况：<br>（1）向 2- 节点中插入新节点<br>（2）向一棵只含 3- 节点的树中插入新节点<br>（3）向一个父节点为 2- 节点的 3- 节点中插入新节点<br>（4）向一个父节点为 3- 节点的 3- 节点中插入新节点</p>
+<h4 id="向2-节点中插入新节点"><a href="#向2-节点中插入新节点" class="headerlink" title="向2-节点中插入新节点"></a>向2-节点中插入新节点</h4><p><strong>操作步骤：如果未命中查找结束于一个 2-节点，直接将 2- 节点替换为一个 3- 节点，并将要插入的键保存在其中。</strong></p>
+<p><strong>图解：</strong><br><img src="https://diycode.b0.upaiyun.com/photo/2019/ccff8feed38e2fd2db5e51918f26c9d3.png" alt="img"></p>
+<p><img src="https://diycode.b0.upaiyun.com/photo/2019/bd768163785f4e33e5f3316d5f1cc3e8.png" alt="img"></p>
+<h4 id="向一棵只含-3-节点的树中插入新节点"><a href="#向一棵只含-3-节点的树中插入新节点" class="headerlink" title="向一棵只含 3- 节点的树中插入新节点"></a>向一棵只含 3- 节点的树中插入新节点</h4><p><strong>操作步骤：先临时将新键存入唯一的 3- 节点中，使其成为一个 4- 节点，再将它转化为一颗由 3 个 2- 节点组成的 2-3 树，分解后树高会增加 1。</strong></p>
+<p><strong>图解：</strong></p>
+<p><img src="https://diycode.b0.upaiyun.com/photo/2019/668493ecbe13fb8da90a0c7ed8229c66.png" alt="img"></p>
+<h4 id="向一个父节点为-2-节点的-3-节点中插入新节点"><a href="#向一个父节点为-2-节点的-3-节点中插入新节点" class="headerlink" title="向一个父节点为 2- 节点的 3- 节点中插入新节点"></a>向一个父节点为 2- 节点的 3- 节点中插入新节点</h4><p><strong>操作步骤：先构造一个临时的 4- 节点并将其分解，分解时将中键移动到父节点中(中键移动后，其父节点中的位置由键的大小确定)</strong></p>
+<p><strong>图解：</strong></p>
+<p><img src="https://diycode.b0.upaiyun.com/photo/2019/46fa0c9c05446a180e1958f3111b577f.png" alt="img"><br><img src="https://diycode.b0.upaiyun.com/photo/2019/79b4a6a6eca96acafffc5c2b442c052d.png" alt="img"></p>
+<p>####向一个父节点为3-节点的3-节点中插入新节点</p>
+<p><strong>操作步骤：插入节点后一直向上分解构造的临时4-节点并将中键移动到更高层双亲节点，直到遇到一个-2节点并将其替换为一个不需要继续分解的3-节点，或是到达树根(3-节点)。</strong></p>
+<p><strong>图解：</strong></p>
+<p><img src="https://diycode.b0.upaiyun.com/photo/2019/fc4c8bd91d7e386238e6047b941ad429.png" alt="img"><br><img src="https://diycode.b0.upaiyun.com/photo/2019/235f51e0c838c7099db14d254a900444.png" alt="img"><br><img src="https://diycode.b0.upaiyun.com/photo/2019/285db0d032c3aae2c0e205fc017e75ec.png" alt="img"></p>
+<h4 id="分解根节点"><a href="#分解根节点" class="headerlink" title="分解根节点"></a>分解根节点</h4><p><strong>操作步骤：如果从插入节点到根节点的路径上全是3-节点（包含根节点在内），根节点将最终被替换为一个临时的4-节点，将临时的4-节点分解为3个2-节点，分解后树高会增加1。</strong></p>
+<p><strong>图解：</strong><br><img src="https://diycode.b0.upaiyun.com/photo/2019/4454c2d88df1f441e6ead6a550407fcd.png" alt="img"></p>
+<h3 id="2-3树删除"><a href="#2-3树删除" class="headerlink" title="2-3树删除"></a>2-3树删除</h3><p>删除之前，先要对2-3树进行一次命中的查找，查找成功才可以进行删除操作。<br>删除节点大概分为3种情形</p>
+<p>（1）删除非叶子节点。<br>（2）删除不为2-节点的叶子节点。<br>（3）删除为2-节点的叶子节点。</p>
+<h4 id="删除非叶子节点"><a href="#删除非叶子节点" class="headerlink" title="删除非叶子节点"></a>删除非叶子节点</h4><p><strong>操作步骤：使用中序遍历下的直接后继节点key来覆盖当前待删除节点key，再删除用来覆盖的后继节点key。</strong></p>
+<p><strong>图解：</strong><br><img src="https://diycode.b0.upaiyun.com/photo/2019/6aea6353a9c8e042c9f3fdf28c3cf2c6.png" alt="img"></p>
+<h4 id="删除不为2-节点的叶子节点"><a href="#删除不为2-节点的叶子节点" class="headerlink" title="删除不为2-节点的叶子节点"></a>删除不为2-节点的叶子节点</h4><p>操作步骤：删除不为2-节点的叶子节点，直接删除节点即可。**</p>
+<p><strong>图解：</strong><br><img src="https://diycode.b0.upaiyun.com/photo/2019/9eed47e91cdd721035760525f230f12c.png" alt="img"></p>
+<h4 id="删除为2-节点的叶子节点"><a href="#删除为2-节点的叶子节点" class="headerlink" title="删除为2-节点的叶子节点"></a>删除为2-节点的叶子节点</h4><p>删除为2-节点的叶子节点的步骤相对复杂，删除节点后需要做出相应判断，并根据判断结果调整树结构。主要分为四种情形：</p>
+<h5 id="删除节点为2-节点，父节点为2-节点，兄弟节点为3-节点"><a href="#删除节点为2-节点，父节点为2-节点，兄弟节点为3-节点" class="headerlink" title="删除节点为2-节点，父节点为2-节点，兄弟节点为3-节点"></a>删除节点为2-节点，父节点为2-节点，兄弟节点为3-节点</h5><p><strong>操作步骤：当前待删除节点的父节点是2-节点、兄弟节点是3-节点，将父节点移动到当前待删除节点位置，再将兄弟节点中最接近当前位置的key移动到父节点中。</strong></p>
+<p><strong>图解：</strong><br><img src="https://diycode.b0.upaiyun.com/photo/2019/caa28467e8dcb3bf694a322263512500.png" alt="img"></p>
+<h5 id="删除节点为2-节点，父节点为2-节点，兄弟节点为2-节点"><a href="#删除节点为2-节点，父节点为2-节点，兄弟节点为2-节点" class="headerlink" title="删除节点为2-节点，父节点为2-节点，兄弟节点为2-节点"></a>删除节点为2-节点，父节点为2-节点，兄弟节点为2-节点</h5><p><strong>操作步骤：当前待删除节点的父节点是2-节点、兄弟节点也是2-节点，先通过移动兄弟节点的中序遍历直接后驱到兄弟节点，以使兄弟节点变为3-节点；再进行6.3.1的操作。</strong></p>
+<p><strong>图解：</strong></p>
+<p><img src="https://diycode.b0.upaiyun.com/photo/2019/aaea050b8cd1be3572097b35a04e8926.png" alt="img"><br><img src="https://diycode.b0.upaiyun.com/photo/2019/fd41e34febe4651d4f9ca5d53c1325dc.png" alt="img"></p>
+<h5 id="删除节点为2-节点，父节点为3-节点"><a href="#删除节点为2-节点，父节点为3-节点" class="headerlink" title="删除节点为2-节点，父节点为3-节点"></a>删除节点为2-节点，父节点为3-节点</h5><p><strong>操作步骤：当前待删除节点的父节点是3-节点，拆分父节点使其成为2-节点，再将再将父节点中最接近的一个拆分key与中孩子合并，将合并后的节点作为当前节点。</strong></p>
+<p><strong>图解：</strong><br><img src="https://diycode.b0.upaiyun.com/photo/2019/ba52aba6e18ae595ee9aa499523f9d4d.png" alt="img"></p>
+<h5 id="2-3树为满二叉树，删除叶子节点"><a href="#2-3树为满二叉树，删除叶子节点" class="headerlink" title="2-3树为满二叉树，删除叶子节点"></a>2-3树为满二叉树，删除叶子节点</h5><p><strong>操作步骤：若2-3树是一颗满二叉树，将2-3树层树减少，并将当前删除节点的兄弟节点合并到父节点中，同时将父节点的所有兄弟节点合并到父节点的父节点中，如果生成了4-节点，再分解4-节点。</strong></p>
+<p><strong>图解：</strong><br><img src="https://diycode.b0.upaiyun.com/photo/2019/669908519dceaa20120985b6bfc5b0cf.png" alt="img"></p>
+<h3 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h3><p>2-3 树作为一种平衡查找树，查询效率比普通的二叉排序树要稳定许多。但是2-3树需要维护两种不同类型的结点，查找和插入操作的实现需要大量的代码，而且它们所产生的额外开销可能会使算法比标准的二叉查找树更慢。</p>
+
+            </div>
+            <hr>
+
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            <div class="reprint">
+                <p>
+                    <span class="reprint-tip">
+                        <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;转载请注明:
+                    </span>
+                    <a href="http://cxyxiaowu.com" class="b-link-green">五分钟学算法</a>
+                    <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
+                    <a href="/posts/95cad743/" class="b-link-green">数据结构与算法——2-3树</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/posts/566c1253/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="数据结构与算法——2-3-4树">
+                        
+                        <span class="card-title">数据结构与算法——2-3-4树</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">数据结构与算法——2-3-4树1）引言在上一篇文章中介绍了 2-3 树的定义以及插入删除操作。本篇文章将在 2-3 树的基础上更进一步，介绍比 2-3 树更为复杂的数据结构 2-3-4树 。之所以介绍 2-3-4 树是因为 2-3-4 树与</div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-02-16
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/算法/" class="post-category" target="_blank">
+                                    算法
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/树/" target="_blank">
+                        <span class="chip bg-color">树</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/posts/74c8c47d/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="知否？知否？情人眼里出代码">
+                        
+                        <span class="card-title">知否？知否？情人眼里出代码</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">今天是  0214 ，打乱一下数字就是 1024，程序员最喜欢的一个数字之一。
+当然，除此之外，今天也是一年一度的 情人节。
+这个日子肯定少不了表白。那程序员怎么去表白？当然是 写—代—码！
+每到情人节，脑洞大开的程序员们就纷纷出动，想出了</div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-02-14
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/分享/" class="post-category" target="_blank">
+                                    分享
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/分享/" target="_blank">
+                        <span class="chip bg-color">分享</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('15')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 五分钟学算法<br />'
+            + '作者: 程序员小吴师兄<br />'
+            + '链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+    </div>
+    <div class="col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+    });
+</script>
+    
+
+</main>
+
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            本站由&copy;<a href="https://blinkfox.github.io/" target="_blank">程序员小吴师兄</a>基于
+            <a href="https://hexo.io/" target="_blank">Hexo</a> 的
+            <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">hexo-theme-matery</a>主题搭建.
+
+
+            
+                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+                <span class="white-color">44.4k</span>
+            
+    
+            
+    		
+                <br>
+                
+                <span id="busuanzi_container_site_pv">
+                    <i class="fa fa-heart-o"></i>
+                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+                </span>
+                
+                
+                <span id="busuanzi_container_site_uv">
+                    <i class="fa fa-users"></i>
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+                </span>
+                
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/MisterBooo" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:misterbigbooo@gmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字" class="search-input" autofocus>
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/js/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+
+</body>
+</html>
